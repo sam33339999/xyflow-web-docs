@@ -1,38 +1,31 @@
 ---
-description: This guide will show you how to add basic interactivity to your flow.
+description: 本指南將向你展示如何為流程圖加入基本互動功能。
 ---
 
 import { Callout, Steps } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Adding Interactivity
+# 加入互動功能
 
-Now that we've built our [first flow](/learn/concepts/building-a-flow), let's add
-\*interactivity so you can select, drag, and remove nodes and edges.
+現在我們已經建立了[第一個流程圖](/learn/concepts/building-a-flow)，讓我們加入互動功能，讓你可以選取、拖曳和移除節點與連線。
 
-## Handling change events
+## 處理變更事件
 
-By default React Flow doesn't manage any internal state updates besides handling the
-viewport. As you would with an HTML `<input />` element you need to pass
-[event handlers](/api-reference/react-flow#event-handlers) to React Flow in order to apply
-triggered changes to your nodes and edges.
+預設情況下，React Flow 除了處理視窗之外，不會管理任何內部狀態更新。就像使用 HTML `<input />` 元素一樣，你需要將[事件處理器](/api-reference/react-flow#event-handlers)傳遞給 React Flow，以便將觸發的變更套用到你的節點和連線上。
 
  <Steps>
- ### Add imports
+ ### 加入 imports
 
-To manage changes, we'll be using `useState` with two helper functions from React Flow:
-[`applyNodeChanges`](/api-reference/utils/apply-node-changes) and
-[`applyEdgeChanges`](/api-reference/utils/apply-edge-changes). So let's import these
-functions:
+要管理變更，我們將使用 `useState` 以及 React Flow 的兩個輔助函式：[`applyNodeChanges`](/api-reference/utils/apply-node-changes) 和 [`applyEdgeChanges`](/api-reference/utils/apply-edge-changes)。讓我們匯入這些函式：
 
 ```jsx
 import { useState, useCallback } from 'react';
 import { ReactFlow, applyEdgeChanges, applyNodeChanges } from '@xyflow/react';
 ```
 
-### Define nodes and edges
+### 定義節點和連線
 
-We need to define initial nodes and edges. These will be the starting point for our flow.
+我們需要定義初始節點和連線。這些將是我們流程圖的起點。
 
 ```jsx
 const initialNodes = [
@@ -58,10 +51,9 @@ const initialEdges = [
 ];
 ```
 
-### Initialize state
+### 初始化狀態
 
-In our component, we'll call the `useState` hook to manage the state of our nodes and
-edges:
+在我們的元件中，我們將呼叫 `useState` hook 來管理節點和連線的狀態：
 
 ```jsx {2-3}
 export default function App() {
@@ -79,13 +71,9 @@ export default function App() {
 }
 ```
 
-### Add event handlers
+### 加入事件處理器
 
-We need to create two event handlers:
-[`onNodesChange`](/api-reference/react-flow#onnodeschange) and
-[`onEdgesChange`](/api-reference/react-flow#onedgeschange). They will be used to update
-the state of our nodes and edges when changes occur, such as dragging or deleting an
-element. Go ahead and add these handlers to your component:
+我們需要建立兩個事件處理器：[`onNodesChange`](/api-reference/react-flow#onnodeschange) 和 [`onEdgesChange`](/api-reference/react-flow#onedgeschange)。它們將用於在發生變更時更新節點和連線的狀態，例如拖曳或刪除元素。繼續將這些處理器加入你的元件：
 
 ```jsx
 const onNodesChange = useCallback(
@@ -98,9 +86,9 @@ const onEdgesChange = useCallback(
 );
 ```
 
-### Pass them to ReactFlow
+### 將它們傳遞給 ReactFlow
 
-Now we can pass our nodes, edges, and event handlers to the `<ReactFlow />` component:
+現在我們可以將節點、連線和事件處理器傳遞給 `<ReactFlow />` 元件：
 
 ```jsx {2-5}
 <ReactFlow
@@ -115,30 +103,24 @@ Now we can pass our nodes, edges, and event handlers to the `<ReactFlow />` comp
 </ReactFlow>
 ```
 
-### Interactive flow
+### 互動流程圖
 
-And that's it! You now have a basic interactive flow 🎉
+就是這樣！你現在有了一個基本的互動流程圖 🎉
 
-When you drag or select a node, the `onNodesChange` handler is triggered. The
-`applyNodeChanges` function then uses these change events to update the current state of
-your nodes. Here's how it all comes together. Try clicking and dragging a node to move it
-around and watch the UI update in real time.
+當你拖曳或選取節點時，`onNodesChange` 處理器會被觸發。`applyNodeChanges` 函式接著使用這些變更事件來更新節點的當前狀態。這就是它們如何協同運作的。試著點擊並拖曳節點來移動它，並觀察 UI 即時更新。
 
 <RemoteCodeViewer route="learn/make-it-interactive-1" framework="react" aspectRatio="4" />
 
 </Steps>
 
-## Handling connections
+## 處理連接
 
-One last piece is missing: connecting nodes interactively. For this, we need to implement
-an [`onConnect`](/api-reference/react-flow#onconnect) handler.
+還有最後一塊拼圖缺少：互動式連接節點。為此，我們需要實作一個 [`onConnect`](/api-reference/react-flow#onconnect) 處理器。
 
 <Steps>
-### Create `onConnect` handler
+### 建立 `onConnect` 處理器
 
-The `onConnect` handler is called whenever a new connection is made between two nodes. We
-can use the [`addEdge`](/api-reference/utils/add-edge) utility function to create a new
-edge and update the edge Array.
+`onConnect` 處理器會在兩個節點之間建立新連接時被呼叫。我們可以使用 [`addEdge`](/api-reference/utils/add-edge) 工具函式來建立新連線並更新連線陣列。
 
 ```jsx
 const onConnect = useCallback(
@@ -147,9 +129,9 @@ const onConnect = useCallback(
 );
 ```
 
-### Pass it to ReactFlow
+### 將它傳遞給 ReactFlow
 
-Now we can pass the `onConnect` handler to the `<ReactFlow />` component:
+現在我們可以將 `onConnect` 處理器傳遞給 `<ReactFlow />` 元件：
 
 ```jsx {6}
 <ReactFlow
@@ -165,35 +147,25 @@ Now we can pass the `onConnect` handler to the `<ReactFlow />` component:
 </ReactFlow>
 ```
 
-### Connectable flow
+### 可連接的流程圖
 
-Try to connect the two nodes by dragging from on handle to another one. The `onConnect`
-handler will be triggered, and the new edge will be added to the flow. 🥳
+試著從一個連接點拖曳到另一個連接點來連接兩個節點。`onConnect` 處理器會被觸發，新連線將被加入到流程圖中。🥳
 
 <RemoteCodeViewer aspectRatio="4" route="learn/make-it-interactive-2" framework="react" />
 
 </Steps>
 
-## Full code example 🏁
+## 完整程式碼範例 🏁
 
 <RemoteCodeViewer route="learn/make-it-interactive-2" framework="react" />
 
-What is happening here? Whenever React Flow triggers a change (node init, node drag, edge
-select, etc.), the `onNodesChange` handler gets called. We export an `applyNodeChanges`
-handler so that you don't need to handle the changes by yourself. The `applyNodeChanges`
-handler returns an updated array of nodes that is your new nodes array. You now have an
-interactive flow with the following capabilities:
+這裡發生了什麼事？每當 React Flow 觸發變更（節點初始化、節點拖曳、連線選取等），`onNodesChange` 處理器就會被呼叫。我們匯出一個 `applyNodeChanges` 處理器，這樣你就不需要自己處理變更。`applyNodeChanges` 處理器會回傳一個更新後的節點陣列，這就是你的新節點陣列。現在你有了一個具有以下功能的互動流程圖：
 
-- selectable nodes and edges
-- draggable nodes
-- connectable nodes by dragging from one node handle to another
-- multi-selection area by pressing `shift` -- the default
-  [`selectionKeyCode`](/api-reference/react-flow#selectionkeycode)
-- multi-selection by pressing `cmd` -- the default
-  [`multiSelectionKeyCode`](/api-reference/react-flow#multiselectionkeycode)
-- removing selected elements by pressing `backspace` -- the default
-  [`deleteKeyCode`](/api-reference/react-flow#deletekeycode)
+- 可選取的節點和連線
+- 可拖曳的節點
+- 可透過從一個節點連接點拖曳到另一個來連接節點
+- 按下 `shift` 進行多重選取區域——預設的 [`selectionKeyCode`](/api-reference/react-flow#selectionkeycode)
+- 按下 `cmd` 進行多重選取——預設的 [`multiSelectionKeyCode`](/api-reference/react-flow#multiselectionkeycode)
+- 按下 `backspace` 移除選取的元素——預設的 [`deleteKeyCode`](/api-reference/react-flow#deletekeycode)
 
-If you want to jump straight into creating your own application, we recommend checking out
-the Customization section. Otherwise keep reading to learn more about React Flows
-capabilities.
+如果你想直接開始建立自己的應用程式，我們建議查看自訂化章節。否則繼續閱讀以了解更多關於 React Flow 的功能。

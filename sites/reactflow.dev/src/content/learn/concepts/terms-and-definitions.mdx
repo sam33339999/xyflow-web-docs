@@ -1,85 +1,51 @@
 ---
-description: Learn about the basic terms and definitions of React Flow
+description: 了解 React Flow 的基本術語和定義
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Overview
+# 概述
 
-At its core, React Flow is about creating interactive flowgraphs -- a collection of nodes
-connected by edges. To help you understand the terminology we use throughout the
-documentation, let's take a look at the example flow below.
+React Flow 的核心就是建立互動式流程圖——由連線連接的節點集合。為了幫助你了解我們在整個文件中使用的術語，讓我們看看下面的範例流程圖。
 
 <RemoteCodeViewer route="learn/basic-terms" framework="react" />
 
-### Nodes
+### 節點
 
-React Flow has a few default node types out of the box, but customization is where the
-magic of React Flow truly happens. You can design your nodes to work exactly the way you
-need them to—whether that’s embedding interactive form elements, displaying dynamic data
-visualizations, or even incorporating multiple connection handles. React Flow lays the
-foundation, and your imagination does the rest.
+React Flow 內建了幾種預設的節點類型，但自訂化才是 React Flow 真正神奇的地方。你可以設計節點來完全符合你的需求——無論是嵌入互動式表單元素、顯示動態資料視覺化，甚至是加入多個連接點。React Flow 奠定了基礎，而你的想像力完成了其餘部分。
 
-We have a guide on creating your own [Custom Nodes](/learn/customization/custom-nodes) and
-you can find all the options for customizing your nodes in the
-[Node](/api-reference/types/node) reference.
+我們有一個關於建立你自己的[自訂節點](/learn/customization/custom-nodes)的指南，你可以在[節點](/api-reference/types/node)參考文件中找到所有自訂節點的選項。
 
-### Handles
+### 連接點
 
-A handle (also known as a “port” in other libraries) is the attachment point where an edge
-connects to a node. By default, they appear as grey circles on the top, bottom, left, or
-right sides of a node. But they are just `div` elements, and can be positioned and styled
-any way you’d like. When creating a custom node, you can include as many handles as
-needed. For more information, refer to the [Handle](/learn/customization/handles) page.
+連接點（在其他函式庫中也被稱為「port」）是連線連接到節點的附著點。預設情況下，它們在節點的頂部、底部、左側或右側顯示為灰色圓圈。但它們只是 `div` 元素，可以按照你喜歡的方式定位和樣式化。在建立自訂節點時，你可以包含任意數量的連接點。更多資訊請參閱[連接點](/learn/customization/handles)頁面。
 
-### Edges
+### 連線
 
-Edges connect nodes. Every edge needs a target and a source node. React Flow comes with
-four built-in [edge types](/examples/edges/edge-types): `default` (bezier), `smoothstep`,
-`step`, and `straight`. An edge is a SVG path that can be styled with CSS and is
-completely customizable. If you are using multiple handles, you can reference them
-individually to create multiple connections for a node.
+連線連接節點。每條連線都需要一個目標節點和一個來源節點。React Flow 內建了四種[連線類型](/examples/edges/edge-types)：`default`（貝茲曲線）、`smoothstep`、`step` 和 `straight`。連線是一個 SVG 路徑，可以用 CSS 樣式化，並且完全可自訂。如果你使用多個連接點，你可以單獨引用它們來為一個節點建立多個連接。
 
-Like custom nodes, you can also customize edges. Things that people do with custom edges
-include:
+就像自訂節點一樣，你也可以自訂連線。人們對自訂連線做的事情包括：
 
-- Adding buttons to remove edges
-- Custom routing behavior
-- Complex styling or interactions that cannot be solved with just one SVG path
+- 加入按鈕來移除連線
+- 自訂路由行為
+- 無法僅用一個 SVG 路徑解決的複雜樣式或互動
 
-For more information, refer to the [Edges](/learn/customization/custom-edges) page.
+更多資訊請參閱[連線](/learn/customization/custom-edges)頁面。
 
-### Selection
+### 選取
 
-You can select an edge or a node by clicking on it. If you want to select multiple
-nodes/edges via clicking, you can hold the `Meta/Control` key and click on multiple
-elements to select them. If you want to change the keyboard key for multiselection to
-something else, you can use the
-[`multiSelectionKeyCode`](/api-reference/react-flow#multiselectionkeycode) prop.
+你可以透過點擊來選取連線或節點。如果你想透過點擊來選取多個節點/連線，你可以按住 `Meta/Control` 鍵並點擊多個元素來選取它們。如果你想將多重選取的鍵盤按鍵改為其他按鍵，你可以使用 [`multiSelectionKeyCode`](/api-reference/react-flow#multiselectionkeycode) 屬性。
 
-You can also select multiple edges/nodes by holding down `Shift` and dragging the mouse to
-make a selection box. When you release the mouse, any node or edge that falls within the
-selection box is selected. If you want to change the keyboard key for this behavior, you
-can use the [`selectionKeyCode`](/api-reference/react-flow#selectionkeycode) prop.
+你也可以透過按住 `Shift` 並拖曳滑鼠來建立選取框，以選取多個連線/節點。當你放開滑鼠時，任何落在選取框內的節點或連線都會被選取。如果你想改變這個行為的鍵盤按鍵，你可以使用 [`selectionKeyCode`](/api-reference/react-flow#selectionkeycode) 屬性。
 
-Selected nodes and edges are elevated (assigned a higher `zIndex` than other elements), so
-that they are shown on top of all the other elements.
+選取的節點和連線會被提升（分配比其他元素更高的 `zIndex`），以便它們顯示在所有其他元素的頂部。
 
-For default edges and nodes, selection is shown by a darker stroke/border than usual. If
-you are using a custom node/edge, you can use the `selected` prop to customize selection
-appearance inside your custom component.
+對於預設的連線和節點，選取會以比平常更深的描邊/邊框顯示。如果你使用自訂節點/連線，你可以使用 `selected` 屬性來在自訂元件內部自訂選取外觀。
 
-### Connection line
+### 連接線
 
-React Flow has built-in functionality that allows you to click and drag from one handle to
-another to create a new edge. While dragging, the placeholder edge is referred to as a
-connection line. The connection line comes with the same four built-in types as edges and
-is customizable. You can find the props for configuring the connection line in the
-[connection props](/api-reference/react-flow#connection-line-props) reference.
+React Flow 內建了功能，允許你從一個連接點點擊並拖曳到另一個連接點來建立新連線。在拖曳時，佔位連線被稱為連接線。連接線與連線一樣具有四種內建類型，並且可以自訂。你可以在[連接屬性](/api-reference/react-flow#connection-line-props)參考文件中找到配置連接線的屬性。
 
-### Viewport
+### 視窗
 
-All of React Flow is contained within the viewport. Each node has an x- and y-coordinate,
-which indicates its position within the viewport. The viewport has x, y, and zoom values.
-When you drag the pane, you change the x and y coordinates. When you zoom in or out, you
-alter the zoom level.
+所有的 React Flow 都包含在視窗內。每個節點都有一個 x 和 y 座標，表示它在視窗內的位置。視窗有 x、y 和縮放值。當你拖曳畫布時，你會改變 x 和 y 座標。當你放大或縮小時，你會改變縮放等級。

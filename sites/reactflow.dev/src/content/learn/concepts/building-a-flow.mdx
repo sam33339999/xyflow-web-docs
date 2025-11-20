@@ -1,43 +1,36 @@
 ---
-description: Learn how to build your first static flow with React Flow.
+description: 學習如何使用 React Flow 建立你的第一個靜態流程圖。
 ---
 
 import { Callout, Steps } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Building a Flow
+# 建立流程圖
 
-In the following pages we will introduce you to the core concepts of React Flow and
-explain how to create a basic interactive flow. A flow consists of
-[nodes](/api-reference/types/node), [edges](/api-reference/types/edge) and the viewport.
+在接下來的頁面中，我們將介紹 React Flow 的核心概念，並說明如何建立一個基本的互動流程圖。一個流程圖由[節點](/api-reference/types/node)、[連線](/api-reference/types/edge)和視窗組成。
 
-To follow along with this guide you will need to have a React project set up and install
-the `@xyflow/react` package:
+要跟著本指南進行，你需要建立一個 React 專案並安裝 `@xyflow/react` 套件：
 
 ```bash copy npm2yarn
 npm install @xyflow/react
 ```
 
-## Creating the flow
+## 建立流程圖
 
-Let's start by creating an empty flow with viewport
-[`<Controls />`](/api-reference/components/controls) and a dotted
-[`<Background />`](/api-reference/components/background).
+讓我們從建立一個空的流程圖開始，包含視窗[`<Controls />`](/api-reference/components/controls)和點狀[`<Background />`](/api-reference/components/background)。
 
 <Steps>
-### Add imports
-First, we need to import some basic components from the `@xyflow/react` package 
-and the **css stylesheet**, which is **required** for React Flow to work:
+### 加入 imports
+首先，我們需要從 `@xyflow/react` 套件中匯入一些基本元件和 **CSS 樣式表**，這是 React Flow 運作所**必需**的：
 
 ```jsx "import '@xyflow/react/dist/style.css';"
 import { ReactFlow, Background, Controls } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 ```
 
-### Render ReactFlow
+### 渲染 ReactFlow
 
-Now we create a React component, that renders our flow. The **width and height** on the
-parent container are **required** because React Flow uses these dimensions.
+現在我們建立一個 React 元件來渲染流程圖。父容器的**寬度和高度**是**必需**的，因為 React Flow 會使用這些尺寸。
 
 ```jsx "height: '100%', width: '100%'"
 export default function App() {
@@ -52,25 +45,22 @@ export default function App() {
 }
 ```
 
-### Empty flow
+### 空的流程圖
 
-That's it! You have created your first empty flow 🎉
+就是這樣！你已經建立了你的第一個空流程圖 🎉
 
 <RemoteCodeViewer aspectRatio="4" route="learn/building-a-flow-1" framework="react" />
 
 </Steps>
 
-## Adding nodes
+## 加入節點
 
-Now that the flow is set up, it's time to add nodes — each node represents an element in
-your diagram with a specific position and content.
+現在流程圖已經設定好了，是時候加入節點了——每個節點代表你圖表中具有特定位置和內容的元素。
 
-<Steps> 
-### Create node objects
+<Steps>
+### 建立節點物件
 
-Outside of your React component, create an array of [node](/api-reference/types/node)
-objects. Each node object needs a unique `id` and a `position`. Let's also add a label to
-them:
+在你的 React 元件外部，建立一個[節點](/api-reference/types/node)物件陣列。每個節點物件需要一個唯一的 `id` 和一個 `position`。讓我們也為它們加入一個標籤：
 
 ```jsx
 const initialNodes = [
@@ -88,10 +78,9 @@ const initialNodes = [
 ];
 ```
 
-### Add nodes to the flow
+### 將節點加入流程圖
 
-Now we can pass our `initialNodes` array to the `<ReactFlow />` component using the
-`nodes` prop:
+現在我們可以使用 `nodes` 屬性將 `initialNodes` 陣列傳遞給 `<ReactFlow />` 元件：
 
 ```jsx "nodes={initialNodes}"
 <ReactFlow nodes={initialNodes}>
@@ -100,29 +89,24 @@ Now we can pass our `initialNodes` array to the `<ReactFlow />` component using 
 </ReactFlow>
 ```
 
-### Flow with nodes
+### 帶有節點的流程圖
 
-This gives us a flow with two labeled nodes 🎉
+這樣我們就有了一個包含兩個帶標籤節點的流程圖 🎉
 
 <RemoteCodeViewer aspectRatio="4" route="learn/building-a-flow-2" framework="react" />
 
 </Steps>
 
-We have several built-in nodes that you can explore in the
-[node](/api-reference/types/node) reference. However, once you start building your own
-application, you will want to use [custom nodes](/learn/customization/custom-nodes).
+我們有幾個內建節點，你可以在[節點](/api-reference/types/node)參考文件中探索。然而，一旦你開始建立自己的應用程式，你會想要使用[自訂節點](/learn/customization/custom-nodes)。
 
-## Adding edges
+## 加入連線
 
-Now that we have two nodes, let's connect them with an edge.
+現在我們有了兩個節點，讓我們用連線將它們連接起來。
 
 <Steps>
-### Create an edge
+### 建立連線
 
-To create an edge, we define an array of [edge](/api-reference/types/edge) objects. Each
-edge object needs to have an `id`, a `source` (where the edge begins), and a `target`
-(where it ends). In this example, we use the `id` values of the two nodes we created so
-far (`n1` and `n2`) to define the edge:
+要建立連線，我們定義一個[連線](/api-reference/types/edge)物件陣列。每個連線物件需要有一個 `id`、一個 `source`（連線開始的位置）和一個 `target`（連線結束的位置）。在這個範例中，我們使用目前建立的兩個節點的 `id` 值（`n1` 和 `n2`）來定義連線：
 
 ```js
 const initialEdges = [
@@ -134,15 +118,13 @@ const initialEdges = [
 ];
 ```
 
-This edge connects the node with `id: 'n1'` (the source) to the node with `id: 'n2'` (the
-target).
+這條連線將 `id: 'n1'` 的節點（來源）連接到 `id: 'n2'` 的節點（目標）。
 
 <RemoteCodeViewer aspectRatio="4" route="learn/building-a-flow-3" framework="react" />
 
-### Label the edge
+### 為連線加上標籤
 
-Let's give this edge two properties that are built into React Flow, a `label` and a
-`type: "step"`.
+讓我們為這條連線加上 React Flow 內建的兩個屬性：`label` 和 `type: "step"`。
 
 ```jsx {6-7}
 const initialEdges = [
@@ -156,10 +138,9 @@ const initialEdges = [
 ];
 ```
 
-### Add edges to the flow
+### 將連線加入流程圖
 
-Now we can pass our `initialEdges` array to the `<ReactFlow />` component using the
-`edges` prop:
+現在我們可以使用 `edges` 屬性將 `initialEdges` 陣列傳遞給 `<ReactFlow />` 元件：
 
 ```jsx "edges={initialEdges}"
 <ReactFlow nodes={initialNodes} edges={initialEdges}>
@@ -168,18 +149,16 @@ Now we can pass our `initialEdges` array to the `<ReactFlow />` component using 
 </ReactFlow>
 ```
 
-### Basic flow
+### 基本流程圖
 
-Congratulations! You have completed a basic flow with nodes and edges! 🎉
+恭喜！你已經完成了一個包含節點和連線的基本流程圖！🎉
 
 <RemoteCodeViewer aspectRatio="4" route="learn/building-a-flow-4" framework="react" />
 
 </Steps>
 
-## Full code example 🏁
+## 完整程式碼範例 🏁
 
 <RemoteCodeViewer route="learn/building-a-flow-4" framework="react" />
 
-You took your first steps in React Flow! You might have realized that you can't drag or
-otherwise interact with nodes. On the next page you'll learn how to make the flow
-interactive.
+你已經踏出了 React Flow 的第一步！你可能已經注意到你無法拖曳或與節點進行其他互動。在下一頁中，你將學習如何讓流程圖具有互動性。

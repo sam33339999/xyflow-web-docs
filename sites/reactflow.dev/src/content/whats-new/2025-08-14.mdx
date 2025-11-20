@@ -1,16 +1,13 @@
 ---
 title: 'React Flow 12.8.3'
-description: 'Changelog for React Flow version 12.8.3'
+description: 'React Flow 版本 12.8.3 的變更日誌'
 authors: [xyflow]
 date: '2025-08-14'
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-A new version of React Flow is out. With 12.8.3 you get a lot of bug fixes and a great
-improvement for handles. It's now possible to position child content of a handle outside
-of the handle itself and still use it as a starting point for connections as you can see
-in this example:
+React Flow 的新版本發布了。透過 12.8.3，你可以獲得許多錯誤修正和連接點的重大改進。現在可以將連接點的子內容定位在連接點本身之外，並仍將其用作連線的起點，如你在此範例中所見：
 
 <RemoteCodeViewer
   route="examples/nodes/detached-handle"
@@ -18,23 +15,14 @@ in this example:
   showEditor={false}
 />
 
-### Patch Changes
+### 修補變更
 
-- [#5428](https://github.com/xyflow/xyflow/pull/5428) Be able to use detached handle
-  content as a starting point for a connection
-- [#5419](https://github.com/xyflow/xyflow/pull/5419) Make edge markers fallback to
-  `--xy-edge-stroke` CSS variable when marker color is null
-- [#5453](https://github.com/xyflow/xyflow/pull/5453) Snap selection instead of separate
-  nodes when snap grid is enabled
-- [#5444](https://github.com/xyflow/xyflow/pull/5444) Export `MiniMapNode` to use it for
-  custom mini map nodes
-- [#5415](https://github.com/xyflow/xyflow/pull/5415) Allow strings and enums for marker
-  types
-- [#5436](https://github.com/xyflow/xyflow/pull/5436) Prevent a 0 added to the markup for
-  edges when interactionWidth is 0
-- [#5443](https://github.com/xyflow/xyflow/pull/5443) Use 1 as the default for interactive
-  Minimap zoom step
-- [#5448](https://github.com/xyflow/xyflow/pull/5448) Use correct `HandleConnection` type
-  for Handle `onConnect`
-- [#5420](https://github.com/xyflow/xyflow/pull/5420) Omit `defaultValue` from `Node`'s
-  `domAttributes` to fix type incompatibility when using `WritableDraft`
+- [#5428](https://github.com/xyflow/xyflow/pull/5428) 能夠使用分離的連接點內容作為連線的起點
+- [#5419](https://github.com/xyflow/xyflow/pull/5419) 當標記顏色為 null 時，讓連線標記回退到 `--xy-edge-stroke` CSS 變數
+- [#5453](https://github.com/xyflow/xyflow/pull/5453) 當啟用對齊網格時，對齊選擇而不是單獨的節點
+- [#5444](https://github.com/xyflow/xyflow/pull/5444) 匯出 `MiniMapNode` 以用於自訂縮圖節點
+- [#5415](https://github.com/xyflow/xyflow/pull/5415) 允許字串和列舉用於標記類型
+- [#5436](https://github.com/xyflow/xyflow/pull/5436) 當 interactionWidth 為 0 時，防止在連線的標記中新增 0
+- [#5443](https://github.com/xyflow/xyflow/pull/5443) 使用 1 作為互動式縮圖縮放步驟的預設值
+- [#5448](https://github.com/xyflow/xyflow/pull/5448) 為 Handle `onConnect` 使用正確的 `HandleConnection` 類型
+- [#5420](https://github.com/xyflow/xyflow/pull/5420) 從 `Node` 的 `domAttributes` 中省略 `defaultValue`，以修正使用 `WritableDraft` 時的類型不相容問題

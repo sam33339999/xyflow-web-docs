@@ -1,61 +1,45 @@
 # React Flow UI
 
-Ready-to-use React Flow components built with [shadcn/ui](https://ui.shadcn.com/)
-components and [Tailwind CSS](https://tailwindcss.com/). Useful for new projects, MVPs, or
-when you need to get up and running quickly.
+使用 [shadcn/ui](https://ui.shadcn.com/) 元件和 [Tailwind CSS](https://tailwindcss.com/) 建立的即用型 React Flow 元件。適用於新專案、MVP，或當你需要快速啟動和運行時。
 
 > [!NOTE]
 >
-> React Flow UI has been updated to support the latest version of shadcn/ui, on **React 19
-> and Tailwind 4**! Read more about the changes and how to upgrade
-> [here](/whats-new/2025-10-28).
+> React Flow UI 已更新以支援最新版本的 shadcn/ui，基於 **React 19 和 Tailwind 4**！閱讀更多關於變更和如何升級的資訊[在這裡](/whats-new/2025-10-28)。
 
-## Prerequisites
+## 先決條件
 
-You need to have **shadcn and tailwind configured in your project**. If you haven't
-installed it, you can follow the steps explained in the
-[shadcn installation guide](https://ui.shadcn.com/docs/installation). If shadcn and
-tailwind are part of your project, you can initialize shadcn-ui by running:
+你需要在專案中**配置 shadcn 和 tailwind**。如果你還沒有安裝它，可以按照 [shadcn 安裝指南](https://ui.shadcn.com/docs/installation)中的步驟操作。如果 shadcn 和 tailwind 已經是你專案的一部分，你可以透過執行以下命令來初始化 shadcn-ui：
 
 ```bash copy npm2yarn
 npx shadcn@latest init
 ```
 
-If you want to learn more about the motivation behind this project, you can find a
-detailed blog post [here](https://xyflow.com/blog/react-flow-components). For a more
-in-depth tutorial, we also recently published a new guide on
-[getting started with React Flow UI](/learn/tutorials/getting-started-with-react-flow-components).
+如果你想了解更多關於這個專案背後的動機，可以在[這裡](https://xyflow.com/blog/react-flow-components)找到詳細的部落格文章。對於更深入的教學，我們最近還發布了一個關於[開始使用 React Flow UI](/learn/tutorials/getting-started-with-react-flow-components) 的新指南。
 
 > [!IMPORTANT]
 >
-> Using React Flow UI components **requires importing the main React Flow CSS stylesheet**
-> before you import the **shadcn UI stylesheet**. You usually do so in the Typescript or
-> Javascript file where you use the main [`<ReactFlow>`](/api-reference/react-flow)
-> component.
+> 使用 React Flow UI 元件**需要在匯入 shadcn UI 樣式表之前匯入主要的 React Flow CSS 樣式表**。你通常在使用主要 [`<ReactFlow>`](/api-reference/react-flow) 元件的 Typescript 或 Javascript 檔案中執行此操作。
 
 ```tsx filename="App.tsx"
 import '@xyflow/react/dist/style.css';
 ```
 
-## Usage
+## 使用方法
 
-Find a component you like and run the command to add it to your project.
+找到你喜歡的元件並執行命令將其新增到你的專案中。
 
 ```bash copy npm2yarn
 npx shadcn@latest add https://ui.reactflow.dev/component-name
 ```
 
-- This command copies the component code inside your components folder. You can change
-  this folder by adding an alias inside your `components.json`.
+- 此命令將元件程式碼複製到你的 components 資料夾中。你可以透過在 `components.json` 中新增別名來更改此資料夾。
 
-- It automatically installs all necessary dependencies
+- 它會自動安裝所有必要的依賴項
 
-- It utilizes previously added and even modified components or asks you if you'd like to
-  overwrite them.
+- 它利用先前新增甚至修改過的元件，或詢問你是否要覆寫它們。
 
-- It uses your existing tailwind configuration.
+- 它使用你現有的 tailwind 配置。
 
-- The components are **not black-boxes** and can be **modified and extended** to fit your
-  needs.
+- 元件**不是黑盒子**，可以**修改和擴展**以滿足你的需求。
 
-For more information visit the [shadcn documentation](https://ui.shadcn.com/docs).
+有關更多資訊，請造訪 [shadcn 文檔](https://ui.shadcn.com/docs)。

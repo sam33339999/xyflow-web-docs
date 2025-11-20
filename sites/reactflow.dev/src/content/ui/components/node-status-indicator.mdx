@@ -1,15 +1,15 @@
 ---
-description: A node wrapper that has multiple states for indicating the status of a node.
+description: 具有多種狀態以指示節點狀態的節點包裝器。
 ---
 
 import UiComponentViewer from '@/components/ui-component-viewer.mdx';
 
 # Node Status Indicator
 
-A node wrapper that has multiple states for indicating the status of a node. Status can be one of the following: `"success"`, `"loading"`, `"error"` and `"initial"`.
+具有多種狀態以指示節點狀態的節點包裝器。狀態可以是以下之一：`"success"`、`"loading"`、`"error"` 和 `"initial"`。
 
-Additionally, the `NodeStatusIndicator` component supports different loading variants: `"border"` and `"overlay"`, which can be set using the `loadingVariant` prop.
-- The `"border"` variant is the default and shows a spinning border around the node when it is in loading state.
-- The `"overlay"` variant shows a full overlay, with an animated spinner on the node when it is in loading state.
+此外，`NodeStatusIndicator` 元件支援不同的載入變體：`"border"` 和 `"overlay"`，可以使用 `loadingVariant` prop 設定。
+- `"border"` 變體是預設值，在節點處於載入狀態時會在節點周圍顯示旋轉邊框。
+- `"overlay"` 變體會在節點處於載入狀態時顯示完整覆蓋層，並在節點上顯示動畫旋轉器。
 
 <UiComponentViewer id="node-status-indicator" />

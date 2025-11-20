@@ -1,43 +1,43 @@
 ---
-title: 'New Release 12.0.0'
-description: "What's new in @xyflow/react 12.0.0"
+title: '新版本 12.0.0'
+description: "@xyflow/react 12.0.0 的新功能"
 authors: [moritz]
 date: '2024-07-09'
 ---
 
-React Flow 12 is finally out! With a new package name `@xyflow/react`!
+React Flow 12 終於發布了！採用新的套件名稱 `@xyflow/react`！
 
-### Main features
+### 主要功能
 
-- **SSR / SSG**: you can define `width`, `height` and `handles` for the nodes. This makes it possible to render a flow on the server and hydrate on the client: [SSR guide](/learn/advanced-use/ssr-ssg-configuration)
-  - Details: In v11, `width` and `height` were set by the library as soon as the nodes got measured. This still happens, but we are now using `measured.width` and `measured.height` to store this information. In the previous versions there was always a lot of confusion about `width` and `height`. It’s hard to understand, that you can’t use it for passing an actual width or height. It’s also not obvious that those attributes get added by the library. We think that the new implementation solves both of the problems: `width` and `height` are optional attributes that can be used to define dimensions and the measured dimensions are stored in `measured`.
-- **Reactive Flows:** The new hooks `useHandleConnections` and `useNodesData` and the new `updateNode` and `updateNodeData` functions can be used for managing the data flow between your nodes: [computing flows guide](/learn/advanced-use/computing-flows)
-  - Details: Working with reactive flows is super common. You update node A and want to react on those changes in the connected node B. Until now everyone had to come up with a custom solution. With this version we want to change this and give you performant helpers to handle this. If you are excited about this, you can check out this example:
-- **Dark mode and css variables:** React Flow now comes with a built-in dark mode, that can be toggled by using the new `colorMode` prop (”light”, “dark” or “system”): [dark mode example](/examples/styling/dark-mode)
-  - Details: With this version we want to make it easier to switch between dark and light modes and give you a better starting point for dark flows. If you pass colorMode=”dark”, we add the class name “dark” to the wrapper and use it to adjust the styling. To make the implementation for this new feature easier on our ends, we switched to CSS variables for most of the styles. These variables can also be used in user land to customize a flow.
+- **SSR / SSG**：你可以為節點定義 `width`、`height` 和 `handles`。這使得在伺服器上渲染流程並在客戶端進行水合成為可能：[SSR 指南](/learn/advanced-use/ssr-ssg-configuration)
+  - 詳細說明：在 v11 中，`width` 和 `height` 在節點被測量後立即由函式庫設定。這種情況仍然發生，但我們現在使用 `measured.width` 和 `measured.height` 來儲存這些資訊。在先前版本中，`width` 和 `height` 總是造成很多混淆。很難理解你不能用它來傳遞實際的寬度或高度。這些屬性是由函式庫新增的也不明顯。我們認為新的實作解決了這兩個問題：`width` 和 `height` 是可選的屬性，可用於定義尺寸，而測量的尺寸儲存在 `measured` 中。
+- **響應式流程：** 新的 hook `useHandleConnections` 和 `useNodesData` 以及新的 `updateNode` 和 `updateNodeData` 函式可用於管理節點之間的資料流：[計算流程指南](/learn/advanced-use/computing-flows)
+  - 詳細說明：使用響應式流程非常常見。你更新節點 A 並希望在連接的節點 B 中對這些變更做出反應。到目前為止，每個人都必須提出自訂解決方案。透過這個版本，我們想要改變這一點，並為你提供高效的輔助工具來處理這個問題。如果你對此感到興奮，可以查看這個範例：
+- **深色模式和 css 變數：** React Flow 現在內建深色模式，可以透過使用新的 `colorMode` prop（"light"、"dark" 或 "system"）來切換：[深色模式範例](/examples/styling/dark-mode)
+  - 詳細說明：透過這個版本，我們想要讓在深色和淺色模式之間切換變得更容易，並為深色流程提供更好的起點。如果你傳遞 colorMode="dark"，我們會將類別名稱 "dark" 新增到包裝器中並使用它來調整樣式。為了讓我們更容易實作這個新功能，我們將大部分樣式切換到 CSS 變數。這些變數也可以在使用者端使用來自訂流程。
 
-### More features and updates
+### 更多功能和更新
 
-There is more! Besides the new main features, we added some minor things that were on our list for a long time. We also started to use TS docs for better docs. We already started to add some docs for some types and hooks which should improve the developer experience.
+還有更多！除了新的主要功能外，我們還新增了一些在我們清單上很長時間的小功能。我們還開始使用 TS docs 來改善文檔。我們已經開始為一些類型和 hook 新增一些文檔，這應該會改善開發者體驗。
 
-- **[`useConnection` hook](/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
-- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](/api-reference/react-flow#viewport) and [`onViewportChange`](/api-reference/react-flow#on-viewport-change).
-- **[`ViewportPortal`](/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
-- **[`onDelete`](/api-reference/react-flow#on-delete) handler**: We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
-- **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) handler**: With this handler you can prevent/ manage deletions.
-- **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
-- **[`autoPanSpeed`](/api-reference/react-flow#autoPanSpeed) prop:** For controlling the speed while auto panning.
-- **Background component**: add [`patternClassName`](/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
-- **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
-- **`deleteElements`** now returns deleted nodes and deleted edges
-- add **`origin` attribute** for nodes
-- add **`selectable` attribute** for edges
-- Node Resizer: child nodes don't move when the group is resized, extent and expand is recognized correctly
-- Correct types for `BezierEdge`, `StepEdge`, `SmoothStepEdge` and `StraightEdge` components
-- New edges created by the library only have `sourceHandle` and `targetHandle` attributes when those attributes are set. (We used to pass `sourceHandle: null` and `targetHandle: null`)
-- Edges do not mount/unmount when their z-index change
-- connection line knows about the target handle position so that the path is drawn correctly
-- `nodeDragThreshold` is 1 by default instead of 0
-- a better selection box usability (capture while dragging out of the flow)
-- add `selectable`, `deletable`, `draggable` and `parentId` to `NodeProps`
-- add a warning when styles not loaded
+- **[`useConnection` hook](/api-reference/hooks/use-connection)：** 透過這個 hook，你可以存取正在進行的連線。例如，你可以使用它根據當前的開始/結束連接點來為連接點上色或設定自訂連線線的樣式。
+- **受控 `viewport`：** 這是一個進階功能。可能的使用案例是動畫顯示視口或為低解析度螢幕四捨五入轉換等。此功能帶來了兩個新的 prop：[`viewport`](/api-reference/react-flow#viewport) 和 [`onViewportChange`](/api-reference/react-flow#on-viewport-change)。
+- **[`ViewportPortal`](/api-reference/components/viewport-portal) 元件：** 這使得在視口中渲染元素成為可能，而無需實作自訂節點。
+- **[`onDelete`](/api-reference/react-flow#on-delete) 處理器**：我們新增了一個結合 `onDeleteNodes` 和 `onDeleteEdges` 的處理器，讓對刪除做出反應更容易。
+- **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) 處理器**：透過這個處理器，你可以防止/管理刪除。
+- **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop：** 這使得為所有連線實作一個驗證函式成為可能。它也會為程式化新增的連線呼叫。
+- **[`autoPanSpeed`](/api-reference/react-flow#autoPanSpeed) prop：** 用於控制自動平移時的速度。
+- **Background 元件**：新增 [`patternClassName`](/api-reference/components/background#pattern-class-name) prop，以便能夠使用類別名稱來設定背景圖案的樣式。例如，如果你想使用 Tailwind 來設定背景圖案的樣式，這會很有用。
+- **`onMove` 回呼**會在函式庫呼叫的視口更新（如 fitView 或 zoom-in）時觸發
+- **`deleteElements`** 現在回傳已刪除的節點和已刪除的連線
+- 為節點新增 **`origin` 屬性**
+- 為連線新增 **`selectable` 屬性**
+- Node Resizer：當群組調整大小時，子節點不會移動，範圍和擴展被正確識別
+- 修正 `BezierEdge`、`StepEdge`、`SmoothStepEdge` 和 `StraightEdge` 元件的類型
+- 函式庫建立的新連線只有在設定這些屬性時才有 `sourceHandle` 和 `targetHandle` 屬性。（我們過去會傳遞 `sourceHandle: null` 和 `targetHandle: null`）
+- 連線在其 z-index 變更時不會掛載/卸載
+- 連線線知道目標連接點的位置，以便正確繪製路徑
+- `nodeDragThreshold` 預設為 1 而不是 0
+- 更好的選擇框可用性（在拖出流程時捕捉）
+- 將 `selectable`、`deletable`、`draggable` 和 `parentId` 新增到 `NodeProps`
+- 未載入樣式時新增警告

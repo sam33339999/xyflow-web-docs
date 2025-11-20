@@ -1,7 +1,7 @@
 ---
-sidebarTitle: Mind Map App
-title: Build a Mind Map App with React Flow
-intro: "In this tutorial, you will learn to create a simple mind map tool with React Flow that can be used for brainstorming, organizing an idea, or mapping your thoughts in a visual way. To build this app, we'll be using state management, custom nodes and edges, and more."
+sidebarTitle: 心智圖應用程式
+title: 使用 React Flow 建立心智圖應用程式
+intro: "在本教學中，你將學習如何使用 React Flow 建立一個簡單的心智圖工具，可用於腦力激盪、組織想法或以視覺化方式呈現你的思維。為了建立此應用程式，我們將使用狀態管理、自訂節點和連線等功能。"
 date: 2023/01/10
 authors: ['moritz']
 tags: ['react-flow', 'how-to', 'mind-map']
@@ -11,41 +11,41 @@ image: /img/tutorials/mindmap/mindmap.png
 import { Emoji } from '@xyflow/xy-ui';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-In this tutorial, you will learn to create a simple mind map tool with React Flow that can be used for brainstorming, organizing an idea, or mapping your thoughts in a visual way. To build this app, we'll be using state management, custom nodes and edges, and more.
+在本教學中，你將學習如何使用 React Flow 建立一個簡單的心智圖工具，可用於腦力激盪、組織想法或以視覺化方式呈現你的思維。為了建立此應用程式，我們將使用狀態管理、自訂節點和連線等功能。
 
-## <Emoji content="🎬" /> It's Demo Time!
+## <Emoji content="🎬" /> 示範時間！
 
-Before we get our hands dirty, I want to show you the mind-mapping tool we'll have by the end of this tutorial:
+在我們動手開始之前，我想先展示一下在本教學結束時我們將會完成的心智圖工具：
 
 <RemoteCodeViewer route="tutorials/mindmap/app" framework="react"  />
 
-If you'd like to live dangerously and dive right into the code, you can find the source code on [Github](https://github.com/xyflow/react-flow-mindmap-app).
+如果你想直接深入程式碼，可以在 [Github](https://github.com/xyflow/react-flow-mindmap-app) 上找到原始碼。
 
-## <Emoji content="👩🏻‍💻" /> Getting started
+## <Emoji content="👩🏻‍💻" /> 入門
 
-To do this tutorial you will need some knowledge of [React](https://reactjs.org/docs/getting-started.html) and [React Flow](/learn/concepts/terms-and-definitions) (hi, that's us! <Emoji content="😁" /> it's an open source library for building node-based UIs like workflow tools, ETL pipelines, and [more](/showcase/).)
+要完成本教學，你需要具備一些 [React](https://reactjs.org/docs/getting-started.html) 和 [React Flow](/learn/concepts/terms-and-definitions) 的基礎知識（嗨，就是我們！<Emoji content="😁" /> 這是一個用於建立基於節點的使用者介面的開源函式庫，例如工作流程工具、ETL 管道等[更多應用](/showcase/)。）
 
-We'll be using [Vite](https://vitejs.dev/) to develop our app, but you can also use [Create React App](https://create-react-app.dev/) or any other tool you like. To scaffold a new React app with Vite you need to do:
+我們將使用 [Vite](https://vitejs.dev/) 來開發我們的應用程式，但你也可以使用 [Create React App](https://create-react-app.dev/) 或任何你喜歡的工具。要使用 Vite 建立一個新的 React 應用程式，你需要執行：
 
 ```bash npm2yarn
 npm create vite@latest reactflow-mind-map -- --template react
 ```
 
-if you would like to use Typescript:
+如果你想使用 TypeScript：
 
 ```bash npm2yarn
 npm create vite@latest reactflow-mind-map -- --template react-ts
 ```
 
-After the initial setup, you need to install some packages:
+初始設定完成後，你需要安裝一些套件：
 
 ```bash npm2yarn
 npm install reactflow zustand classcat nanoid
 ```
 
-We are using [Zustand](https://github.com/pmndrs/zustand) for managing the state of our application. It's a bit like Redux but way smaller and there's less boilerplate code to write. React Flow also uses Zustand, so the installation comes with no additional cost. (For this tutorial we are using Typescript but you can also use plain Javascript.)
+我們使用 [Zustand](https://github.com/pmndrs/zustand) 來管理應用程式的狀態。它有點像 Redux，但更小且需要撰寫的模板程式碼更少。React Flow 也使用 Zustand，所以安裝不會產生額外的成本。（在本教學中我們使用 TypeScript，但你也可以使用純 JavaScript。）
 
-To keep it simple we are putting all of our code in the `src/App` folder. For this you need to create the `src/App` folder and add an index file with the following content:
+為了保持簡單，我們將所有程式碼放在 `src/App` 資料夾中。為此，你需要建立 `src/App` 資料夾並新增一個 index 檔案，內容如下：
 
 #### src/App/index.tsx
 
@@ -67,9 +67,9 @@ function Flow() {
 export default Flow;
 ```
 
-This will be our main component for rendering the mind map. There are no nodes or edges yet, but we added the React Flow [`Controls`](/api-reference/components/controls) component and a [`Panel`](/api-reference/components/panel) to display the title of our app.
+這將是我們用於渲染心智圖的主要元件。目前還沒有節點或連線，但我們新增了 React Flow 的 [`Controls`](/api-reference/components/controls) 元件和一個 [`Panel`](/api-reference/components/panel) 來顯示應用程式的標題。
 
-To be able to use React Flow hooks, we need to wrap the application with the [`ReactFlowProvider`](/api-reference/react-flow-provider) component in our main.tsx (entry file for vite). We are also importing the newly created `App/index.tsx` and render it inside the `ReactFlowProvider.` Your main file should look like this:
+為了能夠使用 React Flow 的 hooks，我們需要在 main.tsx（vite 的入口檔案）中用 [`ReactFlowProvider`](/api-reference/react-flow-provider) 元件包裝應用程式。我們也會匯入新建立的 `App/index.tsx` 並在 `ReactFlowProvider` 中渲染它。你的主檔案應該看起來像這樣：
 
 #### src/main.tsx
 
@@ -91,7 +91,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 );
 ```
 
-The parent container of the React Flow component needs a width and a height to work properly. Our app is a fullscreen app, so we add these rules to the `index.css` file:
+React Flow 元件的父容器需要設定寬度和高度才能正常運作。我們的應用程式是全螢幕應用，所以我們將這些規則新增到 `index.css` 檔案中：
 
 #### src/index.css
 
@@ -107,16 +107,16 @@ body,
 }
 ```
 
-We are adding all styles of our app to the `index.css` file (you could also use [Tailwind](/examples/styling/tailwind)). Now you can start the development server with `npm run dev` and you should see the following:
+我們將應用程式的所有樣式都新增到 `index.css` 檔案中（你也可以使用 [Tailwind](/examples/styling/tailwind)）。現在你可以使用 `npm run dev` 啟動開發伺服器，你應該會看到以下內容：
 
 <RemoteCodeViewer
   route="tutorials/mindmap/getting-started"
   framework="react"
 />
 
-## <Emoji content="🏪" /> A store for nodes and edges
+## <Emoji content="🏪" /> 節點和連線的儲存區
 
-As mentioned above, we are using Zustand for state management. For this, we create a new file in our `src/App` folder called `store.ts`:
+如前所述，我們使用 Zustand 來進行狀態管理。為此，我們在 `src/App` 資料夾中建立一個名為 `store.ts` 的新檔案：
 
 #### src/App/store.ts
 
@@ -165,9 +165,9 @@ const useStore = createWithEqualityFn<RFState>((set, get) => ({
 export default useStore;
 ```
 
-It seems like a lot of code, but it's mostly types <Emoji content="😇" /> The store keeps track of the nodes and edges and handles the change events. When a user drags a node, React Flow fires a change event, the store then applies the changes and the updated nodes get rendered. (You can read more about this in our [state management library guide](/api-reference/hooks/use-store).)
+看起來程式碼很多，但大部分都是型別定義 <Emoji content="😇" /> 儲存區會追蹤節點和連線並處理變更事件。當使用者拖曳節點時，React Flow 會觸發變更事件，儲存區會套用這些變更，然後渲染更新後的節點。（你可以在我們的[狀態管理函式庫指南](/api-reference/hooks/use-store)中閱讀更多相關資訊。）
 
-As you can see we start with one initial node placed at `{ x: 0, y: 0 }` of type 'mindmap'. To connect the store with our app, we use the `useStore` hook:
+如你所見，我們從一個放置在 `{ x: 0, y: 0 }` 位置、類型為 'mindmap' 的初始節點開始。要將儲存區與我們的應用程式連接，我們使用 `useStore` hook：
 
 #### src/App/index.tsx
 
@@ -212,15 +212,15 @@ function Flow() {
 export default Flow;
 ```
 
-We access the nodes, edges and change handlers from the store and pass them to the React Flow component. We also use the `fitView` prop to make sure that the initial node is centered in the view and set the node origin to `[0.5, 0.5]` to set the origin to the center of a node. After this, your app should look like this:
+我們從儲存區中存取節點、連線和變更處理器，並將它們傳遞給 React Flow 元件。我們也使用 `fitView` 屬性來確保初始節點在視圖中居中，並將節點原點設定為 `[0.5, 0.5]` 以將原點設置在節點的中心。完成後，你的應用程式應該看起來像這樣：
 
 <RemoteCodeViewer route="tutorials/mindmap/store-nodes-edges" framework="react" />
 
-You can move the node around and zoom in and out, we are getting somewhere <Emoji content="🚀" /> Now let's add some more functionality.
+你可以移動節點並放大縮小，我們正在取得進展 <Emoji content="🚀" /> 現在讓我們新增更多功能。
 
-## <Emoji content="✨" /> Custom nodes and edges
+## <Emoji content="✨" /> 自訂節點和連線
 
-We want to use a custom type called 'mindmap' for our nodes. We need to add a new component for this. Let's create a new folder called `MindMapNode` with an index file under `src/App` with the following content:
+我們想為節點使用一個名為 'mindmap' 的自訂類型。我們需要為此新增一個新元件。讓我們在 `src/App` 下建立一個名為 `MindMapNode` 的新資料夾，並新增一個 index 檔案，內容如下：
 
 #### src/App/MindMapNode/index.tsx
 
@@ -245,9 +245,9 @@ function MindMapNode({ id, data }: NodeProps<NodeData>) {
 export default MindMapNode;
 ```
 
-We are using an input for displaying and editing the labels of our mind map nodes, and two handles for connecting them. This is necessary for React Flow to work; the handles are used as the start and end position of the edges.
+我們使用輸入欄位來顯示和編輯心智圖節點的標籤，並使用兩個控制點來連接它們。這是 React Flow 運作所必需的；控制點用作連線的起點和終點位置。
 
-We also add some CSS to the `index.css` file to make the nodes look a bit prettier:
+我們也在 `index.css` 檔案中新增一些 CSS 來讓節點看起來更美觀：
 
 #### src/index.css
 
@@ -261,9 +261,9 @@ We also add some CSS to the `index.css` file to make the nodes look a bit pretti
 }
 ```
 
-(For more on this, you can read the [guide to custom nodes](/learn/customization/custom-nodes) in our docs.)
+（若要了解更多資訊，可以閱讀我們文件中的[自訂節點指南](/learn/customization/custom-nodes)。）
 
-Let's do the same for the custom edge. Create a new folder called `MindMapEdge` with an index file under `src/App`:
+讓我們對自訂連線執行相同的操作。在 `src/App` 下建立一個名為 `MindMapEdge` 的新資料夾，並新增一個 index 檔案：
 
 #### src/App/MindMapEdge/index.tsx
 
@@ -286,7 +286,7 @@ function MindMapEdge(props: EdgeProps) {
 export default MindMapEdge;
 ```
 
-I will get into more detail about the custom nodes and edges in the next section. For now it's important that we can use the new types in our app, by adding the following to our `Flow` component:
+我將在下一節中更詳細地介紹自訂節點和連線。目前重要的是，我們可以透過在 `Flow` 元件中新增以下內容來在應用程式中使用這些新類型：
 
 ```tsx
 import MindMapNode from './MindMapNode';
@@ -301,17 +301,17 @@ const edgeTypes = {
 };
 ```
 
-and then pass the newly created types to the React Flow component.
+然後將新建立的類型傳遞給 React Flow 元件。
 
 <RemoteCodeViewer route="tutorials/mindmap/custom-nodes-edges" framework="react" />
 
-Nice! We can already change the labels of our nodes by clicking in the input field and typing something.
+太好了！我們已經可以透過點擊輸入欄位並輸入內容來變更節點的標籤了。
 
-## <Emoji content="🆕" /> New nodes
+## <Emoji content="🆕" /> 新增節點
 
-We want to make it super quick for a user to create a new node. The user should be able to add a new node by clicking on a node and drag to the position where a new node should be placed. This functionality is not built into React Flow, but we can implement it by using the [`onConnectStart` and `onConnectEnd`](/api-reference/react-flow#onconnectstart) handlers.
+我們想讓使用者能夠快速建立新節點。使用者應該能夠透過點擊節點並拖曳到應該放置新節點的位置來新增新節點。這個功能並非 React Flow 內建的，但我們可以透過使用 [`onConnectStart` 和 `onConnectEnd`](/api-reference/react-flow#onconnectstart) 處理器來實作它。
 
-We are using the start handler to remember the node that was clicked and the end handler to create the new node:
+我們使用開始處理器來記住被點擊的節點，並使用結束處理器來建立新節點：
 
 #### Add to src/App/index.tsx
 
@@ -332,7 +332,7 @@ const onConnectEnd: OnConnectEnd = useCallback((event) => {
 }, []);
 ```
 
-Since our nodes are managed by the store, we create an action to add a new node and its edge. This is how our `addChildNode` action looks:
+由於我們的節點由儲存區管理，我們建立一個動作來新增新節點及其連線。我們的 `addChildNode` 動作如下所示：
 
 #### New action in src/store.ts
 
@@ -359,7 +359,7 @@ addChildNode: (parentNode: Node, position: XYPosition) => {
 };
 ```
 
-We are using the passed node as a parent. Normally this feature is used to implement [grouping](/examples/nodes/dynamic-grouping) or [sub flows](/examples/grouping/sub-flows). Here we are using it to move all child nodes when their parent is moved. It enables us to clean up and re-order the mind map so that we don't have to move all child nodes manually. Let's use the new action in our `onConnectEnd` handler:
+我們使用傳遞的節點作為父節點。通常這個功能用於實作[分組](/examples/nodes/dynamic-grouping)或[子流程](/examples/grouping/sub-flows)。在這裡，我們使用它來在父節點移動時移動所有子節點。這使我們能夠清理和重新排序心智圖，而不必手動移動所有子節點。讓我們在 `onConnectEnd` 處理器中使用新動作：
 
 #### Adjustments in src/App/index.tsx
 
@@ -384,7 +384,7 @@ const onConnectEnd: OnConnectEnd = useCallback(
 );
 ```
 
-First we are getting the `nodeLookup` from the React Flow store via `store.getState()`. `nodeLookup` is a map that contains all nodes and their current state. We need it to get the position and dimensions of the clicked node. Then we check if the target of the onConnectEnd event is the React Flow pane. If it is, we want to add a new node. For this we are using our `addChildNode` and the newly created `getChildNodePosition` helper function.
+首先，我們透過 `store.getState()` 從 React Flow 儲存區取得 `nodeLookup`。`nodeLookup` 是一個包含所有節點及其當前狀態的對應表。我們需要它來取得被點擊節點的位置和尺寸。然後我們檢查 onConnectEnd 事件的目標是否為 React Flow 的窗格。如果是，我們想新增一個新節點。為此，我們使用 `addChildNode` 和新建立的 `getChildNodePosition` 輔助函式。
 
 #### Helper function in src/App/index.tsx
 
@@ -422,15 +422,15 @@ const getChildNodePosition = (event: MouseEvent, parentNode?: Node) => {
 };
 ```
 
-This function returns the position of the new node we want to add to our store. We are using the [`project` function](/api-reference/types/react-flow-instance#project) to convert screen coordinates into React Flow coordinates. As mentioned earlier, child nodes are positioned relative to their parents. That's why we need to subtract the parent position from the child node position. That was a lot to take in, let's see it in action:
+此函式回傳我們想要新增到儲存區的新節點的位置。我們使用 [`project` 函式](/api-reference/types/react-flow-instance#project) 將螢幕座標轉換為 React Flow 座標。如前所述，子節點的位置是相對於其父節點的。這就是為什麼我們需要從子節點位置中減去父節點位置。這需要理解不少內容，讓我們看看它的實際運作：
 
 <RemoteCodeViewer route="tutorials/mindmap/create-nodes" framework="react" />
 
-To test the new functionality you can start a connection from a handle and then end it on the pane. You should see a new node being added to the mind map.
+要測試新功能，你可以從控制點開始連接，然後在窗格上結束它。你應該會看到一個新節點被新增到心智圖中。
 
-## <Emoji content="🤝" /> Keep data in sync
+## <Emoji content="🤝" /> 保持資料同步
 
-We can already update the labels but we are not updating the nodes data object. This is important to keep our app in sync and if we want to save our nodes on the server for example. To achieve this we add a new action called `updateNodeLabel` to the store. This action takes a node id and a label. The implementation is pretty straight forward: we iterate over the existing nodes and update the matching one with the passed label:
+我們已經可以更新標籤了，但我們還沒有更新節點的資料物件。這對於保持應用程式同步很重要，例如如果我們想將節點儲存到伺服器上。為了實現這一點，我們在儲存區中新增一個名為 `updateNodeLabel` 的新動作。此動作接受節點 ID 和標籤。實作相當直接：我們遍歷現有節點，並使用傳遞的標籤更新匹配的節點：
 
 #### src/store.ts
 
@@ -449,7 +449,7 @@ updateNodeLabel: (nodeId: string, label: string) => {
 },
 ```
 
-Let's use the new action in our `MindmapNode` component:
+讓我們在 `MindmapNode` 元件中使用新動作：
 
 #### src/App/MindmapNode/index.tsx
 
@@ -484,15 +484,15 @@ function MindMapNode({ id, data }: NodeProps<NodeData>) {
 export default MindMapNode;
 ```
 
-That was quick! The input fields of the custom nodes now display the current label of the nodes. You could take your nodes data, save it on the server and then load it again.
+很快就完成了！自訂節點的輸入欄位現在會顯示節點的當前標籤。你可以取得節點資料，將其儲存到伺服器上，然後再次載入。
 
-## <Emoji content="💅" /> Simpler UX and nicer styling
+## <Emoji content="💅" /> 更簡單的使用者體驗和更美觀的樣式
 
-Functionality-wise we are finished with our mind map app! We can add new nodes, update their labels and move them around. But the UX and styling could use some improvements. Let's make it easier to drag the nodes and to create new nodes!
+從功能角度來看，我們的心智圖應用程式已經完成了！我們可以新增新節點、更新其標籤並移動它們。但使用者體驗和樣式還可以進一步改善。讓我們讓拖曳節點和建立新節點變得更容易！
 
-### 1. A node as handle
+### 1. 將節點作為控制點
 
-Let's use the whole node as a handle, rather than displaying the default handles. This makes it easier to create nodes, because the area where you can start a new connection gets bigger. We need to style the source handle to be the size of the node and hide the target handle visually. React Flow still needs it to connect the nodes but we don't need to display it since we are creating new nodes by dropping an edge on the pane. We use plain old CSS to hide the target handle and position it in the center of the node:
+讓我們使用整個節點作為控制點，而不是顯示預設的控制點。這使得建立節點變得更容易，因為可以開始新連接的區域變大了。我們需要設定來源控制點的樣式使其與節點大小相同，並在視覺上隱藏目標控制點。React Flow 仍然需要它來連接節點，但我們不需要顯示它，因為我們是透過在窗格上放置連線來建立新節點。我們使用簡單的 CSS 來隱藏目標控制點並將其定位在節點的中心：
 
 #### src/index.css
 
@@ -504,7 +504,7 @@ Let's use the whole node as a handle, rather than displaying the default handles
 }
 ```
 
-In order to make the whole node a handle, we also update the style of the source:
+為了讓整個節點成為控制點，我們也需要更新來源的樣式：
 
 #### src/index.css
 
@@ -523,7 +523,7 @@ In order to make the whole node a handle, we also update the style of the source
 
 <RemoteCodeViewer route="tutorials/mindmap/node-as-handle" framework="react" />
 
-This works but we can't move the nodes anymore because the source handle is now the whole node and covers the input field. We fix that by using the [`dragHandle` node option](/api-reference/types/node#drag-handle). It allows us to specify a selector for a DOM element that should be used as a drag handle. For this we adjust the custom node a bit:
+這樣可以運作，但我們無法再移動節點了，因為來源控制點現在是整個節點並覆蓋了輸入欄位。我們透過使用 [`dragHandle` 節點選項](/api-reference/types/node#drag-handle) 來解決這個問題。它允許我們為應該用作拖曳控制點的 DOM 元素指定一個選擇器。為此，我們稍微調整一下自訂節點：
 
 #### src/App/MindmapNode/index.tsx
 
@@ -569,7 +569,7 @@ function MindMapNode({ id, data }: NodeProps<NodeData>) {
 export default MindMapNode;
 ```
 
-We add a wrapper div with the class name `inputWrapper` and a div with the class name `dragHandle` that acts as the drag handle (surprise!). Now we can style the new elements:
+我們新增一個類別名稱為 `inputWrapper` 的包裹 div，以及一個類別名稱為 `dragHandle` 的 div 作為拖曳控制點（驚喜！）。現在我們可以為這些新元素設定樣式：
 
 #### src/index.css
 
@@ -603,9 +603,9 @@ We add a wrapper div with the class name `inputWrapper` and a div with the class
 
 <RemoteCodeViewer route="tutorials/mindmap/node-as-handle-2" framework="react" />
 
-### 2. Activate input on focus
+### 2. 焦點時啟動輸入欄位
 
-We are almost there but we need to adjust some more details. We want to start our new connection from the center of the node. For this we set the pointer events of the input to "none" and check if the user releases the button on top of the node. Only then we want to activate the input field. We can use our `onConnectEnd` function to achieve this:
+我們快完成了，但還需要調整一些細節。我們希望從節點的中心開始新連接。為此，我們將輸入欄位的指標事件設為 "none"，並檢查使用者是否在節點上方釋放按鈕。只有在那時我們才想啟動輸入欄位。我們可以使用 `onConnectEnd` 函式來實現這一點：
 
 #### src/App/index.tsx
 
@@ -631,7 +631,7 @@ const onConnectEnd: OnConnectEnd = useCallback(
 );
 ```
 
-As you see we are focusing the input field if the user releases the mouse button on top of a node. We can now add some styling so that the input field is activated (pointerEvents: all) only when it's focused:
+如你所見，如果使用者在節點上方釋放滑鼠按鈕，我們會將焦點設置到輸入欄位。現在我們可以新增一些樣式，使輸入欄位只有在獲得焦點時才被啟動（pointerEvents: all）：
 
 ```css
 /* we want the connection line to be below the node */
@@ -682,9 +682,9 @@ As you see we are focusing the input field if the user releases the mouse button
 
 <RemoteCodeViewer route="tutorials/mindmap/node-as-handle-3" framework="react" />
 
-### 3. Dynamic width and auto focus
+### 3. 動態寬度和自動聚焦
 
-Almost done! We want to have a dynamic width for the nodes based on the length of the text. To keep it simple we do a calculation based on the length of text for this:
+快完成了！我們希望根據文字長度為節點設定動態寬度。為了保持簡單，我們根據文字長度進行計算：
 
 #### Added effect in src/app/MindMapNode.tsx
 
@@ -696,7 +696,7 @@ useLayoutEffect(() => {
 }, [data.label.length]);
 ```
 
-We also want to focus / activate a node right after it gets created:
+我們還希望在建立節點後立即將其設為聚焦/啟動：
 
 #### Added effect in src/app/MindMapNode.tsx
 
@@ -716,11 +716,11 @@ useEffect(() => {
   activeFile="MindMapNode.tsx"
 />
 
-Now when you adjust a node label, the width of the node will adjust accordingly. You can also create a new node and it will be focused right away.
+現在當你調整節點標籤時，節點的寬度會相應地調整。你也可以建立一個新節點，它將立即獲得焦點。
 
-### 4. Centered edges and styling details
+### 4. 置中連線和樣式細節
 
-You may have noticed that the edges are not centered. We created a custom edge at the beginning for this, and now we can adjust it a bit so that the edge starts in the center of the node and not at the top of the handle (the default behavior):
+你可能已經注意到連線並未置中。我們在一開始就為此建立了自訂連線，現在我們可以稍微調整它，使連線從節點的中心開始，而不是從控制點的頂部開始（預設行為）：
 
 #### src/App/MindMapEdge.tsx
 
@@ -743,9 +743,9 @@ function MindMapEdge(props: EdgeProps) {
 export default MindMapEdge;
 ```
 
-We are passing all props to the [`getStraightPath`](/api-reference/utils/get-straight-path) helper function but adjust the sourceY so that it is in the center of the node.
+我們將所有屬性傳遞給 [`getStraightPath`](/api-reference/utils/get-straight-path) 輔助函式，但調整 sourceY 使其位於節點的中心。
 
-More over we want the title to be a bit more subtle and choose a color for our background. We can do this by adjusting the color of the panel (we added the class name `"header"`) and the background color of the body element:
+此外，我們希望標題更加低調，並為背景選擇一種顏色。我們可以透過調整面板的顏色（我們新增了類別名稱 `"header"`）和 body 元素的背景顏色來實現：
 
 ```css
 body {
@@ -759,7 +759,7 @@ body {
 }
 ```
 
-Nicely done! <Emoji content="💯" /> You can find the final code here:
+做得很好！<Emoji content="💯" /> 你可以在這裡找到最終程式碼：
 
 <RemoteCodeViewer
   route="tutorials/mindmap/node-as-handle-4"
@@ -767,13 +767,13 @@ Nicely done! <Emoji content="💯" /> You can find the final code here:
   activeFile="MindMapNode.tsx"
 />
 
-## <Emoji content="👋" /> Final thoughts
+## <Emoji content="👋" /> 最後的想法
 
-What a trip! We started with an empty pane and ended with a fully functional mind map app. If you want to move on you could work on some of the following features:
+真是一段旅程！我們從一個空白窗格開始，最後建立了一個功能完整的心智圖應用程式。如果你想繼續進行，可以開發以下一些功能：
 
-- Add new nodes by clicking on the pane
-- Save and restore button to store current state to local storage
-- Export and import UI
-- Collaborative editing
+- 透過點擊窗格新增新節點
+- 儲存和恢復按鈕，將當前狀態儲存到本地儲存
+- 匯出和匯入使用者介面
+- 協作編輯
 
-I hope you enjoyed this tutorial and learned something new! If you have any questions or feedback, feel free to reach out to me on [Twitter](https://twitter.com/moklick) or join our [Discord server](https://discord.com/invite/RVmnytFmGW). React Flow is an independent company financed by its users. If you want to support us you can [sponsor us on Github](https://github.com/sponsors/xyflow) or [subscribe to one of our Pro plans](/pro/).
+希望你喜歡這個教學並學到了新東西！如果你有任何問題或回饋，歡迎在 [Twitter](https://twitter.com/moklick) 上聯絡我，或加入我們的 [Discord 伺服器](https://discord.com/invite/RVmnytFmGW)。React Flow 是一家由使用者資助的獨立公司。如果你想支持我們，可以在 [Github 上贊助我們](https://github.com/sponsors/xyflow)或[訂閱我們的 Pro 方案](/pro/)。

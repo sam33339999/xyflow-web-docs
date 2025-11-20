@@ -1,17 +1,13 @@
 ---
 description:
-  'This hook tells you whether all the nodes in a flow have been measured and given
-  a width and height. When you add a node to the flow, this hook will return
-  false and then true again once the node has been measured.'
+  '這個 hook 告訴你流程中的所有節點是否已經被測量並賦予寬度和高度。當你向流程添加節點時，這個 hook 會返回 false，然後在節點被測量後再次返回 true。'
 ---
 
 # useNodesInitialized()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodesInitialized.ts)
 
-This hook tells you whether all the nodes in a flow have been measured and given
-a width and height. When you add a node to the flow, this hook will return
-`false` and then `true` again once the node has been measured.
+這個 hook 告訴你流程中的所有節點是否已經被測量並賦予寬度和高度。當你向流程添加節點時，這個 hook 會返回 `false`，然後在節點被測量後再次返回 `true`。
 
 ```jsx
 import { useReactFlow, useNodesInitialized } from '@xyflow/react';
@@ -36,10 +32,10 @@ export default function useLayout() {
 }
 ```
 
-## Signature
+## 簽名
 
 <APIDocs functionName="useNodesInitialized" />
 
-## Notes
+## 注意事項
 
-- This hook always returns `false` if the internal nodes array is empty.
+- 如果內部節點陣列為空，這個 hook 總是會返回 `false`。

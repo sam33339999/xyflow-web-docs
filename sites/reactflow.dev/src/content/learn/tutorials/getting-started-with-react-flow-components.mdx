@@ -1,6 +1,6 @@
 ---
 sidebarTitle: React Flow UI
-title: Getting started with React Flow UI
+title: React Flow UI 入門
 intro: words
 date: 2024/01/20
 authors: ['hayleigh', 'alessandro']
@@ -13,54 +13,39 @@ import { Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-_**Update November 2025**: We have updated the tutorial to use the latest version of shadcn/ui, on React 19 and Tailwind 4!_
+_**2025 年 11 月更新**：我們已更新教學以使用最新版本的 shadcn/ui，運行在 React 19 和 Tailwind 4 上！_
 
-_**Update July 2025**: "React Flow UI" was formerly known as "React Flow Components". We
-renamed it because it now includes both components and templates. Additionally, since it's
-built on shadcn/ui, the "UI" naming makes it easier for developers to recognize the
-connection and understand what we offer._
+_**2025 年 7 月更新**："React Flow UI" 以前稱為 "React Flow Components"。我們重新命名是因為它現在包含元件和模板。此外，由於它是建立在 shadcn/ui 之上的，"UI" 命名讓開發者更容易認識到這種連結並理解我們提供的內容。_
 
-Recently, we launched an exciting new addition to our open-source roster: React Flow
-UI (Previously known as React Flow Components). These are pre-built nodes, edges, and other ui elements that you can quickly
-add to your React Flow applications to get up and running. The catch is these components
-are built on top of [shadcn/ui](https://ui.shadcn.com) and the shadcn CLI.
+最近，我們推出了一個令人興奮的開源新成員：React Flow UI（以前稱為 React Flow Components）。這些是預先建立的節點、連線和其他使用者介面元素，你可以快速將它們新增到你的 React Flow 應用程式中以快速啟動和執行。需要注意的是，這些元件是建立在 [shadcn/ui](https://ui.shadcn.com) 和 shadcn CLI 之上的。
 
-We've previously written about our experience and what led us to choosing shadcn over on
-the [xyflow blog](https://xyflow.com/blog/react-flow-components), but in this tutorial
-we're going to focus on how to get started from scratch with shadcn, Tailwind CSS, and
-React Flow Components.
+我們之前在 [xyflow 部落格](https://xyflow.com/blog/react-flow-components)上撰寫了關於我們的經驗以及為什麼選擇 shadcn 的文章，但在本教學中，我們將專注於如何從頭開始使用 shadcn、Tailwind CSS 和 React Flow Components。
 
 <Callout>
-**Wait, what's shadcn?**
+**等等，什麼是 shadcn？**
 
-No what, **who**! Shadcn is the author of a collection of pre-designed components known as
-`shadcn/ui`. Notice how we didn't say _library_ there? Shadcn takes a different approach
-where components are added to your project's source code and are "owned" by you: once you
-add a component you're free to modify it to suit your needs!
+不是什麼，是**誰**！Shadcn 是一系列預先設計的元件集合（稱為 `shadcn/ui`）的作者。注意我們並沒有說它是一個_函式庫_？Shadcn 採用了一種不同的方法，元件會被新增到你專案的原始碼中，並由你「擁有」：一旦你新增了元件，你可以自由地修改它以滿足你的需求！
 
 </Callout>
 
-## Getting started
+## 入門
 
-To begin with, we will: 
+首先，我們將：
 
-- Set up a new [`vite`](https://vite.dev) project.
-- Set up [shadcn/ui](https://ui.shadcn.com/) along with [Tailwind CSS](https://tailwindcss.com/).
-- Add and configure React Flow.
-- Create our custom React Flow components using the building blocks in our [UI components registry](/ui).
+- 建立一個新的 [`vite`](https://vite.dev) 專案。
+- 設定 [shadcn/ui](https://ui.shadcn.com/) 以及 [Tailwind CSS](https://tailwindcss.com/)。
+- 新增並設定 React Flow。
+- 使用我們 [UI 元件註冊表](/ui)中的建構區塊建立自訂的 React Flow 元件。
 
-### Setting up a new vite project
+### 建立新的 vite 專案
 
 ```bash copy npm2yarn
 npm create vite@latest
 ```
 
-Vite is able to scaffold projects for many popular frameworks, but we only care about
-React! Additionally, make sure to set up a **TypeScript** project. React Flow's
-documentation is a mix of JavaScript and TypeScript, but for shadcn components TypeScript
-is _required_!
+Vite 能夠為許多流行的框架建立專案骨架，但我們只關心 React！此外，請確保建立一個 **TypeScript** 專案。React Flow 的文件混合了 JavaScript 和 TypeScript，但對於 shadcn 元件，TypeScript 是_必需的_！
 
-During the interactive setup, select `React` and `TypeScript`: 
+在互動式設定期間，選擇 `React` 和 `TypeScript`： 
 ```
 ◇  Project name:
 │  my-react-flow-app
@@ -82,35 +67,27 @@ During the interactive setup, select `React` and `TypeScript`:
 ◇  Installing dependencies with pnpm...
 ```
 
-### Setting up Tailwind CSS
+### 設定 Tailwind CSS
 
-All shadcn and React Flow components are styled with
-[Tailwind CSS](https://tailwindcss.com/), so we'll need to install that
-and a few other dependencies next.
+所有 shadcn 和 React Flow 元件都使用 [Tailwind CSS](https://tailwindcss.com/) 進行樣式設定，所以接下來我們需要安裝它和其他一些相依套件。
 
-We can follow the instructions in the [shadcn installation guide](https://ui.shadcn.com/docs/installation) 
-to install shadcn and Tailwind CSS inside of a freshly scaffolded vite project.
+我們可以按照 [shadcn 安裝指南](https://ui.shadcn.com/docs/installation)中的說明在新建立的 vite 專案中安裝 shadcn 和 Tailwind CSS。
 
 ```bash copy npm2yarn
 npm install tailwindcss @tailwindcss/vite
 ```
 
-It is now a lot simpler to set up Tailwind CSS in a vite project, and Tailwind 4 is configured completely in CSS.
-You can just replace the generated `src/index.css` file with this one line:
+現在在 vite 專案中設定 Tailwind CSS 變得更簡單了，Tailwind 4 完全在 CSS 中進行設定。你只需要將生成的 `src/index.css` 檔案替換為這一行：
 
 ```css filename="src/index.css"
 @import "tailwindcss";
 ```
 
-### Importing Tailwind CSS as a Vite plugin
+### 將 Tailwind CSS 作為 Vite 外掛匯入
 
-Starting with [Tailwind CSS v4](https://tailwindcss.com/blog/tailwindcss-v4), you can use the dedicated Vite plugin `@tailwindcss/vite` 
-rather than the traditional PostCSS plugin. This plugin is configured in our `vite.config.ts` file, and makes 
-things a lot simpler, both for us developers, and for the compilers.
+從 [Tailwind CSS v4](https://tailwindcss.com/blog/tailwindcss-v4) 開始，你可以使用專用的 Vite 外掛 `@tailwindcss/vite`，而不是傳統的 PostCSS 外掛。此外掛在我們的 `vite.config.ts` 檔案中進行設定，對開發者和編譯器來說都簡單得多。
 
-We simply need to import the plugin and add it to the `plugins` array in our `vite.config.ts` file.
-We also need to add the `alias` property to the `resolve` object to tell Vite where to find our source files, 
-as shadcn components use the `@` alias to refer to the `src` directory.
+我們只需要匯入外掛並將其新增到 `vite.config.ts` 檔案中的 `plugins` 陣列。我們還需要將 `alias` 屬性新增到 `resolve` 物件，以告訴 Vite 在哪裡找到我們的原始檔案，因為 shadcn 元件使用 `@` 別名來引用 `src` 目錄。
 
 ```ts filename="vite.config.ts" {1-2} {8-13}
 import path from "path"
@@ -130,15 +107,13 @@ export default defineConfig({
 ```
 
 
-### Importing the Tailwind CSS file 
+### 匯入 Tailwind CSS 檔案
 
-We now need to make sure that the only CSS file in our project is the Tailwind CSS file. 
-In the generated `App.tsx`, you can safely remove the import of the `App.css` file, and 
-remove everything else that is in the scaffolded `App.tsx` file.
+現在我們需要確保專案中唯一的 CSS 檔案是 Tailwind CSS 檔案。在生成的 `App.tsx` 中，你可以安全地移除 `App.css` 檔案的匯入，並移除骨架 `App.tsx` 檔案中的其他所有內容。
 
-To verify that Tailwind CSS is working, we can add a simple `div` and `h1` elements with Tailwind classes.
+為了驗證 Tailwind CSS 是否正常運作，我們可以新增一個簡單的 `div` 和 `h1` 元素並使用 Tailwind 類別。
 
-The updated `App.tsx` file should look like this:
+更新後的 `App.tsx` 檔案應該看起來像這樣：
 
 ```tsx filename="src/App.tsx"
 export function App() {
@@ -165,29 +140,17 @@ createRoot(document.getElementById('root')!).render(
 )
 ```
 
-If you updated your `index.css` file and configured Vite to use the Tailwind CSS
-plugin, you should be able to run the project and see the "Hello World" message
-in your browser, in a nice, large, bold font. 
+如果你更新了 `index.css` 檔案並設定 Vite 使用 Tailwind CSS 外掛，你應該能夠執行專案並在瀏覽器中看到 "Hello World" 訊息，以美觀、大型、粗體字型顯示。
 
 <Callout>
-  The classes `w-screen` and `h-screen` are two examples of Tailwind's utility classes. If
-  you're used to styling React apps using a different approach, you might find this a bit
-  strange at first. You can think of Tailwind classes as supercharged inline styles:
-  they're constrained to a set design system and you have access to responsive media
-  queries or pseudo-classes like `hover` and `focus`.
+  類別 `w-screen` 和 `h-screen` 是 Tailwind 實用類別的兩個範例。如果你習慣使用不同的方法為 React 應用程式設定樣式，一開始可能會覺得有點奇怪。你可以將 Tailwind 類別視為增強版的內聯樣式：它們受限於一組設計系統，你可以存取響應式媒體查詢或偽類別，如 `hover` 和 `focus`。
 </Callout>
 
-### Setting up shadcn/ui
+### 設定 shadcn/ui
 
-Vite scaffolds some `tsconfig` files for us when generating a TypeScript project and we'll
-need to make some changes to these so the shadcn components can work correctly. The shadcn
-CLI is pretty clever (we'll get to that in a second) but it can't account for every
-project structure so instead shadcn components that depend on one another make use of
-TypeScript's import paths.
+Vite 在生成 TypeScript 專案時會為我們建立一些 `tsconfig` 檔案，我們需要對這些檔案進行一些更改，以便 shadcn 元件能夠正確運作。shadcn CLI 非常聰明（我們稍後會談到這一點），但它無法考慮到每個專案結構，因此相互依賴的 shadcn 元件會使用 TypeScript 的匯入路徑。
 
-The current version of Vite splits TypeScript configuration into three files, 
-two of which need to be edited. Add the `baseUrl` and `paths` properties to the `compilerOptions` section of the 
-`tsconfig.json` and `tsconfig.app.json` files:
+Vite 的當前版本將 TypeScript 設定拆分為三個檔案，其中兩個需要進行編輯。將 `baseUrl` 和 `paths` 屬性新增到 `tsconfig.json` 和 `tsconfig.app.json` 檔案的 `compilerOptions` 部分：
 
 ```json filename="tsconfig.json" {3-8}
 {
@@ -217,23 +180,17 @@ two of which need to be edited. Add the `baseUrl` and `paths` properties to the 
 ```
 
 
-Nice! Now we're ready to set up the `shadcn/ui` CLI and add our first
-components. Once the CLI is set up, we'll be able to add new components to our
-project with a single command - even if they have dependencies or need to modify
-existing files!
+太好了！現在我們準備好設定 `shadcn/ui` CLI 並新增我們的第一個元件。設定好 CLI 後，我們就能夠用單一命令將新元件新增到我們的專案中 - 即使它們有相依性或需要修改現有檔案！
 
-We can now run the following command to set up shadcn/ui in our project:
+現在我們可以執行以下命令在專案中設定 shadcn/ui：
 
 ```bash copy npm2yarn
 npx shadcn@latest init
 ```
 
-The CLI will perform a few tasks, first it will identify your project's
-framework, tailwind version, and then ask you what color you would like to use
-as the base color for your project. It will then update your `index.css` file and generate a `components.json` file in the
-root of your project, which will be shadcn's main configuration points. 
+CLI 將執行一些任務，首先它會識別你的專案框架、tailwind 版本，然後詢問你想使用什麼顏色作為專案的基礎顏色。然後它會更新你的 `index.css` 檔案並在專案根目錄中生成 `components.json` 檔案，這將是 shadcn 的主要設定點。
 
-We can take all the default options for now
+我們現在可以採用所有預設選項
 
 ```
 ✔ Preflight checks.
@@ -252,15 +209,15 @@ Success! Project initialization completed.
 You may now add components.
 ```
 
-## Installing React Flow and importing its CSS. 
+## 安裝 React Flow 並匯入其 CSS
 
-Now we can install React Flow and import its CSS.
+現在我們可以安裝 React Flow 並匯入其 CSS。
 
 ```bash copy npm2yarn
 npm install @xyflow/react
 ```
 
-And then import its CSS in our `App.tsx` file:
+然後在我們的 `App.tsx` 檔案中匯入其 CSS：
 
 ```tsx filename="src/App.tsx"
 import '@xyflow/react/dist/style.css';
@@ -276,30 +233,24 @@ export default App;
 ```
 
 
-## Adding your first components
+## 新增你的第一個元件
 
-To demonstrate how powerful shadcn can be, let's dive right into making a new **React
-Flow** app! Now everything is set up, we can add the
-[`<BaseNode />`](/ui/components/base-node) component with a single command:
+為了展示 shadcn 有多強大，讓我們直接開始建立一個新的 **React Flow** 應用程式！現在一切都設定好了，我們可以用單一命令新增 [`<BaseNode />`](/ui/components/base-node) 元件：
 
 ```bash copy npm2yarn
 npx shadcn@latest add https://ui.reactflow.dev/base-node
 ```
 
-This command will generate a new file `src/components/base-node.tsx`, and install the necessary dependencies.
+此命令將生成一個新檔案 `src/components/base-node.tsx`，並安裝必要的相依套件。
 
-That `<BaseNode />` component is not a React Flow node directly. Instead, as the name
-implies, it's a base that many of our other nodes build upon. It also comes with
-additional components that you can use to provide a header and content for your nodes.
-These components are:
+`<BaseNode />` 元件並非直接的 React Flow 節點。相反，如其名稱所示，它是我們其他許多節點的基礎。它還附帶了額外的元件，你可以使用這些元件為節點提供標題和內容。這些元件包括：
 
 - `<BaseNodeHeader />`
 - `<BaseNodeHeaderTitle />`
 - `<BaseNodeContent />`
 - `<BaseNodeFooter />`
 
-You can use it to have a unified style for all of your nodes as well. Let's see what it
-looks like by updating our `App.tsx` file:
+你也可以使用它為所有節點提供統一的樣式。讓我們透過更新 `App.tsx` 檔案來看看它的外觀：
 
 ```tsx filename="src/App.tsx"
 import '@xyflow/react/dist/style.css';
@@ -338,21 +289,15 @@ Ok, not super exciting...
 />
 
 
-The `<BaseNode />` component is one of the most used components in our [UI components registry](/ui).
-Some components may use it internally, to create custom nodes with a consistent style,
-while some other components can be used in combination with it to create more complex nodes.
+`<BaseNode />` 元件是我們 [UI 元件註冊表](/ui)中最常用的元件之一。有些元件可能會在內部使用它來建立具有一致樣式的自訂節點，而其他一些元件可以與它組合使用來建立更複雜的節點。
 
-
-For example, let's add the `<NodeTooltip />` component to our project, to display a tooltip when hovering over a node.
+例如，讓我們將 `<NodeTooltip />` 元件新增到我們的專案中，以在滑鼠懸停在節點上時顯示工具提示。
 
 ```bash copy npm2yarn
 npx shadcn@latest add https://ui.reactflow.dev/node-tooltip
 ```
 
-And we'll update our `App.tsx` file to render a proper flow. We'll use the same basic
-setup as most of our examples so we won't break down the individual pieces here. If you're
-still new to React Flow and want to learn a bit more about how to set up a basic flow from
-scratch, check out our [quickstart guide](/learn).
+我們將更新 `App.tsx` 檔案以渲染一個完整的流程。我們將使用與大多數範例相同的基本設定，因此不會在這裡分解個別部分。如果你剛接觸 React Flow 並想進一步了解如何從頭開始設定基本流程，請查看我們的[快速入門指南](/learn)。
 
 {/* TODO this could be linked to example app with RemoteCodeViewer editor */}
 
@@ -416,50 +361,39 @@ export default function App() {
 }
 ```
 
-And would you look at that, the tooltip node we added automatically uses the
-`<BaseNode />` component we customized!
+看看這個，我們新增的工具提示節點自動使用了我們自訂的 `<BaseNode />` 元件！
 
 <RemoteCodeViewer route="tutorials/components/tooltip" framework="react" />
 
-## Moving fast and making things
+## 快速前進並建立事物
 
-Now we've got a basic understanding of how shadcn/ui and the CLI works, we can begin to
-see how easy it is to add new components and build out a flow. To see everything React
-Flow Components has to offer let's build out a simple calculator flow.
+現在我們對 shadcn/ui 和 CLI 的運作方式有了基本了解，我們可以開始看到新增新元件和建構流程是多麼容易。為了了解 React Flow Components 所提供的一切，讓我們建立一個簡單的計算機流程。
 
-First let's remove the `<NodeTooltip />` and undo our changes to `<BaseNode />`. In
-addition to pre-made nodes, React Flow UI also contains building blocks for creating your
-own custom nodes. To see them, we'll add the `labeled-handle` component:
+首先讓我們移除 `<NodeTooltip />` 並撤銷對 `<BaseNode />` 的變更。除了預製節點外，React Flow UI 還包含用於建立自訂節點的建構區塊。要查看它們，我們將新增 `labeled-handle` 元件：
 
 ```bash copy npm2yarn
 npx shadcn@latest add https://ui.reactflow.dev/labeled-handle
 ```
 
-### The Number Node
+### 數字節點
 
-The first node we'll create is a simple number node with some buttons to increment and
-decrement the value and a handle to connect it to other nodes. Create a folder
-`src/components/nodes` and then add a new file `src/components/nodes/num-node.tsx`.
+我們將建立的第一個節點是一個簡單的數字節點，帶有一些用於遞增和遞減值的按鈕，以及一個用於連接到其他節點的控制點。建立一個資料夾 `src/components/nodes`，然後新增一個新檔案 `src/components/nodes/num-node.tsx`。
 
-We need to install the following `shadcn/ui` components:
+我們需要安裝以下 `shadcn/ui` 元件：
 
 ```bash copy npm2yarn
 npx shadcn@latest add dropdown-menu button
 ```
 
-Now we can start building the node. We will need to access the `updateNodeData`
-function to update the node's data and the `setNodes` function to delete the
-node, from the `useReactFlow` hook. The hook helps us make self-contained
-components that can be used in other parts of our application, while still
-giving us quick access to React Flow's state and functions.
+現在我們可以開始建立節點。我們需要從 `useReactFlow` hook 存取 `updateNodeData` 函式來更新節點的資料，以及存取 `setNodes` 函式來刪除節點。這個 hook 幫助我們建立可以在應用程式其他部分使用的自包含元件，同時仍然能夠快速存取 React Flow 的狀態和函式。
 
-We will need to make four callbacks, to handle the different actions that can be performed on the node.
-- Reset the node's value to 0
-- Delete the node
-- Increment the node's value by 1
-- Decrement the node's value by 1
+我們需要建立四個回呼函式來處理可以在節點上執行的不同動作。
+- 將節點的值重設為 0
+- 刪除節點
+- 將節點的值遞增 1
+- 將節點的值遞減 1
 
-We will also need to access the node's data to get the current value and update it.
+我們還需要存取節點的資料以取得當前值並更新它。
 
 ```tsx filename="src/components/nodes/num-node.tsx"
 import { type Node, type NodeProps, Position, useReactFlow } from '@xyflow/react';
@@ -547,15 +481,11 @@ export function NumNode({ id, data }: NodeProps<NumNode>) {
 }
 ```
 
-### The Sum Node
+### 加總節點
 
-The second node we can create is a simple sum node that adds the values of the two input nodes.
-Create a new file `src/components/nodes/sum-node.tsx` and paste the following into it:
+我們可以建立的第二個節點是一個簡單的加總節點，用於將兩個輸入節點的值相加。建立一個新檔案 `src/components/nodes/sum-node.tsx` 並貼上以下內容：
 
-Particularly, we will need to access the `getNodeConnections` function to get
-the values of the two connected input nodes and the `updateNodeData` function to
-update the node's data with the sum of the two input nodes inside of a
-`useEffect` hook, whenever one of the values of the input nodes changes.
+特別是，我們需要存取 `getNodeConnections` 函式來取得兩個連接的輸入節點的值，以及存取 `updateNodeData` 函式在 `useEffect` hook 內更新節點的資料，並在輸入節點的任一值變更時使用兩個輸入節點的總和進行更新。
 
 ```tsx filename="src/components/nodes/sum-node.tsx"
 import {
@@ -658,32 +588,24 @@ function getHandleValue(
 }
 ```
 
-### The Data Edge
+### 資料連線
 
-React Flow UI doesn't just provide components for building nodes. We also provide
-pre-built edges and other UI elements you can drop into your flows for quick building.
+React Flow UI 不僅提供用於建立節點的元件。我們還提供可以放入流程中以快速建構的預製連線和其他 UI 元素。
 
-To better visualize data in our calculator flow, let's pull in the `data-edge` component.
-This edge renders a field from the source node's data object as a label on the edge
-itself. Add the `data-edge` component to your project:
+為了更好地視覺化計算機流程中的資料，讓我們引入 `data-edge` 元件。此連線將來源節點資料物件中的欄位渲染為連線本身的標籤。將 `data-edge` 元件新增到你的專案：
 
 ```bash copy npm2yarn
 npx shadcn@latest add https://ui.reactflow.dev/data-edge
 ```
 
-The `<DataEdge />` component works by looking up a field from its source node's `data`
-object. We've been storing the value of each node in our calculator field in a `"value"`
-property so we'll update our `edgeType` object to include the new `data-edge` and we'll
-update the `onConnect` handler to create a new edge of this type, making sure to set the
-edge's `data` object correctly:
+`<DataEdge />` 元件透過查找其來源節點 `data` 物件中的欄位來運作。我們一直將計算機中每個節點的值儲存在 `"value"` 屬性中，因此我們將更新 `edgeType` 物件以包含新的 `data-edge`，並更新 `onConnect` 處理器以建立此類型的新連線，確保正確設定連線的 `data` 物件：
 
 
-### The Flow
+### 流程
 
-Now we can put everything together and create our flow. 
+現在我們可以將所有內容整合在一起並建立我們的流程。
 
-We will start by defining the custom node and edge types, and the initial nodes and edges that will be 
-displayed in our app.
+我們將首先定義自訂節點和連線類型，以及將在應用程式中顯示的初始節點和連線。
 
 ```tsx filename="src/App.tsx"
 import React, { useCallback } from 'react';
@@ -790,34 +712,20 @@ export function App() {
 }
 ```
 
-Putting everything together we end up with quite a capable little calculator!
+將所有內容整合在一起，我們最終得到了一個功能相當完善的小型計算機！
 
 <RemoteCodeViewer route="tutorials/components/complete" framework="react" />
 
-You could continue to improve this flow by adding nodes to perform other operations or to
-take user input using additional components from the
-[shadcn/ui registry](https://ui.shadcn.com/docs/components/slider). In fact, keep your
-eyes peeled soon for a follow-up to this guide where we'll show a complete application
-built using React Flow Components <Emoji content="👀" />.
+你可以繼續改進此流程，透過新增節點來執行其他操作或使用 [shadcn/ui 註冊表](https://ui.shadcn.com/docs/components/slider)中的其他元件來接受使用者輸入。事實上，請密切關注本指南的後續內容，我們將展示使用 React Flow Components 建立的完整應用程式 <Emoji content="👀" />。
 
-## Wrapping up
+## 總結
 
-In just a short amount of time we've managed to build out a fairly complete flow using the
-components and building blocks provided by shadcn React Flow Components. We've learned:
+在短時間內，我們已經成功使用 shadcn React Flow Components 提供的元件和建構區塊建構了一個相當完整的流程。我們學到了：
 
-- How to use building blocks like the [`<BaseNodeHeader />`](/ui/components/base-node) and
-  [`<LabeledHandle />`](/ui/components/labeled-handle) components to build our own custom
-  nodes without starting from scratch.
+- 如何使用建構區塊，如 [`<BaseNodeHeader />`](/ui/components/base-node) 和 [`<LabeledHandle />`](/ui/components/labeled-handle) 元件來建立我們自己的自訂節點，而無需從頭開始。
 
-- That React Flow UI also provides custom edges like the
-  [`<DataEdge />`](/ui/components/data-edge) to drop into our applications.
+- React Flow UI 還提供了自訂連線，如 [`<DataEdge />`](/ui/components/data-edge)，可以放入我們的應用程式中。
 
-And thanks to the power of Tailwind, tweaking the visual style of these components is as
-simple as editing the variables in your CSS file.
+多虧了 Tailwind 的強大功能，調整這些元件的視覺樣式就像編輯 CSS 檔案中的變數一樣簡單。
 
-That's all for now! You can see all the components we currently have available
-over on the [UI docs page](/ui). If you have any suggestions or requests for new
-components we'd love to hear about them. Or perhaps you're already starting to
-build something with shadcn and React Flow UI. Either way make sure you let us
-know on our [Discord server](https://discord.com/invite/RVmnytFmGW) or on
-[Twitter](https://twitter.com/xyflowdev)!
+現在就到這裡！你可以在 [UI 文件頁面](/ui)上查看我們目前提供的所有元件。如果你對新元件有任何建議或請求，我們很樂意聽到。或者你可能已經開始使用 shadcn 和 React Flow UI 建立一些東西。無論如何，請務必在我們的 [Discord 伺服器](https://discord.com/invite/RVmnytFmGW)或 [Twitter](https://twitter.com/xyflowdev) 上告訴我們！

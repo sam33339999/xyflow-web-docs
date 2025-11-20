@@ -1,23 +1,18 @@
 ---
 description:
-  'A coordinate extent represents two points in a coordinate system: one in the top
-  left corner and one in the bottom right corner. It is used to represent the
-  bounds of nodes in the flow or the bounds of the viewport.'
+  '座標範圍代表座標系統中的兩個點：左上角的一個點和右下角的一個點。它用於表示流程中節點的邊界或視窗的邊界。'
 ---
 
 # CoordinateExtent
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/utils.ts/#L36-L37)
 
-A coordinate extent represents two points in a coordinate system: one in the top
-left corner and one in the bottom right corner. It is used to represent the
-bounds of nodes in the flow or the bounds of the viewport.
+座標範圍代表座標系統中的兩個點：左上角的一個點和右下角的一個點。它用於表示流程中節點的邊界或視窗的邊界。
 
 ```ts
 export type CoordinateExtent = [[number, number], [number, number]];
 ```
 
-## Notes
+## 注意事項
 
-- Props that expect a `CoordinateExtent` usually default to `[[-∞, -∞], [+∞, +∞]]`
-  to represent an unbounded extent.
+- 需要 `CoordinateExtent` 的屬性通常預設為 `[[-∞, -∞], [+∞, +∞]]`，表示無限制的範圍。

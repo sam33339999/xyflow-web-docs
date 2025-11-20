@@ -1,19 +1,15 @@
 ---
-title: The BaseEdge component
+title: 基礎連線元件
 sidebarTitle: '<BaseEdge />'
 description:
-  'The BaseEdge component gets used internally for all the edges. It can be used
-  inside a custom edge and handles the invisible helper edge and the edge label
-  for you.'
+  '基礎連線元件在內部用於所有連線。它可以在自訂連線中使用，並為你處理不可見的輔助連線和連線標籤。'
 ---
 
 # \<BaseEdge />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/BaseEdge.tsx)
+[原始碼於 GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/BaseEdge.tsx)
 
-The `<BaseEdge />` component gets used internally for all the edges. It can be
-used inside a custom edge and handles the invisible helper edge and the edge label
-for you.
+`<BaseEdge />` 元件在內部用於所有連線。它可以在自訂連線中使用，並為你處理不可見的輔助連線和連線標籤。
 
 ```jsx
 import { BaseEdge } from '@xyflow/react';
@@ -48,9 +44,8 @@ export function CustomEdge({ sourceX, sourceY, targetX, targetY, ...props }) {
   groupKeys="Omit<SVGAttributes<SVGPathElement>, 'd' | 'path' | 'markerStart' | 'markerEnd'>"
 />
 
-## Notes
+## 注意事項
 
-- If you want to use an edge marker with the [`<BaseEdge />`](/api-reference/components/base-edge) component,
-  you can pass the `markerStart` or `markerEnd` props passed to your custom edge
-  through to the [`<BaseEdge />`](/api-reference/components/base-edge) component. You can see all the props
-  passed to a custom edge by looking at the [`EdgeProps`](/api-reference/types/edge-props) type.
+- 如果你想在 [`<BaseEdge />`](/api-reference/components/base-edge) 元件中使用連線標記，
+  你可以將傳遞給自訂連線的 `markerStart` 或 `markerEnd` props 透傳到 [`<BaseEdge />`](/api-reference/components/base-edge) 元件。
+  你可以透過查看 [`EdgeProps`](/api-reference/types/edge-props) 類型來了解傳遞給自訂連線的所有 props。

@@ -1,12 +1,12 @@
 ---
-description: Callback function triggered when an existing edge is reconnected to a different node or handle.
+description: 當現有連線重新連接到不同節點或連接點時觸發的回呼函數。
 ---
 
 # OnReconnect
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L83)
 
-The `OnReconnect` type represents a callback function that is called when an existing edge is reconnected to a different node or handle. It receives the old edge and the new connection details.
+`OnReconnect` 類型代表當現有連線重新連接到不同節點或連接點時呼叫的回呼函數。它接收舊的連線和新的連接詳情。
 
 ```ts
 type OnReconnect<EdgeType extends EdgeBase = EdgeBase> = (

@@ -1,104 +1,93 @@
 ---
 description:
-  Learn how to add drawing capabilities to your React Flow applications, including
-  freehand drawing, rectangle shapes, lasso selection, and erasing.
+  學習如何為你的 React Flow 應用程式新增繪圖功能，包括手繪、矩形形狀、套索選擇和擦除。
 ---
 
 import ProExampleViewer from '@/components/pro-example-viewer';
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Whiteboard Features
+# 白板功能
 
-React Flow is designed for building node-based UIs like workflow editors, flowcharts and
-diagrams. Even if React Flow is not made for creating whiteboard applications, you might
-want to integrate common whiteboard features. These examples show how to add drawing
-capabilities to your applications when you need to annotate or sketch alongside your nodes
-and edges.
+React Flow 是為建構基於節點的 UI 而設計的，如工作流程編輯器、流程圖和圖表。即使 React Flow 並非專為建立白板應用程式而設計，你可能還是想整合常見的白板功能。這些範例展示了當你需要在節點和連線旁邊進行註解或繪圖時，如何為你的應用程式新增繪圖功能。
 
-## Examples
+## 範例
 
-### ✏️ Freehand draw (Pro)
+### ✏️ 手繪（Pro）
 
-Draw smooth curves on your React Flow pane. Useful for annotations or sketching around
-existing nodes.
+在你的 React Flow 畫布上繪製平滑的曲線。適用於註解或在現有節點周圍繪製草圖。
 
-**Features:**
+**功能：**
 
-- Mouse/touch drawing
-- Adjustable brush size and color
-- converts drawn paths into custom nodes
+- 滑鼠/觸控繪圖
+- 可調整的筆刷大小和顏色
+- 將繪製的路徑轉換為自訂節點
 
-**Common uses:**
+**常見用途：**
 
-- Annotating flowcharts
-- Adding notes to diagrams
-- Sketching ideas around nodes
+- 註解流程圖
+- 為圖表新增註釋
+- 在節點周圍繪製想法草圖
 
 <ProExampleViewer slug="freehand-draw" innerClassName="flex flex-col-reverse" />
 
-### 🎯 Lasso selection
+### 🎯 套索選擇
 
-Select multiple elements by drawing a freeform selection area with an option to include
-partially selected elements.
+透過繪製自由形狀的選擇區域來選擇多個元素，並可選擇包含部分選中的元素。
 
-**Features:**
+**功能：**
 
-- Freeform selection shapes
-- partial selection of elements
+- 自由形狀的選擇形狀
+- 部分選擇元素
 
-**Common uses:**
+**常見用途：**
 
-- Selecting nodes and annotations together
-- Complex selections in mixed content
+- 一起選擇節點和註解
+- 在混合內容中進行複雜選擇
 
 <RemoteCodeViewer
   route="examples/whiteboard/lasso-selection"
   framework="react"
 />
 
-### 🧹 Eraser
+### 🧹 橡皮擦
 
-Remove items by "erasing" over them. Uses collision detection to determine what to delete.
+透過「擦除」來移除項目。使用碰撞檢測來決定要刪除的內容。
 
-**Features:**
+**功能：**
 
-- Collision-based erasing
-- Visual eraser cursor
+- 基於碰撞的擦除
+- 視覺化橡皮擦游標
 
-**Common uses:**
+**常見用途：**
 
-- Removing parts of a flow
+- 移除流程圖的部分內容
 
 <RemoteCodeViewer
   route="examples/whiteboard/eraser"
   framework="react"
 />
 
-### 📐 Rectangle draw
+### 📐 矩形繪製
 
-Create rectangular shapes by clicking and dragging. Good for highlighting areas or
-creating backgrounds for node groups.
+透過點擊和拖曳建立矩形形狀。適合突出顯示區域或為節點群組建立背景。
 
-**Features:**
+**功能：**
 
-- Click-and-drag rectangle creation
-- Customizable colors
+- 點擊和拖曳矩形建立
+- 可自訂顏色
 
-**Common uses:**
+**常見用途：**
 
-- Creating background containers
-- Grouping related nodes visually
-- Highlighting sections of diagrams
+- 建立背景容器
+- 視覺化地將相關節點分組
+- 突出顯示圖表的部分
 
 <RemoteCodeViewer
   route="examples/whiteboard/rectangle"
   framework="react"
 />
 
-## Whiteboard libraries
+## 白板函式庫
 
-If you are looking for a more complete whiteboard solution, consider using libraries that
-are specifically designed for whiteboard applications like [tldraw](https://tldraw.dev/)
-or [Excalidraw](https://docs.excalidraw.com/). These libraries provide a full set of
-features for collaborative drawing, shapes, text, and more.
+如果你正在尋找更完整的白板解決方案，請考慮使用專門為白板應用程式設計的函式庫，如 [tldraw](https://tldraw.dev/) 或 [Excalidraw](https://docs.excalidraw.com/)。這些函式庫提供了一整套用於協作繪圖、形狀、文字等的功能。

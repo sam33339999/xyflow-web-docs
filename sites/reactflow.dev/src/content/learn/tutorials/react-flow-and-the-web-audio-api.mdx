@@ -1,11 +1,8 @@
 ---
 sidebarTitle: Web Audio API
-title: Integrating React Flow and the Web Audio API
+title: 整合 React Flow 和 Web Audio API
 intro:
-  "Today we'll be looking at how to create an interactive audio playground using React
-  Flow and the Web Audio API. We'll start from scratch, first learning about the Web Audio
-  API before looking at how to handle many common scenarios in React Flow: state
-  management, implementing custom nodes, and adding interactivity."
+  "今天我們將探討如何使用 React Flow 和 Web Audio API 建立一個互動式音訊遊樂場。我們將從頭開始，首先學習 Web Audio API，然後了解如何處理 React Flow 中的許多常見場景：狀態管理、實作自訂節點和新增互動性。"
 date: 2023/04/14
 authors: ['hayleigh']
 tags: ['react-flow', 'web-audio-api', 'how-to']
@@ -17,10 +14,7 @@ import { Callout, Tabs } from 'nextra/components';
 import { Embed, Image } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-Today we'll be looking at how to create an interactive audio playground using React Flow
-and the Web Audio API. We'll start from scratch, first learning about the Web Audio API
-before looking at how to handle many common scenarios in React Flow: state management,
-implementing custom nodes, and adding interactivity.
+今天我們將探討如何使用 React Flow 和 Web Audio API 建立一個互動式音訊遊樂場。我們將從頭開始，首先學習 Web Audio API，然後了解如何處理 React Flow 中的許多常見場景：狀態管理、實作自訂節點和新增互動性。
 
 <Image
   src="/img/tutorials/webaudio/bleep-cafe.png"
@@ -31,36 +25,24 @@ implementing custom nodes, and adding interactivity.
   caption="This is bleep.cafe. We're going to learn everything we need to know to
     build something just like it!"
 />
-A while back I shared a project I was working on to the React Flow [discord
-server](https://discord.com/invite/RVmnytFmGW). It's called
-[bleep.cafe](https://bleep.cafe) and it's a little web app for learning digital synthesis
-all inside the browser. A lot of folks were interested to see how something like that was
-put together: most people don't even know **their browser has a whole synth engine built
-in!**
+不久前，我在 React Flow [Discord 伺服器](https://discord.com/invite/RVmnytFmGW)上分享了一個我正在進行的專案。它叫做 [bleep.cafe](https://bleep.cafe)，是一個用於在瀏覽器內學習數位合成的小型網頁應用程式。許多人對這樣的東西是如何組裝起來的很感興趣：大多數人甚至不知道**他們的瀏覽器內建了一個完整的合成引擎！**
 
-This tutorial will take us step-by-step to build something similar. We may skip over some
-bits here and there, but for the most part if you're new to React Flow _or_ the Web Audio
-API you should be able to follow along and have something working by the end.
+本教學將逐步引導我們建立類似的東西。我們可能會跳過一些部分，但大致上，如果你是 React Flow _或_ Web Audio API 的新手，你應該能夠跟隨並在最後擁有可運作的東西。
 
-If you're already a React Flow wizard you might want to read the first section covering
-the Web Audio API and then jump to the third to see how things are tied together!
+如果你已經是 React Flow 的專家，你可能想閱讀涵蓋 Web Audio API 的第一節，然後跳到第三節看看事物是如何結合在一起的！
 
-But first...
+但首先...
 
-## A demo!
+## 示範！
 
 <Embed src="https://xyflow.github.io/react-flow-web-audio/" />
 <Callout type="warning">
-  This and other examples in this tutorial _make sound_. To avoid creating an avant-garde
-  masterpiece, remember to mute each example before moving on!
+  本教學中的這個範例和其他範例都會_發出聲音_。為了避免創作前衛傑作，請記得在繼續之前將每個範例靜音！
 </Callout>
 
-## The Web Audio API
+## Web Audio API
 
-Before we get stuck in to React Flow and interactive node editor goodness, we need to take
-a crash course on the
-[Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). Here are
-the highlights you need to know:
+在我們深入 React Flow 和互動式節點編輯器之前，我們需要快速了解 [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)。以下是你需要知道的重點：
 
 - The Web Audio API provides a variety of different audio nodes, including sources (e.g.
   [OscillatorNode](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode),
@@ -78,13 +60,9 @@ the highlights you need to know:
   the brain of an audio-processing graph. We can use it to create new audio nodes and
   suspend or resume audio processing entirely.
 
-### Hello, sound!
+### Hello, 聲音！
 
-Let's see some of this stuff in action and build our first Web Audio app! We won't be
-doing anything too wild: we'll make a simple mouse
-[theremin](http://www.thereminworld.com/Article/14232/what-s-a-theremin-). We'll use React
-for these examples and everything else moving forward (we're called React Flow after all!)
-and [`vite`](https://vitejs.dev) to handle bundling and hot reloading.
+讓我們看看這些東西的實際運作並建立我們的第一個 Web Audio 應用程式！我們不會做任何太狂野的事情：我們將製作一個簡單的滑鼠 [theremin](http://www.thereminworld.com/Article/14232/what-s-a-theremin-)。我們將在這些範例和之後的所有內容中使用 React（畢竟我們叫做 React Flow！）以及 [`vite`](https://vitejs.dev) 來處理打包和熱重載。
 
 If you prefer another bundler like parcel or Create React App that's cool too, they all do
 largely the same thing. You could also choose to use TypeScript instead of JavaScript. To
@@ -196,22 +174,14 @@ Now let's put this knowledge to one side and take a look at how to build a React
 project from scratch.
 
 <Callout type="info">
-  Already a React Flow pro? If you're already familiar with React Flow, you can
-  comfortably skip over the next section and head straight on over to [making some
-  sounds](#do-sound-to-it). For everyone else, let's take a look at how to build a React
-  Flow project from scratch.
+  已經是 React Flow 專家了嗎？如果你已經熟悉 React Flow，可以輕鬆跳過下一節，直接前往[製作一些聲音](#do-sound-to-it)。對於其他人，讓我們看看如何從頭開始建立 React Flow 專案。
 </Callout>
 
-## Scaffolding a React Flow project
+## 建立 React Flow 專案骨架
 
-Later on we'll take what we've learned about the Web Audio API, oscillators, and gain
-nodes and use React Flow to interactively build audio-processing graphs. For now though,
-we need to put together an empty React Flow app.
+稍後我們將運用我們所學到的關於 Web Audio API、振盪器和增益節點的知識，並使用 React Flow 來互動式地建立音訊處理圖。但現在，我們需要組裝一個空的 React Flow 應用程式。
 
-We already have a React app set up with Vite, so we'll keep using that. If you skipped
-over the last section, we ran `npm create vite@latest -- --template react` to get started.
-You can use whatever bundler and/or dev server you like, though. Nothing here is vite
-specific.
+我們已經使用 Vite 設定了一個 React 應用程式，所以我們將繼續使用它。如果你跳過了上一節，我們執行了 `npm create vite@latest -- --template react` 來開始。不過，你可以使用任何你喜歡的打包器和/或開發伺服器。這裡沒有任何特定於 vite 的內容。
 
 We only need three additional dependencies for this project: `@xyflow/react` for our UI
 (obviously!), `zustand` as our simple state management library (that's what we use under
@@ -287,19 +257,17 @@ You should see an empty flow:
 Leave the dev server running. We can keep checking back on our progress as we add new bits
 and bobs.
 
-### 1. State management with Zustand
+### 1. 使用 Zustand 進行狀態管理
 
-A Zustand store will hold all the UI state for our application. In practical terms that
-means it'll hold the nodes and edges of our React Flow graph, a few other pieces of state,
-and a handful of _actions_ to update that state.
+Zustand 儲存區將保存我們應用程式的所有 UI 狀態。實際上，這意味著它將保存我們 React Flow 圖的節點和連線、一些其他狀態部分，以及一些用於更新該狀態的_動作_。
 
-To get a basic interactive React Flow graph going we need three actions:
+要讓基本的互動式 React Flow 圖運作起來，我們需要三個動作：
 
-1. `onNodesChange` to handle nodes being moved around or deleted.
-2. `onEdgesChange` to handle _edges_ being moved around or deleted.
-3. `addEdge` to connect two nodes in the graph.
+1. `onNodesChange` 用於處理節點被移動或刪除。
+2. `onEdgesChange` 用於處理_連線_被移動或刪除。
+3. `addEdge` 用於連接圖中的兩個節點。
 
-Go ahead and create a new file, `store.js`, and add the following:
+繼續建立一個新檔案 `store.js`，並新增以下內容：
 
 ```js filename="./src/store.js"
 import { applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
@@ -406,19 +374,15 @@ const useStore = createWithEqualityFn((set, get) => ({
 ```
 
 <RemoteCodeViewer route="tutorials/webaudio/state-management" framework="react" />
-### 2. Custom nodes
+### 2. 自訂節點
 
-OK great, we have an interactive React Flow instance we can start playing with. We added
-some dummy nodes but they're just the default unstyled ones right now. In this step we'll
-add three custom nodes with interactive controls:
+很好，我們有一個可以開始使用的互動式 React Flow 實例。我們新增了一些虛擬節點，但它們目前只是預設的無樣式節點。在這一步中，我們將新增三個帶有互動控制項的自訂節點：
 
-1. An oscillator node and controls for the pitch and waveform type.
-2. A gain node and a control for the volume
-3. An output node and a button to toggle audio processing on and off.
+1. 振盪器節點和用於音高和波形類型的控制項。
+2. 增益節點和用於音量的控制項
+3. 輸出節點和用於切換音訊處理開關的按鈕。
 
-Let's create a new folder, `nodes/`, and create a file for each custom node we want to
-create. Starting with the oscillator we need two controls and a source handle to connect
-the output of the oscillator to other nodes.
+讓我們建立一個新資料夾 `nodes/`，並為我們想要建立的每個自訂節點建立一個檔案。從振盪器開始，我們需要兩個控制項和一個來源控制點來將振盪器的輸出連接到其他節點。
 
 ```jsx filename="./src/nodes/Osc.jsx"
 import React from 'react';
@@ -704,11 +668,9 @@ Things are starting to shape up quite nicely!
 <RemoteCodeViewer route="tutorials/webaudio/custom-nodes" framework="react" />
 The next step, then, is to…
 
-## Do sound to it
+## 製作聲音
 
-We have an interactive graph and we're able to update node data, now let's add in what we
-know about the Web Audio API. Start by creating a new file, `audio.js`, and create a new
-audio context and an empty `Map`.
+我們有一個互動式圖形，並且能夠更新節點資料，現在讓我們加入我們對 Web Audio API 的了解。首先建立一個新檔案 `audio.js`，並建立一個新的音訊上下文和一個空的 `Map`。
 
 ```js filename="./src/audio.js"
 const context = new AudioContext();
@@ -1082,41 +1044,21 @@ Here's the demo from the beginning, but this time you can see the source code to
 you haven't missed anything.
 
 <RemoteCodeViewer route="tutorials/webaudio/demo" framework="react" />
-## Final thoughts
+## 最後的想法
 
-Whew that was a long one, but we made it! For our efforts we've come out the other side
-with a fun little interactive audio playground, learned a little bit about the Web Audio
-API along the way, and have a better idea of one approach to "running" a React Flow graph.
+呼，這是一段漫長的旅程，但我們成功了！經過努力，我們獲得了一個有趣的小型互動式音訊遊樂場，沿途學習了一些關於 Web Audio API 的知識，並對「執行」React Flow 圖的一種方法有了更好的了解。
 
-If you've made it this far and are thinking "Hayleigh, I'm never going to write a Web
-Audio app. Did I learn _anything_ useful?" Then you're in luck, because you did! You could
-take our approach to connecting to the Web Audio API and apply it to some other
-graph-based computation engine like
-[behave-graph](https://github.com/bhouston/behave-graph). In fact, some has done just that
-and created [behave-flow](https://github.com/beeglebug/behave-flow)!
+如果你已經讀到這裡並在想「Hayleigh，我永遠不會編寫 Web Audio 應用程式。我學到了_任何_有用的東西嗎？」那麼你很幸運，因為你確實學到了！你可以採用我們連接 Web Audio API 的方法，並將其應用於其他基於圖形的計算引擎，例如 [behave-graph](https://github.com/bhouston/behave-graph)。事實上，有人已經這樣做了，並建立了 [behave-flow](https://github.com/beeglebug/behave-flow)！
 
-There are still plenty of ways to expand on this project. If you'd like to keep working on
-it, here are some ideas:
+仍然有很多方法可以擴展這個專案。如果你想繼續進行，以下是一些想法：
 
-- Add more node types.
-- Allow nodes to connect to `AudioParams` on other nodes.
-- Use the [`AnalyserNode`](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode)
-  to visualize the output of a node or signal.
-- Anything else you can think of!
+- 新增更多節點類型。
+- 允許節點連接到其他節點上的 `AudioParams`。
+- 使用 [`AnalyserNode`](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode) 來視覺化節點或訊號的輸出。
+- 你能想到的任何其他東西！
 
-And if you're looking for inspiration, there are quite a few projects out in the wild that
-are using node-based UIs for audio things. Some of my favorites are
-[Max/MSP](https://cycling74.com/products/max/),
-[Reaktor](https://www.native-instruments.com/en/products/komplete/synths/reaktor-6/), and
-[Pure Data](https://puredata.info/). Max and Reaktor are closed-source commercial
-software, but you can still steal some ideas from them <Emoji content="🕵️" />.
+如果你正在尋找靈感，有不少專案在使用基於節點的使用者介面來處理音訊相關的事情。我最喜歡的一些是 [Max/MSP](https://cycling74.com/products/max/)、[Reaktor](https://www.native-instruments.com/en/products/komplete/synths/reaktor-6/) 和 [Pure Data](https://puredata.info/)。Max 和 Reaktor 是閉源商業軟體，但你仍然可以從中竊取一些想法 <Emoji content="🕵️" />。
 
-You can use the completed [source code](https://github.com/xyflow/react-flow-web-audio) as
-a starting point, or you can just keep building on top of what we've made today. We'd love
-to see what you build so please share it with us over on our
-[Discord server](https://discord.com/invite/RVmnytFmGW) or
-[Twitter](https://twitter.com/xyflowdev).
+你可以使用完成的[原始碼](https://github.com/xyflow/react-flow-web-audio)作為起點，或者你可以繼續在我們今天建立的基礎上進行建構。我們很想看看你建立了什麼，所以請在我們的 [Discord 伺服器](https://discord.com/invite/RVmnytFmGW)或 [Twitter](https://twitter.com/xyflowdev) 上與我們分享。
 
-React Flow is an independent company financed by its users. If you want to support us you
-can [sponsor us on Github](https://github.com/sponsors/xyflow) or
-[subscribe to one of our Pro plans](/pro/).
+React Flow 是一家由使用者資助的獨立公司。如果你想支持我們，可以在 [Github 上贊助我們](https://github.com/sponsors/xyflow)或[訂閱我們的 Pro 方案](/pro/)。

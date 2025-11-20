@@ -1,19 +1,15 @@
 ---
-title: The Background component
+title: 背景元件
 sidebarTitle: '<Background />'
 description:
-  'The Background component makes it convenient to render different types of
-  backgrounds common in node-based UIs. It comes with three variants: lines,
-  dots and cross.'
+  '背景元件讓你可以方便地渲染節點介面中常見的不同類型背景。它提供三種變體：線條、點和十字。'
 ---
 
 # \<Background />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Background/Background.tsx)
+[原始碼於 GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Background/Background.tsx)
 
-The `<Background />` component makes it convenient to render different types of
-backgrounds common in node-based UIs. It comes with three variants: `lines`,
-`dots` and `cross`.
+`<Background />` 元件讓你可以方便地渲染節點介面中常見的不同類型背景。它提供三種變體：`lines`（線條）、`dots`（點）和 `cross`（十字）。
 
 ```jsx
 import { useState } from 'react';
@@ -32,13 +28,11 @@ export default function Flow() {
 
 <APIDocs componentName="Background" />
 
-## Examples
+## 範例
 
-### Combining multiple backgrounds
+### 組合多個背景
 
-It is possible to layer multiple `<Background />` components on top of one another
-to create something more interesting. The following example shows how to render a
-square grid accented every 10th line.
+可以將多個 `<Background />` 元件層疊在一起，創造更有趣的效果。以下範例展示如何渲染一個每隔 10 條線就加強的方格網格。
 
 ```tsx
 import { ReactFlow, Background, BackgroundVariant } from '@xyflow/react';
@@ -66,7 +60,6 @@ export default function Flow() {
 }
 ```
 
-## Notes
+## 注意事項
 
-- When combining multiple `<Background />` components it's important to give each
-  of them a unique `id` prop!
+- 當組合多個 `<Background />` 元件時，務必為每個元件提供唯一的 `id` prop！

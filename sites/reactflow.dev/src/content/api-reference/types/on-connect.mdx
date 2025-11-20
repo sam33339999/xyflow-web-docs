@@ -1,12 +1,12 @@
 ---
-description: Callback function triggered when a new connection is created between nodes.
+description: 當節點之間建立新連線時觸發的回呼函數。
 ---
 
 # OnConnect
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L80)
 
-The `OnConnect` type represents a callback function that is called when a new connection is created between nodes. It receives a [`Connection`](/api-reference/types/connection) containing the source and target node IDs and their respective handle IDs.
+`OnConnect` 類型代表當節點之間建立新連線時呼叫的回呼函數。它接收一個包含來源和目標節點 ID 及其各自連接點 ID 的 [`Connection`](/api-reference/types/connection)。
 
 ```ts
 type OnConnect = (connection: Connection) => void;

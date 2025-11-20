@@ -1,18 +1,18 @@
 ---
-description: 'With the AriaLabelConfig you can customize the aria labels and descriptions used by React Flow.'
+description: '透過 AriaLabelConfig 你可以自訂 React Flow 使用的 aria 標籤和描述。'
 ---
 
 # AriaLabelConfig
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/constants.ts/)
 
-With the `AriaLabelConfig` you can customize the aria labels used by React Flow. This is useful if you want to translate the labels or if you want to change them to better suit your application.
+透過 `AriaLabelConfig` 你可以自訂 React Flow 使用的 aria 標籤。如果你想翻譯這些標籤或調整它們以更符合你的應用程式需求，這會很有用。
 
-## Fields
+## 欄位
 
 <APIDocs typeName="AriaLabelConfig" packageName="react" />
 
-## Default config
+## 預設配置
 
 ```js
 const defaultAriaLabelConfig = {
@@ -25,17 +25,17 @@ const defaultAriaLabelConfig = {
   'edge.a11yDescription.default':
     'Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.',
 
-  // Control elements
+  // 控制元件
   'controls.ariaLabel': 'Control Panel',
   'controls.zoomIn.ariaLabel': 'Zoom In',
   'controls.zoomOut.ariaLabel': 'Zoom Out',
   'controls.fitView.ariaLabel': 'Fit View',
   'controls.interactive.ariaLabel': 'Toggle Interactivity',
 
-  // Mini map
+  // 迷你地圖
   'minimap.ariaLabel': 'Mini Map',
 
-  // Handle
+  // 連接點
   'handle.ariaLabel': 'Handle',
 };
 ```

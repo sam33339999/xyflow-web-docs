@@ -1,18 +1,18 @@
 ---
-description: React Flow is designed to be both keyboard and screen reader accessible.
+description: React Flow 設計為支援鍵盤和螢幕閱讀器的無障礙功能。
 ---
 
 import { Callout } from 'nextra/components';
 
-# Accessibility
+# 無障礙功能
 
 <Callout type="info">
 
-If you have suggestions for how we can improve the accessibility of React Flow, please feel free to [contact us](https://xyflow.com/contact).
+如果您對如何改善 React Flow 的無障礙功能有任何建議，歡迎[聯絡我們](https://xyflow.com/contact)。
 
 </Callout>
 
-React Flow provides keyboard and screen-reader support to help meet accessibility standards. By default, all nodes and edges are keyboard-focusable and operable. You can enable or disable these features with props including: [nodesFocusable](/api-reference/react-flow#nodesfocusable), [edgesFocusable](/api-reference/react-flow#edgesfocusable), and [disableKeyboardA11y](/api-reference/react-flow#disablekeyboarda11y) which are passed through `<ReactFlow />` like this:
+React Flow 提供鍵盤和螢幕閱讀器支援，協助符合無障礙標準。預設情況下，所有節點和連線都可以使用鍵盤聚焦和操作。您可以使用以下屬性來啟用或停用這些功能：[nodesFocusable](/api-reference/react-flow#nodesfocusable)、[edgesFocusable](/api-reference/react-flow#edgesfocusable) 和 [disableKeyboardA11y](/api-reference/react-flow#disablekeyboarda11y)，這些屬性可以透過 `<ReactFlow />` 元件傳遞，如下所示：
 
 ```js
 <ReactFlow
@@ -26,22 +26,20 @@ React Flow provides keyboard and screen-reader support to help meet accessibilit
 </ReactFlow>
 ```
 
-## Built-in features
+## 內建功能
 
-- **Tab navigation:** Pressing `Tab` moves focus through all focusable nodes and edges. These elements receive `tabIndex={0}` and, by default, `role="group"` to handle interactivity.
-- **Select/Deselect:** Press `Enter` or `Space` to select the focused node/edge, and `Escape` to clear the selection.
-- **Move nodes with arrow keys:** If `nodesDraggable` and `nodesFocusable` are both true (default), you can move the selected node with the arrow keys. You can hold `Shift` to increase movement speed. If you set `disableKeyboardA11y={true}`, arrow-key movement is disabled (but tab-focus and selection still work).
-- **Automatic panning:** When a node receives focus, React Flow automatically pans the canvas to bring that node into view. This ensures focused nodes are visible to the user. This behavior can be toggled via the [autoPanOnNodeFocus](/api-reference/react-flow#autopanonnodefocus) prop.
-- **ARIA descriptions:** React Flow automatically adds ARIA descriptions for keyboard guidance. These can be configured by using [ariaLabelConfig](/api-reference/react-flow#arialabelconfig).
+- **Tab 鍵導覽：**按下 `Tab` 鍵可以在所有可聚焦的節點和連線之間移動焦點。這些元素會接收 `tabIndex={0}`，預設情況下會設定 `role="group"` 來處理互動。
+- **選取/取消選取：**按下 `Enter` 或 `Space` 鍵來選取當前聚焦的節點或連線，按下 `Escape` 鍵可清除選取。
+- **使用方向鍵移動節點：**如果 `nodesDraggable` 和 `nodesFocusable` 都設為 true（預設值），您可以使用方向鍵移動選取的節點。您可以按住 `Shift` 鍵來加快移動速度。如果設定 `disableKeyboardA11y={true}`，則會停用方向鍵移動功能（但 Tab 聚焦和選取功能仍然有效）。
+- **自動平移：**當節點接收焦點時，React Flow 會自動平移畫布，將該節點顯示在視窗內。這確保聚焦的節點對使用者可見。此行為可透過 [autoPanOnNodeFocus](/api-reference/react-flow#autopanonnodefocus) 屬性切換。
+- **ARIA 描述：**React Flow 會自動新增 ARIA 描述，提供鍵盤操作指引。這些描述可透過 [ariaLabelConfig](/api-reference/react-flow#arialabelconfig) 進行設定。
 
 <Callout type="info">
-  To enable full keyboard accessibility, ensure both `nodesFocusable` and `edgesFocusable`
-  are set to `true`. If either is false, corresponding elements will not be
-  keyboard-focusable.
+  要啟用完整的鍵盤無障礙功能，請確保 `nodesFocusable` 和 `edgesFocusable` 都設為 `true`。如果其中一個為 false，對應的元素將無法使用鍵盤聚焦。
 </Callout>
-## ARIA roles for nodes and edges
+## 節點和連線的 ARIA 角色
 
-By default, React Flow uses semantic ARIA roles for interactive elements. You can override a node’s role using the `ariaRole` prop. For example:
+預設情況下，React Flow 會為互動元素使用語義化的 ARIA 角色。您可以使用 `ariaRole` 屬性來覆寫節點的角色。例如：
 
 ```js
 const nodes = [
@@ -54,16 +52,16 @@ const nodes = [
 <ReactFlow nodes={nodes} edges={[]} />;
 ```
 
-By, default, if you don’t set a role, `role="group"` is applied. Customizing `ariaRole` lets you match any relevant ARIA role (e.g. `"listitem"`, `"region"`, etc.), improving semantic information for assistive technology.
+預設情況下，如果您沒有設定角色，會套用 `role="group"`。自訂 `ariaRole` 可讓您設定任何相關的 ARIA 角色（例如 `"listitem"`、`"region"` 等），為輔助技術提供更好的語義資訊。
 
-**Note:** The `ariaRole` is applied to the node wrapper. If a custom node includes interactive elements, avoid setting `ariaRole: 'button'` on the node itself. Instead, apply the appropriate ARIA role directly to the interactive element.
+**注意：**`ariaRole` 會套用在節點的包裝元素上。如果自訂節點包含互動元素，請避免在節點本身設定 `ariaRole: 'button'`。而是應該直接在互動元素上套用適當的 ARIA 角色。
 
-### DOM attributes
+### DOM 屬性
 
-To pass custom ARIA attributes or other DOM-level attributes (e.g., `aria-roledescription`, `data-\*`,`tabIndex`, etc.), you can use the `domAttributes` prop. This is available for both nodes and edges:
+要傳遞自訂 ARIA 屬性或其他 DOM 層級的屬性（例如 `aria-roledescription`、`data-\*`、`tabIndex` 等），您可以使用 `domAttributes` 屬性。節點和連線都可以使用此屬性：
 
 ```
-// Example for a node
+// 節點範例
 {
   id: '2',
   data: { label: 'Accessible Node' },
@@ -76,32 +74,32 @@ To pass custom ARIA attributes or other DOM-level attributes (e.g., `aria-rolede
 
 ```
 
-This gives you full control over accessibility-related attributes while maintaining React Flow’s built-in roles and behaviors.
+這讓您可以完全控制與無障礙相關的屬性，同時保持 React Flow 的內建角色和行為。
 
-## Localizing accessibility messages
+## 無障礙訊息在地化
 
-React Flow’s built-in accessibility text (such as keyboard instructions and live updates) can be customized or localized via the [ariaLabelConfig](/api-reference/react-flow#arialabelconfig) prop on`<ReactFlow>`. This prop takes an object mapping message keys to strings or functions. Keys include:
+React Flow 的內建無障礙文字（如鍵盤操作說明和即時更新）可以透過 `<ReactFlow>` 的 [ariaLabelConfig](/api-reference/react-flow#arialabelconfig) 屬性進行自訂或在地化。此屬性接受一個物件，將訊息鍵對應到字串或函式。鍵包括：
 
-| Key                                     | Default Value                                                                                                                                   |
+| 鍵                                       | 預設值                                                                                                                                   |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `node.a11yDescription.default`          | Press enter or space to select a node. Press delete to remove it and escape to cancel.                                                          |
-| `node.a11yDescription.keyboardDisabled` | Press enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel. |
-| `node.a11yDescription.ariaLiveMessage`  | `Moved selected node {direction}. New position, x: {x}, y: {y}`                                                                                 |
-| `edge.a11yDescription.default`          | Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.                                             |
-| `controls.ariaLabel`                    | Control Panel                                                                                                                                   |
-| `controls.zoomIn.ariaLabel`             | Zoom In                                                                                                                                         |
-| `controls.zoomOut.ariaLabel`            | Zoom Out                                                                                                                                        |
-| `controls.fitView.ariaLabel`            | Fit View                                                                                                                                        |
-| `controls.interactive.ariaLabel`        | Toggle Interactivity                                                                                                                            |
-| `minimap.ariaLabel`                     | Mini Map                                                                                                                                        |
-| `handle.ariaLabel`                      | Handle                                                                                                                                          |
+| `node.a11yDescription.default`          | 按下 Enter 或空白鍵來選取節點。按下 Delete 鍵移除節點，按 Escape 鍵取消。                                                          |
+| `node.a11yDescription.keyboardDisabled` | 按下 Enter 或空白鍵來選取節點。接著可以使用方向鍵來移動節點。按下 Delete 鍵移除節點，按 Escape 鍵取消。 |
+| `node.a11yDescription.ariaLiveMessage`  | `已將選取的節點向{direction}移動。新位置，x: {x}, y: {y}`                                                                                 |
+| `edge.a11yDescription.default`          | 按下 Enter 或空白鍵來選取連線。接著可以按下 Delete 鍵移除連線，或按 Escape 鍵取消。                                             |
+| `controls.ariaLabel`                    | 控制面板                                                                                                                                   |
+| `controls.zoomIn.ariaLabel`             | 放大                                                                                                                                         |
+| `controls.zoomOut.ariaLabel`            | 縮小                                                                                                                                        |
+| `controls.fitView.ariaLabel`            | 適應視窗                                                                                                                                        |
+| `controls.interactive.ariaLabel`        | 切換互動模式                                                                                                                            |
+| `minimap.ariaLabel`                     | 小地圖                                                                                                                                        |
+| `handle.ariaLabel`                      | 連接點                                                                                                                                          |
 
-For example, to provide custom or localized text:
+例如，要提供自訂或在地化的文字：
 
 ```js
 const ariaLabels = {
-  'node.a11yDescription.default': 'Press [Enter] to select this node',
-  'node.a11yDescription.keyboardDisabled': 'Keyboard navigation is disabled',
+  'node.a11yDescription.default': '按下 [Enter] 鍵來選取此節點',
+  'node.a11yDescription.keyboardDisabled': '鍵盤導覽已停用',
 };
 <ReactFlow nodes={nodes} edges={edges} ariaLabelConfig={ariaLabels}>
   <MiniMap />
@@ -109,15 +107,15 @@ const ariaLabels = {
 </ReactFlow>;
 ```
 
-This tells React Flow to use your text instead of the defaults. By supplying localized strings via [ariaLabelConfig](/api-reference/react-flow#arialabelconfig), you ensure screen readers announce messages in the user’s language.
+這告訴 React Flow 使用您的文字，而不是預設值。透過 [ariaLabelConfig](/api-reference/react-flow#arialabelconfig) 提供在地化的字串，您可以確保螢幕閱讀器以使用者的語言朗讀訊息。
 
 ## WCAG 2.1 AA
 
-React Flow provides features that can help you meet key WCAG 2.1 AA criteria when properly implemented:
+React Flow 提供的功能可以在正確實作時協助您符合 WCAG 2.1 AA 的關鍵標準：
 
-- **Keyboard:** React Flow supports keyboard operability with `Tab` navigation to nodes and edges, interaction via `Enter`/`Space`, and arrow key movement for nodes. These features help satisfy requirements for keyboard accessibility.
-- **Screen Reader:** With semantic ARIA roles and labels (e.g. `role="group"`, `aria-label`, and `aria-roledescription`), React Flow enables you to create meaningfully announced graphical nodes/edges. Edge components include a customizable `aria-label` and nodes can be given appropriate `aria-label` text.
-- **ARIA Live Regions:** Dynamic updates are announced through an `aria-live` region. The `A11yDescriptions` component includes an element with `aria-live="assertive"` that notifies users of node movements, helping you meet requirements for status messages.
-- **Instructions and Focus Management:** React Flow provides contextual help with clear instructions like "Press enter or space to select a node…". The automatic focus management ensures nodes scroll into view when focused, helping satisfy requirements for input assistance.
+- **鍵盤操作：**React Flow 支援鍵盤操作，包括使用 `Tab` 鍵導覽節點和連線、透過 `Enter`/`Space` 鍵進行互動，以及使用方向鍵移動節點。這些功能有助於滿足鍵盤無障礙的要求。
+- **螢幕閱讀器：**透過語義化的 ARIA 角色和標籤（例如 `role="group"`、`aria-label` 和 `aria-roledescription`），React Flow 讓您能夠建立具有意義的圖形節點和連線，並讓螢幕閱讀器正確朗讀。連線元件包含可自訂的 `aria-label`，節點也可以設定適當的 `aria-label` 文字。
+- **ARIA 即時區域：**動態更新會透過 `aria-live` 區域來宣告。`A11yDescriptions` 元件包含一個 `aria-live="assertive"` 的元素，會通知使用者節點的移動，協助您符合狀態訊息的要求。
+- **說明和焦點管理：**React Flow 提供情境化的幫助，包含清楚的說明，例如「按下 Enter 或空白鍵來選取節點…」。自動焦點管理確保節點在獲得焦點時會捲動到視窗內，協助滿足輸入協助的要求。
 
-This guide is helpful for learning about [ARIA best practices](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/).
+此指南有助於學習 [ARIA 最佳實務](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/)。

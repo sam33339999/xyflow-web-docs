@@ -1,19 +1,15 @@
 ---
-title: The MiniMap component
+title: 小地圖元件
 sidebarTitle: '<MiniMap />'
 description:
-  'The MiniMap component can be used to render an overview of your flow. It renders
-  each node as an SVG element and visualizes where the current viewport is in
-  relation to the rest of the flow.'
+  '小地圖元件可用於渲染你的流程概覽。它將每個節點渲染為 SVG 元素，並視覺化顯示當前視窗相對於整個流程的位置。'
 ---
 
 # \<MiniMap />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/MiniMap/MiniMap.tsx)
+[原始碼於 GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/MiniMap/MiniMap.tsx)
 
-The `<MiniMap />` component can be used to render an overview of your flow. It
-renders each node as an SVG element and visualizes where the current viewport is
-in relation to the rest of the flow.
+`<MiniMap />` 元件可用於渲染你的流程概覽。它將每個節點渲染為 SVG 元素，並視覺化顯示當前視窗相對於整個流程的位置。
 
 ```jsx
 import { ReactFlow, MiniMap } from '@xyflow/react';
@@ -29,18 +25,16 @@ export default function Flow() {
 
 ## Props
 
-For TypeScript users, the props type for the `<MiniMap />` component is exported
-as `MiniMapProps`.
+對於 TypeScript 使用者，`<MiniMap />` 元件的 props 類型會以 `MiniMapProps` 導出。
 
 <APIDocs componentName="MiniMap" groupKeys="Omit<HTMLAttributes<SVGSVGElement>, 'onClick'>" />
 
-## Examples
+## 範例
 
-### Making the mini map interactive
+### 讓小地圖可互動
 
-By default, the mini map is non-interactive. To allow users to interact with the
-viewport by panning or zooming the minimap, you can set either of the `zoomable`
-or `pannable` (or both!) props to `true`.
+預設情況下，小地圖是不可互動的。若要允許使用者透過平移或縮放小地圖來與視窗互動，
+你可以將 `zoomable` 或 `pannable`（或兩者！）props 設為 `true`。
 
 ```jsx
 import { ReactFlow, MiniMap } from '@xyflow/react';
@@ -54,11 +48,10 @@ export default function Flow() {
 }
 ```
 
-### Implement a custom mini map node
+### 實作自訂小地圖節點
 
-It is possible to pass a custom component to the `nodeComponent` prop to change
-how nodes are rendered in the mini map. If you do this you **must** use only
-SVG elements in your component if you want it to work correctly.
+可以將自訂元件傳遞給 `nodeComponent` prop，以改變節點在小地圖中的渲染方式。
+如果你這樣做，若要讓它正常運作，**必須**在你的元件中僅使用 SVG 元素。
 
 ```jsx
 import { ReactFlow, MiniMap } from '@xyflow/react';
@@ -76,16 +69,16 @@ function MiniMapNode({ x, y }) {
 }
 ```
 
-Check out the documentation for [`MiniMapNodeProps`](/api-reference/types/mini-map-node-props)
-to see what props are passed to your custom component.
+查看 [`MiniMapNodeProps`](/api-reference/types/mini-map-node-props) 的文檔，
+了解傳遞給你的自訂元件的 props。
 
-### Customising mini map node color
+### 自訂小地圖節點顏色
 
-The `nodeColor`, `nodeStrokeColor`, and `nodeClassName` props can be a function
-that takes a [`Node`](/api-reference/types/node) and computes a value for the prop. This can
-be used to customize the appearance of each mini map node.
+`nodeColor`、`nodeStrokeColor` 和 `nodeClassName` props 可以是一個函式，
+該函式接受一個 [`Node`](/api-reference/types/node) 並計算該 prop 的值。
+這可用於自訂每個小地圖節點的外觀。
 
-This example shows how to color each mini map node based on the node's type:
+此範例展示如何根據節點類型為每個小地圖節點著色：
 
 ```jsx
 import { ReactFlow, MiniMap } from '@xyflow/react';
@@ -112,8 +105,7 @@ function nodeColor(node) {
 
 ## TypeScript
 
-This component accepts a generic type argument of custom node types. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+此元件接受自訂節點類型的泛型類型參數。查看我們的 [TypeScript 指南中的這個章節](/learn/advanced-use/typescript#nodetype-edgetype-unions)以獲取更多資訊。
 
 ```tsx
 <MiniMap<CustomNodeType> nodeColor={nodeColor} />

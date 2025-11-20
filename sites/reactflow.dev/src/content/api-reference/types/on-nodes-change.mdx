@@ -4,7 +4,7 @@ description: ''
 
 # OnNodesChange
 
-This type is used for typing the [`onNodesChange`](/api-reference/react-flow#on-nodes-change) function.
+此類型用於為 [`onNodesChange`](/api-reference/react-flow#on-nodes-change) 函數進行型別定義。
 
 ```tsx
 export type OnNodesChange<NodeType extends Node = Node> = (
@@ -16,10 +16,9 @@ export type OnNodesChange<NodeType extends Node = Node> = (
 
 <APIDocs typeName="OnNodesChange" />
 
-## Usage
+## 使用方式
 
-This type accepts a generic type argument of custom nodes types. See this
-[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+此類型接受自訂節點類型的泛型參數。更多資訊請參閱我們的 [TypeScript 指南中的這個章節](/learn/advanced-use/typescript#nodetype-edgetype-unions)。
 
 ```tsx
 const onNodesChange: OnNodesChange = useCallback(

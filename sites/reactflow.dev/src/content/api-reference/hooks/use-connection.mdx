@@ -1,16 +1,13 @@
 ---
 description:
-  The useConnection hook returns the current connection when there is an active
-  connection interaction. If no connection interaction is active, it returns null
-  for every property. A typical use case for this hook is to colorize handles
-  based on a certain condition (e.g. if the connection is valid or not).
+  useConnection hook 會在有活躍的連接互動時返回當前的連接狀態。如果沒有活躍的連接互動，所有屬性都會返回 null。這個 hook 的典型使用情境是根據特定條件（例如連接是否有效）來為連接點著色。
 ---
 
 # useConnection()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useConnection.ts)
 
-The `useConnection` hook returns the current connection state when there is an active connection interaction. If no connection interaction is active, it returns `null` for every property. A typical use case for this hook is to colorize handles based on a certain condition (e.g. if the connection is valid or not).
+`useConnection` hook 會在有活躍的連接互動時返回當前的連接狀態。如果沒有活躍的連接互動，所有屬性都會返回 `null`。這個 hook 的典型使用情境是根據特定條件（例如連接是否有效）來為連接點著色。
 
 ```tsx
 import { useConnection } from '@xyflow/react';
@@ -26,6 +23,6 @@ export default function App() {
 }
 ```
 
-## Signature
+## 簽名
 
 <APIDocs functionName="useConnection" />

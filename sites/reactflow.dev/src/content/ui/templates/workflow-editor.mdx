@@ -1,8 +1,7 @@
 ---
 title: Workflow Editor
 description:
-  A Next.js-based application designed to help you quickly create, manage, and visualize
-  workflows.
+  基於 Next.js 的應用程式，旨在幫助你快速建立、管理和視覺化工作流程。
 is_pro_example: true
 ---
 
@@ -10,35 +9,22 @@ import ProExampleViewer from '@/components/pro-example-viewer';
 
 # Workflow Editor
 
-The Workflow Editor template is a Next.js-based application designed to help you quickly
-create, manage, and visualize workflows. Built with [React Flow UI](/ui) and styled using
-[Tailwind CSS](https://tailwindcss.com/) and [shadcn/ui](https://ui.shadcn.com/), this
-project provides a highly customizable foundation for building and extending workflow
-editors.
+工作流程編輯器範本是一個基於 Next.js 的應用程式，旨在幫助你快速建立、管理和視覺化工作流程。使用 [React Flow UI](/ui) 建構並使用 [Tailwind CSS](https://tailwindcss.com/) 和 [shadcn/ui](https://ui.shadcn.com/) 設計樣式，此專案為建構和擴展工作流程編輯器提供了高度可自訂的基礎。
 
 <ProExampleViewer slug="workflow-editor" type="template" />
 
-## Tech Stack
+## 技術堆疊
 
-- **React Flow UI**: The project uses [React Flow UI](/ui) to build nodes. These
-  components are designed to help you quickly get up to speed on projects.
+- **React Flow UI**：專案使用 [React Flow UI](/ui) 建構節點。這些元件旨在幫助你快速上手專案。
 
-- **shadcn CLI**: The project uses the [shadcn CLI](https://ui.shadcn.com/docs/cli) to
-  manage UI components. This tool builds on top of
-  [Tailwind CSS](https://tailwindcss.com/) and [shadcn/ui](https://ui.shadcn.com/)
-  components, making it easy to add and customize UI elements.
+- **shadcn CLI**：專案使用 [shadcn CLI](https://ui.shadcn.com/docs/cli) 管理 UI 元件。此工具建立在 [Tailwind CSS](https://tailwindcss.com/) 和 [shadcn/ui](https://ui.shadcn.com/) 元件之上，使新增和自訂 UI 元素變得容易。
 
-- **State Management with Zustand**: The application uses Zustand for state management,
-  providing a simple and efficient way to manage the state of nodes, edges, and other
-  workflow-related data.
+- **使用 Zustand 的狀態管理**：應用程式使用 Zustand 進行狀態管理，提供簡單且高效的方式來管理節點、連線和其他工作流程相關資料的狀態。
 
-## Features
+## 功能
 
-- **Automatic Layouting**: Utilizes the [ELKjs](https://github.com/kieler/elkjs) layout
-  engine to automatically arrange nodes and edges.
-- **Drag-and-Drop Sidebar**: Add and arrange nodes using a drag-and-drop mechanism.
-- **Customizable Components**: Uses React Flow UI and the shadcn library to create
-  highly-customizable nodes and edges.
-- **Dark Mode**: Toggles between light and dark themes, managed through the Zustand store.
-- **Runner Functionality**: Executes and monitors nodes sequentially with a workflow
-  runner.
+- **自動佈局**：利用 [ELKjs](https://github.com/kieler/elkjs) 佈局引擎自動排列節點和連線。
+- **拖放側邊欄**：使用拖放機制新增和排列節點。
+- **可自訂元件**：使用 React Flow UI 和 shadcn 函式庫建立高度可自訂的節點和連線。
+- **深色模式**：在淺色和深色主題之間切換，透過 Zustand store 管理。
+- **執行器功能**：使用工作流程執行器依序執行和監控節點。

@@ -1,15 +1,13 @@
 ---
 description:
-  'The getSimpleBezierPath util returns everything you need to render a simple
-  bezier edge between two nodes.'
+  'getSimpleBezierPath 工具函式會返回在兩個節點之間渲染簡單貝茲曲線連線所需的所有資訊。'
 ---
 
 # getSimpleBezierPath()
 
 [Source on Github](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/SimpleBezierEdge.tsx/#L32)
 
-The `getSimpleBezierPath` util returns everything you need to render a simple
-bezier edge between two nodes.
+`getSimpleBezierPath` 工具函式會返回在兩個節點之間渲染簡單貝茲曲線連線所需的所有資訊。
 
 ```js
 import { Position, getSimpleBezierPath } from '@xyflow/react';
@@ -37,5 +35,4 @@ console.log(offsetX, offsetY); //=> 75, 40
 
 ## Notes
 
-- This function returns a tuple (aka a fixed-size array) to make it easier to
-  work with multiple edge paths at once.
+- 此函式返回一個元組（即固定大小的陣列），以便更輕鬆地同時處理多個連線路徑。

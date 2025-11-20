@@ -1,45 +1,41 @@
 ---
-title: 'React Flow UI Components updated to React 19 and Tailwind CSS 4'
-description: 'A fresh look for our UI components and how to upgrade your project'
+title: 'React Flow UI 元件更新至 React 19 和 Tailwind CSS 4'
+description: 'UI 元件的全新外觀以及如何升級你的專案'
 authors: [alessandro]
 date: '2025-11-12'
 ---
 
-Our [React Flow UI](/ui) components have been updated to support the latest version of
-shadcn/ui, on React 19 and Tailwind 4!
+我們的 [React Flow UI](/ui) 元件已更新以支援最新版本的 shadcn/ui，基於 React 19 和 Tailwind 4！
 
-This update includes a fresh look from the latest version of [shadcn/ui](https://ui.shadcn.com), and a new [UI Components tutorial](/learn/tutorials/getting-started-with-react-flow-components) to get you started.
+此更新包含來自最新版本 [shadcn/ui](https://ui.shadcn.com) 的全新外觀，以及一個新的 [UI 元件教學](/learn/tutorials/getting-started-with-react-flow-components)來幫助你入門。
 
-### How to upgrade your project
+### 如何升級你的專案
 
-To upgrade your project, follow the steps below.
+要升級你的專案，請按照以下步驟操作。
 
-### Step 1: Update dependencies.
+### 步驟 1：更新依賴項。
 
 ```bash copy npm2yarn
 npm install react@latest react-dom@latest tailwindcss@latest
 ```
 
-Or do so manually in package.json, and then run
+或在 package.json 中手動執行此操作，然後執行
 
 ```bash copy npm2yarn
 npm install
 ```
 
-### Step 2: Run the Tailwind CSS upgrade codemod.
+### 步驟 2：執行 Tailwind CSS 升級 codemod。
 
-Read more about available codemods in the
-[shadcn/ui Tailwind CSS 4 upgrade guide](https://ui.shadcn.com/docs/tailwind-v4).
+在 [shadcn/ui Tailwind CSS 4 升級指南](https://ui.shadcn.com/docs/tailwind-v4)中閱讀更多關於可用 codemod 的資訊。
 
 ```bash copy npm2yarn
 npx @tailwindcss/upgrade
 ```
 
-### Step 3: Move the React Flow styles to the `global.css` file.
+### 步驟 3：將 React Flow 樣式移至 `global.css` 檔案。
 
-**Important:** Tailwind CSS 4 is now configured completely in CSS. Instead of importing
-your `@xyflow/react/dist/style.css` file in your `App.tsx`, you will need to it in your
-`global.css` file, after you import `tailwindcss`.
+**重要：** Tailwind CSS 4 現在完全在 CSS 中配置。你需要在 `global.css` 檔案中匯入 `@xyflow/react/dist/style.css` 檔案，而不是在 `App.tsx` 中匯入它，在匯入 `tailwindcss` 之後。
 
 ```diff filename="global.css"
 // Tailwind CSS 3
@@ -55,8 +51,7 @@ your `@xyflow/react/dist/style.css` file in your `App.tsx`, you will need to it 
 +}
 ```
 
-We recommend removing the old `js`/`ts` tailwind configuration from your project, and migrating to the new CSS-variable-only configuration.
-This can make things a lot simpler: you can configure everything related to your application's design system and look in a single CSS file.
+我們建議從專案中移除舊的 `js`/`ts` tailwind 配置，並遷移到新的僅 CSS 變數配置。這可以讓事情變得簡單得多：你可以在單個 CSS 檔案中配置與應用程式設計系統和外觀相關的所有內容。
 
 ```diff filename="App.tsx"
 -import '@xyflow/react/dist/style.css';
@@ -75,17 +70,17 @@ export default function RootLayout({
 }
 ```
 
-### Step 4: Update the components
+### 步驟 4：更新元件
 
-For each component you want to update, you can run the following commands.
+對於你想要更新的每個元件，可以執行以下命令。
 
-If it's a shadcn/ui component:
+如果它是 shadcn/ui 元件：
 
 ```bash copy npm2yarn
 npx shadcn@latest add component-name
 ```
 
-If it's a React Flow UI component:
+如果它是 React Flow UI 元件：
 
 ```bash copy npm2yarn
 npx shadcn@latest add https://ui.reactflow.dev/component-name

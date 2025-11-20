@@ -1,27 +1,26 @@
 ---
-description: Uncontrolled inputs in React manage their own state internally. This guide shows you how to set up and use an uncontrolled flow.
+description: React 中的非受控輸入在內部管理自己的狀態。本指南向你展示如何設定和使用非受控流程圖。
 ---
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Uncontrolled Flow
+# 非受控流程圖
 
-There are two ways to use React Flow - controlled or uncontrolled. Controlled means, that you are in control of the state of the nodes and edges. In an uncontrolled flow the state of the nodes and edges is handled by React Flow internally. In this part we will show you how to work with an uncontrolled flow.
+有兩種方式可以使用 React Flow - 受控或非受控。受控意味著你控制節點和連線的狀態。在非受控流程圖中，節點和連線的狀態由 React Flow 在內部處理。在這部分中，我們將向你展示如何使用非受控流程圖。
 
-An implementation of an uncontrolled flow is simpler, because you don't need to pass any handlers:
+非受控流程圖的實作更簡單，因為你不需要傳遞任何處理器：
 
 <RemoteCodeViewer route="learn/uncontrolled" framework="react" />
 
-As you can see, we are passing `defaultEdgeOptions` to define that edges are animated. This is helpful, because you can't use the `onConnect` handler anymore to pass custom options to a newly created edge. Try to connect "Node B" with "Node C" and you see that the new edge is animated.
+如你所見，我們傳遞了 `defaultEdgeOptions` 來定義連線是動畫的。這很有幫助，因為你不能再使用 `onConnect` 處理器來為新建立的連線傳遞自訂選項。嘗試將「Node B」與「Node C」連接，你會看到新連線是動畫的。
 
-## Updating nodes and edges
+## 更新節點和連線
 
-Since you don't have nodes and edges in your local state, you can't update them directly. To do so, you need to use the [React Flow instance](/api-reference/types/react-flow-instance) that comes with functions for updating the internal state. You can receive the instance via the `onInit` callback or better by using the [`useReactFlow` hook](/api-reference/hooks/use-react-flow). Let's create a button that adds a new node at a random position. For this, we are wrapping our flow with the [`ReactFlowProvider`](/api-reference/react-flow-provider) and use the [`addNodes` function](/api-reference/types/react-flow-instance#nodes-and-edges).
+由於你的本地狀態中沒有節點和連線，你無法直接更新它們。為此，你需要使用 [React Flow instance](/api-reference/types/react-flow-instance)，它附帶用於更新內部狀態的函式。你可以透過 `onInit` 回呼函式接收實例，或者更好的是使用 [`useReactFlow` hook](/api-reference/hooks/use-react-flow)。讓我們建立一個按鈕，在隨機位置新增一個新節點。為此，我們將用 [`ReactFlowProvider`](/api-reference/react-flow-provider) 包裝我們的流程圖，並使用 [`addNodes` 函式](/api-reference/types/react-flow-instance#nodes-and-edges)。
 
 <Callout>
-  The `Flow` component in this example is wrapped with the `ReactFlowProvider`
-  to use the `useReactFlow` hook.
+  此範例中的 `Flow` 元件被包裝在 `ReactFlowProvider` 中，以便使用 `useReactFlow` hook。
 </Callout>
 
 <RemoteCodeViewer route="learn/uncontrolled-2" framework="react" />

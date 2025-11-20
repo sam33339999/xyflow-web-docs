@@ -1,17 +1,17 @@
 ---
-title: New release 11.10.0!
-description: We released React Flow v11.10.0 with deprecations and some bugfixes.
+title: 新版本 11.10.0 發布！
+description: 我們發布了 React Flow v11.10.0，包含棄用通知和一些錯誤修正。
 authors: [moritz]
 date: '2023-11-10'
 ---
 
-We want to make the migration for v12 as smooth as possible. That's why we added deprecation warnings for the following util functions:
+我們希望讓 v12 的遷移盡可能順利。這就是為什麼我們為以下工具函式新增了棄用警告：
 
-#### Rename `useReactFlow.project` to `useReactFlow.screenToFlowPosition`
+#### 將 `useReactFlow.project` 重新命名為 `useReactFlow.screenToFlowPosition`
 
-⚠️ **changes**: no need to subtract react flow bounds anymore!
+⚠️ **變更**：不再需要減去 react flow 邊界了！
 
-before:
+之前：
 
 ```js
 const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
@@ -22,7 +22,7 @@ const position = reactFlowInstance.project({
 });
 ```
 
-after:
+之後：
 
 ```js
 const position = reactFlowInstance.screenToFlowPosition({
@@ -31,28 +31,28 @@ const position = reactFlowInstance.screenToFlowPosition({
 });
 ```
 
-#### Rename `getTransformForBounds` to `getViewportForBounds`
+#### 將 `getTransformForBounds` 重新命名為 `getViewportForBounds`
 
-⚠️ **changes**: returns `{ x: number, y: number, zoom: number }` instead of `[number, number, number]`.
+⚠️ **變更**：回傳 `{ x: number, y: number, zoom: number }` 而不是 `[number, number, number]`。
 
-before:
+之前：
 
 ```js
 const [x, y, zoom] = getTransformForBounds(bounds, width, height, 0.5, 2);
 ```
 
-after:
+之後：
 
 ```js
 const { x, y, zoom } = getViewportForBounds(bounds, width, height, 0.5, 2);
 ```
 
-#### Rename `getRectOfNodes` to `getNodesBounds`
+#### 將 `getRectOfNodes` 重新命名為 `getNodesBounds`
 
-no changes, just a renaming.
+沒有變更，只是重新命名。
 
-### New features
+### 新功能
 
-- added `useReactFlow.flowToScreenPosition` for completion
+- 新增 `useReactFlow.flowToScreenPosition` 以達到完整性
 
-Besides that we fixed some bugs 🐛 You can find all change in the [v11.10.0 Github release](https://github.com/xyflow/xyflow/releases/tag/11.10.0).
+除此之外，我們修正了一些錯誤。你可以在 [v11.10.0 Github 發布](https://github.com/xyflow/xyflow/releases/tag/11.10.0)中找到所有變更。

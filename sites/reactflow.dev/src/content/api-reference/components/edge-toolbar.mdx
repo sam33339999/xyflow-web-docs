@@ -1,18 +1,15 @@
 ---
-title: The EdgeToolbar component
+title: 連線工具列元件
 sidebarTitle: '<EdgeToolbar />'
 description:
-  "The EdgeToolbar component can render a toolbar or tooltip to one side of a custom edge.
-  This toolbar doesn't scale with the viewport so that the content doesn't get too small
-  when zooming out."
+  "連線工具列元件可以在自訂連線的一側渲染工具列或提示框。此工具列不會隨視窗縮放，以便在縮小時內容不會變得太小。"
 ---
 
 # \<EdgeToolbar />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/EdgeToolbar/EdgeToolbar.tsx)
+[原始碼於 GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/EdgeToolbar/EdgeToolbar.tsx)
 
-This component can render a toolbar to one side of a custom edge. This toolbar doesn't
-scale with the viewport so that the content doesn't get too small when zooming out.
+此元件可以在自訂連線的一側渲染工具列。此工具列不會隨視窗縮放，以便在縮小時內容不會變得太小。
 
 ```jsx
 import { memo } from 'react';
@@ -45,7 +42,6 @@ export default memo(CustomEdge);
 
 <APIDocs componentName="EdgeToolbar" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
-## Notes
+## 注意事項
 
-- By default, the toolbar is only visible when the edge is selected. You can override this
-  behavior by setting the `isVisible` prop to `true`.
+- 預設情況下，工具列僅在連線被選中時可見。你可以透過將 `isVisible` prop 設為 `true` 來覆蓋此行為。

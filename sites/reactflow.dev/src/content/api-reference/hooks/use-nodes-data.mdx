@@ -1,5 +1,5 @@
 ---
-description: 'With this hook you can subscribe to changes of a node data of a specific node.'
+description: '透過這個 hook，你可以訂閱特定節點的節點資料變更。'
 created_at: 2024-07-09
 ---
 
@@ -7,7 +7,7 @@ created_at: 2024-07-09
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useNodesData.ts)
 
-This hook lets you subscribe to changes of a specific nodes `data` object.
+這個 hook 讓你可以訂閱特定節點的 `data` 物件變更。
 
 ```jsx
 import { useNodesData } from '@xyflow/react';
@@ -19,14 +19,13 @@ export default function () {
 }
 ```
 
-## Signature
+## 簽名
 
 <APIDocs functionName="useNodesData" />
 
 ## TypeScript
 
-This hook accepts a generic type argument of custom node types. See this
-[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+這個 hook 接受自訂節點類型的泛型參數。查看我們 TypeScript 指南中的[此章節](/learn/advanced-use/typescript#nodetype-edgetype-unions)以獲取更多資訊。
 
 ```tsx
 const nodesData = useNodesData<NodesType>(['nodeId-1', 'nodeId-2']);

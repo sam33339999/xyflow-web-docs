@@ -1,18 +1,18 @@
 ---
 sidebarTitle: TypeScript
-description: In this guide we explain how to work with React Flow and TypeScript.
+description: 本指南說明如何使用 React Flow 和 TypeScript。
 ---
 
 import { Callout } from 'nextra/components';
 
-# Usage with TypeScript
+# 與 TypeScript 一起使用
 
-React Flow is written in TypeScript because we value the additional safety barrier it provides.
-We export all the types you need for correctly typing data structures and functions you pass to the React Flow component. We also provide a way to extend the types of nodes and edges.
+React Flow 是用 TypeScript 編寫的，因為我們重視它提供的額外安全屏障。
+我們匯出了你正確輸入資料結構和函式所需的所有類型，這些類型將傳遞給 React Flow 元件。我們還提供了一種擴展節點和連線類型的方法。
 
-## Basic usage
+## 基本用法
 
-Let's start with the most basic types you need for a simple starting point. Typescript might already infer some of these types, but we will define them explicitly nonetheless.
+讓我們從一個簡單起點所需的最基本類型開始。TypeScript 可能已經推斷出其中一些類型，但我們仍將明確定義它們。
 
 ```tsx
 import { useState, useCallback } from 'react';
@@ -83,11 +83,11 @@ function Flow() {
 }
 ```
 
-### Custom nodes
+### 自訂節點
 
-When working with [custom nodes](/learn/customization/custom-nodes) you have the possibility to pass a custom `Node` type (or your `Node` union) to the `NodeProps` type. There are basically two ways to work with custom nodes:
+使用[自訂節點](/learn/customization/custom-nodes)時，你可以將自訂 `Node` 類型（或你的 `Node` 聯合）傳遞給 `NodeProps` 類型。使用自訂節點基本上有兩種方式：
 
-1. If you have **multiple custom nodes**, you want to pass a specific `Node` type as a generic to the `NodeProps` type:
+1. 如果你有**多個自訂節點**，你需要將特定的 `Node` 類型作為泛型傳遞給 `NodeProps` 類型：
 
 ```tsx filename="NumberNode.tsx"
 import type { Node, NodeProps } from '@xyflow/react';
@@ -99,14 +99,14 @@ export default function NumberNode({ data }: NodeProps<NumberNode>) {
 }
 ```
 
-⚠️ If you specify the node data separately, you need to use `type` (an `interface` would not work here):
+⚠️ 如果你單獨指定節點資料，你需要使用 `type`（`interface` 在這裡不適用）：
 
 ```ts
 type NumberNodeData = { number: number };
 type NumberNode = Node<NumberNodeData, 'number'>;
 ```
 
-2. If you have **one custom node** that renders different content based on the node type, you want to pass your `Node` union type as a generic to `NodeProps`:
+2. 如果你有**一個自訂節點**，根據節點類型渲染不同的內容，你需要將你的 `Node` 聯合類型作為泛型傳遞給 `NodeProps`：
 
 ```tsx filename="CustomNode.tsx"
 import type { Node, NodeProps } from '@xyflow/react';
@@ -125,9 +125,9 @@ export default function CustomNode({ data }: NodeProps<AppNode>) {
 }
 ```
 
-### Custom edges
+### 自訂連線
 
-For [custom edges](/learn/customization/custom-nodes) you have the same possibility as for custom nodes.
+對於[自訂連線](/learn/customization/custom-nodes)，你有與自訂節點相同的可能性。
 
 ```tsx filename="CustomEdge.tsx"
 import { getStraightPath, BaseEdge, type EdgeProps, type Edge } from '@xyflow/react';
@@ -147,22 +147,16 @@ export default function CustomEdge({
 }
 ```
 
-## Advanced usage
+## 進階用法
 
-When creating complex applications with React Flow, you will have a number of custom nodes & edges, each with different kinds of data attached to them.
-When we operate on these nodes & edges through built in functions and hooks, we have to make sure that we [narrow down](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)
-the types of nodes & edges to prevent runtime errors.
+使用 React Flow 建立複雜應用程式時，你會有許多自訂節點和連線，每個都附加了不同類型的資料。當我們透過內建函式和 hooks 操作這些節點和連線時，我們必須確保[縮小](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)節點和連線的類型以防止執行時錯誤。
 
-### `Node` and `Edge` type unions
+### `Node` 和 `Edge` 類型聯合
 
-You will see many functions, callbacks and hooks (even the ReactFlow component itself) that expect a `NodeType` or `EdgeType` generic. These generics are simply
-[unions](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) of all the different types of nodes & edges you have in your application.
-As long as you have typed the data objects correctly (see previous section), you can use their exported type.
+你會看到許多函式、回呼函式和 hooks（甚至 ReactFlow 元件本身）期望 `NodeType` 或 `EdgeType` 泛型。這些泛型只是你應用程式中所有不同類型節點和連線的[聯合](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)。只要你正確輸入了資料物件（請參閱上一節），你就可以使用它們匯出的類型。
 
 <Callout type="info">
-  If you use any of the built-in nodes ('input', 'output', 'default') or edges
-  ('straight', 'step', 'smoothstep', 'bezier'), you can add the `BuiltInNode` and
-  `BuiltInEdge` types exported from `@xyflow/react` to your union type.
+  如果你使用任何內建節點（'input'、'output'、'default'）或連線（'straight'、'step'、'smoothstep'、'bezier'），你可以將從 `@xyflow/react` 匯出的 `BuiltInNode` 和 `BuiltInEdge` 類型新增到你的聯合類型中。
 </Callout>
 
 ```tsx
@@ -179,10 +173,9 @@ export type CustomNodeType = BuiltInNode | NumberNode | TextNode;
 export type CustomEdgeType = BuiltInEdge | EditableEdge;
 ```
 
-### Functions passed to `<ReactFlow />`
+### 傳遞給 `<ReactFlow />` 的函式
 
-To receive correct types for callback functions, you can pass your union types to the `ReactFlow` component.
-By doing that you will have to type your callback functions explicitly.
+要為回呼函式接收正確的類型，你可以將你的聯合類型傳遞給 `ReactFlow` 元件。這樣做時，你必須明確輸入你的回呼函式。
 
 ```tsx
 import { type OnNodeDrag } from '@xyflow/react';
@@ -206,7 +199,7 @@ const onNodesChange: OnNodesChange<CustomNodeType> = useCallback(
 
 ### Hooks
 
-The type unions can also be used to type the return values of many hooks.
+類型聯合也可以用來輸入許多 hooks 的回傳值。
 
 ```tsx filename="FlowComponent.tsx"
 import { useReactFlow, useNodeConnections, useNodesData, useStore } from '@xyflow/react';
@@ -234,10 +227,9 @@ export default function FlowComponent() {
 }
 ```
 
-### Type guards
+### 類型保護
 
-There are multiple ways you can define [type guards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards) in Typescript.
-One way is to define type guard functions like `isNumberNode` or `isTextNode` to filter out specific nodes from a list of nodes.
+在 TypeScript 中有多種方式可以定義[類型保護](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards)。一種方式是定義類型保護函式，如 `isNumberNode` 或 `isTextNode`，以從節點清單中過濾出特定節點。
 
 ```tsx
 function isNumberNode(node: CustomNodeType): node is NumberNode {

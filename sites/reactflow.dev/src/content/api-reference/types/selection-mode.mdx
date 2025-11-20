@@ -1,15 +1,15 @@
 ---
-description: Controls how nodes are selected in the flow diagram, offering either full or partial selection behavior.
+description: 控制流程圖中節點的選擇方式，提供完全或部分選擇行為。
 ---
 
 # SelectionMode
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L223)
 
-The `SelectionMode` enum provides two options for node selection behavior:
+`SelectionMode` 列舉提供兩種節點選擇行為選項：
 
-- `Full`: A node is only selected when the selection rectangle fully contains it
-- `Partial`: A node is selected when the selection rectangle partially overlaps with it
+- `Full`：只有當選擇矩形完全包含節點時才選中節點
+- `Partial`：當選擇矩形部分重疊節點時就選中節點
 
 ```ts
 enum SelectionMode {

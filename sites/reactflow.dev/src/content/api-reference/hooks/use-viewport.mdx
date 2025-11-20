@@ -1,17 +1,13 @@
 ---
 description:
-  'The useViewport hook is a convenient way to read the current state of the
-  Viewport in a component. Components that use this hook will re-render whenever
-  the viewport changes.'
+  'useViewport hook 是在元件中讀取視窗當前狀態的便利方式。使用此 hook 的元件會在視窗變更時重新渲染。'
 ---
 
 # useViewport()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useViewport.ts)
 
-The `useViewport` hook is a convenient way to read the current state of the
-[`Viewport`](/api-reference/types/viewport) in a component. Components that use this hook
-will re-render **whenever the viewport changes**.
+`useViewport` hook 是在元件中讀取 [`Viewport`](/api-reference/types/viewport) 當前狀態的便利方式。使用此 hook 的元件會在**視窗變更時**重新渲染。
 
 ```jsx
 import { useViewport } from '@xyflow/react';
@@ -29,12 +25,10 @@ export default function ViewportDisplay() {
 }
 ```
 
-## Signature
+## 簽名
 
 <APIDocs functionName="useViewport" />
 
-## Notes
+## 注意事項
 
-- This hook can only be used in a component that is a child of a
-  [`<ReactFlowProvider />`](/api-reference/react-flow-provider) or a
-  [`<ReactFlow />`](/api-reference/react-flow) component.
+- 這個 hook 只能在 [`<ReactFlowProvider />`](/api-reference/react-flow-provider) 或 [`<ReactFlow />`](/api-reference/react-flow) 元件的子元件中使用。

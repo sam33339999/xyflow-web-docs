@@ -1,18 +1,15 @@
 ---
-description: A slider component that can be used to zoom in and out
+description: 可用於放大和縮小的滑桿元件
 ---
 
 import UiComponentViewer from '@/components/ui-component-viewer.mdx';
 
 # Node Search
 
-A search bar component that can be used to search for nodes in the flow.
+可用於在流程中搜尋節點的搜尋列元件。
 
-It uses the [Command](https://ui.shadcn.com/docs/components/command) component from [shadcn ui](https://ui.shadcn.com).
+它使用來自 [shadcn ui](https://ui.shadcn.com) 的 [Command](https://ui.shadcn.com/docs/components/command) 元件。
 
-By default, it will check for lowercase string inclusion in the node's label, and 
-select the node and fit the view to the node when it is selected.
-You can override this behavior by passing a custom `onSearch` function.
-You can also override the default `onSelectNode` function to customize the behavior when a node is selected.
+預設情況下，它會檢查節點標籤中的小寫字串包含，並在選擇時選擇節點並將視圖適配到節點。你可以透過傳遞自訂 `onSearch` 函式來覆寫此行為。你也可以覆寫預設的 `onSelectNode` 函式以自訂選擇節點時的行為。
 
 <UiComponentViewer id="node-search" />

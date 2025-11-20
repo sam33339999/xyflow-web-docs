@@ -1,41 +1,41 @@
 ---
-sidebarTitle: Migrate to v12
-description: Use this guide to migrate from React Flow 11 to 12.
+sidebarTitle: 遷移到 v12
+description: 使用本指南從 React Flow 11 遷移到 12。
 created_at: 2024-07-15
 ---
 
-# Migrate to React Flow 12
+# 遷移到 React Flow 12
 
 import { Callout } from 'nextra/components';
 
 <Callout type="info">
-  You can find the docs for old versions of React Flow here:
-  [v11](https://v11.reactflow.dev), [v10](https://v10.reactflow.dev),
+  你可以在這裡找到舊版本 React Flow 的文件：
+  [v11](https://v11.reactflow.dev)、[v10](https://v10.reactflow.dev)、
   [v9](https://v9.reactflow.dev)
 </Callout>
 
-Before you can use the **[new features](#new-features)** that come with React Flow 12 like server side rendering, computing flows, and dark mode, here are the breaking changes you'll have to address first. We tried to keep the breaking changes to a minimum, but some of them were necessary to implement the new features.
+在你可以使用 React Flow 12 附帶的**[新功能](#new-features)**（如伺服器端渲染、計算流程和深色模式）之前，這裡是你需要先處理的重大變更。我們試圖將重大變更保持在最低限度，但其中一些是實作新功能所必需的。
 
-## Migration guide
+## 遷移指南
 
-Before you start to migrate, you need to install the new package.
+在開始遷移之前，你需要安裝新套件。
 
 ```bash npm2yarn
 npm install @xyflow/react
 ```
 
-### 1. A new npm package name
+### 1. 新的 npm 套件名稱
 
-The package `reactflow` has been renamed to `@xyflow/react` and it's not a default import anymore. You also need to adjust the style import. Before v12, React Flow was divided into multiple packages. That's not the case anymore. If you just used the core, you now need to install the `@xyflow/react` package.
+套件 `reactflow` 已重新命名為 `@xyflow/react`，並且不再是預設匯入。你還需要調整樣式匯入。在 v12 之前，React Flow 被分為多個套件。現在不再是這樣了。如果你只使用核心，現在需要安裝 `@xyflow/react` 套件。
 
-**Old API**
+**舊 API**
 
 ```js
 // npm install reactflow
 import ReactFlow from 'reactflow';
 ```
 
-**New API**
+**新 API**
 
 ```js
 // npm install @xyflow/react
@@ -48,11 +48,11 @@ import '@xyflow/react/dist/style.css';
 import '@xyflow/react/dist/base.css';
 ```
 
-### 2. Node <code>measured</code> attribute for measured <code>width</code> and <code>height</code>
+### 2. 節點的 <code>measured</code> 屬性用於測量的 <code>width</code> 和 <code>height</code>
 
-All measured node values are now stored in `node.measured`. Besides the new package name, this is the biggest change. After React Flow measures your nodes, it writes the dimensions to `node.measured.width` and `node.measured.height`. If you are using any layouting library like dagre or elk, you now need to take the dimensions from `node.measured` instead of `node`. If you are using `width` and `height`, those values will now be used as inline styles to specify the node dimensions.
+所有測量的節點值現在都儲存在 `node.measured` 中。除了新的套件名稱，這是最大的變更。在 React Flow 測量你的節點後，它會將尺寸寫入 `node.measured.width` 和 `node.measured.height`。如果你使用任何版面配置函式庫（如 dagre 或 elk），現在需要從 `node.measured` 而不是 `node` 取得尺寸。如果你使用 `width` 和 `height`，這些值現在將用作內聯樣式來指定節點尺寸。
 
-**Old API**
+**舊 API**
 
 ```js
 // getting the measured width and height
@@ -60,7 +60,7 @@ const nodeWidth = node.width;
 const nodeHeight = node.height;
 ```
 
-**New API**
+**新 API**
 
 ```js
 // getting the measured width and height
@@ -68,9 +68,9 @@ const nodeWidth = node.measured?.width;
 const nodeHeight = node.measured?.height;
 ```
 
-### 3. New dimension handling <code>node.width</code> / <code>node.height</code> vs <code>node.measured.width</code> / <code>node.measured.height</code>
+### 3. 新的尺寸處理 <code>node.width</code> / <code>node.height</code> 與 <code>node.measured.width</code> / <code>node.measured.height</code>
 
-In order to support server side rendering we had to restructure the API a bit, so that users can pass node dimensions more easily. For this we changed the behavior of the `node.width` and `node.height` attributes. In React Flow 11, those attributes were measured values and only used as a reference. In React Flow 12 those attributes are used as inline styles to specify the node dimensions. If you load nodes from a database, you probably want to remove the `width` and `height` attributes from your nodes, because the behavior is slightly different now. Using `width` and `height` now means that the dimensions are not dynamic based on the content but fixed.
+為了支援伺服器端渲染，我們必須稍微重組 API，以便使用者更輕鬆地傳遞節點尺寸。為此，我們變更了 `node.width` 和 `node.height` 屬性的行為。在 React Flow 11 中，這些屬性是測量值，僅用作參考。在 React Flow 12 中，這些屬性用作內聯樣式來指定節點尺寸。如果你從資料庫載入節點，可能想要從節點中移除 `width` 和 `height` 屬性，因為現在的行為略有不同。現在使用 `width` 和 `height` 意味著尺寸不是根據內容動態調整，而是固定的。
 
 **Old API**
 
@@ -103,13 +103,13 @@ const nodes = [
 ];
 ```
 
-If you want to read more about how to configure React Flow for server side rendering, you can read about it in the [server side rendering guide](/learn/advanced-use/ssr-ssg-configuration).
+如果你想了解更多關於如何為伺服器端渲染配置 React Flow，可以閱讀[伺服器端渲染指南](/learn/advanced-use/ssr-ssg-configuration)。
 
-### 4. Updating nodes and edges
+### 4. 更新節點和連線
 
-We are not supporting node and edge updates with object mutations anymore. If you want to update a certain attribute, you need to create a new node / edge.
+我們不再支援透過物件變更來更新節點和連線。如果你想更新某個屬性，需要建立新的節點/連線。
 
-**Old API**
+**舊 API**
 
 ```js
 setNodes((currentNodes) =>
@@ -120,7 +120,7 @@ setNodes((currentNodes) =>
 );
 ```
 
-**New API**
+**新 API**
 
 ```js
 setNodes((currentNodes) =>
@@ -131,19 +131,19 @@ setNodes((currentNodes) =>
 );
 ```
 
-### 5. Rename <code>onEdgeUpdate</code> (and related APIs) to <code>onReconnect</code>
+### 5. 將 <code>onEdgeUpdate</code>（及相關 API）重新命名為 <code>onReconnect</code>
 
-We renamed the `onEdgeUpdate` function to `onReconnect` and all related APIs (mentioned below). The new name is more descriptive and makes it clear that the function is used to reconnect edges.
+我們將 `onEdgeUpdate` 函式重新命名為 `onReconnect`，並將所有相關 API（如下所述）一併重新命名。新名稱更具描述性，清楚地表明該函式用於重新連接連線。
 
-- `updateEdge` renamed to `reconnectEdge`
-- `onEdgeUpdateStart` renamed to `onReconnectStart`
-- `onEdgeUpdate` renamed to `onReconnect`
-- `onEdgeUpdateEnd` renamed to `onReconnectEnd`
-- `edgeUpdaterRadius` renamed to `reconnectRadius`
-- `edge.updatable` renamed to `edge.reconnectable`
-- `edgesUpdatable` renamed to `edgesReconnectable`
+- `updateEdge` 重新命名為 `reconnectEdge`
+- `onEdgeUpdateStart` 重新命名為 `onReconnectStart`
+- `onEdgeUpdate` 重新命名為 `onReconnect`
+- `onEdgeUpdateEnd` 重新命名為 `onReconnectEnd`
+- `edgeUpdaterRadius` 重新命名為 `reconnectRadius`
+- `edge.updatable` 重新命名為 `edge.reconnectable`
+- `edgesUpdatable` 重新命名為 `edgesReconnectable`
 
-**Old API**
+**舊 API**
 
 ```js
 <ReactFlow
@@ -153,7 +153,7 @@ We renamed the `onEdgeUpdate` function to `onReconnect` and all related APIs (me
 />
 ```
 
-**New API**
+**新 API**
 
 ```js
 <ReactFlow
@@ -163,11 +163,11 @@ We renamed the `onEdgeUpdate` function to `onReconnect` and all related APIs (me
 />
 ```
 
-### 6. Rename <code>parentNode</code> to <code>parentId</code>
+### 6. 將 <code>parentNode</code> 重新命名為 <code>parentId</code>
 
-If you are working with subflows, you need to rename `node.parentNode` to `node.parentId`. The `parentNode` attribute was a bit misleading, because it was not a reference to the parent node, but the `id` of the parent node.
+如果你正在使用子流程，需要將 `node.parentNode` 重新命名為 `node.parentId`。`parentNode` 屬性有點誤導，因為它不是對父節點的引用，而是父節點的 `id`。
 
-**Old API**
+**舊 API**
 
 ```js
 const nodes = [
@@ -182,7 +182,7 @@ const nodes = [
 ];
 ```
 
-**New API**
+**新 API**
 
 ```js
 const nodes = [
@@ -197,11 +197,11 @@ const nodes = [
 ];
 ```
 
-### 7. Custom node props
+### 7. 自訂節點 props
 
-We renamed the `xPos` and `yPos` props to `positionAbsoluteX` and `positionAbsoluteY`
+我們將 `xPos` 和 `yPos` props 重新命名為 `positionAbsoluteX` 和 `positionAbsoluteY`
 
-**Old API**
+**舊 API**
 
 ```js
 function CustomNode({ xPos, yPos }) {
@@ -209,7 +209,7 @@ function CustomNode({ xPos, yPos }) {
 }
 ```
 
-**New API**
+**新 API**
 
 ```js
 function CustomNode({ positionAbsoluteX, positionAbsoluteY }) {
@@ -217,34 +217,34 @@ function CustomNode({ positionAbsoluteX, positionAbsoluteY }) {
 }
 ```
 
-### 8. Handle component class names
+### 8. 控制點元件類別名稱
 
-We renamed some of the classes used to define the current state of a handle.
+我們重新命名了一些用於定義控制點當前狀態的類別。
 
-- `react-flow__handle-connecting` renamed to `connectingto` / `connectingfrom`
-- `react-flow__handle-valid` renamed to `valid`
+- `react-flow__handle-connecting` 重新命名為 `connectingto` / `connectingfrom`
+- `react-flow__handle-valid` 重新命名為 `valid`
 
-### 9. <code>getNodesBounds</code> options
+### 9. <code>getNodesBounds</code> 選項
 
-The type of the second param changed from `nodeOrigin` to `options.nodeOrigin`
+第二個參數的類型從 `nodeOrigin` 變更為 `options.nodeOrigin`
 
-**Old API**
+**舊 API**
 
 ```js
 const bounds = getNodesBounds(nodes: Node[], nodeOrigin)
 ```
 
-**New API**
+**新 API**
 
 ```js
 const bounds = getNodesBounds(nodes: Node[], { nodeOrigin })
 ```
 
-### 10. Typescript changes for defining nodes and edges
+### 10. 定義節點和連線的 Typescript 變更
 
-We simplified types and fixed issues about functions where users could pass a NodeData generic. The new way is to define your own node type with a union of all your nodes. With this change, you can now have multiple node types with different data structures and always be able to distinguish by checking the `node.type` attribute.
+我們簡化了類型並修復了使用者可以傳遞 NodeData 泛型的函式問題。新方法是使用所有節點的聯集來定義你自己的節點類型。透過這項變更，你現在可以擁有多個具有不同資料結構的節點類型，並且始終可以透過檢查 `node.type` 屬性來區分它們。
 
-**New API**
+**新 API**
 
 ```js
 type NumberNode = Node<{ value: number }, 'number'>;
@@ -265,101 +265,101 @@ const nodes: AppNode[] = [
 const onNodesChange: onNodesChange<AppNode> = useCallback((changes) => setNodes(nds => applyChanges(changes, nds)), []);
 ```
 
-You can read more about this in the [Typescript guide](/learn/advanced-use/typescript).
+你可以在 [Typescript 指南](/learn/advanced-use/typescript)中閱讀更多相關資訊。
 
-### 11. Rename <code>nodeInternals</code>
+### 11. 重新命名 <code>nodeInternals</code>
 
-If you are using `nodeInternals` you need to rename it to `nodeLookup`.
+如果你正在使用 `nodeInternals`，需要將其重新命名為 `nodeLookup`。
 
-**Old API**
+**舊 API**
 
 ```js
 const node = useStore((s) => s.nodeInternals.get(id));
 ```
 
-**New API**
+**新 API**
 
 ```js
 const node = useStore((s) => s.nodeLookup.get(id));
 ```
 
-### 12. Removal of deprecated functions
+### 12. 移除已棄用的函式
 
-We removed the following deprecated functions:
+我們移除了以下已棄用的函式：
 
-- `getTransformForBounds` (replaced by `getViewportForBounds`)
-- `getRectOfNodes` (replaced by `getNodesBounds`)
-- `project` (replaced by `screenToFlowPosition`)
+- `getTransformForBounds`（由 `getViewportForBounds` 取代）
+- `getRectOfNodes`（由 `getNodesBounds` 取代）
+- `project`（由 `screenToFlowPosition` 取代）
 - `getMarkerEndId`
-- `updateEdge` (replaced by `reconnectEdge`)
+- `updateEdge`（由 `reconnectEdge` 取代）
 
-### 13. Custom <code>applyNodeChanges</code> and <code>applyEdgeChanges</code>
+### 13. 自訂 <code>applyNodeChanges</code> 和 <code>applyEdgeChanges</code>
 
-If you wrote your own function for applying changes, you need to handle the new "replace" event. We removed the "reset" event and added a "replace" event that replaces specific nodes or edges.
+如果你編寫了自己的函式來應用變更，需要處理新的 "replace" 事件。我們移除了 "reset" 事件，並新增了 "replace" 事件來取代特定的節點或連線。
 
-## New features
+## 新功能
 
-Now that you successfully migrated to v12, you can use all the fancy features. As mentioned above, the biggest updates for v12 are:
+現在你已成功遷移到 v12，可以使用所有精彩的功能了。如上所述，v12 的最大更新包括：
 
-### 1. Server side rendering
+### 1. 伺服器端渲染
 
-You can define `width`, `height` and `handles` for the nodes. This makes it possible to render a flow on the server and hydrate on the client: [server side rendering guide](/learn/advanced-use/ssr-ssg-configuration).
+你可以為節點定義 `width`、`height` 和 `handles`。這使得在伺服器上渲染流程並在客戶端進行水合成為可能：[伺服器端渲染指南](/learn/advanced-use/ssr-ssg-configuration)。
 
-- **Details:** In v11, `width` and `height` were set by the library as soon as the nodes got measured. This still happens, but we are now using `measured.width` and `measured.height` to store this information. In the previous versions there was always a lot of confusion about `width` and `height`. It’s hard to understand, that you can’t use it for passing an actual width or height. It’s also not obvious that those attributes get added by the library. We think that the new implementation solves both of the problems: `width` and `height` are optional attributes that can be used to define dimensions and everything that is set by the library, is stored in `measured`.
+- **詳細資訊：** 在 v11 中，一旦節點被測量，`width` 和 `height` 就會由函式庫設定。這仍然會發生，但我們現在使用 `measured.width` 和 `measured.height` 來儲存這些資訊。在之前的版本中，`width` 和 `height` 總是讓人感到困惑。很難理解你不能使用它來傳遞實際的寬度或高度。函式庫新增這些屬性也不太明顯。我們認為新的實作解決了這兩個問題：`width` 和 `height` 是可選屬性，可用於定義尺寸，而函式庫設定的所有內容都儲存在 `measured` 中。
 
-### 2. Computing flows
+### 2. 計算流程
 
-The new hooks [`useHandleConnections`](/api-reference/hooks/use-handle-connections) and [`useNodesData`](/api-reference/hooks/use-nodes-data) and the new [`updateNode`](/api-reference/hooks/use-react-flow#update-node) and [`updateNodeData`](/api-reference/hooks/use-react-flow#update-node-data) functions (both are part of `useReactFlow`) can be used to manage the data flow between your nodes: [computing flows guide](/learn/advanced-use/computing-flows). We also added those helpers for edges (`updateEdge` and `updateEdgeData`)!
+新的 hooks [`useHandleConnections`](/api-reference/hooks/use-handle-connections) 和 [`useNodesData`](/api-reference/hooks/use-nodes-data)，以及新的 [`updateNode`](/api-reference/hooks/use-react-flow#update-node) 和 [`updateNodeData`](/api-reference/hooks/use-react-flow#update-node-data) 函式（兩者都是 `useReactFlow` 的一部分）可用於管理節點之間的資料流：[計算流程指南](/learn/advanced-use/computing-flows)。我們也為連線新增了這些輔助函式（`updateEdge` 和 `updateEdgeData`）！
 
-- **Details:** Working with flows where one node data relies on another node is super common. You update node A and want to react on those changes in the connected node B. Until now everyone had to come up with a custom solution. With this version we want to change this and give you performant helpers to handle use cases like this.
+- **詳細資訊：** 使用一個節點的資料依賴於另一個節點的流程非常常見。你更新節點 A，並希望在連接的節點 B 中對這些變更做出反應。到目前為止，每個人都必須想出自訂解決方案。透過這個版本，我們想要改變這一點，並為你提供高效能的輔助函式來處理這樣的使用案例。
 
-### 3. Dark mode and CSS variables
+### 3. 深色模式和 CSS 變數
 
-React Flow now comes with a built-in dark mode, that can be toggled by using the new [`colorMode`](/api-reference/react-flow#color-mode) prop (”light”, “dark” or “system”): [dark mode example](/examples/styling/dark-mode)
+React Flow 現在內建深色模式，可以使用新的 [`colorMode`](/api-reference/react-flow#color-mode) prop（"light"、"dark" 或 "system"）來切換：[深色模式範例](/examples/styling/dark-mode)
 
-- **Details:** With this version we want to make it easier to switch between dark and light modes and give you a better starting point for dark flows. If you pass `colorMode="dark"`, we add the class name "dark" to the wrapper and use it to adjust the styling. To make the implementation for this new feature easier on our ends, we switched to CSS variables for most of the styles. These variables can also be used in user land to customize a flow.
+- **詳細資訊：** 透過這個版本，我們想要讓在深色和淺色模式之間切換變得更容易，並為深色流程提供更好的起點。如果你傳遞 `colorMode="dark"`，我們會將類別名稱 "dark" 新增到包裝器並使用它來調整樣式。為了讓這個新功能的實作在我們這邊更容易，我們將大多數樣式切換到 CSS 變數。這些變數也可以在使用者端用於自訂流程。
 
-### 4. A better DX with TSDoc
+### 4. 使用 TSDoc 提供更好的 DX
 
-We started to use TSDoc for a better DX. While developing your IDE will now show you the documentation for the props and hooks. This is a big step for us to make the library more accessible and easier to use. We will also use TSDoc in the near future to generate the documentation.
+我們開始使用 TSDoc 以提供更好的 DX。在開發時，你的 IDE 現在會顯示 props 和 hooks 的文件。這對我們來說是一大步，使函式庫更易於存取和使用。我們還將在不久的將來使用 TSDoc 來產生文件。
 
-### More features and updates
+### 更多功能和更新
 
-There is more! Besides the new main features, we added some minor things that were on our list for a long time:
+還有更多！除了新的主要功能外，我們還新增了一些長期以來一直在我們清單上的小功能：
 
-- **[`useConnection` hook](/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
-- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](/api-reference/react-flow#viewport) and [`onViewportChange`](/api-reference/react-flow#on-viewport-change).
-- **[`ViewportPortal`](/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
-- **[`onDelete`](/api-reference/react-flow#on-delete) handler**: We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
-- **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) handler**: With this handler you can prevent/ manage deletions.
-- **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
-- **[`autoPanSpeed`](/api-reference/react-flow#autoPanSpeed) prop:** For controlling the speed while auto panning.
-- **[`paneClickDistance`](/api-reference/react-flow#paneClickDistance) prop:** max distance between mousedown/up that will trigger a click.
-- **Background component**: add [`patternClassName`](/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
-- **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
-- **`deleteElements`** now returns deleted nodes and deleted edges
-- add **`origin` attribute** for nodes
-- add **`selectable` attribute** for edges
-- **Node Resizer updates**: child nodes don't move when the group is resized, extent and expand is recognized correctly
-- Correct types for `BezierEdge`, `StepEdge`, `SmoothStepEdge` and `StraightEdge` components
-- New edges created by the library only have `sourceHandle` and `targetHandle` attributes when those attributes are set. (We used to pass `sourceHandle: null` and `targetHandle: null`)
-- Edges do not mount/unmount when their z-index change
-- connection line knows about the target handle position so that the path is drawn correctly
-- `nodeDragThreshold` is 1 by default instead of 0
-- a better selection box usability (capture while dragging out of the flow)
-- add `selectable`, `deletable`, `draggable` and `parentId` to `NodeProps`
-- add a warning when styles not loaded
+- **[`useConnection` hook](/api-reference/hooks/use-connection)：** 使用此 hook，你可以存取正在進行的連接。例如，你可以使用它根據當前的開始/結束控制點來為控制點著色或設定自訂連接線的樣式。
+- **受控 `viewport`：** 這是一個進階功能。可能的使用案例包括為視口新增動畫或針對低解析度螢幕四捨五入轉換等。此功能帶來兩個新的 props：[`viewport`](/api-reference/react-flow#viewport) 和 [`onViewportChange`](/api-reference/react-flow#on-viewport-change)。
+- **[`ViewportPortal`](/api-reference/components/viewport-portal) 元件：** 這使得可以在視口中渲染元素，而無需實作自訂節點。
+- **[`onDelete`](/api-reference/react-flow#on-delete) 處理程序**：我們新增了 `onDeleteNodes` 和 `onDeleteEdges` 的組合處理程序，使對刪除操作做出反應變得更容易。
+- **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) 處理程序**：使用此處理程序，你可以阻止/管理刪除操作。
+- **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop：** 這使得可以為所有連接實作一個驗證函式。它也會在以程式方式新增連線時被呼叫。
+- **[`autoPanSpeed`](/api-reference/react-flow#autoPanSpeed) prop：** 用於控制自動平移時的速度。
+- **[`paneClickDistance`](/api-reference/react-flow#paneClickDistance) prop：** mousedown/up 之間會觸發點擊的最大距離。
+- **Background 元件**：新增 [`patternClassName`](/api-reference/components/background#pattern-class-name) prop，以便能夠使用類別名稱來設定背景圖案的樣式。例如，如果你想使用 Tailwind 設定背景圖案的樣式，這會很有用。
+- **`onMove` 回呼**會在函式庫呼叫的視口更新（如 fitView 或 zoom-in）時觸發
+- **`deleteElements`** 現在回傳已刪除的節點和已刪除的連線
+- 為節點新增 **`origin` 屬性**
+- 為連線新增 **`selectable` 屬性**
+- **Node Resizer 更新**：調整群組大小時，子節點不會移動，範圍和展開會被正確識別
+- 修正 `BezierEdge`、`StepEdge`、`SmoothStepEdge` 和 `StraightEdge` 元件的類型
+- 函式庫建立的新連線僅在設定這些屬性時才具有 `sourceHandle` 和 `targetHandle` 屬性。（我們過去會傳遞 `sourceHandle: null` 和 `targetHandle: null`）
+- 連線在 z-index 變更時不會掛載/卸載
+- 連接線知道目標控制點的位置，因此路徑會正確繪製
+- `nodeDragThreshold` 預設為 1 而不是 0
+- 更好的選擇框可用性（在拖曳出流程時捕獲）
+- 將 `selectable`、`deletable`、`draggable` 和 `parentId` 新增到 `NodeProps`
+- 在未載入樣式時新增警告
 
-### Internal changes
+### 內部變更
 
-These changes are not really user-facing, but it could be important for folks who are working with the internal React Flow store:
+這些變更並不真正面向使用者，但對於使用內部 React Flow store 的人來說可能很重要：
 
-- The biggest internal change is that we created a new package **@xyflow/system with framework agnostic helpers** that can be used by React Flow and Svelte Flow
-  - **XYDrag** for handling dragging node(s) and selection
-  - **XYPanZoom** for controlling the viewport panning and zooming
-  - **XYHandle** for managing new connections
-- We renamed `nodeInternals` to `nodeLookup`. That map serves as a lookup, but we are not creating a new map object on any change so it’s really only useful as a lookup.
-- We removed the internal "reset" event and added a "replace" event to be able to update specific nodes.
-- We removed `connectionNodeId`, `connectionHandleId`, `connectionHandleType` from the store and added `connection.fromHandle.nodeId`, `connection.fromHandle.id`, …
-- add `data-id` to edges
-- `onNodeDragStart`, `onNodeDrag` and `onNodeDragStop` also get called when user drags a selection (in addition to `onSelectionDragStart`, `onSelectionDrag`, `onSelectionDragStop`)
+- 最大的內部變更是我們建立了一個新套件 **@xyflow/system，其中包含與框架無關的輔助函式**，可供 React Flow 和 Svelte Flow 使用
+  - **XYDrag** 用於處理拖曳節點和選擇
+  - **XYPanZoom** 用於控制視口平移和縮放
+  - **XYHandle** 用於管理新連接
+- 我們將 `nodeInternals` 重新命名為 `nodeLookup`。該映射用作查找，但我們不會在任何變更時建立新的映射物件，因此它實際上僅用作查找。
+- 我們移除了內部的 "reset" 事件，並新增了 "replace" 事件以能夠更新特定節點。
+- 我們從 store 中移除了 `connectionNodeId`、`connectionHandleId`、`connectionHandleType`，並新增了 `connection.fromHandle.nodeId`、`connection.fromHandle.id`...
+- 為連線新增 `data-id`
+- 當使用者拖曳選擇時，`onNodeDragStart`、`onNodeDrag` 和 `onNodeDragStop` 也會被呼叫（除了 `onSelectionDragStart`、`onSelectionDrag`、`onSelectionDragStop`）

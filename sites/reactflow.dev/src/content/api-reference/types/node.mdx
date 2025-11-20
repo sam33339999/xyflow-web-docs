@@ -1,41 +1,31 @@
 ---
 description:
-  'The Node type represents everything React Flow needs to know about a given node.
-  Many of these properties can be manipulated both by React Flow or by you, but
-  some such as width and height should be considered read-only.'
+  'Node 類型代表 React Flow 需要了解的節點所有資訊。這些屬性中許多可以由 React Flow 或您操作，但某些屬性如 width 和 height 應視為唯讀。'
 ---
 
 # Node
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/nodes.ts/#L10)
 
-The `Node` type represents everything React Flow needs to know about a given node.
-Many of these properties can be manipulated both by React Flow or by you, but
-some such as `width` and `height` should be considered read-only.
+`Node` 類型代表 React Flow 需要了解的節點所有資訊。這些屬性中許多可以由 React Flow 或您操作，但某些屬性如 `width` 和 `height` 應視為唯讀。
 
 ## Fields
 
 <APIDocs typeName="Node" packageName="react" />
 
-## Default node types
+## 預設節點類型
 
-You can create any of React Flow's default nodes by setting the `type` property
-to one of the following values:
+您可以透過將 `type` 屬性設定為以下值之一來建立任何 React Flow 的預設節點：
 
 - `"default"`
 - `"input"`
 - `"output"`
 - `"group"`
 
-If you don't set the `type` property at all, React Flow will fallback to the
-`"default"` node with both an input and output port.
+如果您完全不設定 `type` 屬性，React Flow 將退回到具有輸入和輸出端口的 `"default"` 節點。
 
-These default nodes are available even if you set the [`nodeTypes`](/api-reference/react-flow#node-types)
-prop to something else, unless you override any of these keys directly.
+即使您將 [`nodeTypes`](/api-reference/react-flow#node-types) prop 設定為其他內容，這些預設節點仍然可用，除非您直接覆寫任何這些鍵。
 
-## Notes
+## 注意事項
 
-- You shouldn't try to set the `width` or `height` of a node directly. It is
-  calculated internally by React Flow and used when rendering the node in the
-  viewport. To control a node's size you should use the `style` or `className`
-  props to apply CSS styles instead.
+- 您不應嘗試直接設定節點的 `width` 或 `height`。它由 React Flow 內部計算，並在視口中渲染節點時使用。要控制節點的大小，您應該使用 `style` 或 `className` props 來套用 CSS 樣式。

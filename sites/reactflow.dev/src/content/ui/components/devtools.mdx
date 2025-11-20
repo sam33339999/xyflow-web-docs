@@ -1,22 +1,21 @@
 ---
 title: DevTools
-description: A debugging tool that provides data on the viewport, the state of each node, and logs change events.
+description: 提供視口、每個節點狀態資料並記錄變更事件的除錯工具。
 ---
 
 import UiComponentViewer from '@/components/ui-component-viewer.mdx';
 
 # DevTools
 
-A debugging tool that provides data on the viewport, the state of each node, and logs change events. This component
-is based on [DevTools and Debugging](/learn/advanced-use/devtools-and-debugging) under Advanced Use.
+提供視口、每個節點狀態資料並記錄變更事件的除錯工具。此元件基於進階用法下的 [DevTools 和除錯](/learn/advanced-use/devtools-and-debugging)。
 
-You can import the entire `<DevTools />` component, or optionally, import individual components for greater flexibility. These components include:
+你可以匯入整個 `<DevTools />` 元件，或選擇性地匯入個別元件以獲得更大的彈性。這些元件包括：
 
-- A `<ViewportLogger />` component that shows the current position and zoom level of the viewport.
-- A `<NodeInspector />` component that reveals the state of each node.
-- A `<ChangeLogger />` that wraps your flow’s onNodesChange handler and logs each change as it is dispatched.
+- `<ViewportLogger />` 元件，顯示視口的目前位置和縮放級別。
+- `<NodeInspector />` 元件，顯示每個節點的狀態。
+- `<ChangeLogger />`，包裝你的流程的 onNodesChange 處理器並記錄每個分派的變更。
 
-You can read more about the individual components at [DevTools and Debugging](/learn/advanced-use/devtools-and-debugging). While we find these tools useful for making sure React Flow is working properly, you might also find them useful for debugging your applications as your flows and their interactions become more complex.
+你可以在 [DevTools 和除錯](/learn/advanced-use/devtools-and-debugging)中閱讀更多關於個別元件的資訊。雖然我們發現這些工具對於確保 React Flow 正常運作很有用，但隨著流程及其互動變得更加複雜，你可能也會發現它們對於除錯應用程式很有用。
 
 <UiComponentViewer id="devtools" />
 

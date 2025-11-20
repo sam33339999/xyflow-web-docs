@@ -1,23 +1,19 @@
 ---
 description:
-  'Where a Connection is the minimal description of an edge between two nodes,
-  an `Edge` is the complete description with everything React Flow needs to know
-  in order to render it.'
+  'Connection 是兩個節點之間連線的最小描述，而 Edge 則是包含 React Flow 渲染所需所有資訊的完整描述。'
 ---
 
 # Edge
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L34-L353)
 
-Where a [`Connection`](/api-reference/types/connection) is the minimal description of an edge between
-two nodes, an `Edge` is the complete description with everything React Flow needs
-to know in order to render it.
+[`Connection`](/api-reference/types/connection) 是兩個節點之間連線的最小描述，而 `Edge` 則是包含 React Flow 渲染所需所有資訊的完整描述。
 
 ```ts
 export type Edge<T> = DefaultEdge<T> | SmoothStepEdge<T> | BezierEdge<T>;
 ```
 
-## Variants
+## 變體
 
 ### Edge
 
@@ -29,7 +25,7 @@ export type Edge<T> = DefaultEdge<T> | SmoothStepEdge<T> | BezierEdge<T>;
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L45-L46)
 
-The `SmoothStepEdge` variant has all the same fields as an `Edge`, but it also has the following additional fields:
+`SmoothStepEdge` 變體具有與 `Edge` 相同的所有欄位，但它還有以下額外的欄位：
 
 {/* type SmoothStepEdge isn't exported, and conflicts with SmoothStepEdge component name */}
 <APIDocs code={`
@@ -44,7 +40,7 @@ export default $
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L52-L53)
 
-The `BezierEdge` variant has all the same fields as an `Edge`, but it also has the following additional fields:
+`BezierEdge` 變體具有與 `Edge` 相同的所有欄位，但它還有以下額外的欄位：
 
 {/* type BezierEdge isn't exported, and conflicts with BezierEdge component name */}
 <APIDocs code={`
@@ -55,10 +51,9 @@ type $ = {
 export default $
 `} />
 
-## Default edge types
+## 預設連線類型
 
-You can create any of React Flow's default edges by setting the `type` property
-to one of the following values:
+你可以透過將 `type` 屬性設定為以下值之一來建立 React Flow 的任何預設連線：
 
 - `"default"`
 - `"straight"`
@@ -66,8 +61,6 @@ to one of the following values:
 - `"smoothstep"`
 - `"simplebezier"`
 
-If you don't set the `type` property at all, React Flow will fallback to the
-`"default"` bezier curve edge type.
+如果你完全不設定 `type` 屬性，React Flow 將預設使用 `"default"` 貝茲曲線連線類型。
 
-These default edges are available even if you set the [`edgeTypes`](/api-reference/react-flow#edge-types)
-prop to something else, unless you override any of these keys directly.
+即使你將 [`edgeTypes`](/api-reference/react-flow#edge-types) 屬性設定為其他值，這些預設連線仍然可用，除非你直接覆寫這些鍵值。

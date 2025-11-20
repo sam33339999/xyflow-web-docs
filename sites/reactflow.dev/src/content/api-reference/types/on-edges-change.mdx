@@ -4,7 +4,7 @@ description: ''
 
 # OnEdgesChange
 
-This type is used for typing the [`onEdgesChange`](/api-reference/react-flow#on-edges-change) function.
+此類型用於為 [`onEdgesChange`](/api-reference/react-flow#on-edges-change) 函數進行型別定義。
 
 ```tsx
 export type OnEdgesChange<EdgeType extends Edge = Edge> = (
@@ -16,10 +16,9 @@ export type OnEdgesChange<EdgeType extends Edge = Edge> = (
 
 <APIDocs typeName="OnEdgesChange" />
 
-## Usage
+## 使用方式
 
-This type accepts a generic type argument of custom edge types. See this
-[section in our Typescript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+此類型接受自訂連線類型的泛型參數。更多資訊請參閱我們的 [TypeScript 指南中的這個章節](/learn/advanced-use/typescript#nodetype-edgetype-unions)。
 
 ```tsx
 const onEdgesChange: OnEdgesChange = useCallback(
