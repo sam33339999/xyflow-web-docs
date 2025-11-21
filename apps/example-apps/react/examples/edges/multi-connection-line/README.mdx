@@ -1,16 +1,12 @@
 ---
-title: Multi Connection Line
-description: Draw multiple connection lines at once from any selected nodes.
+title: 多重連接線
+description: 從任何選取的節點同時繪製多條連接線。
 ---
 
-React Flow typically only allows one connection to be created at a time. This
-example builds on the [custom connection line](/examples/edges/custom-connectionline)
-example to show how to draw multiple connection lines from any selected nodes at
-once.
+React Flow 通常一次只允許建立一個連接。這個範例基於[自訂連接線](/examples/edges/custom-connectionline)範例，展示如何同時從任何選取的節點繪製多條連接線。
 
 <Callout type="info">
-  Pay attention to the `onConnect` handler. If you forget to include this then
-  only one connection will be created even if you have multiple selected nodes!
+  注意 `onConnect` 處理器。如果你忘記包含它，即使你選取了多個節點，也只會建立一個連接！
 </Callout>
 
 <RemoteCodeViewer
@@ -19,8 +15,5 @@ once.
 />
 
 <Callout type="warning">
-  This example makes use of the special `internalsSymbol` to access properties
-  on a node you won't typically need access to. Properties hidden behind this
-  symbol don't have the same stability guarantees as the public API, so use them
-  with caution.
+  這個範例使用特殊的 `internalsSymbol` 來存取節點上你通常不需要存取的屬性。隱藏在此符號後面的屬性沒有與公開 API 相同的穩定性保證，因此請謹慎使用。
 </Callout>

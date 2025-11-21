@@ -1,61 +1,36 @@
 ---
-title: Connection Events
+title: 連接事件
 description:
-  React Flow emits different events during the connection process. Use this example
-  to get an overview of those events and what order they are called in.
+  React Flow 在連接過程中會發出不同的事件。使用這個範例來了解這些事件以及它們的呼叫順序。
 ---
 
-React Flow emits different events during the connection process that you can use
-to update your UI or your flow in different ways. The example below demonstrates
-which events are fired and when.
+React Flow 在連接過程中會發出不同的事件，你可以用它們以不同的方式更新你的 UI 或流程圖。下面的範例展示哪些事件被觸發以及何時觸發。
 
 <RemoteCodeViewer
   route="examples/interaction/connection-events"
   framework="react"
 />
 
-For a **new connection** created by dragging from a handle, the following events
-are called in order:
+對於透過從連接點拖曳建立的**新連接**，以下事件會按順序被呼叫：
 
-- [`onConnectStart`](/api-reference/react-flow#on-connect-start) is called with
-  the mouse event and an object containing the source node, potentially the source
-  handle id, and the handle type.
+- [`onConnectStart`](/api-reference/react-flow#on-connect-start) 接收滑鼠事件和一個包含來源節點、可能的來源連接點 id 以及連接點類型的物件。
 
-- [`onConnect`](/api-reference/react-flow#on-connect) is only called when the
-  connection is released on a handle that [is connectable](/api-reference/components/handle#is-connectable).
-  It is called with a complete [connection object](/api-reference/types/connection)
-  containing the source and target node, and the source and target handle ids if
-  present.
+- [`onConnect`](/api-reference/react-flow#on-connect) 只在連接被釋放到[可連接](/api-reference/components/handle#is-connectable)的連接點時被呼叫。它接收一個完整的[連接物件](/api-reference/types/connection)，包含來源和目標節點，以及來源和目標連接點 id（如果存在）。
 
-- [`onConnectEnd`](/api-reference/react-flow#on-connect-end) is called when a
-  connection is released, regardless of whether it was successful or not. It is
-  called with the mouse event.
+- [`onConnectEnd`](/api-reference/react-flow#on-connect-end) 在連接被釋放時被呼叫，無論是否成功。它接收滑鼠事件。
 
-When an edge is **reconnected** by dragging an existing edge, the following events
-are called in order:
+當透過拖曳現有邊線來**重新連接**邊線時，以下事件會按順序被呼叫：
 
-- [`onReconnectStart`](/api-reference/react-flow#on-reconnect-start) is called when
-  a [reconnectable edge](/api-reference/types/edge#reconnectable) is picked up.
-  It is called with the mouse event, the edge object that is being reconnected,
-  and the type of the stable handle.
+- [`onReconnectStart`](/api-reference/react-flow#on-reconnect-start) 在[可重新連接的邊線](/api-reference/types/edge#reconnectable)被拾起時被呼叫。它接收滑鼠事件、正在重新連接的邊線物件以及穩定連接點的類型。
 
-- [`onConnectStart`](/api-reference/react-flow#on-connect-start) is called as
-  above.
+- [`onConnectStart`](/api-reference/react-flow#on-connect-start) 如上所述被呼叫。
 
-- [`onReconnect`](/api-reference/react-flow#on-reconnect) is called when the edge
-  is released on a handle that is [reconnectable](/api-reference/types/edge#reconnectable).
-  It is called with the old [edge object](/api-reference/types/edge) and the new
-  [connection object](/api-reference/types/connection).
+- [`onReconnect`](/api-reference/react-flow#on-reconnect) 在邊線被釋放到[可重新連接](/api-reference/types/edge#reconnectable)的連接點時被呼叫。它接收舊的[邊線物件](/api-reference/types/edge)和新的[連接物件](/api-reference/types/connection)。
 
-- [`onConnectEnd`](/api-reference/react-flow#on-connect-end) is called as above.
+- [`onConnectEnd`](/api-reference/react-flow#on-connect-end) 如上所述被呼叫。
 
-- [`onReconnectEnd`](/api-reference/react-flow#on-reconnect-end) is called when
-  the edge is released, regardless of whether the reconnection was successful or
-  not. It is called with the mouse event, the edge that was picked up, and the
-  type of the stable handle.
+- [`onReconnectEnd`](/api-reference/react-flow#on-reconnect-end) 在邊線被釋放時被呼叫，無論重新連接是否成功。它接收滑鼠事件、被拾起的邊線以及穩定連接點的類型。
 
 <Callout type="info">
-  You can see many of these events in use in our [add node on edge
-  drop](/examples/nodes/add-node-on-edge-drop) and [temporary
-  edges](/examples/edges/temporary-edges) examples!
+  你可以在我們的[放下邊線時加入節點](/examples/nodes/add-node-on-edge-drop)和[臨時邊線](/examples/edges/temporary-edges)範例中看到許多這些事件的使用！
 </Callout>

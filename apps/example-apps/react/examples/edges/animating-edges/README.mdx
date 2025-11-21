@@ -1,40 +1,28 @@
 ---
-title: Animating Edges
-description: Create edge animations that go beyond the built-in animated edge.
+title: 動畫邊線
+description: 建立超越內建動畫邊線的邊線動畫。
 preview_path: react/examples/edges/animating-edges-svg/preview.jpg
 ---
 
-React Flow provides a simple built-in animation for the default edge type, but
-it is possible to create more advanced animations by using custom edges. Below
-are a collection of examples showing different ways an edge path might be used
-in
+React Flow 為預設邊線類型提供簡單的內建動畫，但透過使用自訂邊線可以建立更進階的動畫。以下是一系列範例，展示邊線路徑可能被使用的不同方式
 
-## Animating SVG elements
+## 動畫 SVG 元素
 
-It is possible to animate an SVG element along a path using the `<animateMotion />`
-element. This example creates a custom edge that animates a circle along the edge
-path.
+可以使用 `<animateMotion />` 元素沿著路徑動畫 SVG 元素。這個範例建立一個自訂邊線，沿著邊線路徑動畫一個圓形。
 
 <RemoteCodeViewer
   route="examples/edges/animating-edges-svg"
   framework="react"
 />
 
-## Animating other nodes
+## 動畫其他節點
 
-If you want to animate more than SVG along an edge, you can do that with the
-Web Animations API. This example demonstrates how to animate another node in the
-flow along an edge path by using the `offsetPath` property and animating the
-`offsetDistance` property.
+如果你想沿著邊線動畫更多 SVG 以外的內容，可以使用 Web Animations API。這個範例展示如何透過使用 `offsetPath` 屬性並動畫 `offsetDistance` 屬性，沿著邊線路徑動畫流程圖中的另一個節點。
 
 <RemoteCodeViewer route="examples/edges/animating-edges" framework="react" />
 
-There are some important details in this example to take note of:
+在這個範例中有一些需要注意的重要細節：
 
-- The animated node has its [`draggable`](/api-reference/types/node#draggable)
-  property set to `false` while the animation is running. This prevents a user
-  moving the node around and breaking the animation path.
+- 在動畫執行期間，動畫節點的 [`draggable`](/api-reference/types/node#draggable) 屬性設定為 `false`。這可以防止使用者移動節點並破壞動畫路徑。
 
-- The animation path and the animation itself are set up in separate `useEffect`
-  hooks. This lets the animation continue playing smoothly even if the edge path
-  is recalculated (for example when the source or target nodes are dragged.)
+- 動畫路徑和動畫本身在不同的 `useEffect` 鉤子中設定。這讓動畫即使在邊線路徑重新計算時（例如當來源或目標節點被拖曳時）也能繼續平滑播放。

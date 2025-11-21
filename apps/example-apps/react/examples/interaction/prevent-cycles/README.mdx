@@ -1,13 +1,9 @@
 ---
-title: Preventing Cycles
-description: Check if a new connection would cause a cycle in the graph
+title: 防止循環
+description: 檢查新連接是否會在圖表中造成循環
 ---
 
-In the [validation](/examples/interaction/validation) example, we saw how to use
-the [`isValidConnection`](/api-reference/react-flow#is-valid-connection) callback
-to prevent certain connections from being created. This example shows how to use
-the [`getOutgoers`](/api-reference/utils/get-outgoers) util to check if a new
-connection would cause a cycle in the flow.
+在[驗證](/examples/interaction/validation)範例中，我們看到如何使用 [`isValidConnection`](/api-reference/react-flow#is-valid-connection) 回呼來防止建立某些連接。這個範例展示如何使用 [`getOutgoers`](/api-reference/utils/get-outgoers) 工具來檢查新連接是否會在流程圖中造成循環。
 
 <RemoteCodeViewer
   route="examples/interaction/prevent-cycles"
