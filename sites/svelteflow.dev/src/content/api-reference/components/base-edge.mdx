@@ -1,17 +1,16 @@
 ---
-title: The BaseEdge component
+title: BaseEdge 元件
 sidebarTitle: '<BaseEdge />'
 description:
-  'The BaseEdge component gets used internally for all the edges. It can be used inside a
-  custom edge and handles the invisible helper edge and the edge label for you.'
+  'BaseEdge 元件在內部用於所有連線。它可以在自訂連線中使用，並為你處理不可見的輔助連線和連線標籤。'
 ---
 
 # \<BaseEdge />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/edges/BaseEdge.svelte)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/edges/BaseEdge.svelte)
 
-The `<BaseEdge />` component gets used internally for all the edges. It can be used inside
-a custom edge and handles the invisible helper edge and the edge label for you.
+`<BaseEdge />` 元件在內部用於所有連線。它可以在自訂連線中使用，
+並為你處理不可見的輔助連線和連線標籤。
 
 ```svelte filename="CustomEdge.svelte"
 <script lang="ts">
@@ -45,19 +44,19 @@ a custom edge and handles the invisible helper edge and the edge label for you.
 />
 ```
 
-## Props
+## 屬性
 
-The type for props of `<BaseEdge />` component is exported as `BaseEdgeProps`.
-Additionally, it extends the props of `<svg />`.
+`<BaseEdge />` 元件的屬性類型導出為 `BaseEdgeProps`。
+此外，它擴展了 `<svg />` 的屬性。
 
 <APIDocs
   componentName="BaseEdge"
   groupKeys="Omit<HTMLAttributes<SVGPathElement>, 'd' | 'path' | 'markerStart' | 'markerEnd'>"
 />
 
-## Notes
+## 注意事項
 
-- If you want to use an edge marker with the `<BaseEdge />` component, you can pass the
-  `markerStart` or `markerEnd` props passed to your custom edge through to the
-  `<BaseEdge />` component. You can see all the props passed to a custom edge by looking
-  at the [`EdgeProps`](/api-reference/types/edge-props) type.
+- 如果你想要在 `<BaseEdge />` 元件中使用連線標記，可以將傳遞給自訂連線的
+  `markerStart` 或 `markerEnd` 屬性傳遞給 `<BaseEdge />` 元件。
+  你可以透過查看 [`EdgeProps`](/api-reference/types/edge-props) 類型來查看
+  傳遞給自訂連線的所有屬性。

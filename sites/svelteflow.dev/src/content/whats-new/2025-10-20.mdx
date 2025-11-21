@@ -5,29 +5,19 @@ authors: [xyflow]
 date: '2025-10-20'
 ---
 
-Lots of improvements in this release! We added a new `EdgeToolbar` component, it's now
-possible to start a selection above a node and child nodes of different parents won't
-overlap anymore:
+本版本進行了大量改進！我們新增了一個新的 `EdgeToolbar` 元件，現在可以在節點上方開始選取，而且不同父節點的子節點不會再重疊：
 
-### Minor Changes
+### 次要變更
 
-- [#5544](https://github.com/xyflow/xyflow/pull/5544) Add `EdgeToolbar` component
-- [#5550](https://github.com/xyflow/xyflow/pull/5550) Prevent child nodes of different
-  parents from overlapping
-- [#5551](https://github.com/xyflow/xyflow/pull/5551) Allow to start a selection above a
-  node
-- [#5526](https://github.com/xyflow/xyflow/pull/5526) Add `resizeDirection` prop to
-  `ResizeControls`
+- [#5544](https://github.com/xyflow/xyflow/pull/5544) 新增 `EdgeToolbar` 元件
+- [#5550](https://github.com/xyflow/xyflow/pull/5550) 防止不同父節點的子節點重疊
+- [#5551](https://github.com/xyflow/xyflow/pull/5551) 允許在節點上方開始選取
+- [#5526](https://github.com/xyflow/xyflow/pull/5526) 為 `ResizeControls` 新增 `resizeDirection` 屬性
 
-### Patch Changes
+### 修補變更
 
-- [#5538](https://github.com/xyflow/xyflow/pull/5538) Suppress
-  `svelte/prefer-svelte-reactivity` warnings
-- [#5529](https://github.com/xyflow/xyflow/pull/5529) Fix selected set to false on every
-  node and edge eagerly
-- [#5528](https://github.com/xyflow/xyflow/pull/5528) Let `NodeResizer` props change
-  during ongoing resize
-- [#5546](https://github.com/xyflow/xyflow/pull/5546) Do not crash mini map if all nodes
-  are hidden
-- [#5547](https://github.com/xyflow/xyflow/pull/5547) Always call `onMoveEnd` when
-  `onMoveStart` was called
+- [#5538](https://github.com/xyflow/xyflow/pull/5538) 抑制 `svelte/prefer-svelte-reactivity` 警告
+- [#5529](https://github.com/xyflow/xyflow/pull/5529) 修正每個節點和邊緣的 selected 急切設定為 false 的問題
+- [#5528](https://github.com/xyflow/xyflow/pull/5528) 讓 `NodeResizer` 屬性在調整大小期間可以變更
+- [#5546](https://github.com/xyflow/xyflow/pull/5546) 如果所有節點都隱藏，不要讓小地圖崩潰
+- [#5547](https://github.com/xyflow/xyflow/pull/5547) 當 `onMoveStart` 被呼叫時，始終呼叫 `onMoveEnd`

@@ -8,9 +8,9 @@ import { SvelteFlowAPIProps } from '@/references/SvelteFlow.props';
 
 # \<SvelteFlow />
 
-[Source on Github](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/container/SvelteFlow/SvelteFlow.svelte)
+[在 Github 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/container/SvelteFlow/SvelteFlow.svelte)
 
-The `<SvelteFlow />` component is the heart of your Svelte Flow application.
+`<SvelteFlow />` 元件是你的 Svelte Flow 應用程式的核心。
 
 ```svelte
 <script>
@@ -34,73 +34,70 @@ The `<SvelteFlow />` component is the heart of your Svelte Flow application.
 />
 ```
 
-This component takes a lot of different props, most of which are optional. We've
-tried to document them in groups that make sense to help you find your way.
+這個元件接受許多不同的 props，其中大部分是可選的。我們試圖將它們分組記錄，以幫助你找到所需的內容。
 
-## Common props
+## 常用 props
 
-These are the props you will most commonly use when working with Svelte Flow.
+這些是你在使用 Svelte Flow 時最常用的 props。
 
 <SvelteFlowAPIProps group="common" />
 
-## Viewport props
+## 視窗 props
 
 <SvelteFlowAPIProps group="viewport" />
 
-## Node props
+## 節點 props
 
 <SvelteFlowAPIProps group="node" />
 
-## Edge props
+## 邊線 props
 
 <SvelteFlowAPIProps group="edge" />
 
-## Event handlers
+## 事件處理器
 
-### General Events
+### 一般事件
 
 <SvelteFlowAPIProps group="generalEvents" />
 
-### Node Events
+### 節點事件
 
 <SvelteFlowAPIProps group="nodeEvents" />
 
-### Edge Events
+### 邊線事件
 
 <SvelteFlowAPIProps group="edgeEvents" />
 
-### Selection Events
+### 選取事件
 
 <SvelteFlowAPIProps group="selectionEvents" />
 
-### Pane Events
+### 面板事件
 
 <SvelteFlowAPIProps group="paneEvents" />
 
-### Connection Events
+### 連接事件
 
 <SvelteFlowAPIProps group="connectionEvents" />
 
-## Connection line props
+## 連接線 props
 
 <SvelteFlowAPIProps group="connectionLine" />
 
-## Interaction props
+## 互動 props
 
 <SvelteFlowAPIProps group="interaction" />
 
-## Keyboard props
+## 鍵盤 props
 
 <SvelteFlowAPIProps group="keyboard" />
 
-## Style props
+## 樣式 props
 
-Applying certain classes to elements rendered inside the canvas will change how
-interactions are handled. These props let you configure those class names if you
-need to.
+將某些類別應用於畫布內渲染的元素將改變互動的處理方式。如果需要，這些 props 允許你配置這些類別名稱。
 
 <SvelteFlowAPIProps group="style" />
 
-## Notes
+## 注意事項
 
-- The props of this component get exported as `SvelteFlowProps`
+- 此元件的 props 被匯出為 `SvelteFlowProps`

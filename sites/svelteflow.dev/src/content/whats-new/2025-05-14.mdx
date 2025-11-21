@@ -5,18 +5,18 @@ authors: [xyflow]
 date: '2025-05-14'
 ---
 
-# Yeah! Svelte Flow 1.0. is here 🚀
+# 太好了！Svelte Flow 1.0. 正式發布
 
-Svelte Flow 1.0 is based on Svelte 5 and introduces a lot of new features and improvements. Please refer to the [migration guide](/learn/troubleshooting/migrate-to-v1) to see how to upgrade.
+Svelte Flow 1.0 是基於 Svelte 5 開發，引入了許多新功能和改進。請參閱[遷移指南](/learn/troubleshooting/migrate-to-v1)了解如何升級。
 
-### New features
+### 新功能
 
-- **[Reconnect edges](/examples/edges/reconnect-edge)**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges.
-- **Keyboard navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now tab through nodes and edges and move nodes with the arrow keys. Can be disabled via [**disableKeyboardA11y**](/api-reference/svelte-flow#disablekeyboarda11y)
-- **[Click connect](/examples/edges/click-connect)**: You can now create a new connection by clicking on a handle one by one.
-- **[Enhanced ViewportPortal](/api-reference/components/viewport-portal)**: You can now decide if you want to render something below or above the nodes & edges in the viewport.
-- **Improved [fitView](/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
-- **colorModeSSR** prop: You can pass a fallback color mode for server side rendering when colorMode is set to system.
-- [**elevateNodesOnSelect**](/api-reference/svelte-flow#elevateNodesOnSelect) & [**elevateEdgesOnSelect**](/api-reference/svelte-flow#elevateEdgesOnSelect): Control if nodes & edges should be elevated via z-index when selected.
-- [**noDragClass, noWheelClass, noPanClass**](/api-reference/svelte-flow#style-props): You can now modify the class name used to disable dragging, panning and zooming.
-- [**onselectionchange**](/api-reference/svelte-flow#onselectionchange) & [**useOnSelectionChange**](https://svelteflow.dev/api-reference/hooks/use-on-selection-change): You can now listen to selection changes via a callback
+- **[重新連接邊緣](/examples/edges/reconnect-edge)**：您可以使用新的 `<EdgeReconnectAnchor />` 元件來重新連接邊緣。它可以用來在自訂邊緣上新增自訂重新連接點。
+- **鍵盤導航與無障礙功能**：我們新增了鍵盤導航支援並改善了螢幕閱讀器的無障礙性。您現在可以使用 Tab 鍵在節點和邊緣之間切換，並使用方向鍵移動節點。可透過 [**disableKeyboardA11y**](/api-reference/svelte-flow#disablekeyboarda11y) 停用此功能
+- **[點擊連接](/examples/edges/click-connect)**：您現在可以透過逐一點擊控制點來建立新連接。
+- **[增強的 ViewportPortal](/api-reference/components/viewport-portal)**：您現在可以決定是否要在視口中的節點與邊緣下方或上方渲染某些內容。
+- **改善的 [fitView](/api-reference/hooks/use-svelte-flow#fitview)**：我們微調了 `fitView` 函式，使其更適合處理動態新增的節點。
+- **colorModeSSR** 屬性：當 colorMode 設定為 system 時，您可以為伺服器端渲染傳遞一個備用色彩模式。
+- [**elevateNodesOnSelect**](/api-reference/svelte-flow#elevateNodesOnSelect) 與 [**elevateEdgesOnSelect**](/api-reference/svelte-flow#elevateEdgesOnSelect)：控制節點與邊緣在被選取時是否應該透過 z-index 提升。
+- [**noDragClass、noWheelClass、noPanClass**](/api-reference/svelte-flow#style-props)：您現在可以修改用於停用拖曳、平移和縮放的類別名稱。
+- [**onselectionchange**](/api-reference/svelte-flow#onselectionchange) 與 [**useOnSelectionChange**](https://svelteflow.dev/api-reference/hooks/use-on-selection-change)：您現在可以透過回呼函式監聽選取變更

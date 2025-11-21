@@ -1,22 +1,18 @@
 ---
 description:
-  'Returns the bounding box that contains all the given nodes in an array. This can
-  be useful when combined with getTransformForBounds to calculate the correct
-  transform to fit the given nodes in a viewport.'
+  '返回包含陣列中所有給定節點的邊界框。這在與 getTransformForBounds 結合使用時很有用，可以計算正確的轉換以將給定的節點適配到視窗中。'
 ---
 
 import { Callout } from 'nextra/components';
 
 # getNodesBounds()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L195-L229)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/graph.ts/#L195-L229)
 
-Returns the bounding box that contains all the given nodes in an array. This can
-be useful when combined with [`getViewportForBounds`](/api-reference/utils/get-viewport-for-bounds)
-to calculate the correct transform to fit the given nodes in a viewport.
+返回包含陣列中所有給定節點的邊界框。這在與 [`getViewportForBounds`](/api-reference/utils/get-viewport-for-bounds) 結合使用時很有用，可以計算正確的轉換以將給定的節點適配到視窗中。
 
 <Callout type="info">
-  This function was previously called `getRectOfNodes`, which will be removed in v12.
+  此函式先前稱為 `getRectOfNodes`，將在 v12 中移除。
 </Callout>
 
 ```js

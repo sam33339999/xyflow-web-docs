@@ -1,15 +1,13 @@
 ---
 description:
-  Function type that determines whether a connection between nodes is valid in SvelteFlow.
+  函式類型，用於判斷 SvelteFlow 中節點之間的連接是否有效。
 ---
 
 # IsValidConnection
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L43)
+[GitHub 原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L43)
 
-The `IsValidConnection` type is a function that determines whether a connection between
-nodes is valid. It receives an edge or connection object and returns a boolean indicating
-whether the connection is valid.
+`IsValidConnection` 類型是一個函式，用於判斷節點之間的連接是否有效。它接收一個邊或連接物件，並回傳一個布林值，指示該連接是否有效。
 
 ```ts
 type IsValidConnection = (edge: Edge | Connection) => boolean;

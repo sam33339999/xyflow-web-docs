@@ -1,26 +1,26 @@
 ---
-description: When and how to remove the Svelte Flow attribution from your flows.
+description: 何時以及如何從你的流程中移除 Svelte Flow 標註。
 ---
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Remove Attribution
+# 移除標註
 
 <Callout type="info">
-If you’re considering removing the attribution, we’d first like to mention:
+如果你正在考慮移除標註,我們首先想提一下:
 
-**If you’re using Svelte Flow at your organization and making money from it**, we rely on your support to keep Svelte Flow developed and maintained under an MIT License. Before you remove the attribution, [see the ways you can support Svelte Flow to keep it running](/support-us).
+**如果你在組織中使用 Svelte Flow 並從中獲利**,我們依賴你的支持,以便在 MIT 許可證下繼續開發和維護 Svelte Flow。在你移除標註之前,[請查看你可以支持 Svelte Flow 以保持其運作的方式](/support-us)。
 
-**Are you using Svelte Flow for a personal project?** Great! Go ahead and remove the attribution. You can support us by reporting any bugs you find, sending us screenshots of your projects, and starring us on [Github](https://github.com/xyflow/xyflow). If you start making money using Svelte Flow or use it in an organization in the future, we would ask that you re-add the attribution or become a Github or Open Collective Sponsor.
+**你正在將 Svelte Flow 用於個人專案嗎?** 太好了!請隨意移除標註。你可以透過回報你發現的任何錯誤、向我們發送專案的截圖,以及在 [Github](https://github.com/xyflow/xyflow) 上給我們星標來支持我們。如果你將來開始使用 Svelte Flow 賺錢或在組織中使用它,我們希望你重新添加標註或成為 Github 或 Open Collective 贊助者。
 
-Thank you for supporting us ✌🏻
+感謝你支持我們 ✌🏻
 
-- [the xyflow team](https://xyflow.com/about)
+- [xyflow 團隊](https://xyflow.com/about)
 
 </Callout>
 
-To remove our attribution in the corner of your application you can pass `hideAttribution` through `proOptions` prop to the `<SvelteFlow />` component.
+要移除應用程式角落的標註,你可以透過 `proOptions` 屬性將 `hideAttribution` 傳遞給 `<SvelteFlow />` 元件。
 
 ```svelte filename="App.svelte"
 <script>

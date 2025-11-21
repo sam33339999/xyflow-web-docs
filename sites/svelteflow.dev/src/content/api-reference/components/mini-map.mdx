@@ -1,19 +1,16 @@
 ---
-title: The MiniMap component
+title: MiniMap 元件
 sidebarTitle: '<MiniMap />'
 description:
-  The MiniMap component renders an overview of your flow. It renders each node as
-  an SVG element and visualizes where the current viewport is in relation to the
-  rest of the flow.
+  MiniMap 元件會渲染你的流程概覽。它將每個節點渲染為 SVG 元素，並視覺化顯示目前視口相對於流程其他部分的位置。
 ---
 
 # \<MiniMap />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Minimap/Minimap.svelte)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Minimap/Minimap.svelte)
 
-The `<MiniMap />` component can be used to render an overview of your flow. It
-renders each node as an SVG element and visualizes where the current viewport is
-in relation to the rest of the flow.
+`<MiniMap />` 元件可用於渲染你的流程概覽。它將每個節點渲染為 SVG 元素，
+並視覺化顯示目前視口相對於流程其他部分的位置。
 
 ```svelte
 <script lang="ts">
@@ -29,19 +26,18 @@ in relation to the rest of the flow.
 </SvelteFlow>
 ```
 
-## Props
+## 屬性
 
-The type for props of `<MiniMap />` component is exported as `MiniMapProps`. Additionally, it extends the props of `<div />`.
+`<MiniMap />` 元件的屬性類型導出為 `MiniMapProps`。此外，它擴展了 `<div />` 的屬性。
 
 <APIDocs componentName="MiniMap" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
-## Examples
+## 範例
 
-### Making the mini map interactive
+### 讓小地圖可互動
 
-By default, the mini map is non-interactive. To allow users to interact with the
-viewport by panning or zooming the minimap, you can set either of the `zoomable`
-or `pannable` (or both!) props to `true`.
+預設情況下，小地圖是不可互動的。若要允許使用者透過平移或縮放小地圖來與視口互動，
+你可以將 `zoomable` 或 `pannable`（或兩者！）屬性設定為 `true`。
 
 ```svelte
 <script lang="ts">
@@ -58,13 +54,13 @@ or `pannable` (or both!) props to `true`.
 </SvelteFlow>
 ```
 
-### Customising mini map node color
+### 自訂小地圖節點顏色
 
-The `nodeColor`, `nodeStrokeColor`, and `nodeClassName` props can be a function
-that takes a [`Node`](/api-reference/types/node) and computes a value for the prop. This can
-be used to customize the appearance of each mini map node.
+`nodeColor`、`nodeStrokeColor` 和 `nodeClassName` 屬性可以是一個函數，
+它接受一個 [`Node`](/api-reference/types/node) 並計算該屬性的值。這可以用來
+自訂每個小地圖節點的外觀。
 
-This example shows how to color each mini map node based on the node's type:
+此範例展示如何根據節點類型為每個小地圖節點著色：
 
 ```svelte
 <script lang="ts">

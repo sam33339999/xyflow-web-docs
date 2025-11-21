@@ -1,47 +1,41 @@
 ---
-sidebarTitle: Installation
+sidebarTitle: 安裝
 description:
-  Learn how to install and set up Svelte Flow in your project. Includes package
-  installation via npm/yarn/pnpm/bun, style imports, and a quick-start template for Vite
-  and Svelte projects.
+  學習如何在您的專案中安裝和設定 Svelte Flow。包含透過 npm/yarn/pnpm/bun 安裝套件、
+  樣式匯入，以及 Vite 和 Svelte 專案的快速入門範本。
 ---
 
-# Installation and Requirements
+# 安裝與需求
 
-For this set-up we assume you already have node.js and npm, yarn or pnpm already
-installed. The Svelte Flow package is published under
-[`@xyflow/svelte`](https://www.npmjs.com/package/@xyflow/svelte) on npm and installable
-via:
+在此設定中，我們假設您已經安裝了 node.js 和 npm、yarn 或 pnpm。Svelte Flow 套件在
+npm 上以 [`@xyflow/svelte`](https://www.npmjs.com/package/@xyflow/svelte) 發布，可透過以下方式安裝：
 
 ```bash copy npm2yarn
 npm install @xyflow/svelte
 ```
 
-Now you can import the Svelte Flow component and the styles in your application:
+現在您可以在應用程式中匯入 Svelte Flow 元件和樣式：
 
 ```js
 import { SvelteFlow } from '@xyflow/svelte';
 import '@xyflow/svelte/dist/style.css';
 ```
 
-## Hit the ground running
+## 快速上手
 
-To get folks building quickly, we have a template repository on GitHub that uses Vite and
-Svelte. You can find the template
-[here](https://github.com/xyflow/vite-svelte-flow-template).
+為了讓大家能夠快速開始建構，我們在 GitHub 上提供了一個使用 Vite 和
+Svelte 的範本儲存庫。您可以在[這裡](https://github.com/xyflow/vite-svelte-flow-template)找到該範本。
 
-To use it, you can either create a new repository from the template, or use `degit` to
-grab the template's files without the git history:
+要使用它，您可以從範本建立一個新的儲存庫，或使用 `degit` 來
+獲取範本檔案而不包含 git 歷史記錄：
 
 ```bash copy
 npx degit xyflow/vite-svelte-flow-template your-app-name
 ```
 
-## Prior Experience Needed
+## 所需的先備知識
 
-Svelte Flow is a Svelte library. That means Svelte developers will feel comfortable using
-it. If basic Svelte terms and concepts like reactive state, props, components, and
-lifecycle methods are unfamiliar to you, you might need to learn more about Svelte before
-being able to use Svelte Flow fully. If you've never used Svelte before, we recommend
-first getting started on Svelte through the
-[official tutorial](https://svelte.dev/tutorial/svelte/welcome-to-svelte).
+Svelte Flow 是一個 Svelte 函式庫。這意味著 Svelte 開發者會覺得使用起來很舒適。
+如果響應式狀態、props、元件和生命週期方法等基本 Svelte 術語和概念對您來說不熟悉，
+您可能需要在完全使用 Svelte Flow 之前先學習更多關於 Svelte 的知識。如果您從未使用過 Svelte，
+我們建議先透過[官方教學](https://svelte.dev/tutorial/svelte/welcome-to-svelte)來學習 Svelte。

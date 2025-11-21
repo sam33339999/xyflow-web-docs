@@ -1,35 +1,27 @@
 ---
 description:
-  Learn how to create custom edges in Svelte Flow using Svelte components. This guide
-  covers edge path creation, label implementation, and SVG path customization for building
-  unique and interactive flow connections.
+  學習如何使用 Svelte 元件在 Svelte Flow 中建立自訂邊。本指南涵蓋邊路徑建立、標籤實作,
+  以及 SVG 路徑自訂,用於建立獨特且互動的流程連接。
 ---
 
 import { Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Custom Edges
+# 自訂邊
 
-Like [custom nodes](/learn/customization/custom-nodes), parts of a custom edge in Svelte
-Flow are just Svelte components: that means you can render anything you want along an
-edge! This guide shows you how to implement a custom edge with some additional controls.
-For a comprehensive reference of props available for custom edges, see the
-[`EdgeProps`](/api-reference/types/edge-props) documentation.
+就像[自訂節點](/learn/customization/custom-nodes)一樣,Svelte Flow 中自訂邊的部分只是 Svelte 元件:這意味著你可以沿著邊渲染任何你想要的內容!本指南將向你展示如何實作一個帶有額外控制項的自訂邊。
+有關自訂邊可用屬性的全面參考,請參閱 [`EdgeProps`](/api-reference/types/edge-props) 文檔。
 
-## A basic custom edge
+## 基本自訂邊
 
-An edge isn't much use to us if it doesn't render a path between two connected nodes.
-These paths are always SVG-based and are typically rendered using the
-[`<BaseEdge />`](/api-reference/components/base-edge) component. To calculate the actual
-SVG path to render, Svelte Flow comes with some handy utility functions:
+如果一個邊無法渲染兩個連接節點之間的路徑,那就沒什麼用處。這些路徑始終基於 SVG,通常使用 [`<BaseEdge />`](/api-reference/components/base-edge) 元件來渲染。為了計算要渲染的實際 SVG 路徑,Svelte Flow 提供了一些方便的工具函式:
 
 - [`getBezierPath`](/api-reference/utils/get-bezier-path)
 - [`getSmoothStepPath`](/api-reference/utils/get-smooth-step-path)
 - [`getStraightPath`](/api-reference/utils/get-straight-path)
 
-To kick start our custom edge, we'll just render a straight path between the source and
-target.
+為了啟動我們的自訂邊,我們將渲染一條在來源和目標之間的直線路徑。
 
 ```svelte filename="CustomEdge.svelte"
 <script lang="ts">
@@ -51,18 +43,12 @@ target.
 ```
 
 <Callout type="info">
-  All the props passed to your custom edge component can be found in the API reference
-  under the [`EdgeProps`](/api-reference/types/edge-props) type.
+  所有傳遞給自訂邊元件的屬性都可以在 API 參考中的 [`EdgeProps`](/api-reference/types/edge-props) 類型下找到。
 </Callout>
 
-This gives us a straight edge that behaves the same as the default `"straight"`
-[edge type](/api-reference/types/edge#default-edge-types). To use it, we also need to
-update the [`edgeTypes`](/api-reference/svelte-flow#edge-types) prop on the
-`<SvelteFlow />` component.
+這為我們提供了一條直線邊,其行為與預設的 `"straight"` [邊類型](/api-reference/types/edge#default-edge-types)相同。要使用它,我們還需要更新 `<SvelteFlow />` 元件上的 [`edgeTypes`](/api-reference/svelte-flow#edge-types) 屬性。
 
-It's important to define the `edgeTypes` object _outside of the component_ or to use
-Svelte's `$derived` to prevent unnecessary re-renders. Svelte Flow will show a warning in
-the console if you forget to do this.
+重要的是在元件外部定義 `edgeTypes` 物件,或使用 Svelte 的 `$derived` 來防止不必要的重新渲染。如果你忘記這樣做,Svelte Flow 會在控制台中顯示警告。
 
 ```svelte filename="App.svelte"
 <script lang="ts">
@@ -77,25 +63,17 @@ the console if you forget to do this.
 <SvelteFlow {edgeTypes} ... />
 ```
 
-After defining the `edgeTypes` object, we can use our new custom edge by setting the
-`type` field of an edge to `"custom-edge"`.
+定義 `edgeTypes` 物件後,我們可以通過將邊的 `type` 欄位設置為 `"custom-edge"` 來使用我們的新自訂邊。
 
 <RemoteCodeViewer route="guides/custom-edges" framework="svelte" />
 
-## Adding an edge label
+## 添加邊標籤
 
-One of the more common uses for custom edges is rendering some controls or info along an
-edge's path. In Svelte Flow we call that an _edge label_ and unlike the edge path, edge
-labels can be any Svelte component!
+自訂邊最常見的用途之一是沿著邊的路徑渲染一些控制項或資訊。在 Svelte Flow 中,我們稱之為_邊標籤_,與邊路徑不同,邊標籤可以是任何 Svelte 元件!
 
-Because Svelte Flows edges are mounted inside a SVG component, we need to escape it's
-context to render a custom edge label. For this, we have a handy
-[`<EdgeLabel />`](/api-reference/components/edge-label) component. Aside from a couple of
-extras, like inheriting the edges z-index, it functions as a portal that mounts the child
-components in the viewport div.
+因為 Svelte Flow 的邊被掛載在 SVG 元件內部,我們需要跳出它的上下文來渲染自訂邊標籤。為此,我們有一個方便的 [`<EdgeLabel />`](/api-reference/components/edge-label) 元件。除了幾個額外功能(如繼承邊的 z-index)之外,它作為一個入口,將子元件掛載在視窗 div 中。
 
-Let's add a button to our custom edge that can be used to delete the edge it's attached
-to:
+讓我們為自訂邊添加一個按鈕,可以用來刪除它所附加的邊:
 
 ```svelte filename="CustomEdge.svelte"
 <script lang="ts">
@@ -135,59 +113,34 @@ to:
 ```
 
 <Callout type="info">
-  To make sure our edge labels are interactive and not just for presentation, it is
-  important to add the `nodrag` and `nopan` classes to the label to stop mouse events from
-  controlling the canvas.
+  為了確保我們的邊標籤是互動的而不僅僅是用於展示,重要的是要為標籤添加 `nodrag` 和 `nopan` 類別,
+  以阻止滑鼠事件控制畫布。
 </Callout>
 
-Here's an interactive example with our updated custom edge. Clicking the delete button
-will remove that edge from the flow. Creating a new edge will use the custom node.
+這是一個使用我們更新的自訂邊的互動範例。點擊刪除按鈕將從流程中移除該邊。建立新邊將使用自訂節點。
 
 <RemoteCodeViewer route="guides/custom-edges-button" framework="svelte" />
 
-## Making Custom SVG Edge Paths
+## 製作自訂 SVG 邊路徑
 
-As discussed previously, if you want to make a custom edge in Svelte Flow, you have to use
-either of the four path creation functions discussed above (e.g
-[`getBezierPath`](/api-reference/utils/get-bezier-path)). However if you want to make some
-other path shape like a Sinusoidal edge or some other edge type then you will have to make
-the edge path yourself.
+如前所述,如果你想在 Svelte Flow 中製作自訂邊,你必須使用上面討論的四個路徑建立函式之一(例如 [`getBezierPath`](/api-reference/utils/get-bezier-path))。但是,如果你想製作其他路徑形狀,如正弦波邊或其他邊類型,那麼你將必須自己製作邊路徑。
 
-The edge path we get from functions like
-[`getBezierPath`](/api-reference/utils/get-bezier-path) is just a path string which we
-pass into the `path` prop of the `<BaseEdge />` component. It contains the necessary
-information needed in order to draw that path, like where it should start from, where it
-should curve, where it should end, etc. A simple straight path string between two points
-`(x1, y1)` to `(x2, y2)` would look like:
+我們從像 [`getBezierPath`](/api-reference/utils/get-bezier-path) 這樣的函式獲得的邊路徑只是一個路徑字串,我們將其傳遞到 `<BaseEdge />` 元件的 `path` 屬性中。它包含繪製該路徑所需的必要資訊,例如它應該從哪裡開始、應該在哪裡彎曲、應該在哪裡結束等。兩點 `(x1, y1)` 到 `(x2, y2)` 之間的簡單直線路徑字串如下所示:
 
 ```svelte
 M x1 y1 L x2 y2
 ```
 
-An SVG path is a concatenated list of commands like `M`, `L`, `Q`, etc, along with their
-values. Some of these commands are listed below, along with their supported values.
+SVG 路徑是像 `M`、`L`、`Q` 等命令及其值的串聯列表。下面列出了其中一些命令及其支援的值。
 
-- `M x1 y1` is the Move To command which moves the current point to the x1, y1 coordinate.
-- `L x1 y1` is the Line To command which draws a line from the current point to x1, y1
-  coordinate.
-- `Q x1 y1 x2 y2` is the Quadratic Bezier Curve command which draws a bezier curve from
-  the current point to the x2, y2 coordinate. x1, y1 is the control point of the curve
-  which determines the curviness of the curve.
+- `M x1 y1` 是 Move To 命令,它將當前點移動到 x1, y1 座標。
+- `L x1 y1` 是 Line To 命令,它從當前點繪製一條線到 x1, y1 座標。
+- `Q x1 y1 x2 y2` 是二次貝塞爾曲線命令,它從當前點繪製一條貝塞爾曲線到 x2, y2 座標。x1, y1 是曲線的控制點,決定了曲線的彎曲度。
 
-Whenever we want to start a path for our custom edge, we use the `M` command to move our
-current point to `sourceX, sourceY` which we get as props in the custom edge component.
-Then based on the shape we want, we will use other commands like `L`(to make lines),
-`Q`(to make curves) and then finally end our path at `targetX, targetY` which we get as
-props in the custom edge component.
+每當我們想要為自訂邊開始一個路徑時,我們使用 `M` 命令將當前點移動到 `sourceX, sourceY`,這是我們在自訂邊元件中作為屬性獲得的。然後根據我們想要的形狀,我們將使用其他命令,如 `L`(製作線條)、`Q`(製作曲線),最後在 `targetX, targetY` 處結束我們的路徑,這也是我們在自訂邊元件中作為屬性獲得的。
 
-If you want to learn more about SVG paths, you can check out
-[SVG-Path-Editor](https://yqnn.github.io/svg-path-editor/). You can paste any SVG path
-there and analyze individual path commands via an intuitive UI.
+如果你想了解更多關於 SVG 路徑的資訊,可以查看 [SVG-Path-Editor](https://yqnn.github.io/svg-path-editor/)。你可以在那裡貼上任何 SVG 路徑,並通過直觀的 UI 分析各個路徑命令。
 
-Here is an example with two types of custom edge paths, a Step edge and a Sinusoidal edge.
-You should look at the Step edge first to get your hands dirty with custom SVG paths since
-it's simple, and then look at how the Sinusoidal edge is made. After going through this
-example, you will have the necessary knowledge to make custom SVG paths for your custom
-edges.
+這是一個包含兩種自訂邊路徑類型的範例,一個階梯邊和一個正弦波邊。你應該先看階梯邊,以熟悉自訂 SVG 路徑,因為它很簡單,然後再看正弦波邊是如何製作的。通過這個範例,你將擁有製作自訂邊的自訂 SVG 路徑所需的必要知識。
 
 <RemoteCodeViewer route="guides/custom-edges-svg-path" framework="svelte" />

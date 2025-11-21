@@ -1,18 +1,17 @@
 ---
 sidebarTitle: TypeScript
-description: A comprehensive guide to using Svelte Flow with TypeScript. Learn how to type nodes, edges, and custom components, handle type unions, and implement type-safe flow diagrams in your Svelte applications.
+description: 使用 Svelte Flow 與 TypeScript 的完整指南。學習如何為節點、邊和自訂元件定型,處理類型聯合,並在 Svelte 應用程式中實作類型安全的流程圖。
 ---
 
 import { Callout } from 'nextra/components';
 
-# Usage with TypeScript
+# 使用 TypeScript
 
-Svelte Flow is written in TypeScript because we value the additional safety barrier it provides.
-We export all the types you need for correctly typing data structures and functions you pass to the Svelte Flow component. We also provide a way to extend the types of nodes and edges.
+Svelte Flow 是用 TypeScript 編寫的,因為我們重視它提供的額外安全屏障。我們匯出了你需要的所有類型,用於正確地為傳遞給 Svelte Flow 元件的資料結構和函式定型。我們還提供了一種擴展節點和邊類型的方法。
 
-## Basic Usage
+## 基本用法
 
-Let's start with the essential types needed for a basic implementation. While TypeScript can infer some types automatically, we'll define them explicitly for clarity.
+讓我們從基本實作所需的基本類型開始。雖然 TypeScript 可以自動推斷某些類型,但為了清楚起見,我們將明確定義它們。
 
 ```svelte
 <script lang="ts">
@@ -69,11 +68,11 @@ Let's start with the essential types needed for a basic implementation. While Ty
 </SvelteFlow>
 ```
 
-### Custom Nodes
+### 自訂節點
 
-When working with [custom nodes](/learn/customization/custom-nodes), you can extend the base `Node` type to include your custom data. There are two main approaches:
+在使用[自訂節點](/learn/customization/custom-nodes)時,你可以擴展基本的 `Node` 類型以包含自訂資料。有兩種主要方法:
 
-1. For **multiple custom nodes**, specify a custom `Node` type as a generic to `NodeProps`:
+1. 對於**多個自訂節點**,將自訂 `Node` 類型指定為 `NodeProps` 的泛型:
 
 ```svelte
 <script module>
@@ -92,14 +91,14 @@ When working with [custom nodes](/learn/customization/custom-nodes), you can ext
 </div>
 ```
 
-⚠️ When defining node data separately, you must use `type` (interfaces won't work):
+⚠️ 當單獨定義節點資料時,你必須使用 `type`(介面不起作用):
 
 ```ts
 type NumberNodeData = { number: number };
 type NumberNodeType = Node<NumberNodeData, 'number'>;
 ```
 
-2. For **a single custom node** that renders different content based on the node type, use a union type:
+2. 對於**單個自訂節點**,根據節點類型渲染不同內容,使用聯合類型:
 
 ```svelte
 <script module>
@@ -125,9 +124,9 @@ type NumberNodeType = Node<NumberNodeData, 'number'>;
 </div>
 ```
 
-### Custom Edges
+### 自訂邊
 
-Similar to custom nodes, you can extend the base `Edge` type for [custom edges](/learn/customization/custom-edges):
+與自訂節點類似,你可以為[自訂邊](/learn/customization/custom-edges)擴展基本的 `Edge` 類型:
 
 ```svelte
 <script module>
@@ -145,29 +144,27 @@ Similar to custom nodes, you can extend the base `Edge` type for [custom edges](
 <BaseEdge {id} path={edgePath} />
 ```
 
-## Advanced Usage
+## 進階用法
 
-In complex applications, you'll likely have multiple custom nodes and edges with different data structures. When using built-in functions and hooks, you'll need to properly [narrow down](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) the types to prevent runtime errors.
+在複雜的應用程式中,你可能會有多個具有不同資料結構的自訂節點和邊。在使用內建函式和鉤子時,你需要正確地[縮小](https://www.typescriptlang.org/docs/handbook/2/narrowing.html)類型以防止執行時錯誤。
 
-### `Node` and `Edge` Type Unions
+### `Node` 和 `Edge` 類型聯合
 
-Many functions, callbacks, and hooks (including the SvelteFlow component) expect `NodeType` or `EdgeType` generics. These are unions of all your custom node and edge types. As long as you've properly typed your data objects, you can use their exported types.
+許多函式、回呼和鉤子(包括 SvelteFlow 元件)期望 `NodeType` 或 `EdgeType` 泛型。這些是所有自訂節點和邊類型的聯合。只要你正確地為資料物件定型,你就可以使用它們匯出的類型。
 
 <Callout type="info">
-  If you're using any built-in nodes ('input', 'output', 'default') or edges ('straight',
-  'step', 'smoothstep', 'bezier'), include the `BuiltInNode` and `BuiltInEdge` types from
-  `@xyflow/svelte` in your union type.
+  如果你使用任何內建節點('input'、'output'、'default')或邊('straight'、'step'、'smoothstep'、'bezier'),請在聯合類型中包含來自 `@xyflow/svelte` 的 `BuiltInNode` 和 `BuiltInEdge` 類型。
 </Callout>
 
 ```svelte
 <script module>
   import type { BuiltInNode, BuiltInEdge } from '@xyflow/svelte';
 
-  // Custom nodes
+  // 自訂節點
   import type { NumberNodeType } from './NumberNode.svelte';
   import type { TextNodeType } from './TextNode.svelte';
 
-  // Custom edge
+  // 自訂邊
   import type { CustomEdgeType } from './CustomEdge.svelte';
 
   export type NodeType = BuiltInNode | NumberNodeType | TextNodeType;
@@ -198,16 +195,16 @@ Many functions, callbacks, and hooks (including the SvelteFlow component) expect
 </SvelteFlow>
 ```
 
-### Hooks
+### 鉤子
 
-You can use these type unions to properly type the return values of hooks:
+你可以使用這些類型聯合來正確地為鉤子的返回值定型:
 
 ```svelte
 <script lang="ts">
   import { useSvelteFlow, useNodeConnections, useNodesData } from '@xyflow/svelte';
   import type { NodeType, EdgeType } from './types';
 
-  // Nodes and edges are now correctly typed
+  // 節點和邊現在已正確定型
   const { getNodes, getEdges } = useSvelteFlow<NodeType, EdgeType>();
 
   const connections = useNodeConnections({
@@ -219,7 +216,7 @@ You can use these type unions to properly type the return values of hooks:
   $effect(() => {
     nodesData.current.forEach(({ type, data }) => {
       if (type === 'number') {
-        // Type-safe access to number property
+        // 類型安全地存取 number 屬性
         console.log(data.number);
       }
     });
@@ -227,15 +224,15 @@ You can use these type unions to properly type the return values of hooks:
 </script>
 ```
 
-### Type Guards
+### 類型守衛
 
-TypeScript provides several ways to implement [type guards](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards). One common approach is to create type guard functions like `isNumberNode` or `isTextNode` to filter specific nodes from a list:
+TypeScript 提供了幾種實作[類型守衛](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#typeof-type-guards)的方法。一種常見的方法是建立類型守衛函式,如 `isNumberNode` 或 `isTextNode`,以從列表中過濾特定節點:
 
 ```ts
 function isNumberNode(node: NodeType): node is NumberNodeType {
   return node.type === 'number';
 }
 
-// numberNodes is now correctly typed as NumberNodeType[]
+// numberNodes 現在正確定型為 NumberNodeType[]
 let numberNodes = $derived(nodes.filter(isNumberNode));
 ```

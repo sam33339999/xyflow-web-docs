@@ -1,12 +1,12 @@
 ---
-description: With this hook you can receive the data of the passed node ids.
+description: 使用此 hook 你可以取得傳入的節點 ID 的資料。
 ---
 
 # useNodesData()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/hooks/useNodesData.svelte.ts)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/hooks/useNodesData.svelte.ts)
 
-With this hook you can receive the data of the passed node ids.
+使用此 hook 你可以取得傳入的節點 ID 的資料。
 
 ```svelte
 <script lang="ts">
@@ -15,7 +15,7 @@ With this hook you can receive the data of the passed node ids.
   const nodeData = useNodesData(['node-id-a', 'node-id-b']);
 
   $effect(() => {
-    // nodeData changes whenever the data of the passed node ids get updated
+    // 當傳入的節點 ID 的資料更新時，nodeData 會變化
     console.log(nodeData.current);
   });
 </script>
@@ -27,5 +27,4 @@ With this hook you can receive the data of the passed node ids.
 
 ## Notes
 
-- Check the [Computing Flows example](/examples/interaction/computing-flows) to see how
-  this hook can be used
+- 查看 [Computing Flows 範例](/examples/interaction/computing-flows) 了解此 hook 的使用方式

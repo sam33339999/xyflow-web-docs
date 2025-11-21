@@ -1,18 +1,17 @@
 ---
-title: The NodeResizer component
+title: NodeResizer 元件
 sidebarTitle: '<NodeResizer />'
-description: 'The NodeResizer component can be used to add a resize functionality to your
-  nodes. It renders draggable controls around the node to resize in all directions.'
+description: 'NodeResizer 元件可用於為你的節點加入調整大小的功能。它會在節點周圍渲染可拖曳的控制點，以便在所有方向調整大小。'
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 # \<NodeResizer />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/487b13c9ad8903789f56c6fcfd8222f9cb74b812/packages/svelte/src/lib/plugins/NodeResizer/NodeResizer.svelte)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/487b13c9ad8903789f56c6fcfd8222f9cb74b812/packages/svelte/src/lib/plugins/NodeResizer/NodeResizer.svelte)
 
-The `<NodeResizer />` component can be used to add a resize functionality to your
-nodes. It renders draggable controls around the node to resize in all directions.
+`<NodeResizer />` 元件可用於為你的節點加入調整大小的功能。
+它會在節點周圍渲染可拖曳的控制點，以便在所有方向調整大小。
 
 ```svelte filename="CustomNode.svelte"
 <script lang="ts">
@@ -28,15 +27,15 @@ nodes. It renders draggable controls around the node to resize in all directions
 <Handle type="source" position={Position.Right} />
 ```
 
-## Props
+## 屬性
 
-The type for props of `<NodeResizer />` component is exported as `NodeResizerProps`. Additionally, it extends the props of `<div />`.
+`<NodeResizer />` 元件的屬性類型導出為 `NodeResizerProps`。此外，它擴展了 `<div />` 的屬性。
 
 <APIDocs componentName="NodeResizer" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
-## Examples
+## 範例
 
-Head over to the [example page](/examples/nodes/node-resizer) to see how this is done.
+前往[範例頁面](/examples/nodes/node-resizer)查看如何實作。
 
 <RemoteCodeViewer
   route="examples/nodes/node-resizer"
@@ -44,12 +43,12 @@ Head over to the [example page](/examples/nodes/node-resizer) to see how this is
   editorHeight={500}
 />
 
-### Custom Resize Controls
+### 自訂調整大小控制點
 
-To build custom resize controls, you can use the [NodeResizeControl](/api-reference/components/node-resize-control) component and customize it.
+若要建立自訂調整大小控制點，你可以使用 [NodeResizeControl](/api-reference/components/node-resize-control) 元件並自訂它。
 
-## Notes
+## 注意事項
 
-- Take a look at the docs for the [`NodeProps`](/api-reference/types/node-props) type or the
-  guide on [custom nodes](/learn/customization/custom-nodes) to see how to
-  implement your own nodes.
+- 查看 [`NodeProps`](/api-reference/types/node-props) 類型的文件或
+  [自訂節點](/learn/customization/custom-nodes)指南，了解如何
+  實作你自己的節點。

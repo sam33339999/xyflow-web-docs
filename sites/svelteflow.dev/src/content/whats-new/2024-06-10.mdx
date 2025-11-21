@@ -7,21 +7,21 @@ date: '2024-06-10'
 
 # Svelte Flow 0.1.5 & 0.1.4
 
-While adding some last minute features to the new React Flow release we also ported them to Svelte Flow and fixed some issues along the way. This includes making `selectable`, `deletable`, `draggable` and `parentId` available as props for custom nodes, fixing panel elements standing in the way of making selection boxes and fixing zoom behavior on mobile.
+在為新的 React Flow 版本新增一些最後功能時,我們也將它們移植到 Svelte Flow,並修正了一些問題。這包括讓 `selectable`、`deletable`、`draggable` 和 `parentId` 可作為自訂節點的屬性,修正面板元素阻礙建立選取框的問題,以及修正行動裝置上的縮放行為。
 
 ## 0.1.5
 
-- prevent zooming on mobile if zoomOnPinch is false
-- add `StraightEdge` to built-in path types
-- abort drag when multiple touches are detected
-- fix merge_styles error
+- 如果 zoomOnPinch 為 false,則防止在行動裝置上縮放
+- 將 `StraightEdge` 新增到內建路徑類型
+- 偵測到多點觸控時中止拖曳
+- 修正 merge_styles 錯誤
 
 ## 0.1.4
 
-- add `selectable`, `deletable` and `draggable` to node and edge props
-- add `parentId` to node props
-- add `on:edgemouseenter` and `on:edgemouseleave` event handler
-- fix deselection of edges
-- remove pointer events from panel when user selection is active
-- fix viewport initialization with user viewport
-- fix parent node lookup in `evaluateAbsolutePosition` - thanks @lcsfort
+- 為節點和邊屬性新增 `selectable`、`deletable` 和 `draggable`
+- 為節點屬性新增 `parentId`
+- 新增 `on:edgemouseenter` 和 `on:edgemouseleave` 事件處理器
+- 修正邊的取消選取
+- 當使用者選取活動時,從面板移除滑鼠事件
+- 修正使用使用者視區的視區初始化
+- 修正 `evaluateAbsolutePosition` 中的父節點查找 - 感謝 @lcsfort

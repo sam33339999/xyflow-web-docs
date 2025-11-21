@@ -1,12 +1,12 @@
 ---
-description: Callback function triggered when finishing or canceling the reconnection of an edge in SvelteFlow.
+description: 在 SvelteFlow 中完成或取消邊的重新連接時觸發的回呼函式。
 ---
 
 # OnReconnectEnd
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L89)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L89)
 
-The `OnReconnectEnd` type is a callback that fires when the reconnection process for an edge is completed or canceled. It receives the triggering event, the edge, the handle type, and the final connection state.
+`OnReconnectEnd` 類型是在邊的重新連接過程完成或取消時觸發的回呼。它接收觸發事件、邊、控制點類型以及最終連線狀態。
 
 ```ts
 type OnReconnectEnd<EdgeType extends EdgeBase = EdgeBase> = (

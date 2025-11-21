@@ -1,12 +1,12 @@
 ---
-description: Callback function triggered when a new connection is created in SvelteFlow.
+description: 在 SvelteFlow 中建立新連線時觸發的回呼函式。
 ---
 
 # OnConnect
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L80)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L80)
 
-The `OnConnect` type is a callback function that is called when a new connection is created between nodes. It receives a connection object containing the source and target node IDs and their respective handle IDs.
+`OnConnect` 類型是在節點之間建立新連線時被呼叫的回呼函式。它接收一個連線物件，其中包含來源和目標節點 ID 以及它們各自的控制點 ID。
 
 ```ts
 type OnConnect = (connection: Connection) => void;

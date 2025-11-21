@@ -1,120 +1,116 @@
 ---
-description: Learn how to customize Svelte Flow's appearance through CSS variables, class overrides, and styling solutions like Tailwind. This guide covers default styles, base styles, and various theming approaches for creating cohesive flow diagrams.
+description: 學習如何透過 CSS 變數、類別覆寫和 Tailwind 等樣式解決方案自訂 Svelte Flow 的外觀。本指南涵蓋預設樣式、基礎樣式,以及建立一致流程圖的各種主題化方法。
 ---
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Theming
+# 主題化
 
-Svelte Flow comes with minimal default styles and was designed to be fully customizable. Many of our users fully transform the look and feel of Svelte Flow to match their own brand or design system. This guide will introduce you to the different ways you can customize Svelte Flow's appearance.
+Svelte Flow 帶有最小的預設樣式,並設計為完全可自訂。我們的許多用戶完全改變了 Svelte Flow 的外觀和感覺,以匹配他們自己的品牌或設計系統。本指南將向你介紹自訂 Svelte Flow 外觀的不同方法。
 
-## Default styles
+## 預設樣式
 
-Svelte Flow's default styles are enough to get going with the built-in nodes. They provide some sensible defaults for styles like padding, border radius, and animated edges. You can see what they look like below:
+Svelte Flow 的預設樣式足以讓你開始使用內建節點。它們為填充、邊框半徑和動畫邊等樣式提供了一些合理的預設值。你可以在下面看到它們的樣子:
 
 ```js
 import '@xyflow/svelte/dist/style.css';
 ```
 
 <RemoteCodeViewer route="guides/theming/a" framework="svelte" editorHeight={500} />
-## Base styles
+## 基礎樣式
 
-If you just want to load the very basic styles that are necessary for Svelte Flow to work, you can import the base styles instead:
+如果你只想載入 Svelte Flow 正常工作所需的基本樣式,你可以改為匯入基礎樣式:
 
 ```js
 import '@xyflow/svelte/dist/base.css';
 ```
 
 <Callout type="info">
-  These base styles are **required** for Svelte Flow to function correctly. If you don't
-  import them or you override them with your own styles, some things might not work as
-  expected!
+  這些基礎樣式是 Svelte Flow 正確運作所**必需**的。如果你不匯入它們或用自己的樣式覆寫它們,某些功能可能無法如預期運作!
 </Callout>
 
 <RemoteCodeViewer route="guides/theming/b" framework="svelte" editorHeight={500} />
-## Customization
+## 自訂
 
-There are different ways how you can customize the appearance of Svelte Flow:
+你可以透過不同的方式自訂 Svelte Flow 的外觀:
 
-- Work with scoped CSS within your custom nodes and edges
-- Override the built-in classes with custom CSS
-- Override the CSS variables Svelte Flow uses
-- Pass inline styles through `style` props
+- 在自訂節點和邊中使用作用域 CSS
+- 用自訂 CSS 覆寫內建類別
+- 覆寫 Svelte Flow 使用的 CSS 變數
+- 透過 `style` 屬性傳遞行內樣式
 
-### Working with built-in classes
+### 使用內建類別
 
-If you want to override the default styles, you can do so by overriding the built-in CSS classes. You can find a list of all the classes used by Svelte Flow below:
+如果你想覆寫預設樣式,可以透過覆寫內建 CSS 類別來實現。你可以在下面找到 Svelte Flow 使用的所有類別列表:
 
-| Class name                          | Description                                                                              |
-| :---------------------------------- | :--------------------------------------------------------------------------------------- |
-| `.svelte-flow`                      | The outermost container                                                                  |
-| `.svelte-flow__renderer`            | The inner container                                                                      |
-| `.svelte-flow__zoompane`            | Zoom & pan pane                                                                          |
-| `.svelte-flow__selectionpane`       | Selection pane                                                                           |
-| `.svelte-flow__selection`           | User selection                                                                           |
-| `.svelte-flow__edges`               | The element containing all edges in the flow                                             |
-| `.svelte-flow__edge`                | Applied to each [`Edge`](/api-reference/types/edge) in the flow                          |
-| `.svelte-flow__edge.selected`       | Added to an [`Edge`](/api-reference/types/edge) when selected                            |
-| `.svelte-flow__edge.animated`       | Added to an [`Edge`](/api-reference/types/edge) when its `animated` prop is `true`       |
-| `.svelte-flow__edge-path`           | The SVG `<path />` element of an [`Edge`](/api-reference/types/edge)                     |
-| `.svelte-flow__edge-label`          | The edge label                                                                           |
-| `.svelte-flow__connection`          | Applied to the current connection line                                                   |
-| `.svelte-flow__connection-path`     | The SVG `<path />` of a connection line                                                  |
-| `.svelte-flow__nodes`               | The element containing all nodes in the flow                                             |
-| `.svelte-flow__node`                | Applied to each [`Node`](/api-reference/types/node) in the flow                          |
-| `.svelte-flow__node.selected`       | Added to a [`Node`](/api-reference/types/node) when selected.                            |
-| `.svelte-flow__node-default`        | Added when [`Node`](/api-reference/types/node) type is `"default"`                       |
-| `.svelte-flow__node-input`          | Added when [`Node`](/api-reference/types/node) type is `"input"`                         |
-| `.svelte-flow__node-output`         | Added when [`Node`](/api-reference/types/node) type is `"output"`                        |
-| `.svelte-flow__node-group`          | Added when [`Node`](/api-reference/types/node) type is `"group"`                         |
-| `.svelte-flow__nodesselection`      | Nodes selection                                                                          |
-| `.svelte-flow__nodesselection-rect` | Nodes selection rect                                                                     |
-| `.svelte-flow__handle`              | Applied to each [`<Handle />`](/api-reference/components/handle) component               |
-| `.svelte-flow__handle-top`          | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"top"`    |
-| `.svelte-flow__handle-right`        | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"right"`  |
-| `.svelte-flow__handle-bottom`       | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"bottom"` |
-| `.svelte-flow__handle-left`         | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"left"`   |
-| `.svelte-flow__handle.connecting`   | Applied when a connection line is above a handle.                                        |
-| `.svelte-flow__handle.valid`        | Applied when a connection line is above a handle **and** the connection is valid         |
-| `.svelte-flow__background`          | Applied to the [`<Background />`](/api-reference/components/background) component        |
-| `.svelte-flow__minimap`             | Applied to the [`<MiniMap />`](/api-reference/components/mini-map) component             |
-| `.svelte-flow__controls`            | Applied to the [`<Controls />`](/api-reference/components/controls) component            |
+| 類別名稱                            | 描述                                                                   |
+| :---------------------------------- | :--------------------------------------------------------------------- |
+| `.svelte-flow`                      | 最外層容器                                                             |
+| `.svelte-flow__renderer`            | 內層容器                                                               |
+| `.svelte-flow__zoompane`            | 縮放和平移面板                                                         |
+| `.svelte-flow__selectionpane`       | 選擇面板                                                               |
+| `.svelte-flow__selection`           | 使用者選擇                                                             |
+| `.svelte-flow__edges`               | 包含流程中所有邊的元素                                                 |
+| `.svelte-flow__edge`                | 應用於流程中每個 [`Edge`](/api-reference/types/edge)                  |
+| `.svelte-flow__edge.selected`       | 當 [`Edge`](/api-reference/types/edge) 被選中時添加                   |
+| `.svelte-flow__edge.animated`       | 當 [`Edge`](/api-reference/types/edge) 的 `animated` 屬性為 `true` 時添加 |
+| `.svelte-flow__edge-path`           | [`Edge`](/api-reference/types/edge) 的 SVG `<path />` 元素            |
+| `.svelte-flow__edge-label`          | 邊標籤                                                                 |
+| `.svelte-flow__connection`          | 應用於當前連接線                                                       |
+| `.svelte-flow__connection-path`     | 連接線的 SVG `<path />`                                                |
+| `.svelte-flow__nodes`               | 包含流程中所有節點的元素                                               |
+| `.svelte-flow__node`                | 應用於流程中每個 [`Node`](/api-reference/types/node)                  |
+| `.svelte-flow__node.selected`       | 當 [`Node`](/api-reference/types/node) 被選中時添加                   |
+| `.svelte-flow__node-default`        | 當 [`Node`](/api-reference/types/node) 類型為 `"default"` 時添加      |
+| `.svelte-flow__node-input`          | 當 [`Node`](/api-reference/types/node) 類型為 `"input"` 時添加        |
+| `.svelte-flow__node-output`         | 當 [`Node`](/api-reference/types/node) 類型為 `"output"` 時添加       |
+| `.svelte-flow__node-group`          | 當 [`Node`](/api-reference/types/node) 類型為 `"group"` 時添加        |
+| `.svelte-flow__nodesselection`      | 節點選擇                                                               |
+| `.svelte-flow__nodesselection-rect` | 節點選擇矩形                                                           |
+| `.svelte-flow__handle`              | 應用於每個 [`<Handle />`](/api-reference/components/handle) 元件      |
+| `.svelte-flow__handle-top`          | 當控制點的 [`Position`](/api-reference/types/position) 設為 `"top"` 時應用    |
+| `.svelte-flow__handle-right`        | 當控制點的 [`Position`](/api-reference/types/position) 設為 `"right"` 時應用  |
+| `.svelte-flow__handle-bottom`       | 當控制點的 [`Position`](/api-reference/types/position) 設為 `"bottom"` 時應用 |
+| `.svelte-flow__handle-left`         | 當控制點的 [`Position`](/api-reference/types/position) 設為 `"left"` 時應用   |
+| `.svelte-flow__handle.connecting`   | 當連接線位於控制點上方時應用                                           |
+| `.svelte-flow__handle.valid`        | 當連接線位於控制點上方**且**連接有效時應用                             |
+| `.svelte-flow__background`          | 應用於 [`<Background />`](/api-reference/components/background) 元件  |
+| `.svelte-flow__minimap`             | 應用於 [`<MiniMap />`](/api-reference/components/mini-map) 元件       |
+| `.svelte-flow__controls`            | 應用於 [`<Controls />`](/api-reference/components/controls) 元件      |
 
 <Callout type="warning">
-  Be careful if you go poking around the source code looking for other classes to
-  override. Some classes are used internally and are required in order for the library to
-  be functional. If you replace them you may end up with unexpected bugs or errors!
+  如果你查看原始碼尋找其他要覆寫的類別,請小心。有些類別在內部使用,是函式庫正常運作所必需的。如果你替換它們,可能會遇到意外的錯誤!
 </Callout>
 
-### CSS variables
+### CSS 變數
 
-If you don't want to replace the default styles entirely but just want to tweak the overall look and feel, you can override some of the CSS variables we use throughout the library.
+如果你不想完全替換預設樣式,而只是想調整整體外觀和感覺,你可以覆寫我們在整個函式庫中使用的一些 CSS 變數。
 
-These variables are mostly self-explanatory. Below is a table of all the variables you might want to tweak and their default values for reference:
+這些變數大多不言自明。下面是一個表格,列出了你可能想要調整的所有變數及其預設值,以供參考:
 
-| Variable name                                         | Default                             |
-| :---------------------------------------------------- | :---------------------------------- |
-| `--xy-edge-stroke-default`                            | `#b1b1b7`                           |
-| `--xy-edge-stroke-width-default`                      | `1`                                 |
-| `--xy-edge-stroke-selected-default`                   | `#555`                              |
-| `--xy-connectionline-stroke-default`                  | `#b1b1b7`                           |
-| `--xy-connectionline-stroke-width-default`            | `1`                                 |
-| `--xy-attribution-background-color-default`           | `rgba(255, 255, 255, 0.5)`          |
-| `--xy-minimap-background-color-default`               | `#fff`                              |
-| `--xy-background-pattern-dot-color-default`           | `#91919a`                           |
-| `--xy-background-pattern-line-color-default`          | `#eee`                              |
-| `--xy-background-pattern-cross-color-default`         | `#e2e2e2`                           |
-| `--xy-node-color-default`                             | `inherit`                           |
-| `--xy-node-border-default`                            | `1px solid #1a192b`                 |
-| `--xy-node-background-color-default`                  | `#fff`                              |
-| `--xy-node-group-background-color-default`            | `rgba(240, 240, 240, 0.25)`         |
-| `--xy-node-boxshadow-hover-default`                   | `0 1px 4px 1px rgba(0, 0, 0, 0.08)` |
-| `--xy-node-boxshadow-selected-default`                | `0 0 0 0.5px #1a192b`               |
-| `--xy-handle-background-color-default`                | `#1a192b`                           |
-| `--xy-handle-border-color-default`                    | `#fff`                              |
-| `--xy-selection-background-color-default`             | `rgba(0, 89, 220, 0.08)`            |
-| `--xy-selection-border-default`                       | `1px dotted rgba(0, 89, 220, 0.8)`  |
+| 變數名稱                                          | 預設值                              |
+| :------------------------------------------------ | :---------------------------------- |
+| `--xy-edge-stroke-default`                        | `#b1b1b7`                           |
+| `--xy-edge-stroke-width-default`                  | `1`                                 |
+| `--xy-edge-stroke-selected-default`               | `#555`                              |
+| `--xy-connectionline-stroke-default`              | `#b1b1b7`                           |
+| `--xy-connectionline-stroke-width-default`        | `1`                                 |
+| `--xy-attribution-background-color-default`       | `rgba(255, 255, 255, 0.5)`          |
+| `--xy-minimap-background-color-default`           | `#fff`                              |
+| `--xy-background-pattern-dot-color-default`       | `#91919a`                           |
+| `--xy-background-pattern-line-color-default`      | `#eee`                              |
+| `--xy-background-pattern-cross-color-default`     | `#e2e2e2`                           |
+| `--xy-node-color-default`                         | `inherit`                           |
+| `--xy-node-border-default`                        | `1px solid #1a192b`                 |
+| `--xy-node-background-color-default`              | `#fff`                              |
+| `--xy-node-group-background-color-default`        | `rgba(240, 240, 240, 0.25)`         |
+| `--xy-node-boxshadow-hover-default`               | `0 1px 4px 1px rgba(0, 0, 0, 0.08)` |
+| `--xy-node-boxshadow-selected-default`            | `0 0 0 0.5px #1a192b`               |
+| `--xy-handle-background-color-default`            | `#1a192b`                           |
+| `--xy-handle-border-color-default`                | `#fff`                              |
+| `--xy-selection-background-color-default`         | `rgba(0, 89, 220, 0.08)`            |
+| `--xy-selection-border-default`                   | `1px dotted rgba(0, 89, 220, 0.8)`  |
 | `--xy-controls-button-background-color-default`       | `#fefefe`                           |
 | `--xy-controls-button-background-color-hover-default` | `#f4f4f4`                           |
 | `--xy-controls-button-color-default`                  | `inherit`                           |
@@ -122,8 +118,7 @@ These variables are mostly self-explanatory. Below is a table of all the variabl
 | `--xy-controls-button-border-color-default`           | `#eee`                              |
 | `--xy-controls-box-shadow-default`                    | `0 0 2px 1px rgba(0, 0, 0, 0.08)`   |
 
-These variables are used to define the _defaults_ for the various elements of Svelte Flow. This means they can still be overridden by inline styles or custom classes on a per-element basis. If you want to override a variable, you can do so
-by adding:
+這些變數用於定義 Svelte Flow 各種元素的_預設值_。這意味著它們仍然可以透過行內樣式或自訂類別在每個元素的基礎上被覆寫。如果你想覆寫一個變數,可以這樣做:
 
 ```css
 .svelte-flow {
@@ -133,9 +128,7 @@ by adding:
 
 ### Tailwind
 
-Custom nodes and edges are just Svelte components, and you can use any styling
-solution you'd like to style them. For example, you might want to use
-[Tailwind](https://tailwindcss.com/) to style your nodes:
+自訂節點和邊只是 Svelte 元件,你可以使用任何你喜歡的樣式解決方案來設計它們的樣式。例如,你可能想使用 [Tailwind](https://tailwindcss.com/) 來設計節點的樣式:
 
 ```svelte
 <script lang="ts">
@@ -168,7 +161,7 @@ solution you'd like to style them. For example, you might want to use
 ```
 
 <Callout type="info">
-  If you want to overwrite default styles, make sure to import Tailwinds entry last!
+  如果你想覆寫預設樣式,請確保最後匯入 Tailwind 的入口!
 </Callout>
 
 ```js
@@ -176,5 +169,4 @@ import '@xyflow/svelte/dist/style.css';
 import 'tailwind.css';
 ```
 
-For a complete example of using Tailwind with Svelte Flow, check out
-the [tailwind example](/examples/styling/tailwind)!
+有關使用 Tailwind 與 Svelte Flow 的完整範例,請查看 [tailwind 範例](/examples/styling/tailwind)!

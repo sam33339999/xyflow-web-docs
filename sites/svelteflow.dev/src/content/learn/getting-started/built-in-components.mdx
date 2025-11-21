@@ -1,17 +1,15 @@
 ---
 description:
-  Learn about Svelte Flow's essential built-in components including the minimap for
-  navigation, viewport controls, customizable background patterns, and overlay panels.
-  These components enhance the user experience and provide core functionality for flow
-  diagrams.
+  了解 Svelte Flow 的基本內建元件，包括用於導航的小地圖、視窗控制項、可自訂的背景圖樣
+  以及疊加面板。這些元件可增強使用者體驗並為流程圖提供核心功能。
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Built-In Components
+# 內建元件
 
-Svelte Flow comes with several additional components that you can plug into your flow. All
-you have to do is import and add them as children to the `SvelteFlow` component.
+Svelte Flow 附帶了幾個額外的元件，您可以將它們插入到您的流程圖中。您只需
+匯入這些元件並將它們作為子元件加入到 `SvelteFlow` 元件中。
 
 ```svelte filename="BuiltInComponents.svelte"
 <script>
@@ -32,9 +30,9 @@ you have to do is import and add them as children to the `SvelteFlow` component.
 
 ## MiniMap
 
-The [`MiniMap`](/api-reference/components/mini-map) provides a bird's-eye view of your
-flowgraph, making navigation easier, especially for larger flows. You can customize the
-appearance of nodes in the minimap by providing a `nodeColor` function.
+[`MiniMap`](/api-reference/components/mini-map) 提供流程圖的鳥瞰視圖，讓導航更加
+容易，特別是對於較大的流程圖。您可以透過提供 `nodeColor` 函式來自訂小地圖中
+節點的外觀。
 
 <RemoteCodeViewer
   route="guides/built-in-components/minimap"
@@ -44,9 +42,9 @@ appearance of nodes in the minimap by providing a `nodeColor` function.
 
 ## Controls
 
-Svelte Flow comes with a set of customizable
-[`Controls`](/api-reference/components/controls) for the viewport. You can zoom in and
-out, fit the viewport and toggle if the user can move, select and edit the nodes.
+Svelte Flow 為視窗提供了一組可自訂的
+[`Controls`](/api-reference/components/controls)。您可以放大和縮小、調整視窗
+以及切換使用者是否可以移動、選擇和編輯節點。
 
 <RemoteCodeViewer
   route="guides/built-in-components/controls"
@@ -56,12 +54,10 @@ out, fit the viewport and toggle if the user can move, select and edit the nodes
 
 ## Background
 
-The [`Background`](/api-reference/components/background) component adds a visual grid
-pattern to your flowgraph, helping users maintain orientation. You can choose from
-different pattern variants, or if you need more advanced customization, you can explore
-the
-[source code](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Background/Background.svelte)
-to implement your own pattern.
+[`Background`](/api-reference/components/background) 元件為您的流程圖添加視覺化
+網格圖樣，幫助使用者保持方向感。您可以從不同的圖樣變體中選擇，或者如果您需要
+更進階的自訂，可以探索[原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Background/Background.svelte)
+來實作您自己的圖樣。
 
 <RemoteCodeViewer
   route="guides/built-in-components/background"
@@ -71,9 +67,8 @@ to implement your own pattern.
 
 ## Panel
 
-The [`Panel`](/api-reference/components/panel) component allows you to add fixed overlays
-to your flowgraph, perfect for titles, controls, or any other UI elements that should
-remain stationary.
+[`Panel`](/api-reference/components/panel) 元件允許您將固定的疊加層添加到流程圖中，
+非常適合用於標題、控制項或任何其他應該保持靜止的 UI 元素。
 
 <RemoteCodeViewer
   route="guides/built-in-components/panel"

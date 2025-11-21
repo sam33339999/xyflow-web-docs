@@ -5,14 +5,14 @@ authors: [xyflow]
 date: '2024-09-26'
 ---
 
-# What's new in Svelte Flow 0.1.20
+# Svelte Flow 0.1.20 的新功能
 
 ### Patch Changes
 
-- [#4670](https://github.com/xyflow/xyflow/pull/4670) Fix initial `fitView` not working correctly for `nodeOrigin` other than [0,0]
+- [#4670](https://github.com/xyflow/xyflow/pull/4670) 修正當 `nodeOrigin` 不是 [0,0] 時,初始 `fitView` 無法正常運作的問題
 
-- [#4670](https://github.com/xyflow/xyflow/pull/4670) Improve `fitView` to respect clamped node positions based on `nodeExtent`
+- [#4670](https://github.com/xyflow/xyflow/pull/4670) 改進 `fitView` 以遵循基於 `nodeExtent` 的限制節點位置
 
-- [#4653](https://github.com/xyflow/xyflow/pull/4653) Calculate viewport dimensions in `fitView` instead of using stored dimensions. Fixes [#4652](https://github.com/xyflow/xyflow/issues/4652)
+- [#4653](https://github.com/xyflow/xyflow/pull/4653) 在 `fitView` 中計算視區尺寸,而非使用儲存的尺寸。修正 [#4652](https://github.com/xyflow/xyflow/issues/4652)
 
-- [#4681](https://github.com/xyflow/xyflow/pull/4681) Fix crash when deleting nodes while dragging. Closes [#4677](https://github.com/xyflow/xyflow/issues/4677)
+- [#4681](https://github.com/xyflow/xyflow/pull/4681) 修正拖曳時刪除節點導致崩潰的問題。關閉 [#4677](https://github.com/xyflow/xyflow/issues/4677)

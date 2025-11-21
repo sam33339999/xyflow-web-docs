@@ -1,17 +1,16 @@
 ---
-title: The Controls component
+title: Controls 元件
 sidebarTitle: '<Controls />'
 description:
-  The Controls component renders a small panel that contain convenient buttons to
-  zoom in, zoom out, fit the view, and lock the viewport.
+  Controls 元件會渲染一個小面板，包含方便的按鈕來放大、縮小、調整視圖和鎖定視口。
 ---
 
 # \<Controls />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Controls/Controls.svelte)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/Controls/Controls.svelte)
 
-The `<Controls />` component renders a small panel that contain convenient
-buttons to zoom in, zoom out, fit the view, and lock the viewport.
+`<Controls />` 元件會渲染一個小面板，包含方便的按鈕來
+放大、縮小、調整視圖和鎖定視口。
 
 ```svelte
 <script lang="ts">
@@ -26,14 +25,14 @@ buttons to zoom in, zoom out, fit the view, and lock the viewport.
 </SvelteFlow>
 ```
 
-## Props
+## 屬性
 
-The type for props of `<Controls />` component is exported as `ControlsProps`.
-Additionally, it extends the props of `<div />`.
+`<Controls />` 元件的屬性類型導出為 `ControlsProps`。
+此外，它擴展了 `<div />` 的屬性。
 
 <APIDocs componentName="Controls" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
-## Notes
+## 注意事項
 
-- To extend or customize the controls, you can use the [`<ControlButton />`](/api-reference/components/control-button)
-  component
+- 若要擴展或自訂控制項，你可以使用 [`<ControlButton />`](/api-reference/components/control-button)
+  元件

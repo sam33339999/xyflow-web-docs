@@ -1,16 +1,16 @@
 ---
-title: EdgeReconnectAnchor component
+title: EdgeReconnectAnchor 元件
 sidebarTitle: '<EdgeReconnectAnchor />'
-description: 'The EdgeReconnectAnchor component is used to create a reconnection point on your custom edges.'
+description: 'EdgeReconnectAnchor 元件用於在你的自訂連線上建立重新連接點。'
 ---
 
 # &lt;EdgeReconnectAnchor />
 
-If you want a way to make your edges updatable, you can use the `<EdgeReconnectAnchor />` component. This component is used to create a reconnection point on your custom edges. They behave similar to handles:
+如果你想要讓連線可以更新，可以使用 `<EdgeReconnectAnchor />` 元件。此元件用於在你的自訂連線上建立重新連接點。它們的行為類似於控制點：
 
-1. You can start dragging on an `<EdgeReconnectAnchor />`
-2. This starts a new connection process and from the oppsite side of the edge
-3. You can finish the connection the same way as it had been started from a handle
+1. 你可以在 `<EdgeReconnectAnchor />` 上開始拖曳
+2. 這會從連線的另一側開始一個新的連接過程
+3. 你可以像從控制點開始一樣完成連接
 
 ```svelte filename="CustomEdge.svelte"
 <script lang="ts">
@@ -53,10 +53,10 @@ If you want a way to make your edges updatable, you can use the `<EdgeReconnectA
 {/if}
 ```
 
-This example renders invisible reconnection points. Naturally, you can also render an icon inside the `<EdgeReconnectAnchor />` component.
+此範例會渲染不可見的重新連接點。當然，你也可以在 `<EdgeReconnectAnchor />` 元件內渲染圖示。
 
-## Props
+## 屬性
 
-The type for props of `<EdgeReconnectAnchor />` component is exported as `EdgeReconnectAnchorProps`. Additionally, it extends the props of `<div />`.
+`<EdgeReconnectAnchor />` 元件的屬性類型導出為 `EdgeReconnectAnchorProps`。此外，它擴展了 `<div />` 的屬性。
 
 <APIDocs componentName="EdgeReconnectAnchor" groupKeys="HTMLAttributes<HTMLDivElement>" />

@@ -1,30 +1,26 @@
 ---
 description:
-  The useStore hook can be used to access the internal store of the Svelte Flow.
+  useStore hook 可用於存取 Svelte Flow 的內部儲存狀態。
 ---
 
 import { Callout } from 'nextra/components';
 
 # useStore()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/store/index.ts/)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/store/index.ts/)
 
-This hook can be used to access the internal store of the Svelte Flow.
+此 hook 可用於存取 Svelte Flow 的內部儲存狀態。
 
 <Callout type="info">
-  This hook is only needed for advanced use cases. It should only be used if there is no
-  other way to access the internal state. For many of the common use cases, there are
-  dedicated hooks available such as
-  [`useConnection`](/api-reference/hooks/use-connection),
-  [`useNodes`](/api-reference/hooks/use-nodes), etc.
+  此 hook 僅適用於進階使用情境。只有在沒有其他方式可以存取內部狀態時才應使用它。對於許多常見的使用情境，都有專門的 hook 可用，例如 [`useConnection`](/api-reference/hooks/use-connection)、[`useNodes`](/api-reference/hooks/use-nodes) 等。
 </Callout>
 
 ```svelte
 <script lang="ts">
   import { useStore } from '@xyflow/svelte';
 
-  // lots of props that you pass to the <SvelteFlow> component end up in the internal store.
-  // Here we are accessing the current connectionMode.
+  // 你傳遞給 <SvelteFlow> 元件的許多 props 最終會進入內部儲存狀態。
+  // 這裡我們正在存取目前的 connectionMode。
   const { connectionMode } = useStore();
 </script>
 ```

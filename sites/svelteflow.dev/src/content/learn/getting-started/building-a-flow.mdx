@@ -1,24 +1,22 @@
 ---
 description:
-  A step-by-step guide to creating your first flow diagram with Svelte Flow. Learn how to
-  set up the canvas, add nodes and edges, and enhance your flow with built-in features
-  like viewport fitting and custom node types.
+  使用 Svelte Flow 建立第一個流程圖的逐步指南。學習如何設定畫布、新增節點和連線，
+  並使用內建功能（如視窗調整和自訂節點類型）來增強您的流程圖。
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 import { Callout } from 'nextra/components';
 
-# Building a Flow
+# 建立流程圖
 
-Ready to create your first flow? This guide will walk you through the process step by
-step. If you haven't reviewed our [Key Concepts](/learn/getting-started/key-concepts) yet,
-we recommend doing that first.
+準備好建立您的第一個流程圖了嗎？本指南將逐步引導您完成整個過程。如果您還沒有
+查看我們的[核心概念](/learn/getting-started/key-concepts)，我們建議您先閱讀那部分。
 
-## Getting Started
+## 開始使用
 
-First, import the Svelte Flow Component and its required styles into your project. We'll
-also import the `Background` component for visual enhancement.
+首先，將 Svelte Flow 元件及其必要的樣式匯入到您的專案中。我們還將匯入
+`Background` 元件以增強視覺效果。
 
 ```svelte
 <script>
@@ -27,12 +25,12 @@ import '@xyflow/svelte/dist/style.css';
 </script>
 ```
 
-Next, render the main component inside an element with defined dimensions and place the
-`Background` component inside `SvelteFlow`.
+接下來，在具有定義尺寸的元素內渲染主要元件，並將
+`Background` 元件放在 `SvelteFlow` 內。
 
 <Callout type="info">
-  Content inside `SvelteFlow` stays fixed on top of the viewport. The `Background`
-  component transforms its pattern to match viewport movement.
+  `SvelteFlow` 內的內容會固定在視窗頂部。`Background`
+  元件會轉換其圖樣以配合視窗移動。
 </Callout>
 
 ```svelte
@@ -43,7 +41,7 @@ Next, render the main component inside an element with defined dimensions and pl
 </div>
 ```
 
-If everything is set up correctly, you should see a blank canvas like this:
+如果一切設定正確，您應該會看到這樣的空白畫布：
 
 <RemoteCodeViewer
   route="guides/getting-started/a"
@@ -53,23 +51,22 @@ If everything is set up correctly, you should see a blank canvas like this:
   showEditor={false}
 />
 
-## Adding nodes
+## 新增節點
 
-Now that the flow is set up, let's add some nodes. Create an array of
-[node objects](/api-reference/types/node) with these **required** properties:
+現在流程圖已經設定好了，讓我們加入一些節點。建立一個包含
+[節點物件](/api-reference/types/node)的陣列，具有以下**必要**屬性：
 
-- `id`: A unique identifier for each node
-- `position`: The x and y coordinates
-- `data`: An object for storing custom data
+- `id`：每個節點的唯一識別符
+- `position`：x 和 y 座標
+- `data`：用於儲存自訂資料的物件
 
-We'll use the [`$state.raw`](https://svelte.dev/docs/svelte/$state) rune to make the array
-reactive.
+我們將使用 [`$state.raw`](https://svelte.dev/docs/svelte/$state) rune 來使陣列具有
+響應性。
 
 <Callout color="yellow">
-  Simply using `$state` would **not only** make the array reactive, but **every property
-  of each node**, too. This could lead to [performance
-  issues](https://github.com/sveltejs/svelte/issues/11851), so we use
-  [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) instead.
+  單純使用 `$state` **不僅**會使陣列具有響應性，**每個節點的每個屬性也會**變成響應式。
+  這可能導致[效能問題](https://github.com/sveltejs/svelte/issues/11851)，
+  所以我們使用 [`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) 替代。
 </Callout>
 
 ```js
@@ -87,15 +84,14 @@ let nodes = $state.raw([
 ]);
 ```
 
-Next, we [bind](https://svelte.dev/docs/svelte/$bindable) the nodes to the `SvelteFlow`
-component. This two-way binding allows both the component and your code to modify the
-nodes.
+接下來，我們將節點[綁定](https://svelte.dev/docs/svelte/$bindable)到 `SvelteFlow`
+元件。這種雙向綁定允許元件和您的程式碼都可以修改節點。
 
 ```svelte
 <SvelteFlow bind:nodes>
 ```
 
-If you've followed these steps, you should see a flow that looks like this:
+如果您按照這些步驟操作，您應該會看到這樣的流程圖：
 
 <RemoteCodeViewer
   route="guides/getting-started/b"
@@ -105,28 +101,28 @@ If you've followed these steps, you should see a flow that looks like this:
   showEditor={false}
 />
 
-## Adding edges
+## 新增連線
 
-Let's connect the nodes with an edge. Initialize a
-[`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) with an array of
-[edge objects](/api-reference/types/edge) that have these **required** properties:
+讓我們用一條連線來連接節點。使用
+[`$state.raw`](https://svelte.dev/docs/svelte/$state#$state.raw) 初始化一個
+[連線物件](/api-reference/types/edge)的陣列，具有以下**必要**屬性：
 
-- `id`: A unique identifier for the edge
-- `source`: The ID of the source node
-- `target`: The ID of the target node
+- `id`：連線的唯一識別符
+- `source`：來源節點的 ID
+- `target`：目標節點的 ID
 
 ```js
 let edges = $state.raw([{ id: 'e1-2', source: '1', target: '2' }]);
 ```
 
-As with nodes, we [bind](https://svelte.dev/docs/svelte/$bindable) the edges to the
-`SvelteFlow` component.
+與節點一樣，我們將連線[綁定](https://svelte.dev/docs/svelte/$bindable)到
+`SvelteFlow` 元件。
 
 ```svelte
 <SvelteFlow bind:nodes bind:edges>
 ```
 
-Your flow should now look like this:
+您的流程圖現在應該看起來像這樣：
 
 <RemoteCodeViewer
   route="guides/getting-started/c"
@@ -136,24 +132,23 @@ Your flow should now look like this:
   showEditor={false}
 />
 
-## Polishing the flow
+## 美化流程圖
 
-This all might already go into the right drection but it still looks a little bland and
-lopsided, doesn't it?
+這可能已經朝著正確的方向發展，但看起來還是有點平淡和不平衡，不是嗎？
 
 #### `fitView`
 
-Add the [`fitView`](/api-reference/svelte-flow#fitview) prop to automatically fit the
-initial viewport to the visible nodes.
+添加 [`fitView`](/api-reference/svelte-flow#fitview) prop 來自動將初始視窗
+調整為可見節點的大小。
 
 ```svelte
 <SvelteFlow bind:nodes bind:edges fitView>
 ```
 
-#### Built-in node types
+#### 內建節點類型
 
-Let's change the `type` of the first node to `input` and the second node to `output`.
-These are built-in node types, that come with a different set of handles.
+讓我們將第一個節點的 `type` 更改為 `input`，第二個節點更改為 `output`。
+這些是內建的節點類型，附帶不同的控制點配置。
 
 ```js
 let nodes = $state.raw([
@@ -172,9 +167,9 @@ let nodes = $state.raw([
 ]);
 ```
 
-#### Built-in edge types
+#### 內建連線類型
 
-We change the edge to type `smoothstep` and also give it a label!
+我們將連線更改為 `smoothstep` 類型，並為其添加一個標籤！
 
 ```js
 let edges = $state.raw([
@@ -182,9 +177,9 @@ let edges = $state.raw([
 ]);
 ```
 
-## Finished Flow
+## 完成的流程圖
 
-And there you have it! Your completed flow should look like this:
+就是這樣！您完成的流程圖應該看起來像這樣：
 
 <RemoteCodeViewer
   route="guides/getting-started/d"
