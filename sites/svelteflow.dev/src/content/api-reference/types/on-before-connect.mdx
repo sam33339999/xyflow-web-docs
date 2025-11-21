@@ -1,12 +1,12 @@
 ---
-description: Callback function triggered before creating a connection in SvelteFlow, allowing for connection prevention or modification.
+description: SvelteFlow 中在建立連線前觸發的回呼函式，允許阻止或修改連線。
 ---
 
 # OnBeforeConnect
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/lib/types/general.ts#L31)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/system/src/lib/types/general.ts#L31)
 
-The `OnBeforeConnect` type is a callback function that is called before a connection is created. It can prevent the connection or modify it by returning `false` or a modified connection.
+`OnBeforeConnect` 類型是在建立連線前被呼叫的回呼函式。它可以透過回傳 `false` 或修改後的連線來阻止連線或修改它。
 
 ```ts
 type OnBeforeConnect = (connection: Connection) => Promise<boolean | Connection>;

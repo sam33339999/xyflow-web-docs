@@ -10,12 +10,9 @@ import { Callout } from 'nextra/components';
 
 # \<SvelteFlowProvider />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/SvelteFlowProvider/SvelteFlowProvider.svelte)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/components/SvelteFlowProvider/SvelteFlowProvider.svelte)
 
-The `<SvelteFlowProvider />` component wraps its child nodes with a Svelte context that
-makes it possible to access a flow's internal state outside of the
-[`<SvelteFlow />`](/api-reference/svelte-flow) component. Many of the hooks we
-provide rely on this component to work.
+`<SvelteFlowProvider />` 元件使用 Svelte context 包裹其子節點，使得在 [`<SvelteFlow />`](/api-reference/svelte-flow) 元件之外也能存取流程的內部狀態。我們提供的許多 hooks 都依賴此元件才能運作。
 
 ```svelte filename="App.svelte"
 <script>
@@ -37,8 +34,7 @@ provide rely on this component to work.
 <script>
   import { SvelteFlow, SvelteFlowProvider } from '@xyflow/svelte'
 
-  // This hook will only work if the component it's used in
-  // is a child of <SvelteFlowProvider />
+  // 這個 hook 只有在使用它的元件是 <SvelteFlowProvider /> 的子元件時才能運作
   const nodes = useNodes()
 </script>
 
@@ -54,15 +50,10 @@ provide rely on this component to work.
 ```
 
 <Callout type="info">
-  The state provided by `<SvelteFlowProvider />` is first initialized with default values.
-  Only after the `<SvelteFlow />` component initializes, will the state be replaced with
-  correct values. However, you can expect this to happen before the first render.
+  `<SvelteFlowProvider />` 提供的狀態首先使用預設值初始化。只有在 `<SvelteFlow />` 元件初始化後，狀態才會被替換為正確的值。然而，你可以預期這會在第一次渲染之前發生。
 </Callout>
 
-## Notes
+## 注意事項
 
-- If you're using a router and want your flow's state to persist across routes,
-  it's vital that you place the `<SvelteFlowProvider />` component _outside_ of
-  your router.
-- If you have multiple flows on the same page you will need to use a separate
-  `<SvelteFlowProvider />`.
+- 如果你使用路由器並希望流程的狀態在路由之間保持，那麼將 `<SvelteFlowProvider />` 元件放在路由器_之外_是至關重要的。
+- 如果同一頁面上有多個流程，你需要使用單獨的 `<SvelteFlowProvider />`。

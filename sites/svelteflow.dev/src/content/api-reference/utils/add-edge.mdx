@@ -1,16 +1,12 @@
 ---
-description: "This util is a convenience function to add a new Edge to an array of edges.
-  It also performs some validation to make sure you don't add an invalid edge or
-  duplicate an existing one."
+description: "此工具函式是一個便利函式，用於將新的 Edge 加入到邊緣陣列中。它還會執行一些驗證，以確保你不會加入無效的邊緣或重複現有的邊緣。"
 ---
 
 # addEdge()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/general.ts/#L104-L138)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/general.ts/#L104-L138)
 
-This util is a convenience function to add a new [`Edge`](/api-reference/types/edge) to an
-array of edges. It also performs some validation to make sure you don't add an
-invalid edge or duplicate an existing one.
+此工具函式是一個便利函式，用於將新的 [`Edge`](/api-reference/types/edge) 加入到邊緣陣列中。它還會執行一些驗證，以確保你不會加入無效的邊緣或重複現有的邊緣。
 
 ```js
 import { addEdge } from '@xyflow/svelte';
@@ -31,8 +27,6 @@ const onAddEdge = () => {
 
 <APIDocs functionName="addEdge" />
 
-## Notes
+## 注意事項
 
-- If an edge with the same `target` and `source` already exists (and the same
-  `targetHandle` and `sourceHandle` if those are set), then this util won't add
-  a new edge even if the `id` property is different.
+- 如果已經存在具有相同 `target` 和 `source` 的邊緣（以及相同的 `targetHandle` 和 `sourceHandle`，如果有設定的話），那麼即使 `id` 屬性不同，此工具函式也不會加入新的邊緣。

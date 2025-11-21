@@ -1,12 +1,12 @@
 ---
-description: Defines the available node types and their corresponding components in SvelteFlow.
+description: 定義 SvelteFlow 中可用的節點類型及其對應的元件。
 ---
 
 # NodeTypes
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/nodes.ts#L33)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/nodes.ts#L33)
 
-The `NodeTypes` type is a record that maps node type identifiers to their corresponding Svelte components. This allows you to define custom node types and their implementations.
+`NodeTypes` 類型是一個記錄，將節點類型識別碼對應到它們對應的 Svelte 元件。這讓你可以定義自訂節點類型及其實作。
 
 ```ts
 type NodeTypes = Record<string, SvelteComponent>;

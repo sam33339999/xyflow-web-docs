@@ -1,96 +1,95 @@
 ---
-title: Migrate to v1
-description: A comprehensive guide to migrating from Svelte Flow v0 to v1. Learn about state management changes, component binding updates, hook modifications, and new features for a smooth transition to the latest version.
+title: 遷移到 v1
+description: 從 Svelte Flow v0 遷移到 v1 的完整指南。學習狀態管理變更、元件綁定更新、鉤子修改和新功能,以順利過渡到最新版本。
 ---
 
 import { Callout } from 'nextra/components';
 
-# Migrate to Svelte Flow 1.0
+# 遷移到 Svelte Flow 1.0
 
-Svelte Flow 1.0 is built from the ground up with Svelte 5 and includes many new features and improvements. This guide will help you migrate from Svelte Flow 0.x to 1.0.
+Svelte Flow 1.0 是使用 Svelte 5 從頭開始建構的,包含許多新功能和改進。本指南將幫助你從 Svelte Flow 0.x 遷移到 1.0。
 
 <Callout type="info">
-  If you are looking for the Svelte Flow 0.x docs, please refer to
-  [legacy.svelteflow.dev](https://legacy.svelteflow.dev).
+  如果你正在尋找 Svelte Flow 0.x 文檔,請參閱 [legacy.svelteflow.dev](https://legacy.svelteflow.dev)。
 </Callout>
 
-## New features
+## 新功能
 
-- **[Reconnect edges](/examples/edges/reconnect-edge)**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges.
-- **Keyboard navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now tab through nodes and edges and move nodes with the arrow keys. Can be disabled via [**disableKeyboardA11y**](/api-reference/svelte-flow#disablekeyboarda11y)
-- **[Click connect](/examples/edges/click-connect)**: You can now create a new connection by clicking on a handle one by one.
-- **[Enhanced ViewportPortal](/api-reference/components/viewport-portal)**: You can now decide if you want to render something below or above the nodes & edges in the viewport.
-- **Improved [fitView](/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
-- **colorModeSSR** prop: You can pass a fallback color mode for server side rendering when colorMode is set to 'system'.
-- [**elevateNodesOnSelect**](/api-reference/svelte-flow#elevateNodesOnSelect) & [**elevateEdgesOnSelect**](/api-reference/svelte-flow#elevateEdgesOnSelect): Control if nodes & edges should be elevated via z-index when selected.
-- [**noDragClass, noWheelClass, noPanClass**](/api-reference/svelte-flow#style-props): You can now modify the class name used to disable dragging, panning and zooming.
-- [**onselectionchange**](/api-reference/svelte-flow#onselectionchange) & [**useOnSelectionChange**](/api-reference/hooks/use-on-selection-change): You can now listen to selection changes via a callback
+- **[重新連接邊](/examples/edges/reconnect-edge)**: 你可以使用新的 `<EdgeReconnectAnchor />` 元件重新連接邊。它可以用於在自訂邊上添加自訂重新連接點。
+- **鍵盤導航和無障礙**: 我們添加了對鍵盤導航的支援,並改進了螢幕閱讀器的無障礙性。你現在可以使用 Tab 鍵瀏覽節點和邊,並使用方向鍵移動節點。可以通過 [**disableKeyboardA11y**](/api-reference/svelte-flow#disablekeyboarda11y) 停用
+- **[點擊連接](/examples/edges/click-connect)**: 你現在可以通過逐一點擊控制點來建立新連接。
+- **[增強的 ViewportPortal](/api-reference/components/viewport-portal)**: 你現在可以決定是否要在視窗中的節點和邊下方或上方渲染某些內容。
+- **改進的 [fitView](/api-reference/hooks/use-svelte-flow#fitview)**: 我們微調了 `fitView` 函式,以更好地處理動態添加的節點。
+- **colorModeSSR** 屬性: 當 colorMode 設置為 'system' 時,你可以為伺服器端渲染傳遞一個備用顏色模式。
+- [**elevateNodesOnSelect**](/api-reference/svelte-flow#elevateNodesOnSelect) 和 [**elevateEdgesOnSelect**](/api-reference/svelte-flow#elevateEdgesOnSelect): 控制選中時節點和邊是否應該通過 z-index 提升。
+- [**noDragClass、noWheelClass、noPanClass**](/api-reference/svelte-flow#style-props): 你現在可以修改用於停用拖動、平移和縮放的類別名稱。
+- [**onselectionchange**](/api-reference/svelte-flow#onselectionchange) 和 [**useOnSelectionChange**](/api-reference/hooks/use-on-selection-change): 你現在可以通過回呼監聽選擇變更
 
-## Breaking changes
+## 重大變更
 
-### `nodes` & `edges` are now using `$state.raw` instead of `writable`
+### `nodes` 和 `edges` 現在使用 `$state.raw` 而不是 `writable`
 
-Svelte 5 introduces runes which are now getting used for nodes and edges.
+Svelte 5 引入了 runes,現在用於節點和邊。
 
-**Old API**
+**舊 API**
 
 ```js
 const nodes = writable([...]);
 const edges = writable([...]);
 ```
 
-**New API**
+**新 API**
 
 ```js
 let nodes = $state.raw([...]);
 let edges = $state.raw([...]);
 ```
 
-### Updating Nodes & Edges
+### 更新節點和邊
 
-Previously it was possible to update single node properties. Theoretically, this would also be possible with `$state`, however the [performance implications](https://svelte.dev/playground/e6f804ba6da348bc8b6a0a13c59672cb?version=5.19.0) of this are unfortunately too great, so we opted to using `$state.raw`.
+以前可以更新單個節點屬性。理論上,這在 `$state` 中也是可能的,但是這樣做的[效能影響](https://svelte.dev/playground/e6f804ba6da348bc8b6a0a13c59672cb?version=5.19.0)不幸太大,所以我們選擇使用 `$state.raw`。
 
-This means that `nodes` and `edges` are to be treated as immutable from now on. If you are making updates manually make sure you:
+這意味著從現在開始,`nodes` 和 `edges` 將被視為不可變的。如果你手動進行更新,請確保:
 
-1. create a new node/edge object, when updating a property.
-2. reassign the nodes/edges array (this was technically required before anyway)
+1. 更新屬性時建立一個新的 node/edge 物件。
+2. 重新分配 nodes/edges 陣列(技術上以前也需要這樣做)
 
 ```js
-nodes[0].position.x = 100; // won't work
+nodes[0].position.x = 100; // 不會起作用
 
 const newNode = { ...nodes[0] };
 newNode.position.x = 100;
-nodes[0] = newNode; // not enough to trigger an update
-nodes = [...nodes]; // this will make it work
+nodes[0] = newNode; // 不足以觸發更新
+nodes = [...nodes]; // 這樣才會起作用
 
 nodes = nodes.map((node) => {
   if (node.id === '1') {
     return { ...node, position: { ...node.position, x: 100 } };
   }
   return node;
-}); // also works
+}); // 也有效
 
 updateNode('1', (node) => ({
   ...node,
   position: { ...node.position, x: 100 },
-})); // using the updateNode helper from useSvelteFlow
+})); // 使用 useSvelteFlow 的 updateNode 輔助函式
 ```
 
-### `nodes` & `edges` need to be bound from `<SvelteFlow />`
+### `nodes` 和 `edges` 需要從 `<SvelteFlow />` 綁定
 
-**Old API**
+**舊 API**
 
 ```js
 <SvelteFlow {nodes} {edges} />
 ```
 
-**New API**
+**新 API**
 
 ```js
 <SvelteFlow bind:nodes bind:edges />
 ```
 
-If `nodes` and `edges` live in a separate module, you can use [function bindings](https://svelte.dev/docs/svelte/bind#Function-bindings).
+如果 `nodes` 和 `edges` 存在於單獨的模組中,你可以使用[函式綁定](https://svelte.dev/docs/svelte/bind#Function-bindings)。
 
 ```js
 // store.svelte.js
@@ -114,11 +113,11 @@ export const setEdges = (newEdges) => edges = newEdges;
 <SvelteFlow bind:nodes={getNodes, setNodes} bind:edges={getEdges, setEdges} />
 ```
 
-### Custom Node & Edge Props
+### 自訂節點和邊屬性
 
-This is by enlarge a general change in Svelte 5, but it does have quite a big impact on typing the props of Custom Nodes & Edges.
+這在很大程度上是 Svelte 5 中的一般變更,但它確實對自訂節點和邊的屬性定型產生了很大影響。
 
-**Old API**
+**舊 API**
 
 ```js
 // CustomNode.svelte
@@ -130,31 +129,31 @@ export let position: $$Props['position'];
 export let selected: $$Props['selected'];
 ```
 
-**New API**
+**新 API**
 
 ```js
 let { data, position, selected } : NodeProps = $props();
 ```
 
-### Hooks
+### 鉤子
 
-Hooks now return reactive values instead of writables. Because `$state` values cannot be [returned by functions directly](https://svelte.dev/docs/svelte/$state#Passing-state-into-functions) we have to return an object with a `.current` property to keep reactivity. In this regard, we are [following the official trend](https://svelte.dev/docs/svelte/svelte-reactivity#MediaQuery) set by the Svelte library authors.
+鉤子現在返回響應式值而不是 writables。因為 `$state` 值不能[直接由函式返回](https://svelte.dev/docs/svelte/$state#Passing-state-into-functions),我們必須返回一個帶有 `.current` 屬性的物件以保持響應性。在這方面,我們[遵循官方趨勢](https://svelte.dev/docs/svelte/svelte-reactivity#MediaQuery),這是 Svelte 函式庫作者設定的。
 
-**Old API**
+**舊 API**
 
 ```js
 const edges = useEdges();
 $: console.log(edges);
 ```
 
-**New API**
+**新 API**
 
 ```js
 const edges = useEdges();
 $inspect(edges.current);
 ```
 
-Note that in case of `useNodes`, `useEdges` and `useViewport` reassignments to `.current` work!
+請注意,在 `useNodes`、`useEdges` 和 `useViewport` 的情況下,對 `.current` 的重新分配有效!
 
 ```js
 const nodes = useNodes();
@@ -164,11 +163,11 @@ function updateNodes() {
 }
 ```
 
-### Binding the viewport
+### 綁定視窗
 
-Binding the viewport now works natively in Svelte 5. You can either access the internal viewport or bind your very own viewport object to be used instead.
+綁定視窗現在在 Svelte 5 中原生運作。你可以存取內部視窗或綁定你自己的視窗物件以供使用。
 
-**Old API**
+**舊 API**
 
 ```js
 const viewport = writable<Viewport>({ x: 100, y: 100, zoom: 1.25 });
@@ -176,7 +175,7 @@ const viewport = writable<Viewport>({ x: 100, y: 100, zoom: 1.25 });
 <SvelteFlow {viewport} />
 ```
 
-**New API**
+**新 API**
 
 ```js
 let viewport = $state < Viewport > { x: 100, y: 100, zoom: 1.25 };
@@ -184,11 +183,11 @@ let viewport = $state < Viewport > { x: 100, y: 100, zoom: 1.25 };
 <SvelteFlow bind:viewport />;
 ```
 
-### Custom Connection Line
+### 自訂連接線
 
-Using a custom Connection Line was possible before by passing it to a [slot](https://svelte.dev/docs/svelte/legacy-slots). In Svelte Flow 1.0 we introduced a new prop called `connectionLineComponent`for this.
+以前可以通過將其傳遞給[插槽](https://svelte.dev/docs/svelte/legacy-slots)來使用自訂連接線。在 Svelte Flow 1.0 中,我們為此引入了一個名為 `connectionLineComponent` 的新屬性。
 
-**Old API**
+**舊 API**
 
 ```js
 <SvelteFlow {nodes} {edges}>
@@ -197,7 +196,7 @@ Using a custom Connection Line was possible before by passing it to a [slot](htt
 </SvelteFlow>
 ```
 
-**New API**
+**新 API**
 
 ```js
 <SvelteFlow {nodes} {edges} connectionLineComponent={ConnectionLine}>
@@ -205,11 +204,11 @@ Using a custom Connection Line was possible before by passing it to a [slot](htt
 </SvelteFlow>
 ```
 
-### `onEdgeCreate` becomes `onbeforeconnect`
+### `onEdgeCreate` 變成 `onbeforeconnect`
 
-`onedgecreate` was called before a new edge was created. This is now called `onbeforeconnect` to better align with events like [`onbeforeconnect`](/api-reference/svelte-flow#onbeforedelete).
+`onedgecreate` 在建立新邊之前被調用。現在稱為 `onbeforeconnect`,以更好地與 [`onbeforedelete`](/api-reference/svelte-flow#onbeforedelete) 等事件對齊。
 
-**Old API**
+**舊 API**
 
 ```js
 <SvelteFlow
@@ -219,7 +218,7 @@ Using a custom Connection Line was possible before by passing it to a [slot](htt
 />
 ```
 
-**New API**
+**新 API**
 
 ```js
 <SvelteFlow
@@ -229,12 +228,11 @@ Using a custom Connection Line was possible before by passing it to a [slot](htt
 />
 ```
 
-### `<EdgeLabelRenderer/>` becomes [`<EdgeLabel />`](/api-reference/components/edge-label)
+### `<EdgeLabelRenderer/>` 變成 [`<EdgeLabel />`](/api-reference/components/edge-label)
 
-The `EdgeLabelRenderer` component is now called `EdgeLabel`. As it was just a simple Portal to begin with, the naming of it being a "renderer" was a bit misleading.
-To add to this, the new `EdgeLabel` component now also handles clicks on the label automatically and is aware of what edge it belongs to.
+`EdgeLabelRenderer` 元件現在稱為 `EdgeLabel`。由於它一開始只是一個簡單的入口,將其命名為「渲染器」有點誤導。除此之外,新的 `EdgeLabel` 元件現在還自動處理標籤上的點擊,並知道它屬於哪個邊。
 
-**Old API**
+**舊 API**
 
 ```js filename="CustomEdge.svelte"
 <BaseEdge id={id} path={path} />
@@ -247,7 +245,7 @@ To add to this, the new `EdgeLabel` component now also handles clicks on the lab
 </EdgeLabelRenderer>
 ```
 
-**New API**
+**新 API**
 
 ```js filename="CustomEdge.svelte"
 <BaseEdge path={path} />

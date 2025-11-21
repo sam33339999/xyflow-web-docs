@@ -1,12 +1,12 @@
 ---
-description: Callback function triggered when reconnecting an existing edge in SvelteFlow.
+description: 在 SvelteFlow 中重新連接現有邊時觸發的回呼函式。
 ---
 
 # OnReconnectStart
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L84)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L84)
 
-The `OnReconnectStart` type is a callback function that is called when reconnecting an existing edge. It receives the mouse or touch event, the edge being reconnected, and the type of handle being used.
+`OnReconnectStart` 類型是在重新連接現有邊時被呼叫的回呼函式。它接收滑鼠或觸控事件、正在重新連接的邊以及正在使用的控制點類型。
 
 ```ts
 type OnReconnectStart<EdgeType extends EdgeBase = EdgeBase> = (

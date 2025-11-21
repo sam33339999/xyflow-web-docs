@@ -1,25 +1,19 @@
 ---
 description:
-  Learn how to implement and manage sub-flows in Svelte Flow. This guide covers
-  parent-child node relationships, node positioning, movement constraints, and creating
-  nested flow diagrams with custom parent nodes.
+  學習如何在 Svelte Flow 中實作和管理子流程。本指南涵蓋父子節點關係、節點定位、移動約束,
+  以及建立帶有自訂父節點的巢狀流程圖。
 ---
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Sub Flows
+# 子流程
 
-A sub flow is a flowgraph contained within a node. These nested flows can operate
-independently or connect with nodes outside their parent node, making them perfect for
-organizing and grouping related nodes. This guide will show you how to implement sub flows
-and explain the available options for child nodes.
+子流程是包含在節點內的流程圖。這些巢狀流程可以獨立運作,也可以與父節點外的節點連接,使它們非常適合組織和分組相關節點。本指南將向你展示如何實作子流程,並解釋子節點的可用選項。
 
-### Defining Child Nodes
+### 定義子節點
 
-To define a child node, use the `parentId` option (see all available options in the
-[node options section](/api-reference/types/node)). Child nodes are positioned relative to
-their parent, with `{ x: 0, y: 0 }` representing the top-left corner of the parent node.
+要定義子節點,請使用 `parentId` 選項(請參閱[節點選項部分](/api-reference/types/node)中的所有可用選項)。子節點相對於其父節點定位,`{ x: 0, y: 0 }` 代表父節點的左上角。
 
 ```js highlight="parentId: 'A'"
 let nodes = $state.raw([
@@ -38,39 +32,28 @@ let nodes = $state.raw([
 ```
 
 <Callout type="info">
-  <strong>Order of Nodes:</strong>
-  Parents have to appear before their child nodes in the `nodes` array!
+  <strong>節點順序:</strong>
+  父節點必須在 `nodes` 陣列中出現在其子節點之前!
 </Callout>
 
 #### `extent: 'parent'`
 
-When a parent node has defined dimensions, you can restrict child node movement to stay
-within the parent's boundaries by setting `extent: 'parent'`. This prevents child nodes
-from being dragged outside their parent's area.
+當父節點具有定義的尺寸時,你可以通過設置 `extent: 'parent'` 來限制子節點的移動保持在父節點的邊界內。這可以防止子節點被拖動到其父節點區域之外。
 
 <RemoteCodeViewer route="guides/subflows/a" framework="svelte" editorHeight={500} />
 
-### Child Node Behavior
+### 子節點行為
 
-Child nodes maintain their relative position when the parent node is moved. While the
-`parentId` option establishes the parent-child relationship, child nodes can still be
-positioned outside their parent (unless `extent: 'parent'` is set). However, they will
-always move with their parent when it's dragged.
+當父節點移動時,子節點保持其相對位置。雖然 `parentId` 選項建立了父子關係,但子節點仍然可以定位在其父節點之外(除非設置了 `extent: 'parent'`)。但是,當拖動父節點時,它們將始終隨父節點一起移動。
 
-In our examples, we use the built-in `group` node type for parent nodes, which provides a
-transparent background with a border. You can also use
-[any custom node type](/learn/layouting/sub-flows#any-node-can-be-a-parent-node) as a
-parent.
+在我們的範例中,我們使用內建的 `group` 節點類型作為父節點,它提供了帶有邊框的透明背景。你也可以使用[任何自訂節點類型](/learn/layouting/sub-flows#any-node-can-be-a-parent-node)作為父節點。
 
-Let's explore more complex scenarios by adding additional nodes and edges. You can create
-connections both within a group and between sub flows and outer nodes:
+讓我們通過添加額外的節點和邊來探索更複雜的場景。你可以在群組內以及子流程和外部節點之間建立連接:
 
 <RemoteCodeViewer route="guides/subflows/b" framework="svelte" editorHeight={500} />
 
-### Using a Custom Parent Node
+### 使用自訂父節點
 
-To demonstrate the flexibility of parent nodes, let's modify our example by removing the
-label from node B and adding child nodes. This example shows how you can use any node type
-as a parent. We'll also set `draggable: false` on the child nodes to make them static.
+為了展示父節點的靈活性,讓我們通過從節點 B 中移除標籤並添加子節點來修改我們的範例。這個範例展示了你可以使用任何節點類型作為父節點。我們還將在子節點上設置 `draggable: false` 以使它們靜態。
 
 <RemoteCodeViewer route="guides/subflows/c" framework="svelte" editorHeight={500} />

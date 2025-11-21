@@ -1,17 +1,13 @@
 ---
 description:
-  'The getSmoothStepPath util returns everything you need to render a stepped path
-  between two nodes. The borderRadius property can be used to choose how rounded
-  the corners of those steps are.'
+  'getSmoothStepPath 工具函式會返回在兩個節點之間渲染階梯路徑所需的所有內容。borderRadius 屬性可用於選擇這些階梯的圓角程度。'
 ---
 
 # getSmoothStepPath()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/smoothstep-edge.ts/#L244-L245)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/smoothstep-edge.ts/#L244-L245)
 
-The `getSmoothStepPath` util returns everything you need to render a stepped path
-between two nodes. The `borderRadius` property can be used to choose how rounded
-the corners of those steps are.
+`getSmoothStepPath` 工具函式會返回在兩個節點之間渲染階梯路徑所需的所有內容。`borderRadius` 屬性可用於選擇這些階梯的圓角程度。
 
 ```js
 import { Position, getSmoothStepPath } from '@xyflow/svelte';
@@ -37,8 +33,7 @@ console.log(offsetX, offsetY); //=> 75, 40
 
 <APIDocs functionName="getSmoothStepPath" />
 
-## Notes
+## 注意事項
 
-- This function returns a tuple (aka a fixed-size array) to make it easier to
-  work with multiple edge paths at once.
-- You can set the `borderRadius` property to `0` to get a step edge path.
+- 此函式返回一個元組（即固定大小的陣列），讓你更容易同時處理多個邊緣路徑。
+- 你可以將 `borderRadius` 屬性設定為 `0` 來獲得階梯邊緣路徑。

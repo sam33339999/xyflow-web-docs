@@ -1,16 +1,15 @@
 ---
-title: The ViewportPortal component
+title: ViewportPortal 元件
 sidebarTitle: '<ViewportPortal />'
-description: 'The ViewportPortal component can be used to add components to the same viewport of the flow where nodes and edges are rendered. This is useful when you want to render your own components that are adhere to the same coordinate system as the nodes & edges and are also affected by zooming and panning'
+description: 'ViewportPortal 元件可用於將元件加入到流程視口中，與節點和連線在相同位置渲染。當你想要渲染自己的元件並讓它們遵循與節點和連線相同的座標系統，且同樣受到縮放和平移影響時，這非常有用。'
 ---
 
 # &lt;ViewportPortal />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/ViewportPortal/index.tsx)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/ViewportPortal/index.tsx)
 
-`<ViewportPortal />` component can be used to add components to the same viewport of the flow where nodes and edges are rendered.
-This is useful when you want to render your own components that are adhere to the same coordinate system as the nodes & edges and are also
-affected by zooming and panning
+`<ViewportPortal />` 元件可用於將元件加入到流程視口中，與節點和連線在相同位置渲染。
+當你想要渲染自己的元件並讓它們遵循與節點和連線相同的座標系統，且同樣受到縮放和平移影響時，這非常有用。
 
 ```svelte
 <script lang="ts">
@@ -24,7 +23,7 @@ import { ViewportPortal } from '@xyflow/svelte';
 </ViewportPortal>
 ```
 
-You can also define if you want to render the component below or above the nodes and edges by using the `target` prop.
+你也可以使用 `target` 屬性來定義要將元件渲染在節點和連線的下方還是上方。
 
 ```svelte
 <script lang="ts">
@@ -38,8 +37,8 @@ import { ViewportPortal } from '@xyflow/svelte';
 </ViewportPortal>
 ```
 
-## Props
+## 屬性
 
-The type for props of `<ViewportPortal />` component is exported as `ViewportPortalProps`. Additionally, it extends the props of `<div />`.
+`<ViewportPortal />` 元件的屬性類型導出為 `ViewportPortalProps`。此外，它擴展了 `<div />` 的屬性。
 
 <APIDocs componentName="ViewportPortal" groupKeys="HTMLAttributes<HTMLDivElement>" />

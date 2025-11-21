@@ -1,12 +1,12 @@
 ---
-description: Callback function triggered before reconnecting an edge in SvelteFlow, allowing for reconnection prevention or modification.
+description: SvelteFlow 中在重新連接邊之前觸發的回呼函式，允許阻止或修改重新連接操作。
 ---
 
 # OnBeforeReconnect
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L34)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L34)
 
-The `OnBeforeReconnect` type is a callback function that is called before an edge is reconnected. It can prevent reconnection or modify the connection by returning `false` or a modified connection.
+`OnBeforeReconnect` 類型是在邊重新連接前被呼叫的回呼函式。它可以透過回傳 `false` 或修改後的連線來阻止重新連接或修改連線。
 
 ```ts
 type OnBeforeReconnect<EdgeType extends EdgeBase = EdgeBase> = (

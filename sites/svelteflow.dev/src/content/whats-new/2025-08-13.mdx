@@ -5,13 +5,13 @@ authors: [xyflow]
 date: '2025-08-13'
 ---
 
-**Svelte Flow 1.2.3** is out with some of fixes and a great update for handles. It's now possible to position child content of a handle outside of the handle itself and still use it as a starting point for connections. 
+**Svelte Flow 1.2.3** 發布了一些修正和控制點的重大更新。現在可以將控制點的子內容定位在控制點本身之外，並仍然將其用作連接的起點。
 
-### Patch Changes
--   [#5428](https://github.com/xyflow/xyflow/pull/5428) Be able to use detached handle content as a starting point for a connection - Thanks @space_phoenix_ !
--   [#5419](https://github.com/xyflow/xyflow/pull/5419) Make edge markers fallback to `--xy-edge-stroke` CSS variable when marker color is null
--   [#5453](https://github.com/xyflow/xyflow/pull/5453) Snap selection instead of separate nodes when snap grid is enabled
--   [#5443](https://github.com/xyflow/xyflow/pull/5443) Use 1 as the default for interactive Minimap zoom step
--   [#5448](https://github.com/xyflow/xyflow/pull/5448) Use correct `HandleConnection` type for `Handle` `onConnect`
--   [#5444](https://github.com/xyflow/xyflow/pull/5444) Export `MiniMapNode` to use it for custom mini map nodes
--   [#5424](https://github.com/xyflow/xyflow/pull/5424) Export missing `BuiltInEdge` type
+### 修補變更
+-   [#5428](https://github.com/xyflow/xyflow/pull/5428) 能夠使用分離的控制點內容作為連接的起點 - 感謝 @space_phoenix_！
+-   [#5419](https://github.com/xyflow/xyflow/pull/5419) 當標記顏色為 null 時，讓邊緣標記回退到 `--xy-edge-stroke` CSS 變數
+-   [#5453](https://github.com/xyflow/xyflow/pull/5453) 啟用對齊網格時，對齊選取區域而非單獨的節點
+-   [#5443](https://github.com/xyflow/xyflow/pull/5443) 使用 1 作為互動式 Minimap 縮放步長的預設值
+-   [#5448](https://github.com/xyflow/xyflow/pull/5448) 為 `Handle` 的 `onConnect` 使用正確的 `HandleConnection` 型別
+-   [#5444](https://github.com/xyflow/xyflow/pull/5444) 匯出 `MiniMapNode` 以用於自訂小地圖節點
+-   [#5424](https://github.com/xyflow/xyflow/pull/5424) 匯出缺少的 `BuiltInEdge` 型別

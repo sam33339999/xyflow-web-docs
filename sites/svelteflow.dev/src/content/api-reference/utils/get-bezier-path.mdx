@@ -1,14 +1,12 @@
 ---
-description: 'The getBezierPath util returns everything you need to render a bezier edge
-  between two nodes.'
+description: 'getBezierPath 工具函式會返回在兩個節點之間渲染貝茲曲線邊緣所需的所有內容。'
 ---
 
 # getBezierPath()
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/bezier-edge.ts/#L95)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/bezier-edge.ts/#L95)
 
-The `getBezierPath` util returns everything you need to render a bezier edge
-between two nodes.
+`getBezierPath` 工具函式會返回在兩個節點之間渲染貝茲曲線邊緣所需的所有內容。
 
 ```js
 import { Position, getBezierPath } from '@xyflow/svelte';
@@ -34,7 +32,6 @@ console.log(offsetX, offsetY); //=> 75, 40
 
 <APIDocs functionName="getBezierPath" />
 
-## Notes
+## 注意事項
 
-- This function returns a tuple (aka a fixed-size array) to make it easier to
-  work with multiple edge paths at once.
+- 此函式返回一個元組（即固定大小的陣列），讓你更容易同時處理多個邊緣路徑。

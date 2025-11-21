@@ -1,18 +1,18 @@
 ---
-description: Understand the fundamental concepts of Svelte Flow - from the interactive canvas and node-edge system to viewport management and built-in components. Essential reading for developers starting with Svelte Flow.
+description: 了解 Svelte Flow 的基本概念 - 從互動式畫布和節點連線系統到視窗管理和內建元件。這是開始使用 Svelte Flow 的開發者的必讀內容。
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Key Concepts
+# 核心概念
 
-At its core, Svelte Flow is about creating interactive flowgraphs - a collection of nodes connected by edges. While this might sound simple in theory, Svelte Flow provides the foundation for building complex interactive diagrams:
+Svelte Flow 的核心是建立互動式流程圖 - 由連線連接的節點集合。雖然這在理論上聽起來很簡單，但 Svelte Flow 為建構複雜的互動式圖表提供了基礎：
 
-- An infinite, interactive canvas for your flowgraph
-- The ability to render and connect nodes with edges
-- **Everything is built using standard Svelte components**
+- 無限的互動式畫布用於您的流程圖
+- 能夠渲染節點並使用連線將它們連接起來
+- **所有內容都使用標準的 Svelte 元件建構**
 
-To help you understand the terminology we use throughout the documentation, take a look at the example flow below.
+為了幫助您理解我們在整個文檔中使用的術語，請查看下面的範例流程圖。
 
 <RemoteCodeViewer
   framework="svelte"
@@ -22,13 +22,13 @@ To help you understand the terminology we use throughout the documentation, take
   showOpenInStackblitz={false}
 />
 
-Here are the key terms you'll encounter when working with Svelte Flow:
+以下是您在使用 Svelte Flow 時會遇到的核心術語：
 
-- **Svelte Flow Component**: The main component that renders your flowgraph
-  - [**Svelte Flow Props**](/api-reference/svelte-flow): All configuration and data is passed through props
-- **Viewport**: The visible area of your flowgraph that can be panned and zoomed
-  - When we say something is "in the viewport," it means it moves with the viewport's transformation
-- [**Base Styles**](/learn/customization/theming): The essential CSS required for Svelte Flow to function properly
-- [**Built-In Components**](/learn/getting-started/built-in-components): Ready-to-use components like Controls and MiniMap that enhance your flowgraph
+- **Svelte Flow 元件**：渲染流程圖的主要元件
+  - [**Svelte Flow Props**](/api-reference/svelte-flow)：所有配置和資料都透過 props 傳遞
+- **視窗**：可以平移和縮放的流程圖可見區域
+  - 當我們說某個東西「在視窗中」時，表示它會隨著視窗的轉換而移動
+- [**基礎樣式**](/learn/customization/theming)：Svelte Flow 正常運作所需的基本 CSS
+- [**內建元件**](/learn/getting-started/built-in-components)：即用型元件，如 Controls 和 MiniMap，可增強您的流程圖
 
-With these concepts in mind, you're ready to [install Svelte Flow](/learn/getting-started/installation) and start [building your first flow](/learn/getting-started/building-a-flow)!
+了解這些概念後，您就可以[安裝 Svelte Flow](/learn/getting-started/installation) 並開始[建立您的第一個流程圖](/learn/getting-started/building-a-flow)了！

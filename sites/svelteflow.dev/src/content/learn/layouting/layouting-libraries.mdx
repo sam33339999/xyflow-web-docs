@@ -1,183 +1,122 @@
 ---
-sidebarTitle: Layouting Libraries
-description: Explore various layouting libraries compatible with Svelte Flow, including Dagre, D3-Hierarchy, D3-Force, and ELK. Learn how to implement different layout algorithms for nodes and edges in your flow diagrams.
+sidebarTitle: 佈局函式庫
+description: 探索與 Svelte Flow 相容的各種佈局函式庫,包括 Dagre、D3-Hierarchy、D3-Force 和 ELK。學習如何為流程圖中的節點和邊實作不同的佈局演算法。
 ---
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Layouting
+# 佈局
 
-We regularly get asked how to handle layouting in Svelte Flow. While we could build
-some basic layouting into Svelte Flow, we believe that **you know your app's
-requirements best** and with so many options out there we think it's better you
-choose the best right tool for the job (not to mention it'd be a whole bunch of
-work for us).
+我們經常被問到如何在 Svelte Flow 中處理佈局。雖然我們可以在 Svelte Flow 中內建一些基本的佈局功能,但我們相信**你最了解應用程式的需求**,而且外面有這麼多選擇,我們認為最好由你選擇最合適的工具(更不用說這對我們來說會是一大堆工作)。
 
-That doesn't help very much if you don't know what the options _are_, so this
-guide is here to help! We'll split things up into resources for layouting nodes
-and resources for routing edges.
+如果你不知道有哪些選擇,這並沒有太大幫助,所以本指南就是為了幫助你!我們將把事情分為節點佈局資源和邊路由資源。
 
-To start, let's explore several different layouting libraries and how they can be used with Svelte Flow.
+首先,讓我們探索幾個不同的佈局函式庫,以及它們如何與 Svelte Flow 一起使用。
 
-## Layouting Nodes
+## 佈局節點
 
-For layouting nodes, there are a few third-party libraries that we think are worth
-checking out:
+對於佈局節點,有幾個我們認為值得查看的第三方函式庫:
 
-| Library                                            | Dynamic node sizes | Sub-flow layouting | Edge routing | Bundle size                                                                                                                                   |
-| -------------------------------------------------- | ------------------ | ------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Dagre](https://github.com/dagrejs/dagre)          | Yes                | Yes¹               | No           | <a href="https://pkg-size.dev/@dagrejs/dagre"><img src="https://pkg-size.dev/badge/bundle/39882" title="Bundle size for @dagrejs/dagre"/></a> |
-| [D3-Hierarchy](https://github.com/d3/d3-hierarchy) | No                 | No                 | No           | <a href="https://pkg-size.dev/d3-hierarchy"><img src="https://pkg-size.dev/badge/bundle/14697" title="Bundle size for d3-hierarchy"/></a>     |
-| [D3-Force](https://github.com/d3/d3-force)         | Yes                | No                 | No           | <a href="https://pkg-size.dev/d3-force"><img src="https://pkg-size.dev/badge/bundle/15623" title="Bundle size for d3-force"/></a>             |
-| [ELK](https://github.com/kieler/elkjs)             | Yes                | Yes                | Yes          | <a href="https://pkg-size.dev/elkjs"><img src="https://pkg-size.dev/badge/bundle/1455420" title="Bundle size for elkjs"/></a>                 |
+| 函式庫                                             | 動態節點大小 | 子流程佈局 | 邊路由 | 打包大小                                                                                                                                      |
+| -------------------------------------------------- | ------------ | ---------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Dagre](https://github.com/dagrejs/dagre)          | 是           | 是¹        | 否     | <a href="https://pkg-size.dev/@dagrejs/dagre"><img src="https://pkg-size.dev/badge/bundle/39882" title="Bundle size for @dagrejs/dagre"/></a> |
+| [D3-Hierarchy](https://github.com/d3/d3-hierarchy) | 否           | 否         | 否     | <a href="https://pkg-size.dev/d3-hierarchy"><img src="https://pkg-size.dev/badge/bundle/14697" title="Bundle size for d3-hierarchy"/></a>     |
+| [D3-Force](https://github.com/d3/d3-force)         | 是           | 否         | 否     | <a href="https://pkg-size.dev/d3-force"><img src="https://pkg-size.dev/badge/bundle/15623" title="Bundle size for d3-force"/></a>             |
+| [ELK](https://github.com/kieler/elkjs)             | 是           | 是         | 是     | <a href="https://pkg-size.dev/elkjs"><img src="https://pkg-size.dev/badge/bundle/1455420" title="Bundle size for elkjs"/></a>                 |
 
-¹ Dagre currently has an [open issue](https://github.com/dagrejs/dagre/issues/238)
-that prevents it from laying out sub-flows correctly if any nodes in the sub-flow
-are connected to nodes outside the sub-flow.
+¹ Dagre 目前有一個[未解決的問題](https://github.com/dagrejs/dagre/issues/238),如果子流程中的任何節點連接到子流程外的節點,它將無法正確佈局子流程。
 
-We've loosely ordered these options from simplest to most complex, where dagre
-is largely a drop-in solution and elkjs is a full-blown highly configurable
-layouting engine. Below, we'll take a look at a brief example of how each of these
-libraries can be used with Svelte Flow. For dagre and elkjs specifically, we have
-some separate examples you can refer back to [here](/examples/layout/dagre)
-and [here](/examples/layout/elkjs).
+我們大致按照從最簡單到最複雜的順序排列這些選項,其中 dagre 主要是一個即插即用的解決方案,而 elkjs 是一個功能齊全、高度可配置的佈局引擎。下面,我們將簡要介紹這些函式庫如何與 Svelte Flow 一起使用的範例。特別是對於 dagre 和 elkjs,我們有一些單獨的範例,你可以參考[這裡](/examples/layout/dagre)和[這裡](/examples/layout/elkjs)。
 
 ### Dagre
 
-- Repo: https://github.com/dagrejs/dagre
-- Docs: https://github.com/dagrejs/dagre/wiki#configuring-the-layout
+- 儲存庫: https://github.com/dagrejs/dagre
+- 文檔: https://github.com/dagrejs/dagre/wiki#configuring-the-layout
 
-Dagre is a simple library for layouting directed graphs. It has minimal configuration
-options and a focus on speed over choosing the most optimal layout. If you need
-to organize your flows into a tree, _we highly recommend dagre_.
+Dagre 是一個用於佈局有向圖的簡單函式庫。它的配置選項很少,專注於速度而不是選擇最優佈局。如果你需要將流程組織成樹狀結構,_我們強烈推薦 dagre_。
 
 <RemoteCodeViewer route="guides/layouting/dagre" framework="svelte" />
 
-With no effort at all we get a well-organized tree layout! Whenever
-`getLayoutedElements` is called, we'll reset the dagre graph and set the graph's
-direction (either left-to-right or top-to-bottom) based on the `direction` prop.
-Dagre needs to know the dimensions of each node in order to lay them out, so we
-iterate over our list of nodes and add them to dagre's internal graph.
+不費吹灰之力,我們就得到了一個組織良好的樹狀佈局!每當調用 `getLayoutedElements` 時,我們將重置 dagre 圖形,並根據 `direction` 屬性設置圖形的方向(從左到右或從上到下)。Dagre 需要知道每個節點的尺寸才能佈局它們,所以我們遍歷節點列表並將它們添加到 dagre 的內部圖形中。
 
-After laying out the graph, we'll return an object with the layouted nodes and
-edges. We do this by mapping over the original list of nodes and updating each
-node's position according to node stored in the dagre graph.
+佈局圖形後,我們將返回一個包含佈局後節點和邊的物件。我們通過遍歷原始節點列表並根據 dagre 圖形中儲存的節點更新每個節點的位置來實現這一點。
 
-Documentation for dagre's configuration options can be found
-[here](https://github.com/dagrejs/dagre/wiki#configuring-the-layout), including
-properties to set for spacing and alignment.
+dagre 的配置選項文檔可以在[這裡](https://github.com/dagrejs/dagre/wiki#configuring-the-layout)找到,包括設置間距和對齊的屬性。
 
 ### D3-Hierarchy
 
-- Repo: https://github.com/d3/d3-hierarchy
-- Docs: https://d3js.org/d3-hierarchy
+- 儲存庫: https://github.com/d3/d3-hierarchy
+- 文檔: https://d3js.org/d3-hierarchy
 
-When you know your graph is a tree with a single root node, d3-hierarchy can
-provide a handful of interesting layouting options. While the library can layout
-a simple tree just fine, it also has layouting algorithms for tree maps, partition
-layouts, and enclosure diagrams.
+當你知道你的圖形是具有單個根節點的樹時,d3-hierarchy 可以提供一些有趣的佈局選項。雖然該函式庫可以很好地佈局簡單的樹,但它也有樹狀圖、分區佈局和封閉圖的佈局演算法。
 
 <RemoteCodeViewer route="guides/layouting/d3" framework="svelte" />
 
 <Callout>
-  D3-hierarchy expects your graphs to have a single root node, so it won't work in all
-  cases. It's also important to note that d3-hierarchy assigns the same width and height
-  to _all_ nodes when calculating the layout, so it's not the best choice if you're
-  displaying lots of different node types.
+  D3-hierarchy 期望你的圖形具有單個根節點,所以它不會在所有情況下都有效。同樣重要的是要注意,d3-hierarchy 在計算佈局時為_所有_節點分配相同的寬度和高度,所以如果你顯示許多不同的節點類型,它不是最佳選擇。
 </Callout>
 
 ### D3-Force
 
-- Repo: https://github.com/d3/d3-force
-- Docs: https://d3js.org/d3-force
+- 儲存庫: https://github.com/d3/d3-force
+- 文檔: https://d3js.org/d3-force
 
-For something more interesting than a tree, a force-directed layout might be
-the way to go. D3-Force is a physics-based layouting library that can be used to
-position nodes by applying different forces to them.
+對於比樹更有趣的東西,力導向佈局可能是一個不錯的選擇。D3-Force 是一個基於物理的佈局函式庫,可以通過對節點應用不同的力來定位它們。
 
-As a consequence, it's a little more complicated to configure and use compared to
-dagre and d3-hierarchy. Importantly, d3-force's layouting algorithm is iterative,
-so we need a way to keep computing the layout across multiple renders.
+因此,與 dagre 和 d3-hierarchy 相比,它的配置和使用稍微複雜一些。重要的是,d3-force 的佈局演算法是迭代的,所以我們需要一種方法在多次渲染中持續計算佈局。
 
-First, let's see what it does:
+首先,讓我們看看它做了什麼:
 
 <RemoteCodeViewer route="guides/layouting/d3-force" framework="svelte" />
 
-In our Svelte implementation, we use Svelte's lifecycle hooks and reactive state to manage the force simulation. The simulation is configured with a number of different forces applied so you can see how they interact: play around in your own code to see how you want to configure those forces. You can find the documentation and some different examples of d3-force [here](https://d3js.org/d3-force).
+在我們的 Svelte 實作中,我們使用 Svelte 的生命週期鉤子和響應式狀態來管理力模擬。模擬配置了許多不同的力,所以你可以看到它們如何互動:在你自己的程式碼中嘗試,看看你想如何配置這些力。你可以在[這裡](https://d3js.org/d3-force)找到 d3-force 的文檔和一些不同的範例。
 
 <Callout>
-  <strong>Rectangular collisions</strong>
-  D3-Force has a built-in collision force, but it assumes nodes are circles. We've thrown
-  together a custom force in `collision.js` that uses a similar algorithm but accounts for
-  our rectangular nodes instead. Feel free to steal it or let us know if you have any
-  suggestions for improvements!
+  <strong>矩形碰撞</strong>
+  D3-Force 有一個內建的碰撞力,但它假設節點是圓形的。我們在 `collision.js` 中組合了一個自訂力,使用類似的演算法,但考慮了我們的矩形節點。隨意使用它,或者如果你有任何改進建議,請告訴我們!
 </Callout>
 
-The tick function progresses the simulation by one step and then updates Svelte
-Flow with the new node positions. We've also included a demonstration on how to
-handle node dragging while the simulation is running: if your flow isn't interactive
-you can ignore that part!
+tick 函式將模擬推進一步,然後使用新的節點位置更新 Svelte Flow。我們還包括了一個關於如何在模擬運行時處理節點拖動的演示:如果你的流程不是互動的,你可以忽略那部分!
 
 <Callout>
-  For larger graphs, computing the force layout every render forever is going to incur a
-  big performance hit. In this example we have a simple toggle to turn the layouting on
-  and off, but you might want to come up with some other approach to only compute the
-  layout when necessary.
+  對於較大的圖形,永遠在每次渲染時計算力佈局會帶來很大的效能影響。在這個範例中,我們有一個簡單的切換來開啟和關閉佈局,但你可能想要想出一些其他方法,只在必要時計算佈局。
 </Callout>
 
 ### Elkjs
 
-- Repo: https://github.com/kieler/elkjs
-- Docs: https://eclipse.dev/elk/reference.html (good luck!)
+- 儲存庫: https://github.com/kieler/elkjs
+- 文檔: https://eclipse.dev/elk/reference.html (祝你好運!)
 
-Elkjs is certainly the most configurable option available, but it's also the most
-complicated. Elkjs is a Java library that's been ported to JavaScript, and it
-provides a huge number of options for configuring the layout of your graph.
+Elkjs 當然是最可配置的選項,但它也是最複雜的。Elkjs 是一個已經移植到 JavaScript 的 Java 函式庫,它提供了大量用於配置圖形佈局的選項。
 
 <RemoteCodeViewer route="guides/layouting/elkjs" framework="svelte" />
 
-At its most basic we can compute layouts similar to dagre, but because the layouting
-algorithm runs asynchronously we need to handle promises and update our Svelte state accordingly.
+在最基本的情況下,我們可以計算類似於 dagre 的佈局,但因為佈局演算法是非同步運行的,我們需要處理 promise 並相應地更新我們的 Svelte 狀態。
 
 <Callout>
-  <strong>The ELK reference is your new best friend</strong>
-  We don't often recommend elkjs because its complexity makes it difficult for us to
-  support folks when they need it. If you do decide to use it, you'll want to keep the
-  original [Java API reference](https://eclipse.dev/elk/reference.html) handy.
+  <strong>ELK 參考是你的新好朋友</strong>
+  我們不經常推薦 elkjs,因為它的複雜性使我們在需要時難以支援人們。如果你決定使用它,你會想要隨時查閱原始的 [Java API 參考](https://eclipse.dev/elk/reference.html)。
 </Callout>
 
-We've also included a few examples of some of the other layouting algorithms
-available, including a non-interactive force layout.
+我們還包括了一些其他可用佈局演算法的範例,包括非互動式力佈局。
 
-### Honourable Mentions
+### 值得一提的
 
-Of course, we can't go through every layouting library out there: we'd never work
-on anything else! Here are some other libraries we've come across that might be
-worth taking a look at:
+當然,我們無法介紹所有的佈局函式庫:我們永遠不會做其他事情!這裡有一些我們遇到的其他函式庫,可能值得一看:
 
-- If you want to use dagre or d3-hierarchy but need to support nodes with different
-  dimensions, both [d3-flextree](https://github.com/klortho/d3-flextree) and
-  [entitree-flex](https://github.com/codeledge/entitree-flex) look promising.
+- 如果你想使用 dagre 或 d3-hierarchy 但需要支援不同尺寸的節點,[d3-flextree](https://github.com/klortho/d3-flextree) 和 [entitree-flex](https://github.com/codeledge/entitree-flex) 看起來很有前途。
 
-- [Cola.js](https://github.com/tgdwyer/WebCola) looks like a promising option for
-  so-called "constraint-based" layouts. We haven't had time to properly investigate
-  it yet, but it looks like you can achieve results similar to d3-force but with
-  a lot more control.
+- [Cola.js](https://github.com/tgdwyer/WebCola) 看起來像是所謂「基於約束」佈局的一個有前途的選項。我們還沒有時間適當地研究它,但看起來你可以獲得類似於 d3-force 的結果,但有更多的控制。
 
-## Routing Edges
+## 路由邊
 
-If you don't have any requirements for edge routing, you can use one of the
-layouting libraries above to position nodes and let the edges fall wherever they
-may. Otherwise, you'll want to look into some libraries and techniques for edge
-routing.
+如果你對邊路由沒有任何要求,你可以使用上面的佈局函式庫之一來定位節點,讓邊隨意放置。否則,你會想要研究一些邊路由的函式庫和技術。
 
-Your options here are more limited than for node layouting, but here are some
-resources we thought looked promising:
+你在這裡的選擇比節點佈局更有限,但這裡有一些我們認為看起來有前途的資源:
 
 - [Routing Orthogonal Diagram Connectors in JavaScript](https://medium.com/swlh/routing-orthogonal-diagram-connectors-in-javascript-191dc2c5ff70)
 
-If you do explore some custom edge routing options, consider contributing back to
-the community by writing a blog post or creating a library!
+如果你確實探索了一些自訂邊路由選項,請考慮透過撰寫部落格文章或建立函式庫來回饋社群!
 
-You can use the editable edges functionality in Svelte Flow as a starting point for implementing a custom edge that can be routed along a specific path.
+你可以使用 Svelte Flow 中的可編輯邊功能作為實作可以沿特定路徑路由的自訂邊的起點。

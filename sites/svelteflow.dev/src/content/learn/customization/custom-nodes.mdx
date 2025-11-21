@@ -1,21 +1,21 @@
 ---
-description: Learn how to create and implement custom nodes in Svelte Flow. This guide covers node component creation, handle management, positioning, and utility classes for building interactive and flexible flow diagrams.
+description: 學習如何在 Svelte Flow 中建立和實作自訂節點。本指南涵蓋節點元件建立、控制點管理、定位以及用於建構互動式和靈活流程圖的實用類別。
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 import { Callout } from 'nextra/components';
 
-# Custom Nodes
+# 自訂節點
 
-A powerful feature of Svelte Flow is the ability to create custom nodes. This gives you the flexibility to render anything you want within your nodes. We generally recommend creating your own custom nodes rather than relying on built-in ones. With custom nodes, you can add as many source and target handles as you like—or even embed form inputs, charts, and other interactive elements.
+Svelte Flow 的一個強大功能是能夠建立自訂節點。這讓您可以靈活地在節點內渲染任何想要的內容。我們通常建議建立您自己的自訂節點，而不是依賴內建節點。使用自訂節點，您可以添加任意數量的來源和目標控制點，甚至可以嵌入表單輸入、圖表和其他互動式元素。
 
-In this section, we'll walk through creating a custom node featuring an input field that updates text elsewhere in your application. For further examples, we recommend checking out our [Custom Node Example](/examples/nodes/custom-node).
+在本節中，我們將逐步建立一個具有輸入欄位的自訂節點，該輸入欄位會更新應用程式中其他地方的文字。如需更多範例，我們建議查看我們的[自訂節點範例](/examples/nodes/custom-node)。
 
-## Creating a Custom Node
+## 建立自訂節點
 
-To create a custom node, all you need to do is create a Svelte component. Svelte Flow will automatically wrap it in an interactive container that injects essential props like the node's id, position, and data, and provides functionality for selection, dragging, and connecting handles. For a full reference on all available custom node props, take a look at the [Node Props](/api-reference/types/node-props).
+要建立自訂節點，您只需建立一個 Svelte 元件。Svelte Flow 會自動將其包裝在一個互動式容器中，該容器會注入基本的 props，如節點的 id、position 和 data，並提供選擇、拖曳和連接控制點的功能。有關所有可用的自訂節點 props 的完整參考，請查看[節點 Props](/api-reference/types/node-props)。
 
-Let's dive into an example by creating a custom node called `TextUpdaterNode`. For this, we've added a controlled input field with a oninput handler. We simply use the 'text' property from the node's data for the input and we update the node's data via the [`updateNodeData`](/api-reference/hooks/use-svelte-flow#update-node-data) function, that can be accessed through the [`useSvelteFlow`](/api-reference/hooks/use-svelte-flow) hook.
+讓我們透過建立一個名為 `TextUpdaterNode` 的自訂節點來深入了解範例。為此，我們添加了一個帶有 oninput 處理程式的受控輸入欄位。我們簡單地使用節點資料中的 'text' 屬性作為輸入，並透過 [`updateNodeData`](/api-reference/hooks/use-svelte-flow#update-node-data) 函式更新節點的資料，該函式可以透過 [`useSvelteFlow`](/api-reference/hooks/use-svelte-flow) hook 來存取。
 
 ```svelte filename="TextUpdaterNode.svelte"
 <script lang="ts">
@@ -42,9 +42,10 @@ Let's dive into an example by creating a custom node called `TextUpdaterNode`. F
 </div>
 ```
 
-## Adding the Node Type
+## 新增節點類型
 
-Now we need to communicate the new custom node to Svelte Flow. You can add custom nodes by passing the [`nodeTypes`](/api-reference/svelte-flow#node-types) prop.
+現在我們需要將新的自訂節點傳達給 Svelte Flow。您可以透過傳遞
+[`nodeTypes`](/api-reference/svelte-flow#node-types) prop 來新增自訂節點。
 
 ```svelte filename="App.svelte"
 <script>
@@ -69,7 +70,7 @@ Now we need to communicate the new custom node to Svelte Flow. You can add custo
 </SvelteFlow>
 ```
 
-After defining your new node type, you can refer to it by using the `type` node option:
+定義新的節點類型後，您可以使用 `type` 節點選項來引用它：
 
 ```js
 let nodes = $state.raw([
@@ -82,13 +83,14 @@ let nodes = $state.raw([
 ]);
 ```
 
-After putting it all together and adding some basic styles we get a custom node that prints text to the console:
+將所有內容整合在一起並添加一些基本樣式後，我們得到一個將文字印出到控制台的自訂節點：
 
 <RemoteCodeViewer route="guides/custom-nodes" framework="svelte" />
 
-## Adding Handles
+## 新增控制點
 
-Svelte Flow provides a [`Handle`](/api-reference/components/handle) component that can be used to add handles to your custom nodes. It's as easy as mounting the component.
+Svelte Flow 提供了一個 [`Handle`](/api-reference/components/handle) 元件，可用於
+將控制點添加到您的自訂節點。只需掛載該元件即可。
 
 ```svelte filename="CustomNode.svelte" highlight="Handle"
 <script>
@@ -99,6 +101,6 @@ Svelte Flow provides a [`Handle`](/api-reference/components/handle) component th
 <Handle type="source" position={Position.Bottom} />
 ```
 
-#### Multiple Handles
+#### 多個控制點
 
-If you need more than just one source and target handle, you can use the `id`
+如果您需要不止一個來源和目標控制點，您可以使用 `id`

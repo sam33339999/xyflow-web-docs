@@ -5,23 +5,23 @@ authors: [xyflow]
 date: '2025-06-11'
 ---
 
-We improved accessibility, enhanced viewport transitions and updated the Node Resizer among many other fixes!
+我們改善了無障礙功能、增強了視口轉場效果，並更新了 Node Resizer，還有許多其他修正！
 
-### Minor Changes
--   [#5299](https://github.com/xyflow/xyflow/pull/5299) Thanks [@printerscanner](https://github.com/printerscanner)! - Add `ariaRole` prop to nodes and edges
--   [#5280](https://github.com/xyflow/xyflow/pull/5280) Improve typing for Nodes
--   [#5276](https://github.com/xyflow/xyflow/pull/5276) Add an `ease` and `interpolate` option to all function that alter the viewport
--   [#5277](https://github.com/xyflow/xyflow/pull/5277) Thanks [@printerscanner](https://github.com/printerscanner)! - Add `ariaLabelConfig` prop for customizing UI text like aria labels and descriptions.
--   [#5317](https://github.com/xyflow/xyflow/pull/5317) Add `domAttributes` option for nodes and edges
--   [#5326](https://github.com/xyflow/xyflow/pull/5326) Prevent NodeResizer controls to become too small when zooming out
--   [#5308](https://github.com/xyflow/xyflow/pull/5308) Thanks [@printerscanner](https://github.com/printerscanner)! - Focus nodes on tab if not within the viewport and add a new prop `autoPanOnNodeFocus`
-### Patch Changes
--   [#5327](https://github.com/xyflow/xyflow/pull/5327) Prevent selecting of edges when spacebar is pressed
--   [#5294](https://github.com/xyflow/xyflow/pull/5294) Fix data in `EdgeProps` that was not typed correctly
--   [#5327](https://github.com/xyflow/xyflow/pull/5327) Fix initial fitView for SSR
--   [#5275](https://github.com/xyflow/xyflow/pull/5275) Fix setting nodesInitialized multiple times
--   [#5271](https://github.com/xyflow/xyflow/pull/5271) Thanks [@leejuyuu](https://github.com/leejuyuu)! - Change a11y description inline styles to classes
--   [#5327](https://github.com/xyflow/xyflow/pull/5327) Fix `ViewportPortal` not working when used outside of `SvelteFlow` component
--   [#5295](https://github.com/xyflow/xyflow/pull/5295) Export missing callback types
--   [#5327](https://github.com/xyflow/xyflow/pull/5327) Display nodes correctly in SSR output
+### 次要變更
+-   [#5299](https://github.com/xyflow/xyflow/pull/5299) 感謝 [@printerscanner](https://github.com/printerscanner)！- 為節點和邊緣新增 `ariaRole` 屬性
+-   [#5280](https://github.com/xyflow/xyflow/pull/5280) 改善節點的型別定義
+-   [#5276](https://github.com/xyflow/xyflow/pull/5276) 為所有變更視口的函式新增 `ease` 和 `interpolate` 選項
+-   [#5277](https://github.com/xyflow/xyflow/pull/5277) 感謝 [@printerscanner](https://github.com/printerscanner)！- 新增 `ariaLabelConfig` 屬性以自訂 UI 文字，如 aria 標籤和描述。
+-   [#5317](https://github.com/xyflow/xyflow/pull/5317) 為節點和邊緣新增 `domAttributes` 選項
+-   [#5326](https://github.com/xyflow/xyflow/pull/5326) 防止 NodeResizer 控制項在縮小時變得過小
+-   [#5308](https://github.com/xyflow/xyflow/pull/5308) 感謝 [@printerscanner](https://github.com/printerscanner)！- 如果節點不在視口內，按 Tab 時聚焦節點，並新增 `autoPanOnNodeFocus` 屬性
+### 修補變更
+-   [#5327](https://github.com/xyflow/xyflow/pull/5327) 防止按下空白鍵時選取邊緣
+-   [#5294](https://github.com/xyflow/xyflow/pull/5294) 修正 `EdgeProps` 中型別定義不正確的資料
+-   [#5327](https://github.com/xyflow/xyflow/pull/5327) 修正 SSR 的初始 fitView
+-   [#5275](https://github.com/xyflow/xyflow/pull/5275) 修正多次設定 nodesInitialized 的問題
+-   [#5271](https://github.com/xyflow/xyflow/pull/5271) 感謝 [@leejuyuu](https://github.com/leejuyuu)！- 將 a11y 描述內聯樣式改為類別
+-   [#5327](https://github.com/xyflow/xyflow/pull/5327) 修正在 `SvelteFlow` 元件外部使用 `ViewportPortal` 時無法運作的問題
+-   [#5295](https://github.com/xyflow/xyflow/pull/5295) 匯出缺少的回呼型別
+-   [#5327](https://github.com/xyflow/xyflow/pull/5327) 在 SSR 輸出中正確顯示節點
 

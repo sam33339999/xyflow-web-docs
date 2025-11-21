@@ -1,12 +1,12 @@
 ---
-description: Event type that includes pointer information for target node interactions in SvelteFlow.
+description: SvelteFlow 中目標節點互動時包含指標資訊的事件類型。
 ---
 
 # NodeTargetEventWithPointer
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/events.ts#20)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/events.ts#20)
 
-The `NodeTargetEventWithPointer` type represents an event that occurs during target node interactions, including pointer position and event details. It extends the base node event with pointer-specific information and target node data.
+`NodeTargetEventWithPointer` 類型代表目標節點互動期間發生的事件，包含指標位置和事件詳細資訊。它擴展了基本節點事件，加入了指標相關資訊和目標節點資料。
 
 ```ts
 type NodeTargetEventWithPointer<NodeType extends Node = Node> = {

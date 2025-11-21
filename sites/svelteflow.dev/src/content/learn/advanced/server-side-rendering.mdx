@@ -1,49 +1,48 @@
 ---
-title: Server Side Rendering
-description: Learn how to implement server-side rendering with Svelte Flow for static flow diagrams, dynamic image generation, and non-JavaScript environments. Includes configuration for node dimensions, handle positions, and viewport fitting.
+title: 伺服器端渲染
+description: 學習如何實作 Svelte Flow 的伺服器端渲染,用於靜態流程圖、動態圖片生成和非 JavaScript 環境。包括節點尺寸、控制點位置和視窗適配的配置。
 ---
 
-# Server side rendering, server side generation
+# 伺服器端渲染、伺服器端生成
 
 import { Callout } from 'nextra/components';
 
-This is an advanced use case and assumes you are already familiar with SvelteFlow. If you're new to SvelteFlow, check out our [getting started guide](/learn/getting-started/key-concepts).
+這是一個進階用例,假設你已經熟悉 SvelteFlow。如果你是 SvelteFlow 的新手,請查看我們的[入門指南](/learn/getting-started/key-concepts)。
 
-In this guide, you'll learn how to configure SvelteFlow for server-side rendering, enabling you to:
+在本指南中,你將學習如何配置 SvelteFlow 進行伺服器端渲染,使你能夠:
 
-- Generate static HTML diagrams for documentation
-- Render SvelteFlow diagrams in non-JavaScript environments
-- Create dynamic Open Graph images for social media sharing
+- 為文檔生成靜態 HTML 圖表
+- 在非 JavaScript 環境中渲染 SvelteFlow 圖表
+- 為社交媒體分享建立動態 Open Graph 圖片
 
-(For client-side image generation, check out our [download image example](/examples/misc/download-image).)
+(對於客戶端圖片生成,請查看我們的[下載圖片範例](/examples/misc/download-image)。)
 
-### Why Server-Side Rendering is Complex
+### 為什麼伺服器端渲染很複雜
 
-To understand why server-side rendering in Svelte Flow requires special configuration, let's look at what SvelteFlow typically handles on the client side:
+要理解為什麼 Svelte Flow 中的伺服器端渲染需要特殊配置,讓我們看看 SvelteFlow 通常在客戶端處理的內容:
 
-1. **Node Dimension Calculation**
+1. **節點尺寸計算**
 
-   - Nodes can contain any content, so their dimensions are determined by the browser's layout engine
-   - This dynamic sizing isn't available during server-side rendering
+   - 節點可以包含任何內容,所以它們的尺寸由瀏覽器的佈局引擎決定
+   - 這種動態大小調整在伺服器端渲染期間不可用
 
-2. **Handle Position Detection**
+2. **控制點位置檢測**
 
-   - Edge connections require precise handle positions
-   - These positions are calculated based on CSS layout, which isn't available on the server
+   - 邊連接需要精確的控制點位置
+   - 這些位置是基於 CSS 佈局計算的,在伺服器上不可用
 
-3. **Container Size Adaptation**
-   - SvelteFlow adapts to its container's dimensions
-   - Server-side rendering needs explicit dimensions
+3. **容器大小適應**
+   - SvelteFlow 適應其容器的尺寸
+   - 伺服器端渲染需要明確的尺寸
 
-### Node Dimensions
+### 節點尺寸
 
-The most crucial aspect of server-side rendering is specifying node dimensions. On the client, SvelteFlow automatically measures nodes and stores dimensions in `measured.width` and `measured.height`. For server-side rendering, you must provide these dimensions explicitly using either:
+伺服器端渲染最關鍵的方面是指定節點尺寸。在客戶端,SvelteFlow 會自動測量節點並將尺寸儲存在 `measured.width` 和 `measured.height` 中。對於伺服器端渲染,你必須使用以下任一方式明確提供這些尺寸:
 
 <Callout type="default">
-  <strong>Node Dimension Options:</strong>
-  1. `width` and `height`: Static dimensions that won't change <div></div>
-  2. `initialWidth` and `initialHeight`: Dynamic dimensions that may change after
-  client-side hydration
+  <strong>節點尺寸選項:</strong>
+  1. `width` 和 `height`: 不會改變的靜態尺寸 <div></div>
+  2. `initialWidth` 和 `initialHeight`: 在客戶端水合後可能改變的動態尺寸
 </Callout>
 
 ```svelte
@@ -61,9 +60,9 @@ The most crucial aspect of server-side rendering is specifying node dimensions. 
 </script>
 ```
 
-### Handle Positions
+### 控制點位置
 
-To render edges on the server, you need to provide handle positions explicitly. On the client, SvelteFlow calculates these positions automatically, but for server-side rendering, you must specify them using the `handles` property:
+要在伺服器上渲染邊,你需要明確提供控制點位置。在客戶端,SvelteFlow 會自動計算這些位置,但對於伺服器端渲染,你必須使用 `handles` 屬性指定它們:
 
 ```svelte
 <script>
@@ -96,9 +95,9 @@ To render edges on the server, you need to provide handle positions explicitly. 
 </script>
 ```
 
-### Using `fitView` with Server-Side Rendering
+### 在伺服器端渲染中使用 `fitView`
 
-If you know your container's dimensions, you can use `fitView` during server-side rendering by providing the container's width and height:
+如果你知道容器的尺寸,你可以通過提供容器的寬度和高度在伺服器端渲染期間使用 `fitView`:
 
 ```svelte
 <script>
@@ -111,9 +110,9 @@ If you know your container's dimensions, you can use `fitView` during server-sid
 <SvelteFlow {nodes} {edges} fitView width={1000} height={500} />
 ```
 
-### Generating Static HTML
+### 生成靜態 HTML
 
-To create static HTML output, you can use Svelte's server-side rendering capabilities. This generates an HTML string that you can use for static files or HTTP responses:
+要建立靜態 HTML 輸出,你可以使用 Svelte 的伺服器端渲染功能。這會生成一個 HTML 字串,你可以用於靜態檔案或 HTTP 回應:
 
 ```svelte
 <script>

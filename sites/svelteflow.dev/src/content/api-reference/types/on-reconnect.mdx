@@ -1,12 +1,12 @@
 ---
-description: Callback function triggered when an existing edge is reconnected to a different node or handle in SvelteFlow.
+description: 在 SvelteFlow 中將現有邊重新連接到不同節點或控制點時觸發的回呼函式。
 ---
 
 # OnReconnect
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L83)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/types/general.ts#L83)
 
-The `OnReconnect` type is a callback function that is called when an existing edge is reconnected to a different node or handle. It receives the old edge and the new connection details.
+`OnReconnect` 類型是在將現有邊重新連接到不同節點或控制點時被呼叫的回呼函式。它接收舊的邊和新的連線詳細資訊。
 
 ```ts
 type OnReconnect<EdgeType extends EdgeBase = EdgeBase> = (

@@ -1,14 +1,14 @@
 ---
-title: The NodeToolbar component
+title: NodeToolbar 元件
 sidebarTitle: '<NodeToolbar />'
-description: 'The NodeToolbar component can be used to display a toolbar on a side of a node or display a tooltip for example.'
+description: 'NodeToolbar 元件可用於在節點的側邊顯示工具列，或顯示提示框等。'
 ---
 
 # \<NodeToolbar />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/NodeToolbar/NodeToolbar.svelte)
+[在 GitHub 上查看原始碼](https://github.com/xyflow/xyflow/blob/main/packages/svelte/src/lib/plugins/NodeToolbar/NodeToolbar.svelte)
 
-The NodeToolbar component can be used to display a toolbar on a side of a node or display a tooltip for example.
+NodeToolbar 元件可用於在節點的側邊顯示工具列，或顯示提示框等。
 
 ```svelte filename="CustomNode.svelte"
 <script lang="ts">
@@ -28,15 +28,14 @@ The NodeToolbar component can be used to display a toolbar on a side of a node o
 <Handle type="source" position={Position.Right} />
 ```
 
-## Props
+## 屬性
 
-The type for props of `<NodeToolbar />` component is exported as `NodeToolbarProps`. Additionally, it extends the props of `<div />`.
+`<NodeToolbar />` 元件的屬性類型導出為 `NodeToolbarProps`。此外，它擴展了 `<div />` 的屬性。
 
 <APIDocs componentName="NodeToolbar" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
-## Notes
+## 注意事項
 
-- By default, the toolbar is only visible when a node is selected. If multiple
-  nodes are selected it will not be visible to prevent overlapping toolbars or
-  clutter. You can override this behavior by setting the `isVisible` prop to
-  `true`.
+- 預設情況下，工具列只在節點被選中時才可見。如果選中了多個節點，
+  它將不可見以避免工具列重疊或雜亂。你可以透過將 `isVisible` 屬性
+  設定為 `true` 來覆寫此行為。
