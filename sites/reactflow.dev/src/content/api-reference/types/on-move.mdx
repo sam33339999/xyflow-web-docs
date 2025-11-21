@@ -1,12 +1,12 @@
 ---
-description: Invoked when the viewport is moved, such as by panning or zooming.
+description: 當視口移動時調用，例如透過平移或縮放。
 ---
 
 # OnMove
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L16)
 
-The `OnMove` type is a callback that fires whenever the viewport is moved, either by user interaction or programmatically. It receives the triggering event and the new viewport state.
+`OnMove` 類型是一個回呼，在視口移動時觸發，無論是透過使用者互動還是程式化方式。它接收觸發事件和新的視口狀態。
 
 ```ts
 type OnMove = (event: MouseEvent | TouchEvent | null, viewport: Viewport) => void;

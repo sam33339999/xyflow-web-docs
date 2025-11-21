@@ -1,22 +1,19 @@
 ---
 description:
-  'When you implement a custom edge it is wrapped in a component that enables some basic
-  functionality. Your custom edge component receives the following props:'
+  '當您實作自訂連線時，它會被包裝在一個啟用基本功能的元件中。您的自訂連線元件會接收以下 props：'
 ---
 
 # EdgeProps
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/edges.ts/#L100)
 
-When you implement a custom edge it is wrapped in a component that enables some basic
-functionality. The `EdgeProps` type takes a generic parameter to specify the type of edges
-you use in your application:
+當您實作自訂連線時，它會被包裝在一個啟用基本功能的元件中。`EdgeProps` 類型接受泛型參數來指定您在應用程式中使用的連線類型：
 
 ```ts
 type AppEdgeProps = EdgeProps<MyEdgeType>;
 ```
 
-Your custom edge component receives the following props:
+您的自訂連線元件會接收以下 props：
 
 ## Fields
 

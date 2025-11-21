@@ -1,18 +1,13 @@
 ---
 description:
-  The onNodesChange callback takes an array of NodeChange objects that you should
-  use to update your flow's state. The NodeChange type is a union of six different
-  object types that represent that various ways an node can change in a flow.
+  onNodesChange 回呼接收一個 NodeChange 物件陣列，您應該使用它來更新流程的狀態。NodeChange 類型是六種不同物件類型的聯集，代表節點在流程中可以變化的各種方式。
 ---
 
 # NodeChange
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/487b13c9ad8903789f56c6fcfd8222f9cb74b812/packages/system/src/types/changes.ts/#L47)
 
-The [`onNodesChange`](/api-reference/react-flow#on-nodes-change) callback takes
-an array of `NodeChange` objects that you should use to update your flow's state.
-The `NodeChange` type is a union of six different object types that represent that
-various ways an node can change in a flow.
+[`onNodesChange`](/api-reference/react-flow#on-nodes-change) 回呼接收一個 `NodeChange` 物件陣列，您應該使用它來更新流程的狀態。`NodeChange` 類型是六種不同物件類型的聯集，代表節點在流程中可以變化的各種方式。
 
 ```ts
 export type NodeChange =

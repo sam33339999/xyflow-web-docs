@@ -1,43 +1,40 @@
 ---
 sidebarTitle: State Management
-description: Learn how to use React Flow with a state management library like Zustand, Redux, Recoil or Jotai.
+description: 學習如何使用 React Flow 搭配狀態管理函式庫，如 Zustand、Redux、Recoil 或 Jotai。
 ---
 
-# Using a State Management Library
+# 使用狀態管理函式庫
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 <Callout type="info">
-  For this guide we assume that you already know about the [core
-  concepts](/learn/concepts/core-concepts) of React Flow and how to implement
-  [custom nodes](/learn/customization/custom-nodes). You should also be familiar
-  with the concepts of state management libraries and how to use them.
+  本指南假設你已經了解 React Flow 的[核心概念](/learn/concepts/core-concepts)以及如何實作[自訂節點](/learn/customization/custom-nodes)。你也應該熟悉狀態管理函式庫的概念以及如何使用它們。
 </Callout>
 
-In this guide, we explain how to use React Flow with the state management library [Zustand](https://github.com/pmndrs/zustand). We will build a small app where each node features a color chooser that updates its background color. We chose Zustand for this guide because React Flow already uses it internally, but you can easily use other state management libraries such as [Redux](https://redux.js.org/), [Recoil](https://recoiljs.org/) or [Jotai](https://jotai.org/)
+在本指南中，我們將說明如何使用 React Flow 搭配狀態管理函式庫 [Zustand](https://github.com/pmndrs/zustand)。我們將建構一個小型應用程式，其中每個節點都有一個顏色選擇器來更新其背景顏色。我們為本指南選擇了 Zustand，因為 React Flow 內部已經使用它，但你可以輕鬆使用其他狀態管理函式庫，如 [Redux](https://redux.js.org/)、[Recoil](https://recoiljs.org/) 或 [Jotai](https://jotai.org/)
 
-As demonstrated in previous guides and examples, React Flow can easily be used with a local component state to manage nodes and edges in your diagram. However, as your application grows and you need to update the state from within individual nodes, managing this state can become more complex. Instead of passing functions through the node's data field, you can use a [React context](https://reactjs.org/docs/context.html) or integrate a state management library like Zustand, as outlined in this guide.
+如先前的指南和範例所示，React Flow 可以輕鬆地與本地元件狀態一起使用來管理圖表中的節點和連線。然而，隨著應用程式的成長，你需要從單個節點內部更新狀態，管理這個狀態可能會變得更加複雜。你可以使用 [React context](https://reactjs.org/docs/context.html)，或整合像 Zustand 這樣的狀態管理函式庫，如本指南所述，而不是透過節點的 data 欄位傳遞函式。
 
-## Install Zustand
+## 安裝 Zustand
 
-As mentioned above we are using Zustand in this example. Zustand is a bit like Redux: you have a central store with actions to alter your state and hooks to access your state. You can install Zustand via:
+如上所述，我們在此範例中使用 Zustand。Zustand 有點像 Redux：你有一個中央儲存區，其中包含用於修改狀態的 actions，以及用於存取狀態的 hooks。你可以透過以下方式安裝 Zustand：
 
 ```bash copy npm2yarn
 npm install --save zustand
 ```
 
-## Create a store
+## 建立儲存區
 
-Zustand lets you create a hook for accessing the values and functions of your store. We put the `nodes` and `edges` and the `onNodesChange`, `onEdgesChange`, `onConnect`, `setNodes` and `setEdges` functions in the store to get the basic interactivity for our graph:
+Zustand 讓你建立一個 hook 來存取儲存區的值和函式。我們將 `nodes` 和 `edges` 以及 `onNodesChange`、`onEdgesChange`、`onConnect`、`setNodes` 和 `setEdges` 函式放入儲存區，以獲得圖表的基本互動性：
 
 <RemoteCodeViewer route="learn/state-management" framework="react" />
 
-That's the basic setup. We now have a store with nodes and edges that can handle the changes (dragging, selecting or removing a node or edge) triggered by React Flow. When you take a look at the `App.tsx` file, you can see that it's kept nice and clean. All the data and actions are now part of the store and can be accessed with the `useStore` hook.
+這就是基本設定。我們現在有一個包含節點和連線的儲存區，可以處理由 React Flow 觸發的變更（拖曳、選擇或移除節點或連線）。當你查看 `App.tsx` 檔案時，你可以看到它保持得很乾淨。所有資料和 actions 現在都是儲存區的一部分，可以透過 `useStore` hook 存取。
 
-## Implement a color change action
+## 實作顏色變更 action
 
-We add a new `updateNodeColor` action to update the `data.color` field of a specific node. For this we pass the node id and the new color to the action, iterate over the nodes and update the matching one with the new color:
+我們新增一個新的 `updateNodeColor` action 來更新特定節點的 `data.color` 欄位。為此，我們將節點 id 和新顏色傳遞給 action，遍歷節點並使用新顏色更新匹配的節點：
 
 ```ts
 updateNodeColor: (nodeId: string, color: string) => {
@@ -54,7 +51,7 @@ updateNodeColor: (nodeId: string, color: string) => {
 };
 ```
 
-This new action can now be used in a React component like this:
+這個新的 action 現在可以在 React 元件中這樣使用：
 
 ```tsx
 const updateNodeColor = useStore((s) => s.updateNodeColor);
@@ -62,9 +59,9 @@ const updateNodeColor = useStore((s) => s.updateNodeColor);
 <button onClick={() => updateNodeColor(nodeId, color)} />;
 ```
 
-## Add a color chooser node
+## 新增顏色選擇器節點
 
-In this step we implement the `ColorChooserNode` component and call the `updateNodeColor` when the user changes the color. The custom part of the color chooser node is the color input.
+在此步驟中，我們實作 `ColorChooserNode` 元件，並在使用者更改顏色時呼叫 `updateNodeColor`。顏色選擇器節點的自訂部分是顏色輸入。
 
 ```jsx
 <input
@@ -75,7 +72,7 @@ In this step we implement the `ColorChooserNode` component and call the `updateN
 />
 ```
 
-We add the `nodrag` class name so that the user doesn't drag the node by mistake when changing the color and call the `updateNodeColor` in the `onChange` event handler.
+我們新增 `nodrag` class name，這樣使用者在更改顏色時不會誤拖曳節點，並在 `onChange` 事件處理器中呼叫 `updateNodeColor`。
 
 <RemoteCodeViewer
   route="learn/state-management-2"
@@ -83,4 +80,4 @@ We add the `nodrag` class name so that the user doesn't drag the node by mistake
   activeFile="ColorChooserNode.tsx"
 />
 
-You can now click on a color chooser and change the background of a node.
+你現在可以點擊顏色選擇器並更改節點的背景。

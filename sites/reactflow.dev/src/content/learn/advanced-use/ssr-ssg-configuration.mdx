@@ -1,27 +1,27 @@
 ---
 title: Server Side Rendering
-description: Step-by-step guide render React Flow apps on the server for displaying static flows, dynamically generating images from flows, or rendering graphs in non-javascript environments
+description: 逐步指南，在伺服器端渲染 React Flow 應用程式，用於顯示靜態流程圖、從流程圖動態生成圖片，或在非 JavaScript 環境中渲染圖表
 ---
 
-# Server side rendering, server side generation
+# 伺服器端渲染、伺服器端生成
 
 import { Callout } from 'nextra/components';
 
-<Callout type="info">Server side rendering is supported since React Flow 12</Callout>
+<Callout type="info">React Flow 12 開始支援伺服器端渲染</Callout>
 
-This is an advanced use case and assumes you are already familiar with React Flow. If you're new to React Flow, check out our [getting started guide](/learn/getting-started/installation-and-requirements).
+這是一個進階用例，假設你已經熟悉 React Flow。如果你是 React Flow 的新手，請查看我們的[入門指南](/learn/getting-started/installation-and-requirements)。
 
-In this guide you will learn how to configure React Flow to render a flow on the server, which will allow you to
+在本指南中，你將學習如何設定 React Flow 在伺服器上渲染流程圖，這將使你能夠
 
-- Display static HTML diagrams in documentation
-- Render React Flow diagrams in non-js environments
-- Dynamically generate open graph images that appear as embeds when sharing a link to your flow
+- 在文件中顯示靜態 HTML 圖表
+- 在非 JavaScript 環境中渲染 React Flow 圖表
+- 動態生成開放圖片圖片，在分享流程圖連結時顯示為嵌入內容
 
-(If you want to download an image of your flow, there's an easier way to do that on the client-side in our [download image example](/examples/misc/download-image).)
+（如果你想下載流程圖的圖片，有一個更簡單的方法可以在客戶端實現，請參閱我們的[下載圖片範例](/examples/misc/download-image)。）
 
-### Node dimensions
+### 節點尺寸
 
-You need to configure a few things to make React Flow work on the server, the most important being the node dimensions. React Flow only renders nodes if they have a width and height. Usually you pass nodes without a specific `width` and `height`, they are then measured and the dimensions get written to `measured.width` and `measured.height`. Since we can't measure the dimensions on the server, we need to pass them explicitly. This can be done with the `width` and `height` or the `initialWidth` and `initialHeight` node properties.
+你需要設定一些東西才能讓 React Flow 在伺服器上運作，最重要的是節點尺寸。React Flow 只有在節點有寬度和高度時才會渲染節點。通常你傳遞的節點沒有特定的 `width` 和 `height`，它們會被測量，然後尺寸會被寫入 `measured.width` 和 `measured.height`。由於我們無法在伺服器上測量尺寸，我們需要明確傳遞它們。這可以透過 `width` 和 `height` 或 `initialWidth` 和 `initialHeight` 節點屬性來完成。
 
 ```js
 const nodes = [
@@ -36,25 +36,23 @@ const nodes = [
 ];
 ```
 
-React Flow now knows the dimensions of the node and can render it on the server. The `width` and `height` properties are used as an inline style for the node. If you expect nodes to have different dimensions on the client or if the dimensions should by dynamic based on the content, you can use the `initialWidth` and `initialHeight` properties. They are only used for the first render (on the server or on the client) as long as the nodes are not measured and `measured.width` and `measured.height` are not set.
+React Flow 現在知道節點的尺寸，可以在伺服器上渲染它。`width` 和 `height` 屬性會作為內聯樣式用於節點。如果你預期節點在客戶端上有不同的尺寸，或者尺寸應該根據內容動態調整，你可以使用 `initialWidth` 和 `initialHeight` 屬性。它們僅用於第一次渲染（在伺服器或客戶端上），只要節點未被測量且 `measured.width` 和 `measured.height` 未設定。
 
 <Callout type="default">
   <strong>
-    There are two ways to specify node dimensions for server side rendering:
+    有兩種方式可以指定伺服器端渲染的節點尺寸：
   </strong>
   <div>
-    1. `width` and `height` for static dimensions that are known in advance and don't
-    change.
+    1. `width` 和 `height` 用於已知且不會改變的靜態尺寸。
   </div>
   <div>
-    2. `initialWidth` and `initialHeight` for dynamic dimensions that are not known in
-    advance or change.
+    2. `initialWidth` 和 `initialHeight` 用於未知或會改變的動態尺寸。
   </div>
 </Callout>
 
-### Handle positions
+### 連接點位置
 
-You probably also want to render the edges on the server. On the client, React Flow checks the positions of the handles and stores that information to draw the edges. Since we can't measure the handle positions on the server, we need to pass this information, too. This can be done with the `handles` property of a node.
+你可能還想在伺服器上渲染連線。在客戶端，React Flow 會檢查連接點的位置並儲存該資訊以繪製連線。由於我們無法在伺服器上測量連接點位置，我們也需要傳遞這些資訊。這可以透過節點的 `handles` 屬性來完成。
 
 ```js
 const nodes: Node[] = [
@@ -83,21 +81,21 @@ const nodes: Node[] = [
 ];
 ```
 
-With this additional information, React Flow knows enough about the handles to render the edges on the server. If you are fine with just rendering the nodes, you can skip this step.
+有了這些額外資訊，React Flow 知道足夠關於連接點的資訊，可以在伺服器上渲染連線。如果你只想渲染節點，可以跳過此步驟。
 
-### Using `fitView` on the server
+### 在伺服器上使用 `fitView`
 
-If you know the dimensions of the React Flow container itself, you can even use `fitView` on the server. For this, you need to pass the `width` and `height` of the container to the `ReactFlow` component.
+如果你知道 React Flow 容器本身的尺寸，你甚至可以在伺服器上使用 `fitView`。為此，你需要將容器的 `width` 和 `height` 傳遞給 `ReactFlow` 元件。
 
 ```js
 <ReactFlow nodes={nodes} edges={edges} fitView width={1000} height={500} />
 ```
 
-This will calculate the viewport and set the `transform` on the server in order to include all nodes in the viewport.
+這將在伺服器上計算視窗並設定 `transform`，以便在視窗中包含所有節點。
 
-### Usage with the `<ReactFlowProvider>`
+### 與 `<ReactFlowProvider>` 一起使用
 
-If you are using the `ReactFlowProvider`, you can pass `initialNodes`, `initialEdges` and optional wrapper dimensions (`initialWidth` and `initialHeight`) and `fitView` to the provider.
+如果你使用 `ReactFlowProvider`，你可以傳遞 `initialNodes`、`initialEdges` 和可選的包裝器尺寸（`initialWidth` 和 `initialHeight`）以及 `fitView` 給 provider。
 
 ```js
 <ReactFlowProvider
@@ -111,11 +109,11 @@ If you are using the `ReactFlowProvider`, you can pass `initialNodes`, `initialE
 </ReactFlowProvider>
 ```
 
-The `initial-` prefix means that these values are only used for the first render. After that, the provider will use the `nodes` and `edges` from the context.
+`initial-` 前綴表示這些值僅用於第一次渲染。之後，provider 將使用 context 中的 `nodes` 和 `edges`。
 
-### Creating static HTML
+### 建立靜態 HTML
 
-If you want to create static HTML, you can use the `renderToStaticMarkup` function from React. This will render the React Flow component to a string of HTML. You can then use this string to create a static HTML file or send it as a response to an HTTP request.
+如果你想建立靜態 HTML，可以使用 React 的 `renderToStaticMarkup` 函式。這將把 React Flow 元件渲染為 HTML 字串。然後你可以使用此字串建立靜態 HTML 檔案或作為 HTTP 請求的回應發送。
 
 ```js
 import React from 'react';

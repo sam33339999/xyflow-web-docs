@@ -1,22 +1,16 @@
 ---
-title: The EdgeLabelRenderer component
+title: 連線標籤渲染器元件
 sidebarTitle: '<EdgeLabelRenderer />'
 description:
-  'Edges are SVG-based. If you want to render more complex labels you can use the
-  EdgeLabelRenderer component to access a div based renderer. This component is a
-  portal that renders the label in a div that is positioned on top of the edges.
-  You can see an example usage of the component in the edge label renderer example.'
+  '連線是基於 SVG 的。如果你想渲染更複雜的標籤，可以使用 EdgeLabelRenderer 元件來存取基於 div 的渲染器。此元件是一個 portal，它將標籤渲染在定位於連線頂部的 div 中。你可以在連線標籤渲染器範例中看到此元件的使用方式。'
 ---
 
 # \<EdgeLabelRenderer />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/EdgeLabelRenderer/index.tsx)
+[原始碼於 GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/EdgeLabelRenderer/index.tsx)
 
-Edges are SVG-based. If you want to render more complex labels you can use the
-`<EdgeLabelRenderer />` component to access a div based renderer. This component
-is a portal that renders the label in a `<div />` that is positioned on top of
-the edges. You can see an example usage of the component in the [edge label renderer](/examples/edges/edge-label-renderer)
-example.
+連線是基於 SVG 的。如果你想渲染更複雜的標籤，可以使用 `<EdgeLabelRenderer />` 元件來存取基於 div 的渲染器。
+此元件是一個 portal，它將標籤渲染在定位於連線頂部的 `<div />` 中。你可以在[連線標籤渲染器](/examples/edges/edge-label-renderer)範例中看到此元件的使用方式。
 
 ```jsx
 import React from 'react';
@@ -55,8 +49,7 @@ export default CustomEdge;
 
 <APIDocs componentName="EdgeLabelRenderer" />
 
-## Notes
+## 注意事項
 
-- The `<EdgeLabelRenderer />` has no pointer events by default. If you want to
-  add mouse interactions you need to set the style `pointerEvents: 'all'` and add
-  the `nopan` class on the label or the element you want to interact with.
+- `<EdgeLabelRenderer />` 預設沒有指標事件。如果你想添加滑鼠互動，
+  需要設定樣式 `pointerEvents: 'all'` 並在標籤或你想互動的元素上添加 `nopan` 類別。

@@ -1,8 +1,6 @@
 ---
 description:
-  'This hook can be used to subscribe to internal state changes of the React Flow
-  component. The useStore hook is re-exported from the Zustand state management
-  library, so you should check out their docs for more details.'
+  '這個 hook 可用於訂閱 React Flow 元件的內部狀態變更。useStore hook 是從 Zustand 狀態管理函式庫重新匯出的，因此你應該查看他們的文件以獲取更多詳細資訊。'
 ---
 
 import { Callout } from 'nextra/components';
@@ -11,15 +9,10 @@ import { Callout } from 'nextra/components';
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useStore.ts)
 
-This hook can be used to subscribe to internal state changes of the React Flow
-component. The `useStore` hook is re-exported from the [Zustand](https://github.com/pmndrs/zustand)
-state management library, so you should check out their docs for more details.
+這個 hook 可用於訂閱 React Flow 元件的內部狀態變更。`useStore` hook 是從 [Zustand](https://github.com/pmndrs/zustand) 狀態管理函式庫重新匯出的，因此你應該查看他們的文件以獲取更多詳細資訊。
 
 <Callout type="info">
-  This hook should only be used if there is no other way to access the internal
-  state. For many of the common use cases, there are dedicated hooks available
-  such as [`useReactFlow`](/api-reference/hooks/use-react-flow),
-  [`useViewport`](/api-reference/hooks/use-viewport), etc.
+  這個 hook 只應在沒有其他方式可以存取內部狀態時使用。對於許多常見的使用情境，都有專門的 hook 可用，例如 [`useReactFlow`](/api-reference/hooks/use-react-flow)、[`useViewport`](/api-reference/hooks/use-viewport) 等。
 </Callout>
 
 ```jsx
@@ -43,31 +36,21 @@ function Flow() {
 }
 ```
 
-This example computes the number of nodes eagerly. Whenever the number of nodes
-in the flow changes, the `<NodesLengthDisplay />` component will re-render. This
-is in contrast to the example in the [`useStoreApi`](/api-reference/hooks/use-store-api) hook that only
-computes the number of nodes when a button is clicked.
+這個範例會急切地計算節點數量。每當流程中的節點數量變更時，`<NodesLengthDisplay />` 元件都會重新渲染。這與 [`useStoreApi`](/api-reference/hooks/use-store-api) hook 的範例形成對比，後者只在按下按鈕時計算節點數量。
 
-Choosing whether to calculate values on-demand or to subscribe to changes as they
-happen is a bit of a balancing act. On the one hand, putting too many heavy
-calculations in an event handler can make your app feel sluggish or unresponsive.
-On the other hand, computing values eagerly can lead to slow or unnecessary
-re-renders.
+選擇按需計算值或訂閱變更是一種平衡取捨。一方面，在事件處理器中放入太多繁重的計算可能會讓你的應用程式感覺遲緩或無回應。另一方面，急切地計算值可能會導致緩慢或不必要的重新渲染。
 
-We make both this hook and [`useStoreApi`](/api-reference/hooks/use-store-api) available so that you
-can choose the approach that works best for your use-case.
+我們提供這個 hook 和 [`useStoreApi`](/api-reference/hooks/use-store-api)，讓你可以選擇最適合你使用情境的方法。
 
-## Signature
+## 簽名
 
 <APIDocs functionName="useStore" />
 
-## Examples
+## 範例
 
-### Triggering store actions
+### 觸發 store 操作
 
-You can manipulate the internal React Flow state by triggering internal actions
-through the `useStore` hook. These actions are already used internally throughout
-the library, but you can also use them to implement custom functionality.
+你可以透過 `useStore` hook 觸發內部操作來操作 React Flow 的內部狀態。這些操作已經在整個函式庫內部使用，但你也可以使用它們來實作自訂功能。
 
 ```jsx
 import { useStore } from '@xyflow/react';
@@ -83,8 +66,7 @@ function MinZoomSetter() {
 
 ## TypeScript
 
-This hook can be typed by typing the selector function. See this
-[section in our TypeScript guide](/learn/advanced-use/typescript#nodetype-edgetype-unions) for more information.
+這個 hook 可以透過對選擇器函式進行型別定義來設定型別。查看我們 TypeScript 指南中的[此章節](/learn/advanced-use/typescript#nodetype-edgetype-unions)以獲取更多資訊。
 
 ```tsx
 const nodes = useStore((s: ReactFlowState<CustomNodeType>) => s.nodes);

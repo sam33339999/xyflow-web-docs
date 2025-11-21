@@ -1,17 +1,13 @@
 ---
 description:
-  "You can use this hook to get the id of the node it is used inside. It is useful
-  if you need the node's id deeper in the render tree but don't want to manually
-  drill down the id as a prop."
+  "你可以使用這個 hook 來取得它所在節點的 id。當你需要在渲染樹的更深層取得節點的 id，但又不想手動將 id 作為 prop 向下傳遞時，這個 hook 會很有用。"
 ---
 
 # useNodeId()
 
 [Source on Github](https://github.com/xyflow/xyflow/blob/v11/packages/core/src/contexts/NodeIdContext.ts/#L7)
 
-You can use this hook to get the id of the node it is used inside. It is useful
-if you need the node's id deeper in the render tree but don't want to manually
-drill down the id as a prop.
+你可以使用這個 hook 來取得它所在節點的 id。當你需要在渲染樹的更深層取得節點的 id，但又不想手動將 id 作為 prop 向下傳遞時，這個 hook 會很有用。
 
 ```js
 import { useNodeId } from '@xyflow/react';
@@ -32,10 +28,10 @@ function NodeIdDisplay() {
 }
 ```
 
-## Signature
+## 簽名
 
 <APIDocs functionName="useNodeId" />
 
-## Notes
+## 注意事項
 
-- This hook should only be used within a custom node or its children.
+- 這個 hook 只能在自訂節點或其子元件中使用。

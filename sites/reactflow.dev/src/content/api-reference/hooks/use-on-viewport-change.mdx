@@ -1,17 +1,13 @@
 ---
 description:
-  'The useOnViewportChange hook lets you listen for changes to the viewport such
-  as panning and zooming. You can provide a callback for each phase of a viewport
-  change: onStart, onChange, and onEnd.'
+  'useOnViewportChange hook 讓你可以監聽視窗的變更，例如平移和縮放。你可以為視窗變更的每個階段提供回呼函式：onStart、onChange 和 onEnd。'
 ---
 
 # useOnViewportChange()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/hooks/useOnViewportChange.ts)
 
-The `useOnViewportChange` hook lets you listen for changes to the viewport such
-as panning and zooming. You can provide a callback for each phase of a viewport
-change: `onStart`, `onChange`, and `onEnd`.
+`useOnViewportChange` hook 讓你可以監聽視窗的變更，例如平移和縮放。你可以為視窗變更的每個階段提供回呼函式：`onStart`、`onChange` 和 `onEnd`。
 
 ```tsx
 import { useCallback } from 'react';
@@ -28,12 +24,10 @@ function ViewportChangeLogger() {
 }
 ```
 
-## Signature
+## 簽名
 
 <APIDocs functionName="useOnViewportChange" />
 
-## Notes
+## 注意事項
 
-- This hook can only be used in a component that is a child of a
-  [`<ReactFlowProvider />`](/api-reference/react-flow-provider) or a
-  [`<ReactFlow />`](/api-reference/react-flow) component.
+- 這個 hook 只能在 [`<ReactFlowProvider />`](/api-reference/react-flow-provider) 或 [`<ReactFlow />`](/api-reference/react-flow) 元件的子元件中使用。

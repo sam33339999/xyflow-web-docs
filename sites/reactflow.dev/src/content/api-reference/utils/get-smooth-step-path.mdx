@@ -1,17 +1,14 @@
 ---
 description:
-  'The getSmoothStepPath util returns everything you need to render a stepped path
-  between two nodes. The borderRadius property can be used to choose how rounded
-  the corners of those steps are.'
+  'getSmoothStepPath 工具函式會返回在兩個節點之間渲染階梯路徑所需的所有資訊。
+  borderRadius 屬性可用於選擇這些階梯轉角的圓滑程度。'
 ---
 
 # getSmoothStepPath()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/smoothstep-edge.ts/#L215)
 
-The `getSmoothStepPath` util returns everything you need to render a stepped path
-between two nodes. The `borderRadius` property can be used to choose how rounded
-the corners of those steps are.
+`getSmoothStepPath` 工具函式會返回在兩個節點之間渲染階梯路徑所需的所有資訊。`borderRadius` 屬性可用於選擇這些階梯轉角的圓滑程度。
 
 ```js
 import { Position, getSmoothStepPath } from '@xyflow/react';
@@ -39,6 +36,5 @@ console.log(offsetX, offsetY); //=> 75, 40
 
 ## Notes
 
-- This function returns a tuple (aka a fixed-size array) to make it easier to
-  work with multiple edge paths at once.
-- You can set the `borderRadius` property to `0` to get a step edge path.
+- 此函式返回一個元組（即固定大小的陣列），以便更輕鬆地同時處理多個連線路徑。
+- 您可以將 `borderRadius` 屬性設定為 `0` 以獲得階梯連線路徑。

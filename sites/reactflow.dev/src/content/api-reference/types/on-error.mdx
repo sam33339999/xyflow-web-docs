@@ -1,12 +1,12 @@
 ---
-description: The OnError type defines the callback function that is called when an error occurs.
+description: OnError 類型定義了當錯誤發生時呼叫的回呼函數。
 ---
 
 # OnError
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/general.ts#L233)
 
-The `OnError` type defines the callback function that is called when an error occurs. This callback receives an error id and the error message as its argument.
+`OnError` 類型定義了當錯誤發生時呼叫的回呼函數。此回呼接收錯誤 ID 和錯誤訊息作為參數。
 
 ```ts
 type OnError = (id: string, error: string) => void;

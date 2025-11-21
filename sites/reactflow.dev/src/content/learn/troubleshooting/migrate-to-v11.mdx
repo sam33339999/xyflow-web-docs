@@ -1,73 +1,73 @@
 ---
-sidebarTitle: Migrate to v11
-description: Use this guide to migrate from React Flow v10 to v11.
+sidebarTitle: 遷移到 v11
+description: 使用本指南從 React Flow v10 遷移到 v11。
 ---
 
-# Migrate to React Flow v11
+# 遷移到 React Flow v11
 
 import { Callout } from 'nextra/components';
 
 <Callout type="info">
-  You can find the docs for old versions of React Flow here:
-  [v11](https://v11.reactflow.dev), [v10](https://v10.reactflow.dev),
+  你可以在這裡找到舊版本 React Flow 的文件：
+  [v11](https://v11.reactflow.dev)、[v10](https://v10.reactflow.dev)、
   [v9](https://v9.reactflow.dev)
 </Callout>
 
-A lot changed in v11 but this time we've tried to keep the breaking changes small. The biggest change is the new package name `reactflow` and the new repo structure. React Flow is now managed as a monorepo and separated into multiple packages that can be installed separately. In addition to that, there are some API changes and new APIs introduced in v11. This guide explains the changes in detail and helps you to migrate from v10 to v11.
+v11 發生了很多變更，但這次我們試圖將重大變更保持在最小。最大的變更是新的套件名稱 `reactflow` 和新的儲存庫結構。React Flow 現在作為 monorepo 管理，並分成可以單獨安裝的多個套件。此外，v11 中還有一些 API 變更和新的 API。本指南詳細說明這些變更，並幫助你從 v10 遷移到 v11。
 
-<Callout>React Flow 11 only works with **React 17** or greater</Callout>
+<Callout>React Flow 11 僅適用於 **React 17** 或更高版本</Callout>
 
-## New Features
+## 新功能
 
-- **Better [Accessibility](/learn/advanced-use/accessibility)**
-  - Nodes and edges are focusable, selectable, moveable and deletable with the keyboard.
-  - `aria-` default attributes for all elements and controllable via `ariaLabel` options
-  - Keyboard controls can be disabled with the new `disableKeyboardA11y` prop
-- **Better selectable edges** via new edge option: `interactionWidth` - renders invisible edge that makes it easier to interact
-- **Better routing for smoothstep and step edges**: https://twitter.com/reactflowdev/status/1567535405284614145
-- **Nicer edge updating behavior**: https://twitter.com/reactflowdev/status/1564966917517021184
-- **Node origin**: The new `nodeOrigin` prop lets you control the origin of a node. Useful for layouting.
-- **New background pattern**: `BackgroundVariant.Cross` variant
-- **[`useOnViewportChange`](/api-reference/hooks/use-on-viewport-change) hook** - handle viewport changes within a component
-- **[`use-on-selection-change`](/api-reference/hooks/use-on-selection-change) hook** - handle selection changes within a component
-- **[`useNodesInitialized`](/api-reference/hooks/use-nodes-initialized) hook** - returns true if all nodes are initialized and if there is more than one node
-- **Deletable option** for Nodes and edges
-- **New Event handlers**: `onPaneMouseEnter`, `onPaneMouseMove` and `onPaneMouseLeave`
-- **Edge `pathOptions`** for `smoothstep` and `default` edges
-- **Nicer cursor defaults**: Cursor is grabbing, while dragging a node or panning
-- **Pane moveable** with middle mouse button
-- **Pan over nodes** when they are not draggable (`draggable=false` or `nodesDraggable` false)
-  - you can disable this behavior by adding the class name `nopan` to a wrapper of a custom node
-- **[`<BaseEdge />`](/api-reference/components/base-edge) component** that makes it easier to build custom edges
-- **[Separately installable packages](/learn/concepts/built-in-components)**
+- **更好的[無障礙功能](/learn/advanced-use/accessibility)**
+  - 節點和連線可以使用鍵盤聚焦、選擇、移動和刪除。
+  - 所有元素的 `aria-` 預設屬性，並可透過 `ariaLabel` 選項控制
+  - 可以使用新的 `disableKeyboardA11y` prop 停用鍵盤控制
+- **更好的可選擇連線** 透過新的連線選項：`interactionWidth` - 渲染不可見的連線，使互動更容易
+- **smoothstep 和 step 連線的更好路由**：https://twitter.com/reactflowdev/status/1567535405284614145
+- **更好的連線更新行為**：https://twitter.com/reactflowdev/status/1564966917517021184
+- **節點原點**：新的 `nodeOrigin` prop 讓你控制節點的原點。對版面配置很有用。
+- **新的背景圖案**：`BackgroundVariant.Cross` 變體
+- **[`useOnViewportChange`](/api-reference/hooks/use-on-viewport-change) hook** - 在元件內處理視口變更
+- **[`use-on-selection-change`](/api-reference/hooks/use-on-selection-change) hook** - 在元件內處理選擇變更
+- **[`useNodesInitialized`](/api-reference/hooks/use-nodes-initialized) hook** - 如果所有節點都已初始化且有多個節點，則回傳 true
+- **可刪除選項** 用於節點和連線
+- **新的事件處理程序**：`onPaneMouseEnter`、`onPaneMouseMove` 和 `onPaneMouseLeave`
+- **連線 `pathOptions`** 用於 `smoothstep` 和 `default` 連線
+- **更好的游標預設值**：在拖曳節點或平移時，游標會變成抓取狀態
+- **可用中間滑鼠按鈕移動畫布**
+- **在節點上方平移** 當它們不可拖曳時（`draggable=false` 或 `nodesDraggable` false）
+  - 你可以透過將類別名稱 `nopan` 新增到自訂節點的包裝器來停用此行為
+- **[`<BaseEdge />`](/api-reference/components/base-edge) 元件** 使建立自訂連線更容易
+- **[可單獨安裝的套件](/learn/concepts/built-in-components)**
   - @reactflow/core
   - @reactflow/background
   - @reactflow/controls
   - @reactflow/minimap
 
-## Breaking Changes
+## 重大變更
 
-### 1. New npm package name
+### 1. 新的 npm 套件名稱
 
-The package `react-flow-renderer` has been renamed to `reactflow`.
+套件 `react-flow-renderer` 已重新命名為 `reactflow`。
 
-#### Old API
+#### 舊 API
 
 ```js
 // npm install react-flow-renderer
 import ReactFlow from 'react-flow-renderer';
 ```
 
-#### New API
+#### 新 API
 
 ```js
 // npm install reactflow
 import { ReactFlow } from '@xyflow/react';
 ```
 
-### 2. Importing CSS is mandatory
+### 2. 匯入 CSS 是強制性的
 
-We are not injecting CSS anymore. **React Flow won't work if you are not loading the styles!**
+我們不再注入 CSS。**如果你不載入樣式，React Flow 將無法運作！**
 
 ```js
 // default styling
@@ -77,9 +77,9 @@ import '@xyflow/react/dist/style.css';
 import '@xyflow/react/dist/base.css';
 ```
 
-#### 2.1. Removal of the nocss entrypoint
+#### 2.1. 移除 nocss 入口點
 
-This change also means that there is no `react-flow-renderer/nocss` entry point anymore. If you used that, you need to adjust the CSS entry points as mentioned above.
+此變更也意味著不再有 `react-flow-renderer/nocss` 入口點。如果你使用過它，需要如上所述調整 CSS 入口點。
 
 ### 3. `defaultPosition` and `defaultZoom` have been merged to `defaultViewport`
 

@@ -1,5 +1,5 @@
 ---
-title: The ReactFlow component
+title: ReactFlow 元件
 sidebarTitle: <ReactFlow />
 ---
 
@@ -7,11 +7,9 @@ import { ReactFlowAPIProps } from '@/references/ReactFlow.props';
 
 # \<ReactFlow />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/container/ReactFlow/index.tsx/#L47)
+[GitHub 原始碼](https://github.com/xyflow/xyflow/blob/main/packages/react/src/container/ReactFlow/index.tsx/#L47)
 
-The `<ReactFlow />` component is the heart of your React Flow application. It
-renders your nodes and edges, handles user interaction, and can manage its own
-state if used as an [uncontrolled flow](/learn/advanced-use/uncontrolled-flow).
+`<ReactFlow />` 元件是您的 React Flow 應用程式的核心。它會渲染您的節點和連線、處理使用者互動，並且如果用作[非受控流程](/learn/advanced-use/uncontrolled-flow)時，可以管理自己的狀態。
 
 ```tsx
 import { ReactFlow } from '@xyflow/react'
@@ -26,85 +24,74 @@ export default function Flow() {
 }
 ```
 
-This component takes a lot of different props, most of which are optional. We've
-tried to document them in groups that make sense to help you find your way.
+此元件接受許多不同的屬性，其中大多數是可選的。我們嘗試將它們按有意義的群組進行記錄，以幫助您找到所需的內容。
 
-## Common props
+## 常用屬性
 
-These are the props you will most commonly use when working with React Flow. If
-you are working with a controlled flow with custom nodes, you will likely use
-almost all of these!
+這些是您在使用 React Flow 時最常用的屬性。如果您正在使用具有自訂節點的受控流程，您可能會使用幾乎所有這些屬性！
 
 <ReactFlowAPIProps group="common" />
 
-## Viewport props
+## 視窗屬性
 
 <ReactFlowAPIProps group="viewport" />
 
-## Edge props
+## 連線屬性
 
 <ReactFlowAPIProps group="edge" />
 
-## Event handlers
+## 事件處理器
 
 > [!WARNING]
 >
-> It's important to remember to define any event handlers outside of your
-> component or using React's `useCallback` hook. If you don't, this can cause
-> React Flow to enter an infinite re-render loop!
+> 重要的是要記住在元件外部定義任何事件處理器，或使用 React 的 `useCallback` hook。如果不這樣做，可能會導致 React Flow 進入無限重新渲染循環！
 
-### General Events
+### 一般事件
 
 <ReactFlowAPIProps group="generalEvents" />
 
-### Node Events
+### 節點事件
 
 <ReactFlowAPIProps group="nodeEvents" />
 
-### Edge Events
+### 連線事件
 
 <ReactFlowAPIProps group="edgeEvents" />
 
-### Connection Events
+### 連接事件
 
 <ReactFlowAPIProps group="connectionEvents" />
 
-### Pane Events
+### 畫布事件
 
 <ReactFlowAPIProps group="paneEvents" />
 
-### Selection Events
+### 選取事件
 
 <ReactFlowAPIProps group="selectionEvents" />
 
-## Interaction props
+## 互動屬性
 
 <ReactFlowAPIProps group="interaction" />
 
-## Connection line props
+## 連接線屬性
 
 <ReactFlowAPIProps group="connectionLine" />
 
-## Keyboard props
+## 鍵盤屬性
 
-React Flow let's you pass in a few different keyboard shortcuts as another way
-to interact with your flow. We've tried to set up sensible defaults like using
-backspace to delete any selected nodes or edges, but you can use these props to
-set your own.
+React Flow 允許您傳入一些不同的鍵盤快捷鍵，作為與流程互動的另一種方式。我們嘗試設定合理的預設值，例如使用退格鍵刪除任何選取的節點或連線，但您可以使用這些屬性來設定自己的快捷鍵。
 
-To disable any of these shortcuts, pass in `null` to the prop you want to
-disable.
+要停用任何這些快捷鍵，請將 `null` 傳遞給您想要停用的屬性。
 
 <ReactFlowAPIProps group="keyboard" />
 
-## Style props
+## 樣式屬性
 
-Applying certain classes to elements rendered inside the canvas will change how
-interactions are handled. These props let you configure those class names if you
-need to.
+將特定類別套用於畫布內渲染的元素會改變互動的處理方式。如果需要，這些屬性可讓您配置這些類別名稱。
 
 <ReactFlowAPIProps group="style" />
 
-## Notes
+## 注意事項
 
-- The props of this component get exported as `ReactFlowProps`
+- 此元件的屬性會匯出為 `ReactFlowProps`

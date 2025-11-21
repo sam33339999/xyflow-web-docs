@@ -1,26 +1,20 @@
 ---
-description: This guide shows you how to render custom edge labels onto custom edges in React Flow.
+description: 本指南將介紹如何在 React Flow 的自訂連線上渲染自訂連線標籤。
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 import { Callout } from 'nextra/components';
 import { Image } from 'xy-shared';
 
-# Edge Labels
+# 連線標籤
 
-One of the more common uses for [custom edges](/learn/customization/custom-edges) is rendering some controls or info
-along an edge's path. In React Flow we call that an _custom edge label_ and unlike the
-edge path, edge labels can be any React component!
+[自訂連線](/learn/customization/custom-edges)的一個常見用途是沿著連線路徑渲染一些控制項或資訊。在 React Flow 中，我們將其稱為_自訂連線標籤_，與連線路徑不同，連線標籤可以是任何 React 元件！
 
-## Adding an edge label
+## 新增連線標籤
 
-To render a custom edge label we must wrap it in the
-[`<EdgeLabelRenderer />`](/api-reference/components/edge-label-renderer) component.
-This allows us to render the labels outside of the SVG world where the edges life.
-The edge label renderer is a portal to a single container that _all_ edge labels are rendered into.
+要渲染自訂連線標籤，我們必須將其包裝在 [`<EdgeLabelRenderer />`](/api-reference/components/edge-label-renderer) 元件中。這允許我們在連線所在的 SVG 世界之外渲染標籤。連線標籤渲染器是一個入口，所有連線標籤都渲染到單一容器中。
 
-Let's add a button to our custom edge that can be used to delete the edge it's
-attached to:
+讓我們在自訂連線上新增一個按鈕，該按鈕可用於刪除它所附加的連線：
 
 ```jsx
 import {
@@ -50,20 +44,14 @@ export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
 }
 ```
 
-If we try to use this edge now, we'll see that the button is rendered in the
-centre of the flow (it might be hidden behind "Node A"). Because of the edge
-label portal, we'll need to do some extra work to position the button ourselves.
+如果我們現在嘗試使用這條連線，我們會看到按鈕渲染在流程的中心（它可能隱藏在「Node A」後面）。由於連線標籤入口的關係，我們需要做一些額外的工作來自行定位按鈕。
 
 <Image
   src="/img/learn/edge-label-renderer-position.png"
-  alt="A screen shot of a simple flow. The edge label renderer is highlighted in
-  the DOM inspector and the button is rendered in the centre of the flow."
+  alt="一個簡單流程的螢幕截圖。連線標籤渲染器在 DOM 檢查器中被突顯，按鈕渲染在流程的中心。"
 />
 
-Fortunately, the path utils we've already seen can help us with this! Along with
-the SVG path to render, these functions also return the `x` and `y` coordinates
-of the path's midpoint. We can then use these coordinates to translate our custom
-edge label's into the right position!
+幸運的是，我們已經看到的路徑工具可以幫助我們！除了要渲染的 SVG 路徑外，這些函式還返回路徑中點的 `x` 和 `y` 座標。然後我們可以使用這些座標將自訂連線標籤平移到正確的位置！
 
 ```jsx
 export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
@@ -87,18 +75,12 @@ export default function CustomEdge({ id, sourceX, sourceY, targetX, targetY }) {
 ```
 
 <Callout type="info">
-  To make sure our edge labels are interactive and not just for presentation, it
-  is important to add `pointer-events: all` to the label's style. This will ensure
-  that the label is clickable.
+  為了確保我們的連線標籤是互動的而不僅僅是用於展示，重要的是要將 `pointer-events: all` 新增到標籤的樣式中。這將確保標籤可點擊。
 
-And just like with interactive controls in custom nodes, we need to remember
-to add the `nodrag` and `nopan` classes to the label to stop mouse events from
-controlling the canvas.
+就像自訂節點中的互動控制項一樣，我們需要記得將 `nodrag` 和 `nopan` 類別新增到標籤，以阻止滑鼠事件控制畫布。
 
 </Callout>
 
-Here's an interactive example with our updated custom edge. Clicking the delete
-button will remove that edge from the flow. Creating a new edge will use the
-custom node.
+以下是使用更新後的自訂連線的互動範例。點擊刪除按鈕將從流程中移除該連線。建立新連線將使用自訂節點。
 
 <RemoteCodeViewer route="learn/custom-edge-2" framework="react" />

@@ -1,82 +1,56 @@
 ---
-title: Rebrush React Flow UI
+title: 重新設計 React Flow UI
 description:
-  We have improved React Flow UI components to enhance their functionality and usability.
+  我們改進了 React Flow UI 元件以增強其功能和可用性。
 authors: [alessandro, moritz]
 date: '2025-07-14'
 ---
 
 import { Emoji } from '@xyflow/xy-ui';
 
-We have made some significant improvements to [React Flow UI](/ui) (formerly known as
-React Flow components). These changes enhance the functionality, visual look and usability
-of the components, to improive the general developer experience.
+我們對 [React Flow UI](/ui)（以前稱為 React Flow 元件）進行了一些重大改進。這些變更增強了元件的功能、視覺外觀和可用性，以改善整體開發者體驗。
 
-## Re-organize components
+## 重新組織元件
 
-Some components have been moved to examples, while others have been consolidated in a new
-structure:
+一些元件已移至範例，而其他元件則已整合到新結構中：
 
-- **Nodes Utilities**: These components can be used as building blocks for creating custom
-  nodes.
-- **Custom Nodes**: These are fully functional nodes that can be used directly in your
-  application.
-- **Handles**: These components are used to create connection points inside nodes.
-- **Custom Edges**: Fully functional edges that can be used out of the box.
-- **Controls**: Collection of interactive controls.
-- **Miscellaneous**: Various utility components that don't fit into the other categories,
-  like [`DevTools`](/ui/components/devtools).
+- **Nodes Utilities**：這些元件可用作建立自訂節點的構建塊。
+- **Custom Nodes**：這些是功能齊全的節點，可以直接在你的應用程式中使用。
+- **Handles**：這些元件用於在節點內建立連接點。
+- **Custom Edges**：功能齊全的連線，可以開箱即用。
+- **Controls**：互動控制項集合。
+- **Miscellaneous**：不適合其他類別的各種工具元件，如 [`DevTools`](/ui/components/devtools)。
 
-Find all of them in the [React Flow UI page](/ui).
+在 [React Flow UI 頁面](/ui)中找到所有這些。
 
-## `BaseNode` enhancements
+## `BaseNode` 增強功能
 
-Our BaseNode component has been fully revamped, to provide a more consistent experience
-with [shadcn UI](https://ui.shadcn.com/), and the rest of our
-[React Flow UI component library](/ui).
+我們的 BaseNode 元件已經完全翻新，以提供與 [shadcn UI](https://ui.shadcn.com/) 和我們其餘的 [React Flow UI 元件庫](/ui)更一致的體驗。
 
-The new `BaseNode` component now includes improved styling and wrapper components,
-aligning to shadcn UI design principles.
+新的 `BaseNode` 元件現在包含改進的樣式和包裝元件，符合 shadcn UI 設計原則。
 
-Just like a [shadcn UI Card component](https://ui.shadcn.com/docs/components/card), the
-[`BaseNode`](/ui/components/base-node) component now exports
+就像 [shadcn UI Card 元件](https://ui.shadcn.com/docs/components/card) 一樣，[`BaseNode`](/ui/components/base-node) 元件現在匯出
 
-- `BaseNodeHeader` and `BaseNodeHeaderTitle` for the header section,
-- `BaseNodeContent` for the main content area and
-- `BaseNodeFooter` for the footer section.
+- `BaseNodeHeader` 和 `BaseNodeHeaderTitle` 用於標頭部分，
+- `BaseNodeContent` 用於主要內容區域，以及
+- `BaseNodeFooter` 用於頁尾部分。
 
-This structure allows for better organization of content within the node, making it easier
-to create complex node layouts.
+這種結構允許更好地組織節點內的內容，使建立複雜的節點布局變得更容易。
 
-## Improved examples and nodes
+## 改進的範例和節點
 
-We have also added a few new components and improved existing ones. Our component pages
-now include more comprehensive examples that showcase the new features and capabilities of
-the components. For example:
+我們還新增了一些新元件並改進了現有元件。我們的元件頁面現在包含更全面的範例，展示元件的新功能和能力。例如：
 
-- New [`NodeAppendix`](/ui/components/node-appendix) component, which can be used to add
-  additional information or controls to nodes, like a
-  [`Node Badge`](/ui/components/node-appendix#example-badge)!
-- The `AnnotationNode` component has been moved to an
-  [example usage of `BaseNode`](/ui/components/base-node#example-annotation-node), to
-  demonstrate how to style the `BaseNode`.
-- The [`StatusIndicator`](/ui/components/status-indicator) now includes a variant with an
-  overlaying spinner, and improved usage examples.
-- The `TooltipNode` component, has been improved and moved to
-  [`NodeTooltip`](/ui/components/node-tooltip). It is no longer a custom node, but rather
-  an utility component that you can use to wrap a custom node with a tooltip.
+- 新的 [`NodeAppendix`](/ui/components/node-appendix) 元件，可用於向節點新增額外資訊或控制項，例如 [`Node Badge`](/ui/components/node-appendix#example-badge)！
+- `AnnotationNode` 元件已移至 [`BaseNode` 的範例用法](/ui/components/base-node#example-annotation-node)，以展示如何設定 `BaseNode` 的樣式。
+- [`StatusIndicator`](/ui/components/status-indicator) 現在包含一個帶有疊加旋轉器的變體，以及改進的用法範例。
+- `TooltipNode` 元件已改進並移至 [`NodeTooltip`](/ui/components/node-tooltip)。它不再是自訂節點，而是一個工具元件，你可以使用它來將自訂節點包裝在工具提示中。
 
-## No more `selected` prop
+## 不再需要 `selected` prop
 
-You don't need to pass the `selected` prop to the `BaseNode` or its related components
-anymore. Styling the selected state is now handled automatically by tailwind CSS
-selectors.
+你不再需要將 `selected` prop 傳遞給 `BaseNode` 或其相關元件。選擇狀態的樣式現在由 tailwind CSS 選擇器自動處理。
 
-However, `selected` is still a valid prop for nodes in React Flow, and you can still use
-it to determine if a node is selected or not in your custom components. If you do not need
-the `selected` prop for custom logic, but you only use it for styling, you can safely
-remove it from your components, and you can follow how `BaseNode` is implemented to
-achieve custom styling for your custom selected nodes.
+但是，`selected` 仍然是 React Flow 中節點的有效 prop，你仍然可以使用它來確定節點在自訂元件中是否被選擇。如果你不需要 `selected` prop 用於自訂邏輯，而只是將它用於樣式，你可以安全地從元件中刪除它，並且可以按照 `BaseNode` 的實作方式為自訂選擇的節點實現自訂樣式。
 
 ```tsx
 export const BaseNode = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
@@ -103,8 +77,6 @@ export const BaseNode = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement
 BaseNode.displayName = 'BaseNode';
 ```
 
-## Feedback
+## 回饋
 
-We hope these improvements make your experience with React Flow UI even better. If you
-have any feedback or suggestions, please let us know via [mail](mailto:info@xyflow.com) or
-[Discord](https://discord.com/invite/RVmnytFmGW)!
+我們希望這些改進能讓你對 React Flow UI 的體驗更好。如果你有任何回饋或建議，請透過[郵件](mailto:info@xyflow.com)或 [Discord](https://discord.com/invite/RVmnytFmGW) 讓我們知道！

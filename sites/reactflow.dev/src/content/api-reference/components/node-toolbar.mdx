@@ -1,18 +1,15 @@
 ---
-title: The NodeToolbar component
+title: 節點工具列元件
 sidebarTitle: '<NodeToolbar />'
 description:
-  "The NodeToolbar component can render a toolbar or tooltip to one side of a
-  custom node. This toolbar doesn't scale with the viewport so that the content
-  is always visible."
+  "節點工具列元件可以在自訂節點的一側渲染工具列或提示框。此工具列不會隨視窗縮放，以便內容始終可見。"
 ---
 
 # \<NodeToolbar />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeToolbar/NodeToolbar.tsx)
+[原始碼於 GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeToolbar/NodeToolbar.tsx)
 
-This component can render a toolbar or tooltip to one side of a custom node. This
-toolbar doesn't scale with the viewport so that the content is always visible.
+此元件可以在自訂節點的一側渲染工具列或提示框。此工具列不會隨視窗縮放，以便內容始終可見。
 
 ```jsx
 import { memo } from 'react';
@@ -42,15 +39,12 @@ export default memo(CustomNode);
 
 ## Props
 
-For TypeScript users, the props type for the `<NodeToolbar />` component is exported
-as `NodeToolbarProps`. Additionally, the `<NodeToolbar />` component accepts all props of the HTML `<div />`
-element.
+對於 TypeScript 使用者，`<NodeToolbar />` 元件的 props 類型會以 `NodeToolbarProps` 導出。
+此外，`<NodeToolbar />` 元件接受 HTML `<div />` 元素的所有 props。
 
 <APIDocs componentName="NodeToolbar" groupKeys="HTMLAttributes<HTMLDivElement>" />
 
-## Notes
+## 注意事項
 
-- By default, the toolbar is only visible when a node is selected. If multiple
-  nodes are selected it will not be visible to prevent overlapping toolbars or
-  clutter. You can override this behavior by setting the `isVisible` prop to
-  `true`.
+- 預設情況下，工具列僅在節點被選中時可見。如果選擇了多個節點，
+  它將不可見以防止工具列重疊或雜亂。你可以透過將 `isVisible` prop 設為 `true` 來覆蓋此行為。

@@ -1,19 +1,14 @@
 ---
 description:
-  "Various events on the ReactFlow component can produce a NodeChange that
-  describes how to update the nodes of your flow in some way. If you don't need
-  any custom behavior, this util can be used to take an array of these changes
-  and apply them to your nodes."
+  "ReactFlow 元件上的各種事件可以產生 NodeChange，用於描述如何以某種方式更新流程圖中的節點。
+  如果您不需要任何自訂行為，可以使用此工具函式取得這些變更的陣列並將它們套用到您的節點上。"
 ---
 
 # applyNodeChanges()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/utils/changes.ts/#L140)
 
-Various events on the [`<ReactFlow />`](/api-reference/react-flow) component can produce a
-[`NodeChange`](/api-reference/types/node-change) that describes how to update the nodes of your
-flow in some way. If you don't need any custom behavior, this util can be used to
-take an array of these changes and apply them to your nodes.
+[`<ReactFlow />`](/api-reference/react-flow) 元件上的各種事件可以產生 [`NodeChange`](/api-reference/types/node-change)，用於描述如何以某種方式更新流程圖中的節點。如果您不需要任何自訂行為，可以使用此工具函式取得這些變更的陣列並將它們套用到您的節點上。
 
 ```js
 import { useState, useCallback } from 'react';
@@ -41,6 +36,4 @@ export default function Flow() {
 
 ## Notes
 
-- If you don't need any custom behavior, the [`useNodesState`](/api-reference/hooks/use-nodes-state)
-  hook conveniently wraps this util and React's `useState` hook for you and might
-  be simpler to use.
+- 如果您不需要任何自訂行為，[`useNodesState`](/api-reference/hooks/use-nodes-state) hook 會方便地為您封裝此工具函式和 React 的 `useState` hook，使用起來可能更簡單。

@@ -1,17 +1,14 @@
 ---
 description:
-  "This util is a convenience function to add a new Edge to an array of edges.
-  It also performs some validation to make sure you don't add an invalid edge or
-  duplicate an existing one."
+  "這個工具函式可以方便地將新的 Edge 新增到連線陣列中。
+  它還會執行一些驗證，以確保您不會新增無效的連線或重複現有的連線。"
 ---
 
 # addEdge()
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/utils/edges/general.ts/#L100)
 
-This util is a convenience function to add a new [`Edge`](/api-reference/types/edge) to an
-array of edges. It also performs some validation to make sure you don't add an
-invalid edge or duplicate an existing one.
+這個工具函式可以方便地將新的 [`Edge`](/api-reference/types/edge) 新增到連線陣列中。它還會執行一些驗證，以確保您不會新增無效的連線或重複現有的連線。
 
 ```js
 import { useCallback } from 'react';
@@ -42,6 +39,4 @@ export default function Flow() {
 
 ## Notes
 
-- If an edge with the same `target` and `source` already exists (and the same
-  `targetHandle` and `sourceHandle` if those are set), then this util won't add
-  a new edge even if the `id` property is different.
+- 如果已經存在具有相同 `target` 和 `source` 的連線（如果有設定，還包括相同的 `targetHandle` 和 `sourceHandle`），則即使 `id` 屬性不同，此工具函式也不會新增新的連線。

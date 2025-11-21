@@ -1,74 +1,51 @@
 import { ContentGrid, ContentGridItem } from '@xyflow/xy-ui';
 import { BlogPostPreview } from 'xy-shared';
 
-# API Reference
+# API 參考
 
-This reference attempts to document every function, hook, component, and type
-exported by React Flow. If you are looking for guides and tutorials, please refer to our [learn section](/learn).
+本參考文件試圖記錄 React Flow 匯出的每個函式、hook、元件和類型。如果您正在尋找指南和教學，請參考我們的[學習區段](/learn)。
 
-## How to use this reference
+## 如何使用本參考文件
 
-We think that documentation should answer two broad
-questions: "what is this thing?" and "how do I use it?"
+我們認為文件應該回答兩個廣泛的問題：「這是什麼？」和「我該如何使用它？」
 
-To that end, our API reference aims to **concisely** answer that first question
-and learn section goes into more detail on the second. If you find yourself clicking
-around the reference wondering what the heck any of this means, maybe we have a
-guide that can help you out!
+為此，我們的 API 參考旨在**簡潔地**回答第一個問題，而學習區段則更詳細地說明第二個問題。如果您發現自己在參考文件中四處瀏覽，卻不知道這些到底是什麼意思，也許我們有一份指南可以幫助您！
 
 <ContentGrid className="mt-8">
   <ContentGridItem route="/learn/customization/custom-nodes">
     <BlogPostPreview
-      title="Custom nodes"
-      intro="A powerful feature of React Flow is the ability to add custom nodes. Within your custom nodes you can render everything you want. You can define multiple source and target handles and render form inputs or charts for example. In this guide we will implement a node with an input field that updates some text in another part of the application."
+      title="自訂節點"
+      intro="React Flow 的一個強大功能是可以加入自訂節點。在您的自訂節點中，您可以渲染任何想要的內容。例如，您可以定義多個來源和目標 handle，並渲染表單輸入或圖表。在本指南中，我們將實作一個帶有輸入欄位的節點，該節點會更新應用程式另一部分的文字。"
     />
   </ContentGridItem>
   <ContentGridItem route="/learn/layouting/layouting">
     <BlogPostPreview
-      title="Layouting"
-      intro="We regularly get asked how to handle layouting in React Flow. While we could build some basic layouting into React Flow, we believe that you know your app's requirements best and with so many options out there we think it's better you choose the best right tool for the job. In this guide we'll look at four layouting libraries and how to use them."
+      title="版面配置"
+      intro="我們經常被問到如何在 React Flow 中處理版面配置。雖然我們可以在 React Flow 中建構一些基本的版面配置，但我們相信您最了解應用程式的需求，而且有這麼多選項，我們認為最好由您選擇最適合的工具。在本指南中，我們將介紹四個版面配置函式庫以及如何使用它們。"
     />
   </ContentGridItem>
 </ContentGrid>
 
-## A note for our long-term users
+## 給長期使用者的說明
 
-If you're coming here from our old API pages things might look a bit different!
-We've reorganized our documentation to make it easier to look things up if you
-know what you're looking for. All our types, components, hooks, and util functions
-get their own page now to help you find exactly what you need.
+如果您是從我們舊的 API 頁面來的，可能會覺得有點不同！我們重新組織了文件，讓您在知道要找什麼的時候更容易查找。現在所有類型、元件、hook 和工具函式都有自己的頁面，幫助您找到確切所需的內容。
 
-If you're new to React Flow or you're not sure where to look for something, take
-a look at the section below.
+如果您是 React Flow 的新手，或者不確定要在哪裡尋找某些內容，請查看下面的區段。
 
-## A note for JavaScript users
+## 給 JavaScript 使用者的說明
 
-React Flow is written in TypeScript, but we know that not everyone uses it. We
-encourage developers to use the technology that works best for them, and
-throughout our documentation there is a blend of TypeScript and JavaScript
-examples.
+React Flow 是用 TypeScript 撰寫的，但我們知道並非每個人都使用它。我們鼓勵開發者使用最適合他們的技術，在我們的文件中也混合了 TypeScript 和 JavaScript 的範例。
 
-For our API reference, however, we use TypeScript's syntax to document the types
-of props and functions. Here's a quick crash course on how to read it:
+然而，對於我們的 API 參考，我們使用 TypeScript 的語法來記錄屬性和函式的類型。這裡有一個如何閱讀它的快速入門：
 
-• `?` means that the field or argument is optional.
+• `?` 表示該欄位或參數是可選的。
 
-• `<T>` in a type definition represents a generic type parameter. Like a function
-argument but for types! The definition `type Array<T> = ...` means a type called
-`Array` that takes a generic type parameter `T`.
+• `<T>` 在類型定義中表示一個泛型型別參數。就像函式參數，但用於類型！定義 `type Array<T> = ...` 表示一個名為 `Array` 的類型，它接受一個泛型型別參數 `T`。
 
-• `<T>` when referring to a type is like "filling in" a generic type parameter.
-It's like calling a function but for types! The type `Array<number>` is the
-type `Array` with the generic type parameter `T` filled in with the type
-`number`.
+• `<T>` 在引用類型時就像是「填入」一個泛型型別參數。就像呼叫一個函式，但用於類型！類型 `Array<number>` 是 `Array` 類型，其泛型型別參數 `T` 填入了類型 `number`。
 
-• `T | U` means that the type is either `T` or `U`: this is often called a
-_union_.
+• `T | U` 表示該類型是 `T` 或 `U`：這通常稱為_聯集（union）_。
 
-• `T & U` means that the type is both `T` and `U`: this is often called an
-_intersection_.
+• `T & U` 表示該類型同時是 `T` 和 `U`：這通常稱為_交集（intersection）_。
 
-The TypeScript folks have their own
-[handy guide for reading types](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-that you might find useful. If you're still stuck on something, feel free to
-drop by our [Discord](https://discord.com/invite/RVmnytFmGW) and ask for help!
+TypeScript 團隊有他們自己的[閱讀類型的實用指南](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)，您可能會覺得有用。如果您還是卡住了，歡迎到我們的 [Discord](https://discord.com/invite/RVmnytFmGW) 尋求協助！

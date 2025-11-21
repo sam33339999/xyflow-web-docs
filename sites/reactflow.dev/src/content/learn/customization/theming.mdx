@@ -1,46 +1,38 @@
 ---
-description: React Flow comes with a minimal default theme. It's common to overwrite the default styles with your own CSS or use third-party libraries like TailwindCSS.
+description: React Flow 附帶了一個最小的預設主題。通常會使用您自己的 CSS 覆寫預設樣式，或使用 TailwindCSS 等第三方函式庫。
 ---
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Theming
+# 主題
 
-React Flow has been built with deep customization in mind. Many of our users
-fully transform the look and feel of React Flow to match their own brand or design
-system. This guide will introduce you to the different ways you can customize
-React Flow's appearance.
+React Flow 在建構時充分考慮了深度自訂。我們的許多使用者完全改變了 React Flow 的外觀和感覺，以符合他們自己的品牌或設計系統。本指南將介紹您可以自訂 React Flow 外觀的不同方式。
 
-## Default styles
+## 預設樣式
 
-React Flow's default styles are enough to get going with the built-in nodes. They
-provide some sensible defaults for styles like padding, border radius, and animated
-edges. You can see what they look like below:
+React Flow 的預設樣式足以讓您開始使用內建節點。它們為填充、邊框半徑和動畫連線等樣式提供了一些合理的預設值。您可以在下面看到它們的外觀：
 
 <RemoteCodeViewer
   route="examples/styling/default-style"
   framework="react"
 />
 
-You'll typically load these default styles by importing them in you `App.jsx`
-file or other entry point:
+您通常會通過在 `App.jsx` 檔案或其他入口點中匯入這些預設樣式來載入它們：
 
 ```js
 import '@xyflow/react/dist/style.css';
 ```
 
-Without dipping into [custom nodes](/examples/nodes/custom-node) and
-[edges](/examples/edges/custom-edges), there are three ways you can style
-React Flow's basic look:
+在不深入研究[自訂節點](/examples/nodes/custom-node)和[連線](/examples/edges/custom-edges)的情況下，您可以透過三種方式設定 React Flow 的基本外觀：
 
-- Passing inline styles through `style` props
-- Overriding the built-in classes with custom CSS
-- Overriding the CSS variables React Flow uses
+- 透過 `style` 屬性傳遞內聯樣式
+- 使用自訂 CSS 覆寫內建類別
+- 覆寫 React Flow 使用的 CSS 變數
 
-### Built in dark and light mode
+### 內建深色和淺色模式
 
-You can choose one of the built-in color modes by using the `colorMode` prop ('dark', 'light' or 'system') as seen in the [dark mode example](/examples/styling/dark-mode).
+您可以使用 `colorMode` 屬性（'dark'、'light' 或 'system'）選擇內建顏色模式之一，如[深色模式範例](/examples/styling/dark-mode)所示。
 
 ```jsx
 import ReactFlow from '@xyflow/react';
@@ -50,7 +42,7 @@ export default function Flow() {
 }
 ```
 
-When you use the `colorMode` prop, React Flow adds a class to the root element (`.react-flow`) that you can use to style your flow based on the color mode:
+當您使用 `colorMode` 屬性時，React Flow 會將一個類別新增到根元素（`.react-flow`），您可以使用該類別根據顏色模式設定流程樣式：
 
 ```css
 .dark .react-flow__node {
@@ -64,11 +56,9 @@ When you use the `colorMode` prop, React Flow adds a class to the root element (
 }
 ```
 
-### Customizing with `style` props
+### 使用 `style` 屬性自訂
 
-The easiest way to start customizing the look and feel of your flows is to use
-the `style` prop found on many of React Flow's components to inline your own
-CSS.
+開始自訂流程外觀和感覺的最簡單方法是使用 React Flow 許多元件上的 `style` 屬性來內聯您自己的 CSS。
 
 ```jsx
 import ReactFlow from '@xyflow/react'
@@ -84,14 +74,11 @@ export default function Flow() {
 }
 ```
 
-### CSS variables
+### CSS 變數
 
-If you don't want to replace the default styles entirely but just want to tweak
-the overall look and feel, you can override some of the CSS variables we use
-throughout the library. For an example of how to use these CSS variables, check out our [Feature Overview](/examples/overview) example.
+如果您不想完全替換預設樣式，只想調整整體外觀和感覺，您可以覆寫我們在整個函式庫中使用的一些 CSS 變數。有關如何使用這些 CSS 變數的範例，請查看我們的[功能概述](/examples/overview)範例。
 
-These variables are mostly self-explanatory. Below is a table of all the variables
-you might want to tweak and their default values for reference:
+這些變數大多不言而喻。以下是您可能想要調整的所有變數及其預設值的表格，以供參考：
 
 | Variable name                                         | Default                             |
 | :---------------------------------------------------- | :---------------------------------- |
@@ -123,10 +110,7 @@ you might want to tweak and their default values for reference:
 | `--xy-controls-box-shadow-default`                    | `0 0 2px 1px rgba(0, 0, 0, 0.08)`   |
 | `--xy-resize-background-color-default`                | `#3367d9`                           |
 
-These variables are used to define the _defaults_ for the various elements of
-React Flow. This means they can still be overridden by inline styles or custom
-classes on a per-element basis. If you want to override these variables, you can do so
-by adding:
+這些變數用於定義 React Flow 各種元素的_預設值_。這意味著它們仍然可以透過內聯樣式或自訂類別在每個元素的基礎上被覆寫。如果您想覆寫這些變數，您可以透過新增以下內容來實現：
 
 ```css
 .react-flow {
@@ -135,75 +119,64 @@ by adding:
 ```
 
 <Callout type="warning">
-  Be aware that these variables are defined under `.react-flow` and under
-  `:root`.
+  請注意，這些變數定義在 `.react-flow` 和 `:root` 下。
 </Callout>
 
-### Overriding built-in classes
+### 覆寫內建類別
 
-Some consider heavy use of inline styles to be an anti-pattern. In that case,
-you can override the built-in classes that React Flow uses with your own CSS.
-There are many classes attached to all sorts of elements in React Flow, but the
-ones you'll likely want to override are listed below:
+有些人認為大量使用內聯樣式是一種反模式。在這種情況下，您可以使用自己的 CSS 覆寫 React Flow 使用的內建類別。React Flow 中有許多類別附加到各種元素，但您可能想要覆寫的類別如下所示：
 
 | Class name                         | Description                                                                              |
 | :--------------------------------- | :--------------------------------------------------------------------------------------- |
-| `.react-flow`                      | The outermost container                                                                  |
-| `.react-flow__renderer`            | The inner container                                                                      |
-| `.react-flow__zoompane`            | Zoom & pan pane                                                                          |
-| `.react-flow__selectionpane`       | Selection pane                                                                           |
-| `.react-flow__selection`           | User selection                                                                           |
-| `.react-flow__edges`               | The element containing all edges in the flow                                             |
-| `.react-flow__edge`                | Applied to each [`Edge`](/api-reference/types/edge) in the flow                          |
-| `.react-flow__edge.selected`       | Added to an [`Edge`](/api-reference/types/edge) when selected                            |
-| `.react-flow__edge.animated`       | Added to an [`Edge`](/api-reference/types/edge) when its `animated` prop is `true`       |
-| `.react-flow__edge.updating`       | Added to an [`Edge`](/api-reference/types/edge) while it gets updated via `onReconnect`  |
-| `.react-flow__edge-path`           | The SVG `<path />` element of an [`Edge`](/api-reference/types/edge)                     |
-| `.react-flow__edge-text`           | The SVG `<text />` element of an [`Edge`](/api-reference/types/edge) label               |
-| `.react-flow__edge-textbg`         | The SVG `<text />` element behind an [`Edge`](/api-reference/types/edge) label           |
-| `.react-flow__connection`          | Applied to the current connection line                                                   |
-| `.react-flow__connection-path`     | The SVG `<path />` of a connection line                                                  |
-| `.react-flow__nodes`               | The element containing all nodes in the flow                                             |
-| `.react-flow__node`                | Applied to each [`Node`](/api-reference/types/node) in the flow                          |
-| `.react-flow__node.selected`       | Added to a [`Node`](/api-reference/types/node) when selected.                            |
-| `.react-flow__node-default`        | Added when [`Node`](/api-reference/types/node) type is `"default"`                       |
-| `.react-flow__node-input`          | Added when [`Node`](/api-reference/types/node) type is `"input"`                         |
-| `.react-flow__node-output`         | Added when [`Node`](/api-reference/types/node) type is `"output"`                        |
-| `.react-flow__nodesselection`      | Nodes selection                                                                          |
-| `.react-flow__nodesselection-rect` | Nodes selection rect                                                                     |
-| `.react-flow__handle`              | Applied to each [`<Handle />`](/api-reference/components/handle) component               |
-| `.react-flow__handle-top`          | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"top"`    |
-| `.react-flow__handle-right`        | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"right"`  |
-| `.react-flow__handle-bottom`       | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"bottom"` |
-| `.react-flow__handle-left`         | Applied when a handle's [`Position`](/api-reference/types/position) is set to `"left"`   |
-| `.connectingfrom`                  | Added to a Handle when a connection line is above a handle.                              |
-| `.connectingto`                    | Added to a Handle when a connection line is above a handle.                              |
-| `.valid`                           | Added to a Handle when a connection line is above **and** the connection is valid        |
-| `.react-flow__background`          | Applied to the [`<Background />`](/api-reference/components/background) component        |
-| `.react-flow__minimap`             | Applied to the [`<MiniMap />`](/api-reference/components/minimap) component              |
-| `.react-flow__controls`            | Applied to the [`<Controls />`](/api-reference/components/controls) component            |
+| `.react-flow`                      | 最外層容器                                                                  |
+| `.react-flow__renderer`            | 內層容器                                                                      |
+| `.react-flow__zoompane`            | 縮放和平移窗格                                                                          |
+| `.react-flow__selectionpane`       | 選擇窗格                                                                           |
+| `.react-flow__selection`           | 使用者選擇                                                                           |
+| `.react-flow__edges`               | 包含流程中所有連線的元素                                             |
+| `.react-flow__edge`                | 套用於流程中的每個 [`Edge`](/api-reference/types/edge)                          |
+| `.react-flow__edge.selected`       | 當 [`Edge`](/api-reference/types/edge) 被選擇時新增                            |
+| `.react-flow__edge.animated`       | 當 [`Edge`](/api-reference/types/edge) 的 `animated` 屬性為 `true` 時新增       |
+| `.react-flow__edge.updating`       | 當 [`Edge`](/api-reference/types/edge) 透過 `onReconnect` 更新時新增  |
+| `.react-flow__edge-path`           | [`Edge`](/api-reference/types/edge) 的 SVG `<path />` 元素                     |
+| `.react-flow__edge-text`           | [`Edge`](/api-reference/types/edge) 標籤的 SVG `<text />` 元素               |
+| `.react-flow__edge-textbg`         | [`Edge`](/api-reference/types/edge) 標籤後面的 SVG `<text />` 元素           |
+| `.react-flow__connection`          | 套用於當前連接線                                                   |
+| `.react-flow__connection-path`     | 連接線的 SVG `<path />`                                                  |
+| `.react-flow__nodes`               | 包含流程中所有節點的元素                                             |
+| `.react-flow__node`                | 套用於流程中的每個 [`Node`](/api-reference/types/node)                          |
+| `.react-flow__node.selected`       | 當 [`Node`](/api-reference/types/node) 被選擇時新增                            |
+| `.react-flow__node-default`        | 當 [`Node`](/api-reference/types/node) 類型為 `"default"` 時新增                       |
+| `.react-flow__node-input`          | 當 [`Node`](/api-reference/types/node) 類型為 `"input"` 時新增                         |
+| `.react-flow__node-output`         | 當 [`Node`](/api-reference/types/node) 類型為 `"output"` 時新增                        |
+| `.react-flow__nodesselection`      | 節點選擇                                                                          |
+| `.react-flow__nodesselection-rect` | 節點選擇矩形                                                                     |
+| `.react-flow__handle`              | 套用於每個 [`<Handle />`](/api-reference/components/handle) 元件               |
+| `.react-flow__handle-top`          | 當連接點的 [`Position`](/api-reference/types/position) 設定為 `"top"` 時套用    |
+| `.react-flow__handle-right`        | 當連接點的 [`Position`](/api-reference/types/position) 設定為 `"right"` 時套用  |
+| `.react-flow__handle-bottom`       | 當連接點的 [`Position`](/api-reference/types/position) 設定為 `"bottom"` 時套用 |
+| `.react-flow__handle-left`         | 當連接點的 [`Position`](/api-reference/types/position) 設定為 `"left"` 時套用   |
+| `.connectingfrom`                  | 當連接線位於連接點上方時新增到連接點                              |
+| `.connectingto`                    | 當連接線位於連接點上方時新增到連接點                              |
+| `.valid`                           | 當連接線位於連接點上方**且**連接有效時新增到連接點        |
+| `.react-flow__background`          | 套用於 [`<Background />`](/api-reference/components/background) 元件        |
+| `.react-flow__minimap`             | 套用於 [`<MiniMap />`](/api-reference/components/minimap) 元件              |
+| `.react-flow__controls`            | 套用於 [`<Controls />`](/api-reference/components/controls) 元件            |
 
 <Callout type="warning">
-  Be careful if you go poking around the source code looking for other classes
-  to override. Some classes are used internally and are required in order for
-  the library to be functional. If you replace them you may end up with
-  unexpected bugs or errors!
+  如果您在原始碼中尋找其他要覆寫的類別，請小心。某些類別在內部使用，是函式庫正常運作所必需的。如果您替換它們，可能會遇到意外的錯誤！
 </Callout>
 
-## Third-party solutions
+## 第三方解決方案
 
-You can choose to opt-out of React Flow's default styling altogether and use a
-third-party styling solution instead. If you want to do this, you must make sure
-you still import the base styles.
+您可以選擇完全退出 React Flow 的預設樣式，改用第三方樣式解決方案。如果您想這樣做，您必須確保仍然匯入基本樣式。
 
 ```js
 import '@xyflow/react/dist/base.css';
 ```
 
 <Callout type="warning">
-  These base styles are **required** for React Flow to function correctly. If
-  you don't import them or you override them with your own styles, some things
-  might not work as expected!
+  這些基本樣式是 React Flow 正確運作所**必需**的。如果您不匯入它們或使用自己的樣式覆寫它們，某些功能可能無法正常工作！
 </Callout>
 
 <RemoteCodeViewer
@@ -213,9 +186,7 @@ import '@xyflow/react/dist/base.css';
 
 ### TailwindCSS
 
-Custom nodes and edges are just React components, and you can use any styling
-solution you'd like to style them. For example, you might want to use
-[Tailwind](https://tailwindcss.com/) to style your nodes:
+自訂節點和連線只是 React 元件，您可以使用任何您喜歡的樣式解決方案來設定它們的樣式。例如，您可能想使用 [Tailwind](https://tailwindcss.com/) 來設定節點樣式：
 
 ```jsx
 function CustomNode({ data }) {
@@ -247,8 +218,7 @@ function CustomNode({ data }) {
 ```
 
 <Callout type="warning">
-  If you want to overwrite default styles, make sure to import Tailwinds entry
-  point after React Flows base styles.
+  如果您想覆寫預設樣式，請確保在 React Flow 基本樣式之後匯入 Tailwind 的入口點。
 </Callout>
 
 ```js
@@ -256,5 +226,4 @@ import '@xyflow/react/dist/style.css';
 import 'tailwind.css';
 ```
 
-For a complete example of using Tailwind with React Flow, check out
-[the example](/examples/styling/tailwind)!
+有關使用 Tailwind 與 React Flow 的完整範例，請查看[範例](/examples/styling/tailwind)！

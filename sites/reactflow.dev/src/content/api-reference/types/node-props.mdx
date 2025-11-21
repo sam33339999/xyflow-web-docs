@@ -1,19 +1,16 @@
 ---
 title: NodeProps
 description:
-  'When you implement a custom node it is wrapped in a component that enables basic
-  functionality like selection and dragging. Your custom node receives the following
-  props:'
+  '當您實作自訂節點時，它會被包裝在一個啟用基本功能（如選擇和拖曳）的元件中。您的自訂節點會接收以下 props：'
 ---
 
 # NodeProps\<T>
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/nodes.ts/#L89)
 
-When you implement a [custom node](/learn/customization/custom-nodes) it is wrapped in a
-component that enables basic functionality like selection and dragging.
+當您實作[自訂節點](/learn/customization/custom-nodes)時，它會被包裝在一個啟用基本功能（如選擇和拖曳）的元件中。
 
-## Usage
+## 使用方式
 
 ```tsx
 import { useState } from 'react';
@@ -40,8 +37,7 @@ export default function CounterNode(props: NodeProps<CounterNode>) {
 }
 ```
 
-Remember to register your custom node by adding it to the
-[`nodeTypes`](/api-reference/react-flow#nodetypes) prop of your `<ReactFlow />` component.
+記得透過將自訂節點添加到 `<ReactFlow />` 元件的 [`nodeTypes`](/api-reference/react-flow#nodetypes) prop 來註冊它。
 
 ```tsx
 import { ReactFlow } from '@xyflow/react';
@@ -56,10 +52,10 @@ export default function App() {
 }
 ```
 
-You can read more in our [custom node guide](/learn/customization/custom-nodes).
+您可以在我們的[自訂節點指南](/learn/customization/custom-nodes)中閱讀更多資訊。
 
 ## Fields
 
-Your custom node receives the following props:
+您的自訂節點會接收以下 props：
 
 <APIDocs typeName="NodeProps" />

@@ -1,29 +1,21 @@
 ---
 title: 'React Flow 12.9.0'
-description: 'Changelog for React Flow version 12.9.0'
+description: 'React Flow 版本 12.9.0 的變更日誌'
 authors: [xyflow]
 date: '2025-10-20'
 ---
 
-This update is huge! We added a new `EdgeToolbar` component, it's now possible to start a
-selection above a node and child nodes of different parents won't overlap anymore:
+這次更新太大了！我們新增了一個新的 `EdgeToolbar` 元件，現在可以在節點上方開始選擇，不同父節點的子節點不再重疊：
 
-### Minor Changes
+### 次要變更
 
-- [#5544](https://github.com/xyflow/xyflow/pull/5544) Add `EdgeToolbar` component
-- [#5550](https://github.com/xyflow/xyflow/pull/5550) Prevent child nodes of different
-  parents from overlapping
-- [#5551](https://github.com/xyflow/xyflow/pull/5551) Allow to start a selection above a
-  node
+- [#5544](https://github.com/xyflow/xyflow/pull/5544) 新增 `EdgeToolbar` 元件
+- [#5550](https://github.com/xyflow/xyflow/pull/5550) 防止不同父節點的子節點重疊
+- [#5551](https://github.com/xyflow/xyflow/pull/5551) 允許在節點上方開始選擇
 
-### Patch Changes
+### 修補變更
 
-- [#5531](https://github.com/xyflow/xyflow/pull/5531) Thanks
-  [@Sec-ant](https://github.com/Sec-ant)! - Add `type` property to `EdgeProps` to match
-  `NodeProps` behavior
-- [#5528](https://github.com/xyflow/xyflow/pull/5528) Let `NodeResizer` props change
-  during ongoing resize
-- [#5530](https://github.com/xyflow/xyflow/pull/5530) Improve performance of adding nodes
-  & edges
-- [#5547](https://github.com/xyflow/xyflow/pull/5547) Always call `onMoveEnd` when
-  `onMoveStart` was called
+- [#5531](https://github.com/xyflow/xyflow/pull/5531) 感謝 [@Sec-ant](https://github.com/Sec-ant)！ - 將 `type` 屬性新增到 `EdgeProps` 以匹配 `NodeProps` 行為
+- [#5528](https://github.com/xyflow/xyflow/pull/5528) 讓 `NodeResizer` prop 在正在進行的調整大小期間更改
+- [#5530](https://github.com/xyflow/xyflow/pull/5530) 改善新增節點和連線的效能
+- [#5547](https://github.com/xyflow/xyflow/pull/5547) 當呼叫 `onMoveStart` 時始終呼叫 `onMoveEnd`

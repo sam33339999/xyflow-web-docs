@@ -1,16 +1,13 @@
 ---
 description:
-  'If you set the connectionLineType prop on your ReactFlow component, it will
-  dictate the style of connection line rendered when creating new edges.'
+  '如果你在 ReactFlow 元件上設定 connectionLineType 屬性，它將決定建立新連線時渲染的連接線樣式。'
 ---
 
 # ConnectionLineType
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/system/src/types/edges.ts/#L62)
 
-If you set the `connectionLineType` prop on your [`<ReactFlow />`](/api-reference/react-flow#connection-connectionLineType)
-component, it will dictate the style of connection line rendered when creating
-new edges.
+如果你在 [`<ReactFlow />`](/api-reference/react-flow#connection-connectionLineType) 元件上設定 `connectionLineType` 屬性，它將決定建立新連線時渲染的連接線樣式。
 
 ```ts
 export enum ConnectionLineType {
@@ -22,7 +19,6 @@ export enum ConnectionLineType {
 }
 ```
 
-## Notes
+## 注意事項
 
-- If you choose to render a custom connection line component, this value will be
-  passed to your component as part of its [`ConnectionLineComponentProps`](/api-reference/types/connection-line-component-props).
+- 如果你選擇渲染自訂的連接線元件，這個值將作為 [`ConnectionLineComponentProps`](/api-reference/types/connection-line-component-props) 的一部分傳遞給你的元件。

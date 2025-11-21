@@ -1,19 +1,17 @@
 ---
-title: The NodeResizer component
+title: 節點調整大小器元件
 sidebarTitle: '<NodeResizer />'
 description:
-  'The NodeResizer component can be used to add a resize functionality to your
-  nodes. It renders draggable controls around the node to resize in all directions.'
+  '節點調整大小器元件可用於為你的節點添加調整大小功能。它會在節點周圍渲染可拖曳的控制點，以便在各個方向上調整大小。'
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 # \<NodeResizer />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeResizer/NodeResizer.tsx)
+[原始碼於 GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/NodeResizer/NodeResizer.tsx)
 
-The `<NodeResizer />` component can be used to add a resize functionality to your
-nodes. It renders draggable controls around the node to resize in all directions.
+`<NodeResizer />` 元件可用於為你的節點添加調整大小功能。它會在節點周圍渲染可拖曳的控制點，以便在各個方向上調整大小。
 
 ```jsx
 import { memo } from 'react';
@@ -35,23 +33,21 @@ export default memo(ResizableNode);
 
 ## Props
 
-For TypeScript users, the props type for the `<NodeResizer />` component is exported
-as `NodeResizerProps`.
+對於 TypeScript 使用者，`<NodeResizer />` 元件的 props 類型會以 `NodeResizerProps` 導出。
 
 <APIDocs componentName="NodeResizer" />
 
-## Examples
+## 範例
 
-Head over to the [example page](/examples/nodes/node-resizer) to see how this is done.
+前往[範例頁面](/examples/nodes/node-resizer)查看如何實作。
 
 <RemoteCodeViewer route="examples/nodes/node-resizer" framework="react" />
 
-### Custom Resize Controls
+### 自訂調整大小控制點
 
-To build custom resize controls, you can use the [NodeResizeControl](/api-reference/components/node-resize-control) component and customize it.
+若要建立自訂調整大小控制點，你可以使用 [NodeResizeControl](/api-reference/components/node-resize-control) 元件並進行自訂。
 
-## Notes
+## 注意事項
 
-- Take a look at the docs for the [`NodeProps`](/api-reference/types/node-props) type or the
-  guide on [custom nodes](/learn/customization/custom-nodes) to see how to
-  implement your own nodes.
+- 查看 [`NodeProps`](/api-reference/types/node-props) 類型的文檔或[自訂節點](/learn/customization/custom-nodes)指南，
+  了解如何實作你自己的節點。

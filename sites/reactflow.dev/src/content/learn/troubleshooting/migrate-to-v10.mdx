@@ -1,31 +1,31 @@
 ---
-sidebarTitle: Migrate to v10
-description: Use this guide to migrate from React Flow v9 to v10.
+sidebarTitle: 遷移到 v10
+description: 使用本指南從 React Flow v9 遷移到 v10。
 ---
 
-# Migrate to React Flow v10
+# 遷移到 React Flow v10
 
 import { Callout } from 'nextra/components';
 
 <Callout type="info">
-  You can find the docs for old versions of React Flow here:
-  [v11](https://v11.reactflow.dev), [v10](https://v10.reactflow.dev),
+  你可以在這裡找到舊版本 React Flow 的文件：
+  [v11](https://v11.reactflow.dev)、[v10](https://v10.reactflow.dev)、
   [v9](https://v9.reactflow.dev)
 </Callout>
 
-Welcome to React Flow v10! With the major version update, there are coming many new features but also some breaking changes.
+歡迎來到 React Flow v10！隨著主要版本更新，帶來了許多新功能，但也有一些重大變更。
 
-## New Features
+## 新功能
 
-- [**Sub Flows**](/learn/layouting/sub-flows): You can now add nodes to a parent node and create groups and nested flows
-- **Node Type 'group'**: A new node type without handles that can be used as a group node
-- **Touch Device Support**: It is now possible to connect nodes on touch devices
-- **Fit View on Init**: You can use the new `fitView` prop to fit the initial view
-- **Key Handling**: Not only single keys but also multiple keys and key combinations are possible now
-- [**useKeyPress hook**](/api-reference/hooks/use-key-press): A util hook for handling keyboard events
-- [**useReactFlow hook**](/api-reference/hooks/use-react-flow): Returns a React Flow instance that exposes functions to manipulate the flow
-- **[useNodes](/api-reference/hooks/use-nodes), [useEdges](/api-reference/hooks/use-edges) and [useViewport](/api-reference/hooks/use-viewport) hooks**: Hooks for receiving nodes, edges and the viewport
-- **Edge Marker**: More options to configure the start and end markers of an edge
+- [**子流程**](/learn/layouting/sub-flows)：你現在可以將節點新增到父節點並建立群組和巢狀流程
+- **節點類型 'group'**：一個沒有控制點的新節點類型，可用作群組節點
+- **觸控裝置支援**：現在可以在觸控裝置上連接節點
+- **初始化時適應視圖**：你可以使用新的 `fitView` prop 來適應初始視圖
+- **按鍵處理**：現在不僅支援單個按鍵，還支援多個按鍵和按鍵組合
+- [**useKeyPress hook**](/api-reference/hooks/use-key-press)：用於處理鍵盤事件的實用 hook
+- [**useReactFlow hook**](/api-reference/hooks/use-react-flow)：回傳一個 React Flow 實例，公開用於操作流程的函式
+- **[useNodes](/api-reference/hooks/use-nodes)、[useEdges](/api-reference/hooks/use-edges) 和 [useViewport](/api-reference/hooks/use-viewport) hooks**：用於接收節點、連線和視口的 Hooks
+- **連線標記**：更多選項來配置連線的開始和結束標記
 
 ## Breaking Changes
 

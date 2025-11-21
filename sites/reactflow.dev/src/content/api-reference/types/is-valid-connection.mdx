@@ -1,12 +1,12 @@
 ---
-description: Function type that determines whether a connection between nodes is valid.
+description: 函數類型，用於判斷節點之間的連線是否有效。
 ---
 
 # IsValidConnection
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/general.ts#L212)
 
-The `IsValidConnection` type represents a function that validates whether a connection between nodes is allowed. It receives a [`Connection`](/api-reference/types/connection) and returns a boolean indicating whether the connection is valid and therefore should be created.
+`IsValidConnection` 類型代表一個驗證節點之間連線是否允許的函數。它接收一個 [`Connection`](/api-reference/types/connection)，並返回一個布林值，指示該連線是否有效，因此是否應該建立。
 
 ```ts
 type IsValidConnection = (edge: Edge | Connection) => boolean;

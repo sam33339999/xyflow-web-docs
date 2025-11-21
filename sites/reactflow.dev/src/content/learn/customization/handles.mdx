@@ -1,22 +1,17 @@
 ---
-description: This guide shows you how to add handles to custom nodes in React Flow.
+description: 本指南將介紹如何為 React Flow 中的自訂節點新增連接點。
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 import { Callout } from 'nextra/components';
 
-# Handles
+# 連接點
 
-Handles are the connection points on [nodes](/learn/concepts/terms-and-definitions#nodes)
-in React Flow. Our built-in nodes include one source and one target handle, but you can
-customize your nodes with as many different handles as you need.
+連接點是 React Flow 中[節點](/learn/concepts/terms-and-definitions#nodes)上的連接點。我們的內建節點包含一個來源連接點和一個目標連接點，但您可以根據需要為節點自訂任意數量的不同連接點。
 
-## Creating a node with handles
+## 建立具有連接點的節點
 
-To create a [custom node](/learn/customization/custom-nodes) with handles, you can use the
-[`<Handle />`](/api-reference/components/handle) component provided by React Flow. This
-component allows you to define source and target handles for your custom nodes. Here's an
-example of how to implement a custom node with two handles:
+要建立具有連接點的[自訂節點](/learn/customization/custom-nodes)，您可以使用 React Flow 提供的 [`<Handle />`](/api-reference/components/handle) 元件。此元件允許您為自訂節點定義來源和目標連接點。以下是如何實作具有兩個連接點的自訂節點的範例：
 
 ```jsx {7-8}
 import { Position, Handle } from '@xyflow/react';
@@ -32,11 +27,9 @@ export function CustomNode() {
 }
 ```
 
-## Using multiple handles
+## 使用多個連接點
 
-If you want to use multiple source or target handles in your custom node, you need to
-specify each handle with a unique `id`. This allows React Flow to differentiate between
-the handles when connecting edges.
+如果您想在自訂節點中使用多個來源或目標連接點，您需要為每個連接點指定唯一的 `id`。這允許 React Flow 在連接連線時區分不同的連接點。
 
 ```jsx /id="a"/ /id="b"/
   <Handle type="target" position={Position.Top} />
@@ -44,11 +37,7 @@ the handles when connecting edges.
   <Handle type="source" position={Position.Bottom} id="b" />
 ```
 
-To connect an edge to a specific handle of a node, use the properties `sourceHandle` (for
-the edge's starting point) and `targetHandle` (for the edge's ending point). By defining
-`sourceHandle` or `targetHandle` with the appropriate handle `id`, you instruct React Flow
-to attach the edge to that specific handle, ensuring that connections are made where you
-intend.
+要將連線連接到節點的特定連接點，請使用 `sourceHandle`（用於連線的起點）和 `targetHandle`（用於連線的終點）屬性。透過使用適當的連接點 `id` 定義 `sourceHandle` 或 `targetHandle`，您可以指示 React Flow 將連線附加到該特定連接點，確保連接按您的意圖進行。
 
 ```js "sourceHandle: 'a'" "sourceHandle: 'b'"
 const initialEdges = [
@@ -57,34 +46,23 @@ const initialEdges = [
 ];
 ```
 
-In this case, the source node is `n1` for both handles but the handle `id`s are different.
-One comes from handle id `a` and the other one from `b`. Both edges also have different
-target nodes:
+在這種情況下，兩個連接點的來源節點都是 `n1`，但連接點 `id` 不同。一個來自連接點 id `a`，另一個來自 `b`。兩條連線也有不同的目標節點：
 
 <RemoteCodeViewer route="learn/custom-node-2" framework="react" />
 
-By default React Flow positions a handle in the center of the specified side. If you want
-to display multiple handles on a side, you can adjust the position via inline styles or
-overwrite the default CSS and position it on your own.
+預設情況下，React Flow 將連接點定位在指定邊的中心。如果您想在一側顯示多個連接點，您可以透過內聯樣式調整位置，或覆寫預設 CSS 並自行定位。
 
-## Custom handles
+## 自訂連接點
 
-You can use any custom component as a Handle by wrapping it with the
-[`<Handle />`](/api-reference/components/handle) component. Follow these steps to
-integrate your custom component:
+您可以透過將任何自訂元件包裝在 [`<Handle />`](/api-reference/components/handle) 元件中來將其用作連接點。請按照以下步驟整合您的自訂元件：
 
-1. Wrap your custom component with [`<Handle />`](/api-reference/components/handle)
-   component.
-2. Hide the built-in [`<Handle />`](/api-reference/components/handle) appearance by
-   setting `border` and `background` to `none`.
-3. Set the `width`and `height` of [`<Handle />`](/api-reference/components/handle) to
-   match your custom component.
-4. Style the child component with `pointer-events: none`.
-5. Then, reposition the child custom component using CSS position properties like
-   `top, left` if necessary to position it perfectly inside the
-   [`<Handle />`](/api-reference/components/handle) component.
+1. 使用 [`<Handle />`](/api-reference/components/handle) 元件包裝您的自訂元件。
+2. 透過將 `border` 和 `background` 設定為 `none` 來隱藏內建 [`<Handle />`](/api-reference/components/handle) 的外觀。
+3. 將 [`<Handle />`](/api-reference/components/handle) 的 `width` 和 `height` 設定為與您的自訂元件相符。
+4. 使用 `pointer-events: none` 為子元件設定樣式。
+5. 然後，如有必要，使用 CSS 位置屬性（如 `top, left`）重新定位子自訂元件，以將其完美定位在 [`<Handle />`](/api-reference/components/handle) 元件內。
 
-This example shows a Material UI icon `ArrowCircleRightIcon` used as a Handle.
+這個範例展示了使用 Material UI 圖示 `ArrowCircleRightIcon` 作為連接點。
 
 ```jsx
 import { Handle, Position } from '@xyflow/react';
@@ -118,35 +96,22 @@ export function CustomNode() {
 }
 ```
 
-## Typeless handles
+## 無類型連接點
 
-If you want to create a handle that does not have a specific type (source or target), you
-can set [connectionMode](/api-reference/react-flow#connectionmode) to `Loose` in the
-`<ReactFlow />` component. This allows the handle to be used for both incoming and
-outgoing connections.
+如果您想建立沒有特定類型（來源或目標）的連接點，您可以在 `<ReactFlow />` 元件中將 [connectionMode](/api-reference/react-flow#connectionmode) 設定為 `Loose`。這允許連接點用於傳入和傳出連接。
 
-## Dynamic handles
+## 動態連接點
 
-If you are programmatically changing the position or number of handles in your custom
-node, you need to update the node internals with the
-[`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook.
+如果您以程式方式更改自訂節點中連接點的位置或數量，您需要使用 [`useUpdateNodeInternals`](/api-reference/hooks/use-update-node-internals) hook 更新節點內部狀態。
 
-## Custom handle styles
+## 自訂連接點樣式
 
-Since the handle is a div, you can use CSS to style it or pass a style prop to customize a
-Handle. You can see this in the
-[Add Node On Edge Drop](/examples/nodes/add-node-on-edge-drop) and
-[Simple Floating Edges](/examples/edges/simple-floating-edges) examples.
+由於連接點是一個 div，您可以使用 CSS 來設定其樣式，或傳遞樣式屬性來自訂連接點。您可以在[在連線上放置時新增節點](/examples/nodes/add-node-on-edge-drop)和[簡單浮動連線](/examples/edges/simple-floating-edges)範例中看到這一點。
 
-### Styling handles when connecting
+### 連接時設定連接點樣式
 
-The handle receives the additional class names `connecting` when the connection line is
-above the handle and `valid` if the connection is valid. You can find an example which
-uses these classes [here](/examples/interaction/validation).
+當連接線位於連接點上方時，連接點會接收額外的類別名稱 `connecting`，如果連接有效，則會接收 `valid`。您可以在[這裡](/examples/interaction/validation)找到使用這些類別的範例。
 
-### Hiding handles
+### 隱藏連接點
 
-If you need to hide a handle for some reason, you must use `visibility: hidden` or
-`opacity: 0` instead of `display: none`. This is important because React Flow needs to
-calculate the dimensions of the handle to work properly and using `display: none` will
-report a width and height of `0`!
+如果您需要因某種原因隱藏連接點，您必須使用 `visibility: hidden` 或 `opacity: 0` 而不是 `display: none`。這很重要，因為 React Flow 需要計算連接點的尺寸才能正常工作，使用 `display: none` 會報告寬度和高度為 `0`！

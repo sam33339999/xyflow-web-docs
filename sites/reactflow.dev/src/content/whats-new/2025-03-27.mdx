@@ -1,48 +1,48 @@
 ---
 title: 'React Flow 12.5.0'
-description: 'Changelog for React Flow version 12.5.0'
+description: 'React Flow 版本 12.5.0 的變更日誌'
 authors: [xyflow]
 date: '2025-03-27'
 ---
 
-### `fitView` just got a lot better!
+### `fitView` 變得更好了！
 
-Have ever struggled with making `fitView` work right after adding or changing your nodes? Does your code look something like this?
+你是否曾經在新增或變更節點後難以讓 `fitView` 正常工作？你的程式碼看起來像這樣嗎？
 
 ```ts
 setNodes((nodes) => [nodes, ...newNode]);
 requestAnimationFrame(() => {
   fitView();
 });
-// renders the node first and then fits the view :(
+// 先渲染節點然後再調整視圖 :(
 ```
 
-Well, you are in for a treat! No more hacks, no more `setTimeout` or `requestAnimationFrame` and no more split second frames of unfitted views!
+好吧，你有福了！不再需要技巧，不再需要 `setTimeout` 或 `requestAnimationFrame`，也不再有短暫的未調整視圖畫面！
 
 ```ts
 setNodes((nodes) => [nodes, ...newNode]);
-fitView(); // it just works.
-// adding a new node and fitting the view happens at the same time
+fitView(); // 它就是有效。
+// 新增新節點和調整視圖同時發生
 ```
 
-#### One more thing
+#### 還有一件事
 
-You might have realized that the `padding` value for `fitViewOptions` is quite a weird fella! What does `padding: 0.3` even mean? Well we don't know either, so you you can now pass pixel values `'25px'`, viewport percentages `'10%'` and true pros can now even
+你可能已經意識到 `fitViewOptions` 的 `padding` 值相當奇怪！`padding: 0.3` 甚至是什麼意思？我們也不知道，所以你現在可以傳遞像素值 `'25px'`、視口百分比 `'10%'`，真正的專家現在甚至可以
 
 ```ts
 const fitViewOptions = {
   padding: {
-    /** horizontal */
+    /** 水平 */
     x: '100px',
-    /** vertical */
+    /** 垂直 */
     y: '50px',
-    /** e.g. top overwrites x */
+    /** 例如 top 覆寫 x */
     top: '25px',
-    /** mix and match units */
+    /** 混合和匹配單位 */
     left: '15%',
-    /** legacy units still work */
+    /** 舊版單位仍然有效 */
     bottom: 0.1,
-    /** have a modal on the right that stretches 50% over the screen? */
+    /** 右側有一個佔螢幕 50% 的模態框？ */
     right: '50%',
   },
 };
@@ -50,18 +50,18 @@ const fitViewOptions = {
 
 ```ts
 setNodes((nodes) => [nodes, ...newNode]);
-fitView(); // it just works.
-// adding a new node and fitting the view happens at the same time
+fitView(); // 它就是有效。
+// 新增新節點和調整視圖同時發生
 ```
 
-### New Features
+### 新功能
 
-- [#5067](https://github.com/xyflow/xyflow/pull/5067) Define different fitView paddings for each side in 'px' or '%'.
+- [#5067](https://github.com/xyflow/xyflow/pull/5067) 為每一側定義不同的 fitView 邊距，單位為 'px' 或 '%'。
 
-### Patch Changes
+### 修補變更
 
-- [#5067](https://github.com/xyflow/xyflow/pull/5067) Fix fitView not working immediately after adding new nodes
-- [#5059](https://github.com/xyflow/xyflow/pull/5059) Prevent onPaneClick when connection is in progress.
-- [#5093](https://github.com/xyflow/xyflow/pull/5093) Hidden nodes are not displayed in the mini map anymore
-- [#5090](https://github.com/xyflow/xyflow/pull/5090) Release key even when an inout field is focused
-- Thanks [@dimaMachina](https://github.com/dimaMachina)! - for improving TSDoc comments for `BackgroundProps`, `EdgeLabelOptions`, `ControlProps`, `NodeToolbarProps`, `EdgeLabelRendererProps`, `EdgeLabelOptions` and `EdgeTextProps`
+- [#5067](https://github.com/xyflow/xyflow/pull/5067) 修正新增新節點後 fitView 無法立即工作的問題
+- [#5059](https://github.com/xyflow/xyflow/pull/5059) 在連線進行中時防止 onPaneClick。
+- [#5093](https://github.com/xyflow/xyflow/pull/5093) 隱藏的節點不再顯示在縮圖中
+- [#5090](https://github.com/xyflow/xyflow/pull/5090) 即使聚焦在輸入欄位時也釋放按鍵
+- 感謝 [@dimaMachina](https://github.com/dimaMachina)！ - 改善 `BackgroundProps`、`EdgeLabelOptions`、`ControlProps`、`NodeToolbarProps`、`EdgeLabelRendererProps`、`EdgeLabelOptions` 和 `EdgeTextProps` 的 TSDoc 註解

@@ -1,37 +1,37 @@
 ---
-description: React Flow comes with several built-in components. Here's an overview of the minimap, controls, background, and panel components.
+description: React Flow 附帶了幾個內建元件。以下是小地圖、控制面板、背景和面板元件的概述。
 ---
 
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Built-In Components
+# 內建元件
 
-React Flow comes with several built-in components that can be passed as children to the [`<ReactFlow />`](/api-reference/react-flow) component.
+React Flow 附帶了幾個內建元件，可以作為 [`<ReactFlow />`](/api-reference/react-flow) 元件的子元件傳遞。
 
-## MiniMap
+## 小地圖
 
-The [`MiniMap`](/api-reference/components/minimap) provides a bird’s-eye view of your flowgraph, making navigation easier, especially for larger flows. You can customize the appearance of nodes in the minimap by providing a nodeColor function.
+[`MiniMap`](/api-reference/components/minimap) 提供了流程圖的鳥瞰視圖，使導覽更容易，特別是對於較大的流程圖。你可以透過提供 nodeColor 函式來自訂小地圖中節點的外觀。
 
 <RemoteCodeViewer aspectRatio="2" route="learn/mini-map" framework="react" />
 
-## Controls
+## 控制面板
 
-React Flow comes with a set of customizable [`Controls`](/api-reference/components/controls) for the viewport. You can zoom in and out, fit the viewport and toggle if the user can move, select and edit the nodes.
+React Flow 附帶了一組可自訂的視窗 [`Controls`](/api-reference/components/controls)。你可以放大和縮小、調整視窗適應大小，並切換使用者是否可以移動、選取和編輯節點。
 
 <RemoteCodeViewer aspectRatio="2" route="learn/controls" framework="react" />
 
-## Background
+## 背景
 
-The [`Background`](/api-reference/components/background) component adds a visual grid pattern to your flowgraph, helping users maintain orientation. You can choose from different pattern variants, or if you need more advanced customization, you can explore the [source](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Background/Background.tsx) code to implement your own pattern.
+[`Background`](/api-reference/components/background) 元件為你的流程圖加入視覺化網格圖案，幫助使用者保持方向感。你可以從不同的圖案變體中選擇，或者如果你需要更進階的自訂，你可以探索[原始碼](https://github.com/xyflow/xyflow/blob/main/packages/react/src/additional-components/Background/Background.tsx)來實作你自己的圖案。
 
 <RemoteCodeViewer aspectRatio="2" route="learn/background" framework="react" />
 
-## Panel
+## 面板
 
-The [`Panel`](/api-reference/components/panel) component allows you to add fixed overlays to your flowgraph, perfect for titles, controls, or any other UI elements that should remain stationary.
+[`Panel`](/api-reference/components/panel) 元件允許你在流程圖上加入固定的覆蓋層，非常適合標題、控制項或任何其他應該保持靜止的 UI 元素。
 
 <RemoteCodeViewer aspectRatio="2" route="learn/panel" framework="react" />
 
-## Advanced
+## 進階
 
-For more advanced use cases and customization, we have even more built-in components you can check out in the [API components overview](/api-reference/components)
+對於更進階的使用案例和自訂，我們還有更多內建元件，你可以在 [API 元件概述](/api-reference/components)中查看

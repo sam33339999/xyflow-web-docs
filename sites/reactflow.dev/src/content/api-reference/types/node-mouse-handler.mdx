@@ -1,15 +1,13 @@
 ---
 description:
-  The NodeMouseHandler type defines the callback function that is called when mouse events
-  occur on a node.
+  NodeMouseHandler 類型定義了當滑鼠事件發生在節點上時呼叫的回呼函數。
 ---
 
 # NodeMouseHandler
 
 [Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/types/nodes.ts)
 
-The `NodeMouseHandler` type defines the callback function that is called when mouse events
-occur on a node. This callback receives the event and the node that triggered it.
+`NodeMouseHandler` 類型定義了當滑鼠事件發生在節點上時呼叫的回呼函數。此回呼接收事件物件和觸發事件的節點。
 
 ```ts
 export type NodeMouseHandler = (event: React.MouseEvent, node: Node) => void;

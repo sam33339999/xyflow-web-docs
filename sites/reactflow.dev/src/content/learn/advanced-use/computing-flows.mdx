@@ -1,29 +1,27 @@
 ---
-description: Learn how to extend React Flow to compute data going through flow graphs.
+description: 學習如何擴展 React Flow 以計算流經流程圖的資料。
 ---
 
-# Computing Flows
+# 計算流程
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
 <Callout type="info">
-  For this guide we assume that you already know about the [core
-  concepts](/learn/concepts/core-concepts) of React Flow and how to implement
-  [custom nodes](/learn/customization/custom-nodes).
+  本指南假設你已經了解 React Flow 的[核心概念](/learn/concepts/core-concepts)以及如何實作[自訂節點](/learn/customization/custom-nodes)。
 </Callout>
 
-Usually with React Flow, developers handle their data outside of React Flow by sending it somewhere else, like on a server or a database. Instead, in this guide we'll show you how to compute data flows directly inside of React Flow. You can use this for updating a node based on connected data, or for building an app that runs entirely inside the browser.
+通常使用 React Flow 時，開發者會在 React Flow 之外處理他們的資料，例如將資料發送到伺服器或資料庫。然而，在本指南中，我們將向你展示如何直接在 React Flow 內部計算資料流。你可以使用此方法根據連接的資料更新節點，或建構完全在瀏覽器中運行的應用程式。
 
-## What are we going to build?
+## 我們要建構什麼？
 
-By the end of this guide, you will build an interactive flow graph that generates a color out of three separate number input fields (red, green and blue), and determines whether white or black text would be more readable on that background color.
+在本指南結束時，你將建構一個互動式流程圖，該圖從三個獨立的數字輸入欄位（紅色、綠色和藍色）生成一種顏色，並判斷白色或黑色文字在該背景顏色上哪個更易讀。
 
 <RemoteCodeViewer route="learn/computing-6" framework="react" />
 
-## Creating custom nodes
+## 建立自訂節點
 
-Let's start by creating a custom input node (`NumberInput.js`) and add three instances of it. We will be using a controlled `<input type="number" />` and limit it to integer numbers between 0 - 255 inside the `onChange` event handler.
+讓我們從建立一個自訂輸入節點（`NumberInput.js`）開始，並新增三個實例。我們將使用受控的 `<input type="number" />` 並在 `onChange` 事件處理器中將其限制為 0 - 255 之間的整數。
 
 ```jsx
 import { useCallback, useState } from 'react';
@@ -60,14 +58,12 @@ function NumberInput({ id, data }) {
 export default NumberInput;
 ```
 
-Next, we'll add a new custom node (`ColorPreview.js`) with one target handle for each color channel and a background that displays the resulting color. We can use `mix-blend-mode: 'difference';` to make the text color always readable.
+接下來，我們將新增一個新的自訂節點（`ColorPreview.js`），為每個顏色通道新增一個目標連接點，並且背景顯示生成的顏色。我們可以使用 `mix-blend-mode: 'difference';` 讓文字顏色始終保持易讀。
 
 <Callout type="info">
-  Whenever you have multiple handles of the same kind on a single node, don't
-  forget to give each one a separate id!
+  每當你在單個節點上有多個相同類型的連接點時，別忘了給每個連接點一個獨立的 id！
 </Callout>
-Let's also add edges going from the input nodes to the color node to our
-`initialEdges` array while we are at it.
+讓我們同時在 `initialEdges` 陣列中新增從輸入節點到顏色節點的連線。
 
 <RemoteCodeViewer
   route="learn/computing"
@@ -75,20 +71,20 @@ Let's also add edges going from the input nodes to the color node to our
   activeFile="ColorPreview.jsx"
 />
 
-## Computing data
+## 計算資料
 
-How do we get the data from the input nodes to the color node? This is a two step process that involves two hooks created for this exact purpose:
+如何將資料從輸入節點傳遞到顏色節點？這是一個兩步驟的過程，涉及為此確切目的建立的兩個 hooks：
 
-1. Store each number input value inside the node's `data` object with help of the [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) callback.
-2. Find out which nodes are connected by using [`useNodeConnections`](/api-reference/hooks/use-node-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
+1. 使用 [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) 回呼函式將每個數字輸入值儲存在節點的 `data` 物件中。
+2. 使用 [`useNodeConnections`](/api-reference/hooks/use-node-connections) 找出哪些節點已連接，然後使用 [`useNodesData`](/api-reference/hooks/use-nodes-data) 從連接的節點接收資料。
 
-### Step 1: Writing values to the data object
+### 步驟 1：將值寫入 data 物件
 
-First let's add some initial values for the input nodes inside the `data` object in our `initialNodes` array and use them as an initial state for the input nodes.
-Then we'll grab the function [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) from the [`useReactFlow`](/api-reference/hooks/use-react-flow) hook and use it to update the `data` object of the node with a new value whenever the input changes.
+首先，讓我們在 `initialNodes` 陣列中的 `data` 物件中為輸入節點新增一些初始值，並將它們作為輸入節點的初始狀態使用。
+然後我們將從 [`useReactFlow`](/api-reference/hooks/use-react-flow) hook 中取得 [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) 函式，並在輸入改變時使用它來更新節點的 `data` 物件為新值。
 
 <Callout type="info">
-By default, the data you pass to [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) will be merged with the old data object. This makes it easier to do partial updates and saves you in case you forget to add `{...data}`. You can pass `{ replace: true }` as an option to replace the object instead.
+預設情況下，你傳遞給 [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) 的資料會與舊的 data 物件合併。這讓部分更新變得更容易，並在你忘記新增 `{...data}` 時保護你。你可以傳遞 `{ replace: true }` 作為選項來替換物件。
 </Callout>
 
 <RemoteCodeViewer
@@ -99,26 +95,20 @@ By default, the data you pass to [`updateNodeData`](/api-reference/types/react-f
 
 <Callout type="warning">
   <b>
-    When dealing with input fields you don't want to use a nodes `data` object
-    as UI state directly.
+    在處理輸入欄位時，你不應該直接使用節點的 `data` 物件作為 UI 狀態。
   </b>
-  There is a delay in updating the data object and the cursor might jump around
-  erratically and lead to unwanted inputs.
+  更新 data 物件有延遲，游標可能會不規則地跳動並導致不需要的輸入。
 </Callout>
 
-### Step 2: Getting data from connected nodes
+### 步驟 2：從連接的節點獲取資料
 
-We start by determining all connections for each node with the [`useNodeConnections`](/api-reference/hooks/use-node-connections) hook and then fetching the data for the first connected node with [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data).
+我們從使用 [`useNodeConnections`](/api-reference/hooks/use-node-connections) hook 確定每個節點的所有連接開始，然後使用 [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) 取得第一個連接節點的資料。
 
 <Callout type="info">
-  Note that each handle can have multiple nodes connected to it and you might
-  want to restrict the number of connections to a single handle inside your
-  application. Check out the [connection limit
-  example](/examples/nodes/connection-limit) to see how to do that.
+  請注意，每個連接點可以有多個節點連接到它，你可能想在應用程式中限制單個連接點的連接數量。查看[連接限制範例](/examples/nodes/connection-limit)了解如何做到這一點。
 </Callout>
 
-<b>And there you go!</b> Try changing the input values and see the color change
-in real time.
+<b>搞定！</b> 嘗試更改輸入值，看看顏色即時變化。
 
 <RemoteCodeViewer
   route="learn/computing-3"
@@ -126,9 +116,9 @@ in real time.
   activeFile="ColorPreview.jsx"
 />
 
-### Improving the code
+### 改進程式碼
 
-It might seem awkward to get the connections first, and then the data separately for each handle. For nodes with multiple handles like these, you should consider creating a custom handle component that isolates connection states and node data binding. We can create one inline.
+先取得連接，然後為每個連接點分別取得資料可能看起來很笨拙。對於像這樣有多個連接點的節點，你應該考慮建立一個自訂連接點元件，以隔離連接狀態和節點資料綁定。我們可以在行內建立一個。
 
 ```jsx filename="ColorPreview.js"
 // {...}
@@ -160,7 +150,7 @@ function CustomHandle({ id, label, onChange }) {
 }
 ```
 
-We can promote color to local state and declare each handle like this:
+我們可以將顏色提升為本地狀態，並像這樣宣告每個連接點：
 
 ```jsx filename="ColorPreview.js"
 // {...}
@@ -196,22 +186,21 @@ function ColorPreview() {
 export default ColorPreview;
 ```
 
-## Getting more complex
+## 變得更複雜
 
-Now we have a simple example of how to pipe data through React Flow. What if we want to do something more complex, like transforming the data along the way? Or even take different paths? We can do that too!
+現在我們有了一個簡單的範例，展示如何透過 React Flow 傳遞資料。如果我們想做一些更複雜的事情，比如沿途轉換資料？或者甚至採取不同的路徑？我們也可以做到！
 
-### Continuing the flow
+### 繼續流程
 
-Let's extend our flow. Start by adding an output `<Handle type="source" position={Position.Right} />` to the color node and remove the local component state.
+讓我們擴展我們的流程。首先在顏色節點新增一個輸出 `<Handle type="source" position={Position.Right} />` 並移除本地元件狀態。
 
 <Callout type="info">
-  Because there are no inputs fields on this node, we don't need to keep a local
-  state at all. We can just read and update the node's `data` object directly.
+  因為此節點上沒有輸入欄位，我們根本不需要保留本地狀態。我們可以直接讀取和更新節點的 `data` 物件。
 </Callout>
 
-Next, we add a new node (`Lightness.js`) that takes in a color object and determines if it is either a light or dark color. We can use the [relative luminance formula](https://en.wikipedia.org/wiki/Relative_luminance#Relative_luminance_and_%22gamma_encoded%22_colorspaces)
+接下來，我們新增一個新節點（`Lightness.js`），它接收一個顏色物件並判斷它是淺色還是深色。我們可以使用[相對亮度公式](https://en.wikipedia.org/wiki/Relative_luminance#Relative_luminance_and_%22gamma_encoded%22_colorspaces)
 `luminance = 0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b`
-to calculate the perceived brightness of a color (0 being the darkest and 255 being the brightest). We can assume everything >= 128 is a light color.
+來計算顏色的感知亮度（0 是最暗的，255 是最亮的）。我們可以假設一切 >= 128 的都是淺色。
 
 <RemoteCodeViewer
   route="learn/computing-4"
@@ -219,13 +208,13 @@ to calculate the perceived brightness of a color (0 being the darkest and 255 be
   activeFile="Lightness.jsx"
 />
 
-### Conditional branching
+### 條件分支
 
-What if we would like to take a different path in our flow based on the perceived lightness? Let's give our lightness node two source handles `light` and `dark` and separate the node `data` object by source handle IDs. This is needed if you have multiple source handles to distinguish between each source handle's data.
+如果我們想根據感知亮度在流程中採取不同的路徑呢？讓我們給亮度節點兩個來源連接點 `light` 和 `dark`，並根據來源連接點 ID 分離節點 `data` 物件。如果你有多個來源連接點，這是必要的，以便區分每個來源連接點的資料。
 
-But what does it mean to "take a different route"? One solution would be to assume that `null` or `undefined` data hooked up to a target handle is considered a "stop". In our case we can write the incoming color into `data.values.light` if it's a light color and into `data.values.dark` if it's a dark color and set the respective other value to `null`.
+但是「採取不同路徑」是什麼意思？一個解決方案是假設連接到目標連接點的 `null` 或 `undefined` 資料被視為「停止」。在我們的情況下，如果是淺色，我們可以將傳入的顏色寫入 `data.values.light`，如果是深色則寫入 `data.values.dark`，並將另一個值設為 `null`。
 
-Don't forget to add `flex-direction: column;` and `align-items: end;` to reposition the handle labels.
+別忘了新增 `flex-direction: column;` 和 `align-items: end;` 來重新定位連接點標籤。
 
 <RemoteCodeViewer
   route="learn/computing-5"
@@ -233,7 +222,7 @@ Don't forget to add `flex-direction: column;` and `align-items: end;` to reposit
   activeFile="Lightness.jsx"
 />
 
-Cool! Now we only need a last node to see if it actually works... We can create a custom debugging node (`Log.js`) that displays the hooked up data, and we're done!
+很好！現在我們只需要最後一個節點來看看它是否真的有效... 我們可以建立一個自訂除錯節點（`Log.js`）來顯示連接的資料，我們就完成了！
 
 <RemoteCodeViewer
   route="learn/computing-6"
@@ -241,21 +230,15 @@ Cool! Now we only need a last node to see if it actually works... We can create 
   activeFile="Log.jsx"
 />
 
-## Summary
+## 總結
 
-You have learned how to move data through the flow and transform it along the way.
-All you need to do is
+你已經學會了如何在流程中移動資料並沿途轉換它。你所需要做的就是
 
-1. store data inside the node's `data` object with help of [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) callback.
-2. find out which nodes are connected by using [`useNodeConnections`](/api-reference/hooks/use-node-connections) and then use [`useNodesData`](/api-reference/hooks/use-nodes-data) for receiving the data from the connected nodes.
+1. 使用 [`updateNodeData`](/api-reference/types/react-flow-instance#update-node-data) 回呼函式將資料儲存在節點的 `data` 物件中。
+2. 使用 [`useNodeConnections`](/api-reference/hooks/use-node-connections) 找出哪些節點已連接，然後使用 [`useNodesData`](/api-reference/hooks/use-nodes-data) 從連接的節點接收資料。
 
-You can implement branching for example by interpreting incoming data that is undefined as a "stop". As a side note, most flow graphs that also have a branching usually separate the triggering of nodes from the actual data hooked up to the nodes. Unreal Engines Blueprints are a good example for this.
+你可以透過將傳入的 undefined 資料解釋為「停止」來實作分支。順便說一下，大多數也有分支的流程圖通常會將節點的觸發與連接到節點的實際資料分開。Unreal Engine 的 Blueprints 就是一個很好的例子。
 
 <Callout type="info">
-  One last note before you go: you should find a consistent way of structuring
-  all your node data, instead of mixing ideas like we did just now. This means
-  for example, if you start working with splitting data by handle ID you should
-  do it for all nodes, regardless whether they have multiple handles or not.
-  Being able to make assumptions about the structure of your data throughout
-  your flow will make life a lot easier.
+  最後提醒一下：你應該找到一種一致的方式來結構化所有節點資料，而不是像我們剛才那樣混合想法。這意味著，例如，如果你開始按連接點 ID 分割資料，你應該對所有節點都這樣做，無論它們是否有多個連接點。能夠對整個流程中資料的結構做出假設會讓生活變得容易得多。
 </Callout>

@@ -1,18 +1,18 @@
 ---
 title: 'React Flow 12.4.0'
-description: 'Changelog for React Flow version 12.4.0'
+description: 'React Flow 版本 12.4.0 的變更日誌'
 authors: [xyflow]
 date: '2025-01-15'
 ---
 
-New year, new minor release :) This release contains mostly fixes but also introduces a new [`useNodeConnections`](/api-reference/hooks/use-node-connections) that is the successor of `useHandleConnections`.
+新年新的次要版本 :) 這個版本主要包含修正，但也引入了一個新的 [`useNodeConnections`](/api-reference/hooks/use-node-connections)，它是 `useHandleConnections` 的後繼者。
 
-### Minor Changes
+### 次要變更
 
-- [#4725](https://github.com/xyflow/xyflow/pull/4725) Add `useNodeConnections` hook to track all connections to a node. Can be filtered by handleType and handleId.
+- [#4725](https://github.com/xyflow/xyflow/pull/4725) 新增 `useNodeConnections` hook 來追蹤節點的所有連線。可以按 handleType 和 handleId 過濾。
 
-### Patch Changes
+### 修補變更
 
-- [#4947](https://github.com/xyflow/xyflow/pull/4947) Export ResizeControlVariant correctly as a value.
-- [#4880](https://github.com/xyflow/xyflow/pull/4880) Thanks [@crimx](https://github.com/crimx)! - Add type check for all event targets
-- [#4929](https://github.com/xyflow/xyflow/pull/4929) Optimize selections and take into account if edges connected to selected nodes are actually selectable.
+- [#4947](https://github.com/xyflow/xyflow/pull/4947) 正確地將 ResizeControlVariant 作為值匯出。
+- [#4880](https://github.com/xyflow/xyflow/pull/4880) 感謝 [@crimx](https://github.com/crimx)！ - 為所有事件目標新增類型檢查
+- [#4929](https://github.com/xyflow/xyflow/pull/4929) 優化選擇並考慮連接到所選節點的連線是否實際上可選擇。

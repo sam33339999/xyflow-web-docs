@@ -1,68 +1,46 @@
 ---
-description: Learn how to use sub flows to group nodes together in a flow.
+description: 學習如何使用子流程來在流程中分組節點。
 ---
 
 import { Callout } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Sub Flows
+# 子流程
 
 <Callout type="info">
-  **Deprecation of `parentNode` property!** We have renamed the `parentNode` option to
-  `parentId` in version 11.11.0. The old property is still supported but will be removed
-  in version 12.
+  **`parentNode` 屬性已棄用！** 我們在 11.11.0 版本中將 `parentNode` 選項重新命名為 `parentId`。舊屬性仍然支援，但將在版本 12 中移除。
 </Callout>
 
-A sub flow is a flow inside a node. It can be a separate flow or a flow that is connected
-with other nodes outside of its parent. This feature can also be used for grouping nodes.
-In this part of the docs we are going to build a flow with sub flows and show you the
-child node specific options.
+子流程是節點內部的流程。它可以是一個獨立的流程，也可以是與其父節點外部的其他節點連接的流程。此功能也可用於分組節點。在本文件的這部分，我們將建立一個包含子流程的流程，並展示子節點的特定選項。
 
 <Callout type="warning">
-  <strong>Order of Nodes</strong>
-  It's important that your parent nodes appear before their children in the `nodes`/
-  `defaultNodes` array to get processed correctly.
+  <strong>節點順序</strong>
+  重要的是，你的父節點必須在 `nodes`/ `defaultNodes` 陣列中出現在其子節點之前，才能正確處理。
 </Callout>
 
-### Adding child nodes
+### 新增子節點
 
-If you want to add a node as a child of another node you need to use the `parentId` (this
-was called `parentNode` in previous versions) option (you can find a list of all options
-in the [node options section](/api-reference/types/node)). Once we do that, the child node
-is positioned relative to its parent. A position of `{ x: 0, y: 0 }` is the top left
-corner of the parent.
+如果你想將一個節點作為另一個節點的子節點新增，你需要使用 `parentId` 選項（在之前的版本中稱為 `parentNode`）（你可以在[節點選項部分](/api-reference/types/node)找到所有選項的列表）。一旦我們這樣做，子節點就會相對於其父節點定位。位置 `{ x: 0, y: 0 }` 是父節點的左上角。
 
-In this example we are setting a fixed width and height of the parent node by passing the
-style option. Additionally, we set the child extent to `'parent'` so that we can't move
-the child nodes out of the parent node.
+在此範例中，我們透過傳遞 style 選項來設定父節點的固定寬度和高度。此外，我們將子節點的範圍設定為 `'parent'`，這樣我們就無法將子節點移出父節點。
 
 <RemoteCodeViewer route="learn/sub-flows" framework="react" />
 
-### Using child specific options
+### 使用子節點的特定選項
 
-When you move the parent node you can see that the child nodes move, too. Adding a node to
-another node with the `parentId` option, just does one thing: It positions it relatively
-to its parent. The child node is not really a child markup-wise. You can drag or position
-the child outside of its parent (when the `extent: 'parent'` option is not set) but when
-you move the parent, the child moves with it.
+當你移動父節點時，你可以看到子節點也會移動。使用 `parentId` 選項將節點新增到另一個節點，只做一件事：將其相對於其父節點定位。子節點在標記上並不是真正的子元素。你可以將子節點拖曳或定位到其父節點外部（當未設定 `extent: 'parent'` 選項時），但當你移動父節點時，子節點會隨之移動。
 
-In the example above we are using the `group` type for the parent node but you can use any
-other type as well. The `group` type is just a convenience node type that has no handles
-attached.
+在上面的範例中，我們對父節點使用 `group` 類型，但你也可以使用任何其他類型。`group` 類型只是一個方便的節點類型，沒有附加控制點。
 
-Now we are going to add some more nodes and edges. As you can see, we can connect nodes
-within a group and create connections that go from a sub flow to an outer node:
+現在我們將新增更多節點和連線。如你所見，我們可以連接群組內的節點，並建立從子流程到外部節點的連接：
 
 <RemoteCodeViewer route="learn/sub-flows-2" framework="react" />
 
-### Edge rendering behavior
+### 連線渲染行為
 
-Edges are rendered below nodes by default, and this behavior applies to both normal nodes
-and group nodes. However, edges connected to a node with a parent are rendered above
-nodes.
+預設情況下，連線會在節點下方渲染，此行為適用於普通節點和群組節點。但是，連接到具有父節點的節點的連線會在節點上方渲染。
 
-If you want to customize the z-index of edges, you can use the `zIndex` option. For
-example:
+如果你想自訂連線的 z-index，可以使用 `zIndex` 選項。例如：
 
 ```tsx
 const defaultEdgeOptions = { zIndex: 1 };
@@ -70,12 +48,10 @@ const defaultEdgeOptions = { zIndex: 1 };
 <ReactFlow defaultEdgeOptions={defaultEdgeOptions} />;
 ```
 
-This allows you to render edges above nodes or adjust their stacking order as needed.
+這讓你可以在節點上方渲染連線，或根據需要調整它們的堆疊順序。
 
-### Using a default node type as a parent
+### 使用預設節點類型作為父節點
 
-Let's remove the label of node B and add some child nodes. In this example you can see
-that you can use one of the default node types as parents, too. We also set the child
-nodes to `draggable: false` so that they are not draggable anymore.
+讓我們移除節點 B 的標籤並新增一些子節點。在此範例中，你可以看到你也可以使用預設節點類型之一作為父節點。我們還將子節點設定為 `draggable: false`，使它們不再可拖曳。
 
 <RemoteCodeViewer route="learn/sub-flows-3" framework="react" />

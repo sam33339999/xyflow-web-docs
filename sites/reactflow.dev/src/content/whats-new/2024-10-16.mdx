@@ -1,104 +1,65 @@
 ---
-title: We've updated our example viewer!
+title: 我們更新了範例檢視器！
 description:
-  An update to how we serve and render examples in the documentation means examples
-  should load faster and require less bandwidth.
+  我們更新了文檔中提供和渲染範例的方式，這意味著範例應該載入得更快，並且需要更少的頻寬。
 authors: [hayleigh, moritz]
 date: '2024-10-16'
 ---
 
 import { Emoji } from '@xyflow/xy-ui';
 
-For a long time now our examples have been built on top of [Sandpack](https://sandpack.codesandbox.io).
-This has been a powerful tool for us to provide interactive examples in our docs
-but it's also come at a cost.
+很長一段時間以來，我們的範例一直建立在 [Sandpack](https://sandpack.codesandbox.io) 之上。這對我們來說是一個強大的工具，可以在文檔中提供互動式範例，但也付出了代價。
 
-## The problems
+## 問題
 
-We liked Sandpack, but we kept brushing up against some pain points that ultimately
-we decided we couldn't ignore.
+我們喜歡 Sandpack，但我們不斷遇到一些痛點，最終我們決定不能忽視它們。
 
-- **Our examples were slow to load.** Sandpack is an impressive tool, but it is also
-  a heavy one. The Sandpack client itself takes a moment to load, and then if an
-  example included dependencies those would need to be fetched as well. For one-off
-  example pages this wasn't terrible, but particularly for longer docs pages like
-  our guides or tutorials this could really kill the momentum.
+- **我們的範例載入速度很慢。** Sandpack 是一個令人印象深刻的工具，但它也是一個沉重的工具。Sandpack 客戶端本身需要一點時間載入，然後如果範例包含依賴項，這些依賴項也需要獲取。對於一次性的範例頁面來說，這還不算太糟，但特別是對於較長的文檔頁面（如我們的指南或教學），這真的會扼殺動力。
 
-- **Sandpack didn't properly support Svelte** when we first released Svelte Flow.
-  Ultimately we ended up developing a separate SvelteKit app to host our Svelte
-  examples and adapted our example viewer to switch between Sandpack examples and
-  simple iframe embeds.
+- **Sandpack 沒有正確支援 Svelte**，當我們首次發布 Svelte Flow 時。最終我們開發了一個單獨的 SvelteKit 應用程式來託管我們的 Svelte 範例，並調整了我們的範例檢視器以在 Sandpack 範例和簡單的 iframe 嵌入之間切換。
 
-- Finally, **developing new examples was a pain.** The source code for our
-  React examples lived in folders deep inside our example viewer component and had
-  special handling of certain files or formats that made authoring examples quite
-  difficult: each change to an example would trigger a hot reload of our docs, which
-  meant waiting for Sandpack to reload and re-render the example again and again.
+- 最後，**開發新範例是一件痛苦的事。** 我們的 React 範例的原始碼位於範例檢視器元件深處的資料夾中，並且對某些檔案或格式有特殊處理，這使得編寫範例變得相當困難：對範例的每次更改都會觸發文檔的熱重載，這意味著要等待 Sandpack 一次又一次地重新載入和重新渲染範例。
 
-And on top of all that we had an entirely separate app we used to generate the
-screenshots for our [examples overview page](/examples)!
+最重要的是，我們有一個完全獨立的應用程式，用於為我們的[範例概覽頁面](/examples)生成螢幕截圖！
 
-## The solution
+## 解決方案
 
-We were quite happy with how our Svelte examples worked (thank you Peter), and
-decided we wanted to explore a unified solution that would work for both our Svelte
-and React examples. In the end, we landed up with something even simpler than our
-SvelteKit app, dropping the need for a server entirely and instead serving everything
-from a static site.
+我們對 Svelte 範例的工作方式非常滿意（感謝 Peter），並決定探索一個統一的解決方案，既適用於我們的 Svelte 範例，也適用於 React 範例。最後，我們得到了比 SvelteKit 應用程式更簡單的東西，完全不需要伺服器，而是從靜態網站提供所有內容。
 
-We've created a single [example-apps](https://github.com/xyflow/web/tree/main/apps/example-apps)
-app in our monorepo that uses [vite](https://vitejs.dev) to serve our examples
-during development and build them into static files for production. If you're
-curious, you can find a plain directory of all our examples over at
-[examples-apps.xyflow.com](examples-apps.xyflow.com).
+我們在 monorepo 中建立了一個單一的 [example-apps](https://github.com/xyflow/web/tree/main/apps/example-apps) 應用程式，它使用 [vite](https://vitejs.dev) 在開發期間提供範例，並將它們建置為靜態檔案以用於生產。如果你好奇，可以在 [examples-apps.xyflow.com](examples-apps.xyflow.com) 找到我們所有範例的簡單目錄。
 
-We also made authoring examples easier. Developing examples now more closely
-resembles developing a standalone app, and we put together a simple scaffold
-script to help us quickly create new examples:
+我們還讓編寫範例變得更容易。開發範例現在更像是開發獨立應用程式，我們整理了一個簡單的腳手架腳本來幫助我們快速建立新範例：
 
 ```md
-The scaffold script helps you quickly put together a new example for either
-reactflow.dev or svelteflow.dev by copying over the boilerplate. All arguments
-are _required_.
+腳手架腳本透過複製樣板來幫助你快速為 reactflow.dev 或 svelteflow.dev 組合一個新範例。所有參數都是_必需的_。
 
-USAGE:
+用法：
 
 pnpm scaffold <FRAMEWORK> <ROUTE>
 
-EXAMPLES:
+範例：
 
 pnpm scaffold react blog/web-audio/demo
 
 pnpm scaffold svelte guides/getting-started
 
-ARGUMENTS:
+參數：
 
 FRAMEWORK 'react' | 'svelte'
 
-              The framework the example will be written in. This affects where
-              the generated files are placed in conjunction with the ROUTE
-              argument.
+              範例將使用的框架。這會影響生成的檔案與 ROUTE 參數結合後放置的位置。
 
 ROUTE string
 
-              The route fragment the example app will be served at when combined
-              with the FRAMEWORK argument. For example, calling the script as
-              `pnpm scaffold react examples/nodes/custom-node` will scaffold
-              the example and make it accessible at
-              '/react/examples/nodes/custom-node/index.html'.
+              範例應用程式與 FRAMEWORK 參數結合後將提供的路由片段。例如，將腳本呼叫為
+              `pnpm scaffold react examples/nodes/custom-node` 將會建立範例腳手架並使其在
+              '/react/examples/nodes/custom-node/index.html' 可存取。
 ```
 
-## Are there any downsides?
+## 有什麼缺點嗎？
 
-We've lost one big feature in the transition: the ability to edit examples directly
-on the docs site. For some users this might be a big deal, but to compensate we
-now support opening the examples in StackBlitz in addition to CodeSandbox!
+在過渡過程中，我們失去了一個重要功能：直接在文檔網站上編輯範例的能力。對於某些使用者來說，這可能是一件大事，但為了補償，我們現在除了 CodeSandbox 之外，還支援在 StackBlitz 中開啟範例！
 
-## Wrap up
+## 總結
 
-That's all for now folks <Emoji content="✌️" />. For most people this change
-should be seamless with a free boost to performance to boot. If we've managed to
-break anything in the migration please let us know by
-[opening an issue](https://github.com/xyflow/web/issues/new), and if you think
-the changes are excited we'd love if you tweeted about it and tagged us
-[@xyflowdev](https://twitter.com/xyflowdev)!
+目前就這樣了 <Emoji content="✌️" />。對於大多數人來說，這個變更應該是無縫的，並且還能免費提升性能。如果我們在遷移過程中破壞了任何東西，請透過[開啟 issue](https://github.com/xyflow/web/issues/new) 讓我們知道，如果你認為這些變更令人興奮，我們希望你能發推文並標記我們 [@xyflowdev](https://twitter.com/xyflowdev)！

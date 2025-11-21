@@ -1,17 +1,15 @@
 ---
-title: The EdgeText component
+title: 連線文字元件
 sidebarTitle: '<EdgeText />'
 description:
-  'You can use the EdgeText component as a helper component to display text within
-  your custom edges.'
+  '你可以使用 EdgeText 元件作為輔助元件，在自訂連線中顯示文字。'
 ---
 
 # \<EdgeText />
 
-[Source on GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/EdgeText.tsx)
+[原始碼於 GitHub](https://github.com/xyflow/xyflow/blob/main/packages/react/src/components/Edges/EdgeText.tsx)
 
-You can use the `<EdgeText />` component as a helper component to display text
-within your custom edges.
+你可以使用 `<EdgeText />` 元件作為輔助元件，在自訂連線中顯示文字。
 
 ```jsx
 import { EdgeText } from '@xyflow/react';
@@ -34,10 +32,8 @@ export function CustomEdgeLabel({ label }) {
 
 ## Props
 
-For TypeScript users, the props type for the `<EdgeText />` component is exported
-as `EdgeTextProps`.
+對於 TypeScript 使用者，`<EdgeText />` 元件的 props 類型會以 `EdgeTextProps` 導出。
 
 <APIDocs componentName="EdgeText" groupKeys="Omit<SVGAttributes<SVGElement>, 'x' | 'y'>" />
 
-Additionally, you may also pass any standard React HTML attributes such as `onClick`,
-`className` and so on.
+此外，你也可以傳遞任何標準的 React HTML 屬性，如 `onClick`、`className` 等。

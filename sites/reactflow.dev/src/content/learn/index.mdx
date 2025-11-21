@@ -1,7 +1,6 @@
 ---
 description:
-  React Flow quickstart that shows how to install the package, use it and where to find
-  example apps
+  React Flow 快速入門指南，展示如何安裝套件、使用它以及在哪裡找到範例應用程式
 pagination_next: null
 ---
 
@@ -10,37 +9,29 @@ import { Callout, Cards, Steps } from 'nextra/components';
 import { LiteYouTubeEmbed } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-# Quick Start
+# 快速入門
 
-This page will take you from zero to a working React Flow app in a few minutes. If you
-just want to have a look around and get an impression of React Flow, check out our
-interactive no-code [Playground](https://play.reactflow.dev/).
+本頁面將在幾分鐘內帶您從零開始建立一個可運作的 React Flow 應用程式。如果您只是想瀏覽並了解 React Flow 的印象，請查看我們的互動式無程式碼[遊樂場](https://play.reactflow.dev/)。
 
-## Installation
+## 安裝
 
-First, spin up a new React project however you like -- we recommend using
-[Vite](https://vitejs.dev/)
+首先，以您喜歡的方式建立一個新的 React 專案 -- 我們建議使用 [Vite](https://vitejs.dev/)
 
 ```bash copy npm2yarn
 npm init vite my-react-flow-app -- --template react
 ```
 
-Next `cd` into your new project folder and add
-[`@xyflow/react`](https://npmjs.com/package/@xyflow/react) as a dependency
+接著使用 `cd` 進入您的新專案資料夾，並將 [`@xyflow/react`](https://npmjs.com/package/@xyflow/react) 新增為依賴項
 
 ```bash copy npm2yarn
 npm install @xyflow/react
 ```
 
-Lastly, spin up the dev server and you're good to go!
+最後，啟動開發伺服器，就可以開始了！
 
-## Usage
+## 使用方式
 
-We will render the [`<ReactFlow />`](/api-reference/react-flow#reactflow) component from
-the `@xyflow/react` package. That and defining a handful of
-[node](/api-reference/types/node) objects, [edge](/api-reference/types/edge) objects and
-[event handlers](/api-reference/react-flow#event-handlers) are all we need to get
-something going! Get rid of everything inside `App.jsx` and add the following:
+我們將從 `@xyflow/react` 套件渲染 [`<ReactFlow />`](/api-reference/react-flow#reactflow) 元件。只需定義一些 [node](/api-reference/types/node) 物件、[edge](/api-reference/types/edge) 物件和 [event handlers](/api-reference/react-flow#event-handlers)，就能讓它運作起來！清除 `App.jsx` 內的所有內容，並加入以下程式碼：
 
 ```jsx "import '@xyflow/react/dist/style.css';" "width: '100vw', height: '100vh'"
 import { useState, useCallback } from 'react';
@@ -85,28 +76,27 @@ export default function App() {
 }
 ```
 
-There are two things to pay attention to here:
+這裡有兩件事需要注意：
 
-- <Emoji content="🎨" /> You must import the css stylesheet for React Flow to work.
-- <Emoji content="📐" /> The `<ReactFlow />` component must have a parent element with a
-  width and height.
+- <Emoji content="🎨" /> 您必須匯入 CSS 樣式表才能讓 React Flow 運作。
+- <Emoji content="📐" /> `<ReactFlow />` 元件必須有一個具有寬度和高度的父元素。
 
-## Result
+## 結果
 
-Et voila. You've already created your first interactive flow! <Emoji content="🎉" />
+太棒了！您已經建立了第一個互動式流程圖！<Emoji content="🎉" />
 
 <RemoteCodeViewer route="learn/quickstart" framework="react" />
 
-## Next steps
+## 下一步
 
 <Cards>
-  <Cards.Card title="Core Concepts" href="/learn/concepts/terms-and-definitions" />
-  <Cards.Card title="Customization" href="/learn/customization/custom-nodes" />
-  <Cards.Card title="Examples" href="/examples" />
-  <Cards.Card title="API Reference" href="/api-reference" />
+  <Cards.Card title="核心概念" href="/learn/concepts/terms-and-definitions" />
+  <Cards.Card title="自訂" href="/learn/customization/custom-nodes" />
+  <Cards.Card title="範例" href="/examples" />
+  <Cards.Card title="API 參考" href="/api-reference" />
   <Cards.Card title="Discord" href="https://discord.gg/RVmnytFmGW" />
   <Cards.Card
-    title="Template Projects"
+    title="範本專案"
     href="https://github.com/xyflow/react-flow-example-apps"
   />
 </Cards>

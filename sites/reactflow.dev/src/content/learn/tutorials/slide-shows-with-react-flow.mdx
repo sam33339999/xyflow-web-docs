@@ -1,10 +1,8 @@
 ---
-sidebarTitle: Slideshow App
-title: Create a slide show presentation with React Flow
+sidebarTitle: 投影片應用程式
+title: 使用 React Flow 建立投影片簡報
 intro:
-  We recently published the results of our 2023 end of year survey using React Flow. This
-  tutorial is an opportunity to share what we learned and show you how to build something
-  similar!
+  我們最近使用 React Flow 發布了 2023 年度調查的結果。本教學是一個分享我們所學知識並展示如何建立類似內容的機會！
 date: 2024/01/07
 authors: ['hayleigh']
 tags: ['react-flow', 'presentation', 'slide-show']
@@ -16,53 +14,42 @@ import { Callout, Cards } from 'nextra/components';
 import { Image } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-We recently published the findings from our React Flow 2023 end-of-year survey with an
-[interactive presentation](/developer-survey-2023) of the key findings, using React Flow
-itself. There were lots of useful bits built into this slideshow app, so we wanted to
-share how we built it!
+我們最近使用 React Flow 本身發布了 React Flow 2023 年度調查的結果，並以[互動式簡報](/developer-survey-2023)呈現關鍵發現。這個投影片應用程式中包含許多有用的功能，所以我們想分享我們是如何建立它的！
 
 <Image
   src="/img/tutorials/presentation/survey.png"
-  caption="Our 2023 end of year survey app was made up of many static nodes and buttons to navigate between them."
-  alt="Screenshot of slides laid out on an infinite canvas, each with information pulled from a survey of React Flow users"
+  caption="我們的 2023 年度調查應用程式由許多靜態節點和用於在它們之間導覽的按鈕組成。"
+  alt="投影片佈局在無限畫布上的截圖，每個投影片都包含從 React Flow 使用者調查中提取的資訊"
 />
 
-By the end of this tutorial, you will have built a presentation app with
+在本教學結束時，你將建立一個具有以下功能的簡報應用程式：
 
-- Support for markdown slides
-- Keyboard navigation around the viewport
-- Automatic layouting
-- Click-drag panning navigation (à la Prezi)
+- 支援 Markdown 投影片
+- 視口周圍的鍵盤導覽
+- 自動佈局
+- 點擊拖曳平移導覽（類似 Prezi）
 
-Along the way, you'll learn a bit about the basics of layouting algorithms, creating
-static flows, and custom nodes.
+在此過程中，你將學習一些關於佈局演算法基礎、建立靜態流程和自訂節點的知識。
 
-Once you're done, the app will look like this!
+完成後，應用程式將看起來像這樣！
 
 <RemoteCodeViewer route="tutorials/presentation/app" framework="react" />
 
-To follow along with this tutorial we'll assume you have a basic understanding of
-[React](https://reactjs.org/docs/getting-started.html) and
-[React Flow](/learn/concepts/terms-and-definitions), but if you get stuck on the way feel
-free to reach out to us on [Discord](https://discord.com/invite/RVmnytFmGW)!
+要跟隨本教學，我們假設你對 [React](https://reactjs.org/docs/getting-started.html) 和 [React Flow](/learn/concepts/terms-and-definitions) 有基本的了解，但如果你在過程中遇到困難，請隨時在 [Discord](https://discord.com/invite/RVmnytFmGW) 上與我們聯絡！
 
-Here's the [repo with the final code](https://github.com/xyflow/react-flow-slide-show) if
-you'd like to skip ahead or refer to it as we go.
+如果你想跳過或在進行過程中參考，這裡有[最終程式碼的儲存庫](https://github.com/xyflow/react-flow-slide-show)。
 
-Let's get started!
+讓我們開始吧！
 
-## Setting up the project
+## 設定專案
 
-We like to recommend using [Vite](https://vitejs.dev) when starting new React Flow
-projects, and this time we'll use TypeScript too. You can scaffold a new project with the
-following command:
+我們建議在開始新的 React Flow 專案時使用 [Vite](https://vitejs.dev)，這次我們也會使用 TypeScript。你可以使用以下命令建立新專案的骨架：
 
 ```bash npm2yarn
 npm create vite@latest -- --template react-ts
 ```
 
-If you'd prefer to follow along with JavaScript feel free to use the `react` template
-instead. You can also follow along in your browser by using our Codesandbox templates:
+如果你更喜歡使用 JavaScript，可以使用 `react` 模板。你也可以使用我們的 Codesandbox 模板在瀏覽器中跟隨：
 
 <Cards num={2}>
   <Cards.Card
@@ -85,17 +72,13 @@ instead. You can also follow along in your browser by using our Codesandbox temp
   />
 </Cards>
 
-Besides React Flow we only need to pull in one dependency,
-[`react-remark`](https://www.npmjs.com/package/react-remark), to help us render markdown
-in our slides.
+除了 React Flow 之外，我們只需要引入一個相依套件 [`react-remark`](https://www.npmjs.com/package/react-remark)，以幫助我們在投影片中渲染 Markdown。
 
 ```bash npm2yarn
 npm install @xyflow/react react-remark
 ```
 
-We'll modify the generated `main.tsx` to include React Flow's styles, as well as wrap the
-app in a `<ReactFlowProvider />` to make sure we can access the React Flow instance inside
-our components;
+我們將修改生成的 `main.tsx` 以包含 React Flow 的樣式，並將應用程式包裝在 `<ReactFlowProvider />` 中，以確保我們可以在元件內部存取 React Flow 實例；
 
 ```tsx filename="main.tsx" {3,7,12,20}
 import React from 'react';
@@ -122,19 +105,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 );
 ```
 
-This tutorial is going to gloss over the styling of the app, so feel free to use any CSS
-framework or styling solution you're familiar with. If you're going to style your app
-differently from just writing CSS, [Tailwind CSS](/examples/styling/tailwind), you can
-skip the import to `index.css`.
+本教學將省略應用程式的樣式設定，所以你可以自由使用任何你熟悉的 CSS 框架或樣式解決方案。如果你要以不同於單純撰寫 CSS 的方式設定應用程式樣式，例如 [Tailwind CSS](/examples/styling/tailwind)，你可以跳過匯入 `index.css`。
 
 <Callout>
-  How you style your app is up to you, but you must **always** include React Flow's
-  styles! If you don't need the default styles, at a minimum you should include the base
-  styles from `@xyflow/react/dist/base.css`.
+  你可以自由決定如何設定應用程式的樣式，但你**必須始終**包含 React Flow 的樣式！如果你不需要預設樣式，至少應該包含來自 `@xyflow/react/dist/base.css` 的基本樣式。
 </Callout>
 
-Each slide of our presentation will be a node on the canvas, so let's create a new file
-`Slide.tsx` that will be our custom node used to render each slide.
+我們簡報的每張投影片都將是畫布上的一個節點，所以讓我們建立一個新檔案 `Slide.tsx`，這將是我們用於渲染每張投影片的自訂節點。
 
 ```tsx filename="Slide.tsx"
 import { type Node, type NodeProps } from '@xyflow/react';
@@ -160,11 +137,9 @@ export function Slide({ data }: NodeProps<SlideNode>) {
 }
 ```
 
-We're setting the slide width and height as constants here (rather than styling the node
-in CSS) because we'll want access to those dimensions later on. We've also stubbed out the
-`SlideData` type so we can properly type the component's props.
+我們在這裡將投影片的寬度和高度設定為常數（而不是在 CSS 中設定節點樣式），因為我們稍後會需要存取這些尺寸。我們還建立了 `SlideData` 類型的存根，以便我們可以正確地為元件的屬性設定類型。
 
-The last thing to do is to register our new custom node and show something on the screen.
+最後要做的是註冊我們的新自訂節點並在螢幕上顯示一些內容。
 
 ```tsx filename="App.tsx"
 import { ReactFlow } from '@xyflow/react';
@@ -182,28 +157,20 @@ export default function App() {
 ```
 
 <Callout>
-  It's important to remember to define your `nodeTypes` object _outside_ of the component
-  (or to use React's `useMemo` hook)! When the `nodeTypes` object changes, the entire flow
-  is re-rendered.
+  重要的是要記住在元件_外部_定義你的 `nodeTypes` 物件（或使用 React 的 `useMemo` hook）！當 `nodeTypes` 物件變更時，整個流程會重新渲染。
 </Callout>
 
-With the basics put together, you can start the development server by running
-`npm run dev` and see the following:
+完成基礎設定後，你可以執行 `npm run dev` 啟動開發伺服器，並看到以下內容：
 
 <RemoteCodeViewer route="tutorials/presentation/scaffold" framework="react" />
 
-Not super exciting yet, but let's add markdown rendering and create a few slides side by
-side!
+目前還不太令人興奮，但讓我們新增 Markdown 渲染並並排建立幾張投影片！
 
-## Rendering markdown
+## 渲染 Markdown
 
-We want to make it easy to add content to our slides, so we'd like the ability to write
-[Markdown](https://www.markdownguide.org/basic-syntax/) in our slides. If you're not
-familiar, Markdown is a simple markup language for creating formatted text documents. If
-you've ever written a README on GitHub, you've used Markdown!
+我們希望讓新增內容到投影片變得容易，所以我們希望能夠在投影片中撰寫 [Markdown](https://www.markdownguide.org/basic-syntax/)。如果你不熟悉，Markdown 是一種用於建立格式化文字文件的簡單標記語言。如果你曾經在 GitHub 上撰寫過 README，你就使用過 Markdown！
 
-Thanks to the `react-remark` package we installed earlier, this step is a simple one. We
-can use the `<Remark />` component to render a string of markdown content into our slides.
+多虧了我們之前安裝的 `react-remark` 套件，這一步很簡單。我們可以使用 `<Remark />` 元件將 Markdown 內容字串渲染到我們的投影片中。
 
 ```tsx filename="Slide.tsx" {2,9-11,21}
 import { type Node, type NodeProps } from '@xyflow/react';
@@ -232,10 +199,7 @@ export function Slide({ data }: NodeProps<SlideNode>) {
 }
 ```
 
-In React Flow, nodes can have data stored on them that can be used during rendering. In
-this case we're storing the markdown content to display by adding a `source` property to
-the `SlideData` type and passing that to the `<Remark />` component. We can update our
-hardcoded nodes with some markdown content to see it in action:
+在 React Flow 中，節點可以儲存在渲染期間使用的資料。在這種情況下，我們透過向 `SlideData` 類型新增 `source` 屬性並將其傳遞給 `<Remark />` 元件來儲存要顯示的 Markdown 內容。我們可以用一些 Markdown 內容更新我們的硬編碼節點以查看其實際運作：
 
 ```tsx filename="App.tsx" {2, 10-27, 34}
 import { ReactFlow } from '@xyflow/react';
@@ -271,29 +235,19 @@ export default function App() {
 }
 ```
 
-Note that we've added the `minZoom` prop to the `<ReactFlow />` component. Our slides are
-quite large, and the default minimum zoom level is not enough to zoom out and see multiple
-slides at once.
+請注意，我們已將 `minZoom` 屬性新增到 `<ReactFlow />` 元件。我們的投影片相當大，預設的最小縮放等級不足以縮小並一次查看多張投影片。
 
 <RemoteCodeViewer route="tutorials/presentation/rendering-markdown" framework="react" />
 
-In the nodes array above, we've made sure to space the slides out by doing some manual
-math with the `SLIDE_WIDTH` constant. In the next section we'll come up with an algorithm
-to automatically lay out the slides in a grid.
+在上面的節點陣列中，我們透過使用 `SLIDE_WIDTH` 常數進行一些手動計算來確保投影片之間有適當的間距。在下一節中，我們將想出一個演算法來自動將投影片佈局在網格中。
 
-## Laying out the nodes
+## 佈局節點
 
-We often get asked how to automatically lay out nodes in a flow, and we have some
-documentation on how to use common layouting libraries like dagre and d3-hierarchy in our
-[layouting guide](/learn/layouting/layouting). Here you'll be writing your own
-super-simple layouting algorithm, which gets a bit nerdy, but stick with us!
+我們經常被問到如何在流程中自動佈局節點，我們在[佈局指南](/learn/layouting/layouting)中提供了一些關於如何使用常見佈局函式庫（如 dagre 和 d3-hierarchy）的文件。在這裡，你將編寫自己的超級簡單的佈局演算法，這會變得有點技術性，但請繼續跟隨我們！
 
-For our presentation app we'll construct a simple grid layout by starting from 0,0 and
-updating the x or y coordinates any time we have a new slide to the left, right, up, or
-down.
+對於我們的簡報應用程式，我們將從 0,0 開始建立一個簡單的網格佈局，並在每次有新投影片向左、右、上或下時更新 x 或 y 座標。
 
-First, we need to update our `SlideData` type to include optional ids for the slides to
-the left, right, up, and down of the current slide.
+首先，我們需要更新 `SlideData` 類型，以包含當前投影片左側、右側、上方和下方投影片的可選 ID。
 
 ```tsx filename="Slide.tsx" {3-6}
 export type SlideData = {
@@ -305,22 +259,17 @@ export type SlideData = {
 };
 ```
 
-Storing this information on the node data directly gives us some useful benefits:
+直接將此資訊儲存在節點資料上為我們提供了一些有用的好處：
 
-- We can write fully declarative slides without worrying about the concept of nodes and
-  edges
+- 我們可以撰寫完全宣告式的投影片，而不必擔心節點和連線的概念
 
-- We can compute the layout of the presentation by visiting connecting slides
+- 我們可以透過訪問連接的投影片來計算簡報的佈局
 
-- We can add navigation buttons to each slide to navigate between them automatically.
-  We'll handle that in a later step.
+- 我們可以為每張投影片新增導覽按鈕以自動在它們之間導覽。我們將在稍後的步驟中處理這個問題。
 
-The magic happens in a function we're going to define called `slidesToElements`. This
-function will take an object containing all our slides addressed by their id, and an id
-for the slide to start at. Then it will work through each connecting slide to build an
-array of nodes and edges that we can pass to the `<ReactFlow />` component.
+魔法發生在我們將要定義的名為 `slidesToElements` 的函式中。此函式將接受一個包含所有投影片（按其 ID 尋址）的物件，以及要開始的投影片的 ID。然後它將逐一處理每個連接的投影片，以建立一個節點和連線的陣列，我們可以將其傳遞給 `<ReactFlow />` 元件。
 
-The algorithm will go something like this:
+演算法將大致如下：
 
 - Push the initial slide's id and the position `{ x: 0, y: 0 }` onto a stack.
 - While that stack is not empty...
@@ -456,21 +405,17 @@ but only calculate them once.
 Because we have the idea of an "initial" slide now, we're also using the `fitViewOptions`
 to ensure the initial slide is the one that is focused when the canvas is first loaded.
 
-## Navigating between slides
+## 在投影片之間導覽
 
-So far we have our presentation laid out in a grid but we have to manually pan the canvas
-to see each slide, which isn't very practical for a presentation! We're going to add three
-different ways to navigate between slides:
+到目前為止，我們的簡報已經在網格中佈局好了，但我們必須手動平移畫布才能看到每張投影片，這對於簡報來說並不太實用！我們將新增三種不同的方式在投影片之間導覽：
 
-- Click-to-focus on nodes for jumping to different slides by clicking on them.
+- 點擊以聚焦節點，透過點擊它們跳轉到不同的投影片。
 
-- Navigation buttons on each slide for moving sequentially between slides in any valid
-  direction.
+- 每張投影片上的導覽按鈕，用於在任何有效方向上循序移動投影片。
 
-- Keyboard navigation using the arrow keys for moving around the presentation without
-  using the mouse or interacting with a slide directly.
+- 使用方向鍵的鍵盤導覽，在不使用滑鼠或直接與投影片互動的情況下在簡報中移動。
 
-### Focus on click
+### 點擊以聚焦
 
 The `<ReactFlow />` element can receive an
 [`onNodeClick`](/api-reference/react-flow#on-node-click) callback that fires when _any_
@@ -534,16 +479,11 @@ clicked.
 
 <RemoteCodeViewer route="tutorials/presentation/focus-on-click" framework="react" />
 
-### Slide controls
+### 投影片控制項
 
-Clicking to focus a node is handy for zooming out to see the big picture before focusing
-back in on a specific slide, but it's not a very practical way for navigating around a
-presentation. In this step we'll add some controls to each slide that allow us to move to
-a connected slide in any direction.
+點擊以聚焦節點對於縮小以查看全局然後再聚焦回特定投影片很方便，但這對於在簡報中導覽並不是很實用的方式。在這一步中，我們將為每張投影片新增一些控制項，允許我們移動到任何方向上的連接投影片。
 
-Let's add a `<footer>` to each slide that conditionally renders a button in any direction
-with a connected slide. We'll also preemptively create a `moveToNextSlide` callback that
-we'll use in a moment.
+讓我們為每張投影片新增一個 `<footer>`，根據條件在任何有連接投影片的方向上渲染一個按鈕。我們還將預先建立一個 `moveToNextSlide` 回呼函式，稍後會用到。
 
 ```tsx filename="Slide.tsx" {3,8,13-18}
 import { type NodeProps, fitView } from '@xyflow/react';
@@ -616,18 +556,11 @@ export function Slide({ data }: NodeProps<SlideNide>) {
 
 <RemoteCodeViewer route="tutorials/presentation/slide-controls" framework="react" />
 
-### Keyboard navigation
+### 鍵盤導覽
 
-The final piece of the puzzle is to add keyboard navigation to our presentation. It's not
-very convenient to have to _always_ click on a slide to move to the next one, so we'll add
-some keyboard shortcuts to make it easier. React Flow lets us listen to keyboard events on
-the `<ReactFlow />` component through handlers like
-[`onKeyDown`](/api-reference/react-flow#on-key-down).
+最後一塊拼圖是為我們的簡報新增鍵盤導覽。總是必須_點擊_投影片才能移動到下一張並不是很方便，所以我們將新增一些鍵盤快捷鍵來讓它更容易。React Flow 讓我們可以透過 [`onKeyDown`](/api-reference/react-flow#on-key-down) 等處理器在 `<ReactFlow />` 元件上監聽鍵盤事件。
 
-Up until now the slide currently focused is implied by the position of the canvas, but if
-we want to handle key presses on the entire canvas we need to _explicitly_ track the
-current slide. We need to this because we need to know which slide to navigate to when an
-arrow key is pressed!
+到目前為止，當前聚焦的投影片是由畫布的位置暗示的，但如果我們想在整個畫布上處理按鍵，我們需要_明確地_追蹤當前投影片。我們需要這樣做，因為我們需要知道當按下方向鍵時要導覽到哪張投影片！
 
 ```tsx filename="App.tsx" {1,2,13-14,17,23}
 import { useState, useCallback } from 'react';
@@ -718,35 +651,22 @@ scrolling up and down. This is necessary for this tutorial because the canvas is
 part of the page, but for an app where the canvas is the entire viewport you might not
 need to do this.
 
-And that's everything! To recap let's look at the final result and talk about what we've
-learned.
+就是這樣！為了回顧，讓我們看看最終結果並討論我們學到了什麼。
 
 <RemoteCodeViewer route="tutorials/presentation/app" framework="react" />
 
-## Final thoughts
+## 最後的想法
 
-Even if you're not planning on making the next [Prezi](https://prezi.com), we've still
-looked at a few useful features of React Flow in this tutorial:
+即使你不打算建立下一個 [Prezi](https://prezi.com)，我們在本教學中仍然看到了 React Flow 的一些有用功能：
 
-- The [`useReactFlow`](/api-reference/hooks/use-react-flow) hook to access the `fitView`
-  method.
+- [`useReactFlow`](/api-reference/hooks/use-react-flow) hook 用於存取 `fitView` 方法。
 
-- The [`onNodeClick`](/api-reference/react-flow#on-node-click) event handler to listen to
-  clicks on every node in a flow.
+- [`onNodeClick`](/api-reference/react-flow#on-node-click) 事件處理器用於監聽流程中每個節點的點擊。
 
-- The [`onKeyPress`](/api-reference/react-flow#on-key-press) event handler to listen to
-  keyboard events on the entire canvas.
+- [`onKeyPress`](/api-reference/react-flow#on-key-press) 事件處理器用於監聽整個畫布上的鍵盤事件。
 
-We've also looked at how to implement a simple layouting algorithm ourselves. Layouting is
-a _really_ common question we get asked about, but if your needs aren't that complex you
-can get quite far rolling your own solution!
+我們還研究了如何自己實作一個簡單的佈局演算法。佈局是我們經常被問到的問題，但如果你的需求不是那麼複雜，你可以透過自己的解決方案走得很遠！
 
-If you're looking for ideas on how to extend this project, you could try addressing the
-issues we pointed out with the layouting algorithm, coming up with a more sophisticated
-`Slide` component with different layouts, or something else entirely.
+如果你正在尋找擴展此專案的想法，可以嘗試解決我們指出的佈局演算法問題，設計一個具有不同佈局的更複雜的 `Slide` 元件，或者完全不同的東西。
 
-You can use the completed [source code](https://github.com/xyflow/react-flow-slide-show)
-as a starting point, or you can just keep building on top of what we've made today. We'd
-love to see what you build so please share it with us over on our
-[Discord server](https://discord.com/invite/RVmnytFmGW) or
-[Twitter](https://twitter.com/reactflowdev).
+你可以使用完成的[原始碼](https://github.com/xyflow/react-flow-slide-show)作為起點，或者你可以繼續在我們今天建立的基礎上進行建構。我們很想看看你建立了什麼，所以請在我們的 [Discord 伺服器](https://discord.com/invite/RVmnytFmGW)或 [Twitter](https://twitter.com/reactflowdev) 上與我們分享。
