@@ -1,108 +1,108 @@
 ---
-title: 'Team Update – Welcoming Peter, Svelte Flow alpha and v11.9.0'
-intro: "Try out the Svelte Flow alpha, many fixed React Flow bugs, our name will change to “xyflow” soon, and we're welcoming Peter to the core team."
+title: '團隊更新 – 歡迎 Peter、Svelte Flow alpha 和 v11.9.0'
+intro: "試用 Svelte Flow alpha、修復許多 React Flow 錯誤、我們的名稱即將改為「xyflow」，而且我們歡迎 Peter 加入核心團隊。"
 date: 26 September 2023
 authors: ['john']
-tags: ['react-flow', 'update']
+tags: ['react-flow', '更新']
 image: '/img/blog/v11-reactflow-header.png'
 ---
 
-Good to see you again friends. We have big “official” updates incoming, but in the meantime, we wanted to share what’s been going on over here for the past months.
+很高興再次見到你們，朋友們。我們有重大的「正式」更新即將到來，但與此同時，我們想分享過去幾個月這裡發生的事情。
 
-**TL;DR,** Try out the Svelte Flow alpha, many fixed React Flow bugs, our name will change to “xyflow” soon, and we're welcoming Peter to the core team.
+**重點整理，**試用 Svelte Flow alpha、修復許多 React Flow 錯誤、我們的名稱即將改為「xyflow」，而且我們歡迎 Peter 加入核心團隊。
 
-# Say hi to Peter! 👋🏻
+# 向 Peter 打招呼！👋🏻
 
-As team member #5, Peter is joining us from the worlds of computer graphics, interactive audio-visual installation work, film, all while coding libraries and tools along the way. In the past months he's developed an enthusiasm for Svelte while working on a film production tool, and has already made some much-needed changes to Svelte Flow alpha ⚡️
+作為團隊的第五號成員，Peter 從電腦圖形、互動式視聽裝置藝術、電影等領域加入我們，同時一路編寫函式庫和工具。在過去的幾個月裡，他在開發電影製作工具時對 Svelte 產生了熱情，並且已經對 Svelte Flow alpha 做出了一些急需的改變 ⚡️
 
-You’ll be seeing Peter around on our Discord and Github, and he’ll be joining us in our Berlin office. We’re excited to have him on our team 😊
+你會在我們的 Discord 和 Github 上看到 Peter，他將加入我們在柏林的辦公室。我們很高興他能加入我們的團隊 😊
 
-# React Flow: fewer bugs, improved performance 🧼
+# React Flow：更少的錯誤、改進的效能 🧼
 
-Recent releases in the past months have led to:
+過去幾個月的最新版本帶來了：
 
-- New [`nodeDragThreshold` prop](https://reactflow.dev/api-reference/react-flow/#nodedragthreshold) to delay node drag events [11.9.0](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md)
-- Compatibility with Astro, Remix, and older setups like webpack4 and React 17 [11.9.0](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md)
-- Improved performance for larger graphs with minimap [#3153](https://github.com/xyflow/xyflow/pull/3153)
-- Better key defaults and scroll behavior for Windows users [11.8.0](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md#1180)
-- Better default edge routing and label positions [11.8.0](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md)
+- 新的 [`nodeDragThreshold` prop](https://reactflow.dev/api-reference/react-flow/#nodedragthreshold) 來延遲節點拖曳事件 [11.9.0](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md)
+- 與 Astro、Remix 以及較舊的設定（如 webpack4 和 React 17）相容 [11.9.0](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md)
+- 改進帶有小地圖的大型圖表效能 [#3153](https://github.com/xyflow/xyflow/pull/3153)
+- 為 Windows 使用者提供更好的按鍵預設值和滾動行為 [11.8.0](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md#1180)
+- 更好的預設連線路徑和標籤位置 [11.8.0](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md)
 
-And so, so many bugs have been squashed. Old bugs, new bugs. We feel like 6 year olds who just found an ant hill. For a comprehensive list, here's our [changelog](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md).
+而且，非常非常多的錯誤已經被修復了。舊錯誤、新錯誤。我們感覺像是剛發現蟻丘的 6 歲小孩。要查看完整清單，請見我們的[變更日誌](https://github.com/xyflow/xyflow/blob/main/packages/reactflow/CHANGELOG.md)。
 
-Hayleigh has been hard at work restructuring our docs, which were much needed for some care and sorting after a couple of years of organic growth. You’ll see these updates with the release of our website redesign (keep reading for more on this).
+Hayleigh 一直在努力重構我們的文件，在經過幾年的有機成長後，這些文件非常需要一些關注和整理。你將在我們網站重新設計的發布中看到這些更新（繼續閱讀以了解更多）。
 
-# Svelte Flow Alpha is Live! 🎉
+# Svelte Flow Alpha 上線了！🎉
 
-For those with keen eyes, you may have noticed a xyflow branch in the react-flow repo, and that’s because we’ve ported React Flow to Svelte, and now you can install it and try it out!! 🚀
+對於眼尖的人，你可能已經注意到 react-flow 儲存庫中有一個 xyflow 分支，那是因為我們已經將 React Flow 移植到 Svelte，現在你可以安裝並試用它了！！🚀
 
 ```bash npm2yarn
 npm install @xyflow/svelte
 ```
 
-You can check out our [Github Readme](https://github.com/xyflow/xyflow/tree/xyflow/packages/svelte#svelte-flow-alpha) and reference our React Flow docs while we create the Svelte Flow docs. Because we are in alpha, the API is likely to change.
+你可以查看我們的 [Github Readme](https://github.com/xyflow/xyflow/tree/xyflow/packages/svelte#svelte-flow-alpha)，並在我們創建 Svelte Flow 文件時參考我們的 React Flow 文件。因為我們還在 alpha 階段，API 可能會改變。
 
-What would be the biggest help for us is if you share it with anyone you know who uses Svelte, or if you use Svelte yourself, try it out and submit bugs or issues you encounter (our [Discord](https://discord.gg/TmAJQbwWDM) is a great place for discussion)- we assume there are many 😄
+對我們最大的幫助是，如果你能與任何使用 Svelte 的人分享，或者如果你自己使用 Svelte，試用它並提交你遇到的錯誤或問題（我們的 [Discord](https://discord.gg/TmAJQbwWDM) 是討論的好地方）- 我們預計會有很多 😄
 
-There’s already a a Svelte Flow Alpha app out in the wild! https://ffmpeg.lav.io/
+已經有一個 Svelte Flow Alpha 應用程式在實際應用中了！https://ffmpeg.lav.io/
 
-As usual, it’s MIT Licensed.
+一如既往，它採用 MIT 授權。
 
-### What’s the plan with Svelte Flow?
+### Svelte Flow 的計劃是什麼？
 
-Just like with React Flow we expect to hear about a lot of bugs and feature requests in the weeks and months after launch, and we’re going to pay attention to those and respond to all of the requests that we can. At this point, we’re hoping people try it out, build things, and we’ll keep our ears and inboxes open to feedback. Most of all, we’re looking forward to seeing what people build!
+就像 React Flow 一樣，我們預計在推出後的幾週和幾個月內會聽到很多錯誤和功能請求，我們將關注這些並盡可能回應所有請求。目前，我們希望人們試用它、建立東西，我們會敞開耳朵和收件匣接收回饋。最重要的是，我們期待看到人們建立什麼！
 
-Launching Svelte Flow also means we are maintaining two libraries instead of one. As you saw above, our team has gotten a little bigger to help us out with that.
+推出 Svelte Flow 也意味著我們要維護兩個函式庫而不是一個。如你所見，我們的團隊已經擴大了一點來幫助我們完成這項工作。
 
-Also a bonus along the way to building Svelte Flow was that we generalized the React Flow core into vanilla JS, allowing us to refactor and clean up the foundation of our library. This could allow us to more easily port the library to other languages in the future.
+在建立 Svelte Flow 的過程中，還有一個額外的收穫是我們將 React Flow 核心泛化為 vanilla JS，讓我們能夠重構和清理函式庫的基礎。這可能讓我們在未來更容易將函式庫移植到其他語言。
 
-# Soon: Fresh paint and changing our name 🎨
+# 即將推出：全新面貌和更改名稱 🎨
 
 <figure>
   <img
     src="/img/blog/2023-svelte-alpha-xyflow/xyflow-banner.png"
-    alt="A screenshot of a header of a page. The title says Wire your ideas with xyflow."
+    alt="頁面標題的截圖。標題寫著用 xyflow 串連你的想法。"
   />
-  <figcaption>A sneak peek of the new website</figcaption>
+  <figcaption>新網站的搶先看</figcaption>
 </figure>
 
-Once Svelte Flow started to materialize, we quickly realized “React Flow” is an inflexible name. Just imagine “npm install reactflow/svelte” 😬😬
+一旦 Svelte Flow 開始成形，我們很快意識到「React Flow」是一個不夠靈活的名稱。想像一下「npm install reactflow/svelte」😬😬
 
-“xyflow” will soon be the roof that React Flow and Svelte Flow live under. We like that “xy” can represent a variable (”xy” can be replaced with “react” or “svelte” to create the names of the individual libraries), as well as the xy coordinates of a graph. And you pronounce it like… erm… we’ll have to get back to you on that one.
+「xyflow」很快將成為 React Flow 和 Svelte Flow 的共同屋頂。我們喜歡「xy」可以代表一個變數（「xy」可以替換為「react」或「svelte」來創建個別函式庫的名稱），以及圖表的 xy 座標。至於如何發音...呃...我們會再回覆你。
 
-There will be package name changes as a result, and we’ll give clear instructions on how to make this change as soon as we “officially” launch all of this.
+因此套件名稱會有所改變，我們將在「正式」推出所有這些時提供明確的更改說明。
 
-And all of this is going to come with a fresh website, thanks to the brilliant [Facu Montanaro](https://facumontanaro.com/) 👏🏻
+而且所有這些都將帶來一個全新的網站，感謝出色的 [Facu Montanaro](https://facumontanaro.com/) 👏🏻
 
-# We went into the real world! Ahhh
+# 我們進入了真實世界！啊啊
 
-Hayleigh went to DevRelCon in London, where she brought back a bunch of findings on how we can better help folks using React Flow and the ecosystems around it. The videos from the conference should be dropping soon [here](https://developerrelations.com/event/devrelcon-london-2023).
+Hayleigh 去了倫敦的 DevRelCon，她帶回了一堆關於我們如何更好地幫助使用 React Flow 及其周邊生態系統的人的發現。會議的影片應該很快就會在[這裡](https://developerrelations.com/event/devrelcon-london-2023)發布。
 
-John gave another talk about money in open source in Portland, Oregon at FOSSY. This one’s 20 minutes with Q&A, so it’s our most comprehensive share on the topic yet. You can [watch it here](https://archive.org/details/fossy2023_Dear_Open_Source_lets_do_a_bet).
+John 在俄勒岡州波特蘭的 FOSSY 發表了另一場關於開源中金錢的演講。這場演講長 20 分鐘並有問答環節，所以這是我們迄今為止關於這個主題最全面的分享。你可以[在這裡觀看](https://archive.org/details/fossy2023_Dear_Open_Source_lets_do_a_bet)。
 
-Moritz and John held the first React Flow “Town Hall,” where we opened up our Discord for live questions from anyone who wanted to ask. We were looking for a way to be transparent about what’s coming up next at React Flow, without sticking to the structure of a roadmap. We’ll definitely be doing it again, it was a lot of fun!
+Moritz 和 John 舉辦了第一次 React Flow「市政廳」，我們開放 Discord 讓任何想問問題的人現場提問。我們一直在尋找一種方式，在不拘泥於路線圖結構的情況下，透明地分享 React Flow 接下來的計劃。我們肯定會再次舉辦，這非常有趣！
 
-# Open Sourcing our Pro Platform 🎁
+# 開源我們的 Pro 平台 🎁
 
-Our Pro platform allows subscribers to access the code and tutorials of our "Pro Examples", but the repository for this platform has always been private. On our quest to allow more open source projects to be fairly compensated for their work, Christopher has been refactoring our Pro Platform from the ground up.
+我們的 Pro 平台讓訂閱者可以存取我們「Pro 範例」的程式碼和教學，但這個平台的儲存庫一直是私有的。在我們尋求讓更多開源專案獲得公平報酬的過程中，Christopher 一直在從頭開始重構我們的 Pro 平台。
 
 <figure>
   <img
     src="/img/blog/2023-svelte-alpha-xyflow/dashboard.jpeg"
-    alt="A screenshot with a code example called Force Layout, with a tutorial below it."
+    alt="一個名為 Force Layout 的程式碼範例截圖，下方有教學。"
   />
-  <figcaption>Our Pro Platform, soon to be open source</figcaption>
+  <figcaption>我們的 Pro 平台，即將開源</figcaption>
 </figure>
 
-We hope other companies like us might use it in the future to build businesses around their open source software. If you're interested in this, please reach out to us, we'd love to know how this could work for you.
+我們希望其他像我們一樣的公司未來可能會使用它來圍繞他們的開源軟體建立業務。如果你對此感興趣，請與我們聯繫，我們很想知道這對你如何運作。
 
-# Whew.
+# 呼。
 
-Ok that was a lot. Thanks for letting us get all of that off our chest. We’ll be posting again soon once we do an official launch of... everything.
+好的，這是很多內容。感謝讓我們把所有這些說出來。一旦我們正式推出...所有東西，我們很快就會再次發文。
 
-Thanks for being a part of the journey!
+感謝你成為這段旅程的一部分！
 
 ✌🏻
 
-The Rea… xyflow team
+Rea... xyflow 團隊
 
-Christopher, Hayleigh, John, Moritz, and Peter
+Christopher、Hayleigh、John、Moritz 和 Peter

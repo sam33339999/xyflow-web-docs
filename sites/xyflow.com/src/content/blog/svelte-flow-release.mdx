@@ -1,8 +1,8 @@
 ---
-title: 'Svelte Flow 1.0 is here!'
-htmlTitle: 'Svelte Flow 1.0 is here!'
-description: 'The first major version for Svelte Flow, rewritten with full support for Svelte 5 and many new features.'
-intro: 'We celebrate the first major version graduation of Svelte Flow with a full Svelte 5 rewrite and many new features.'
+title: 'Svelte Flow 1.0 來了！'
+htmlTitle: 'Svelte Flow 1.0 來了！'
+description: 'Svelte Flow 的第一個主要版本，完全支援 Svelte 5 並帶來許多新功能。'
+intro: '我們慶祝 Svelte Flow 的第一個主要版本，完全重寫以支援 Svelte 5 並帶來許多新功能。'
 date: 14 May 2025
 authors: ['peter', 'moritz']
 tags: ['svelte-flow']
@@ -14,30 +14,29 @@ import { Text, Image } from 'xy-shared';
 import SSRFlow from '@/components/SSRFlow';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-Dang, the kids grow up so fast. It feels like yesterday when Svelte Flow was taking its first steps, and then bam–its now a full-grown library, complaining about our lame music taste...
+天啊，孩子長得真快。感覺就像昨天 Svelte Flow 還在邁出第一步，然後突然──它現在已經是一個成熟的函式庫，還抱怨我們品味糟糕的音樂...
 
-And like any decent coming-of-age flick, there are some bumps along the way before you see the end credits roll over the sunset. For us, this meant rewriting Svelte Flow **twice** before landing where we are today. And it is better than ever! A good chunk of the glow-up comes from new possibilities in Svelte 5, and the rest comes down to building a Svelte library from the ground up.
+就像任何像樣的成長電影一樣，在看到片尾字幕在夕陽下滾動之前，總會有一些坎坷。對我們來說，這意味著在達到今天的成果之前，我們**兩次**重寫了 Svelte Flow。而現在它比以往任何時候都更好！很大一部分的進步來自 Svelte 5 的新可能性，其餘則歸功於從頭開始建立一個 Svelte 函式庫。
 
-While there are many things to unpack about our journey with Svelte 5, that's a story for another day.
+雖然關於我們與 Svelte 5 的旅程有很多故事可以分享，但那是另一天的故事了。
 
 <Callout type="info">
-  If you just want to know how to migrate to Svelte Flow 1.0, head over to the [migration
-  guide](https://svelteflow.dev/learn/troubleshooting/migrate-to-v1).
+  如果你只是想知道如何遷移到 Svelte Flow 1.0，請前往[遷移指南](https://svelteflow.dev/learn/troubleshooting/migrate-to-v1)。
 </Callout>
 
-### TL;DR
+### 重點整理
 
 <div style={{ marginTop: -10 }} />
 
-- Lots of new features like reconnecting edges, improved fitView, key navigation, and better accessibility.
-- Written from the ground up for Svelte 5.
-- Better DX via TSDoc comments.
-- An overhauled [learn section](https://svelteflow.dev/learn) and automatically generated [API references](https://svelteflow.dev/api-reference).
-- Feature parity with [React Flow](https://reactflow.dev) for present and upcoming features.
+- 許多新功能，如重新連接連線、改進的 fitView、鍵盤導航和更好的無障礙支援。
+- 專為 Svelte 5 從頭開始編寫。
+- 透過 TSDoc 註解提供更好的開發體驗。
+- 全面改版的[學習區](https://svelteflow.dev/learn)和自動生成的 [API 參考](https://svelteflow.dev/api-reference)。
+- 與 [React Flow](https://reactflow.dev) 在現有和即將推出的功能上保持一致。
 
-## Wait, what's Svelte Flow?
+## 等等，什麼是 Svelte Flow？
 
-For those new to Svelte Flow, it is a Svelte library for building node-based applications like workflow editors, data pipelines, or visual programming environments. With just a few lines of code, you get an interactive flow with zooming, panning, connecting nodes, and much more.
+對於剛接觸 Svelte Flow 的人，它是一個用於建立基於節點的應用程式的 Svelte 函式庫，例如工作流程編輯器、資料管道或視覺化程式設計環境。只需幾行程式碼，你就能獲得一個具有縮放、平移、連接節點等功能的互動式流程圖。
 
 ```svelte filename="App.svelte"
 <script>
@@ -81,60 +80,60 @@ For those new to Svelte Flow, it is a Svelte library for building node-based app
   />
 </Bleed>
 
-# New features and improvements
+# 新功能和改進
 
-One of the goals of our first major release was to close the last remaining gaps between Svelte Flow and React Flow. For us, this also marks a new commitment to develop new features for both libraries in tandem. So keep your eyes peeled for future releases! 👀
+我們第一個主要版本的目標之一是縮小 Svelte Flow 和 React Flow 之間最後剩餘的差距。對我們來說，這也標誌著我們承諾同步開發這兩個函式庫的新功能。所以請持續關注未來的版本！👀
 
-- **[Reconnect edges](https://svelteflow.dev/examples/edges/reconnect-edge)**: You can reconnect your edges by using the new `<EdgeReconnectAnchor />` component. It can be used to add custom reconnection points on custom edges.
-- **Keyboard Navigation & A11y**: We added support for keyboard navigation and improved accessibility for screen readers. You can now navigate through nodes and edges using the arrow keys.
-- **Click Connect**: You can now create a new connection by clicking on a handle one by one.
-- **[Enhanced ViewportPortal](https://svelteflow.dev/api-reference/components/viewport-portal)**: We added a new `<ViewportPortal />` component that allows you to render content in the viewport of the flow. This is useful for rendering custom overlays or tooltips.
-- **Improved [fitView](https://svelteflow.dev/api-reference/hooks/use-svelte-flow#fitview)**: We finetuned the `fitView` function to better work with dynamically added nodes.
-- And countless other small improvements...
+- **[重新連接連線](https://svelteflow.dev/examples/edges/reconnect-edge)**：你可以使用新的 `<EdgeReconnectAnchor />` 元件重新連接連線。它可以用來在自訂連線上添加自訂重新連接點。
+- **鍵盤導航與無障礙**：我們新增了鍵盤導航支援並改進了螢幕閱讀器的無障礙功能。現在你可以使用方向鍵瀏覽節點和連線。
+- **點擊連接**：現在你可以透過逐一點擊控制點來建立新連接。
+- **[增強的 ViewportPortal](https://svelteflow.dev/api-reference/components/viewport-portal)**：我們新增了一個新的 `<ViewportPortal />` 元件，讓你可以在流程圖的視口中渲染內容。這對於渲染自訂覆蓋層或提示框很有用。
+- **改進的 [fitView](https://svelteflow.dev/api-reference/hooks/use-svelte-flow#fitview)**：我們微調了 `fitView` 函數，使其更好地處理動態新增的節點。
+- 以及無數其他小改進...
 
-# Embracing runes
+# 擁抱 runes
 
-To create a stable API for the future, we fully embraced signals by converting all [stores](https://svelte.dev/docs/svelte/stores) to [runes](https://svelte.dev/docs/svelte/what-are-runes). In some instances, this was as easy as replacing `writable` with `$state`. In some other cases, this required us to rethink our general architecture. However, after a fair amount of tinkering, benchmarking, and restless nights spent dreaming about runes, we managed to simplify many parts of the library and even make it more performant.
+為了創建一個穩定的未來 API，我們完全擁抱 signals，將所有 [stores](https://svelte.dev/docs/svelte/stores) 轉換為 [runes](https://svelte.dev/docs/svelte/what-are-runes)。在某些情況下，這就像將 `writable` 替換為 `$state` 一樣簡單。在其他情況下，這需要我們重新思考整體架構。然而，經過大量的修改、效能測試和無數個夢見 runes 的不眠之夜後，我們成功簡化了函式庫的許多部分，甚至讓它更高效。
 
-A big shoutout goes out to the Svelte team for their help during the turbulent era of the Svelte 5 Release Candidate! Fixes were delivered either within a couple of [hours](https://github.com/sveltejs/svelte/issues/12652) or sometimes in a matter of [minutes](https://github.com/sveltejs/svelte/issues/12302)!?
+特別感謝 Svelte 團隊在 Svelte 5 候選版本動盪時期的幫助！修復通常在幾個[小時](https://github.com/sveltejs/svelte/issues/12652)內完成，有時甚至在幾[分鐘](https://github.com/sveltejs/svelte/issues/12302)內！？
 
-# Svelte Flow in the wild
+# 實際應用中的 Svelte Flow
 
-I had a great time mingling with the community at [Svelte Summit](https://sveltesummit.com/)! In case you couldn't make it to Barcelona, [Ilja](https://github.com/fubits1) wrote a [highly accurate report](https://fubits.dev/notes/2025-05-10-svelte-summit-2025-spring-notes) that is worth a read. I even got to chat with people who are already using Svelte Flow - in production - today! And to prove to y'all we are not just pushing some vaporware here, take a look at some of these projects out in the wild!
+我在 [Svelte Summit](https://sveltesummit.com/) 與社群交流的時光非常愉快！如果你沒能到巴塞隆納參加，[Ilja](https://github.com/fubits1) 寫了一份[非常準確的報告](https://fubits.dev/notes/2025-05-10-svelte-summit-2025-spring-notes)值得一讀。我甚至和一些已經在正式環境中使用 Svelte Flow 的人聊天了！為了證明我們不只是在推銷一些虛幻的東西，看看這些在實際應用中的專案吧！
 
 ## [Windmill](https://windmill.dev/)
 
-An open-source developer platform and workflow engine using Svelte Flow to view and edit workflows.
+一個開源的開發者平台和工作流程引擎，使用 Svelte Flow 來檢視和編輯工作流程。
 
 <Image
   src="/img/blog/2025-svelte-release/windmill2.png"
-  alt="A screenshot of Windmill, a workflow engine."
+  alt="Windmill 的截圖，一個工作流程引擎。"
 />
 
 ## [Sparrow](https://sparrowapp.dev/)
 
-A collaborative API testing workspace utilizing Svelte Flow for visualizing the shape and status of test runs.
+一個協作 API 測試工作區，利用 Svelte Flow 來視覺化測試執行的形狀和狀態。
 
 <Image
   src="/img/blog/2025-svelte-release/sparrow.png"
-  alt="A screenshot of Sparrow, a API testing tool."
+  alt="Sparrow 的截圖，一個 API 測試工具。"
 />
 
 ## [Whimsy](https://whimsy.rocks/)
 
-A tiny game engine's visual scripting tool is powered by Svelte Flow.
+一個小型遊戲引擎的視覺化腳本工具，由 Svelte Flow 提供支援。
 
 <Image
   src="/img/blog/2025-svelte-release/whimsy.png"
-  alt="A screenshot of Whyimsy, a game creation engine."
+  alt="Whimsy 的截圖，一個遊戲創作引擎。"
 />
 
-# Okay, next.
+# 好的，接下來。
 
-Now that the cat is finally out of the bag, all that's missing is you! Do you have any feedback, ideas, need help, or just want to show us what you are building? Feel free to reach out and say hi on our [Discord](https://discord.gg/xyflow).
+現在秘密終於揭曉了，唯一缺少的就是你！你有任何回饋、想法、需要協助，或只是想向我們展示你正在建立什麼嗎？歡迎隨時在我們的 [Discord](https://discord.gg/xyflow) 上聯繫並打個招呼。
 
-Thanks to everyone who test, use, share, subscribe, and support our libraries and ecosystems.
+感謝所有測試、使用、分享、訂閱和支援我們函式庫及生態系統的人。
 
-Sincerely, your xyflow team
+誠摯地，你的 xyflow 團隊
 
-Abbey, Christopher, Moritz, and Peter
+Abbey、Christopher、Moritz 和 Peter

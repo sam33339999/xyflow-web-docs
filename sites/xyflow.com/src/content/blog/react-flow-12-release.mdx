@@ -1,8 +1,8 @@
 ---
-title: 'React Flow 12 release'
-htmlTitle: 'React Flow 12 release'
-description: 'A new React Flow major release version 12 with server side rendering, computing flows, dark mode, better developer experience with TSDoc, and more'
-intro: 'The scoop on our latest release with Server side rendering, computing flows, dark mode, better developer experience with TSDoc, and more'
+title: 'React Flow 12 發布'
+htmlTitle: 'React Flow 12 發布'
+description: 'React Flow 第 12 版主要版本發布，包含伺服器端渲染、計算流程、深色模式、透過 TSDoc 改善開發者體驗等功能'
+intro: '我們最新版本的重點內容，包括伺服器端渲染、計算流程、深色模式、透過 TSDoc 改善開發者體驗等'
 date: 9 July 2024
 authors: ['moritz', 'john']
 tags: ['react-flow']
@@ -14,53 +14,52 @@ import { Text, Image } from 'xy-shared';
 import SSRFlow from '@/components/SSRFlow';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-For the last few months we’ve been wrapping up a solid React Flow 12 release for y’all. Since the last major release, we’ve grown our core team to five people, reached more than 22k stars on Github, re-branded to xyflow, launched Svelte Flow (many great side-effects of this are baked into this release), and kept all of our office plants alive.
+在過去幾個月裡，我們一直在為大家準備一個穩健的 React Flow 12 版本。自上次主要版本發布以來，我們的核心團隊已經成長到五人，在 Github 上獲得超過 22k 顆星，重新品牌化為 xyflow，推出了 Svelte Flow（其中許多優秀的副作用都融入了這個版本），並讓我們辦公室的所有植物都存活下來。
 
-This release also brings the final piece of the “xyflow” puzzle, as our package name changes from `reactflow` to `@xyflow/react`. We pinky promise that we won’t change our package name again anytime soon!
+這個版本也帶來了「xyflow」拼圖的最後一塊，因為我們的套件名稱從 `reactflow` 更改為 `@xyflow/react`。我們保證短期內不會再更改套件名稱！
 
-React Flow 12 has been in beta since January and we’ve been tending to bugs since then, so we’re confident in sending this out now as a stable release. Shout-out to the brave souls who have already tried it out and submitted your issues, we appreciate you! 🙏🏻
+React Flow 12 自一月以來一直處於測試版，我們從那時起就一直在修復錯誤，所以我們有信心現在將其作為穩定版本發布。向那些已經試用並提交問題的勇敢者致敬，我們感謝你們！🙏🏻
 
-If you want to skip the details and just migrate your project, head over to our [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-v12).
+如果你想跳過細節，直接遷移你的專案，請前往我們的[遷移指南](https://reactflow.dev/learn/troubleshooting/migrate-to-v12)。
 
-### TL;DR
-
-<div style={{ marginTop: -10 }} />
-
-React Flow 12 is here, and the main features are
+### 簡而言之
 
 <div style={{ marginTop: -10 }} />
 
-- Server side rendering support
-- Hooks and helpers for computing flows
-- Dark mode
-- Better DX via TSDoc
+React Flow 12 已經發布，主要功能包括
 
-# Major features
+<div style={{ marginTop: -10 }} />
+
+- 支援伺服器端渲染
+- 用於計算流程的 hooks 和輔助函式
+- 深色模式
+- 透過 TSDoc 改善開發者體驗
+
+# 主要功能
 
 <div style={{ marginTop: -30 }} />
 
-## 1. Support for server side rendering
+## 1. 支援伺服器端渲染
 
 <Bleed>
   <SSRFlow />
 </Bleed>
 
 <div className="text-center text-gray-500 mt-1">
-  This flow was rendered on the server. It can be displayed without Javascript
-  on the client.
+  這個流程在伺服器端渲染。即使客戶端沒有 Javascript 也可以顯示。
 </div>
 
-React is heading towards server side rendering, with tools like [Nextjs](https://nextjs.org/), [Astro](https://astro.build/), and [Waku](https://waku.gg/). We’ve gotten asked to support server side rendering more than a [couple](https://github.com/xyflow/xyflow/issues/3168) of [times](https://github.com/xyflow/xyflow/issues/3384) due to difficulties using React Flow with these tools. In React Flow 11, Astro just renders a blank screen by default when using React Flow- that’s no good.
+React 正朝著伺服器端渲染的方向發展，像 [Nextjs](https://nextjs.org/)、[Astro](https://astro.build/) 和 [Waku](https://waku.gg/) 等工具。由於使用 React Flow 與這些工具的困難，我們已經多次被要求支援伺服器端渲染（[這裡](https://github.com/xyflow/xyflow/issues/3168)和[這裡](https://github.com/xyflow/xyflow/issues/3384)）。在 React Flow 11 中，Astro 預設在使用 React Flow 時只會渲染空白畫面，這不太好。
 
-With React Flow 12, you can now:
+使用 React Flow 12，你現在可以：
 
-- Display static HTML diagrams for docs sites (even if the client has no JS)
-- Dynamically generate open graph images that appear as embeds when sharing a link to your flow
-- Pre-render flows for crawlable content
+- 為文件網站顯示靜態 HTML 圖表（即使客戶端沒有 JS）
+- 動態生成開放圖表圖片，在分享流程連結時顯示為嵌入內容
+- 為可爬取的內容預先渲染流程
 
-Check out our [server side rendering guide](https://reactflow.dev/learn/advanced-use/ssr-ssg-configuration)
+查看我們的[伺服器端渲染指南](https://reactflow.dev/learn/advanced-use/ssr-ssg-configuration)
 
-## 2. Computing flows - hooks and helpers
+## 2. 計算流程 - hooks 和輔助函式
 
 <Bleed>
   <RemoteCodeViewer
@@ -70,13 +69,13 @@ Check out our [server side rendering guide](https://reactflow.dev/learn/advanced
   />
 </Bleed>
 
-One of the most difficult things about using React Flow is managing state and data flow, even though it’s really a general difficulty with React.
+使用 React Flow 最困難的事情之一是管理狀態和資料流，儘管這實際上是 React 的普遍困難。
 
-In the new release we added helpers to simplify getting data from connected nodes, updating node data, and managing the data between nodes. It’s nothing like fully-fledged state management but we are sure this can help folks who just need to do some simple data processing on the client-side to get up-and-running faster with their React Flow apps.
+在新版本中，我們添加了輔助函式來簡化從連接的節點獲取資料、更新節點資料以及管理節點之間的資料。它不像完整的狀態管理那麼強大，但我們確信這可以幫助那些只需要在客戶端進行一些簡單資料處理的人更快地啟動並運行他們的 React Flow 應用程式。
 
-Check out our [computing flows guide](https://reactflow.dev/learn/advanced-use/computing-flows)
+查看我們的[計算流程指南](https://reactflow.dev/learn/advanced-use/computing-flows)
 
-## 3. Dark mode
+## 3. 深色模式
 
 <Bleed>
   <RemoteCodeViewer
@@ -86,59 +85,59 @@ Check out our [computing flows guide](https://reactflow.dev/learn/advanced-use/c
   />
 </Bleed>
 
-React Flow finally comes with a built-in dark mode 🌚 We added a `colorMode` prop, where you can toggle between "light", "dark", or "system". Under the hood, React Flow just adds a class name to the wrapper, but we had to do a bunch of changes to make this possible. Now all of the default styles are using CSS variables, so you can easily build your own themes based on that.
+React Flow 終於內建了深色模式 🌚 我們添加了一個 `colorMode` 屬性，你可以在「light」、「dark」或「system」之間切換。在底層，React Flow 只是在包裝器中添加了一個類別名稱，但我們必須做很多更改才能實現這一點。現在所有預設樣式都使用 CSS 變數，因此你可以輕鬆地基於此建立自己的主題。
 
-Check out the [dark mode example](https://reactflow.dev/examples/styling/dark-mode/)
+查看[深色模式範例](https://reactflow.dev/examples/styling/dark-mode/)
 
-## 4. Better Dev Experience with TSDoc
+## 4. 透過 TSDoc 改善開發者體驗
 
 <Bleed>
   <Image
     src="/img/blog/v12/tsdoc.gif"
-    alt="IDE hover information for nodes prop, there is more information shown in React Flow 12 than in React Flow 11"
+    alt="節點屬性的 IDE 懸停資訊，React Flow 12 顯示的資訊比 React Flow 11 更多"
     width={907}
     height={720}
 />
 
 </Bleed>
 
-We now use TSDoc to create a better dev experience in your IDE to get more info about what a function or component does. We’ve been told our DX is pretty good already, but we’re always happy to make it even better 💅🏻
+我們現在使用 TSDoc 在你的 IDE 中創造更好的開發體驗，以獲取更多關於函式或元件功能的資訊。我們被告知我們的開發者體驗已經相當不錯，但我們總是樂於讓它變得更好 💅🏻
 
-**Bonus feature: Performance improvements**
+**額外功能：效能改進**
 
-We worked with [Ivan Akulov](https://3perf.com/) to improve the performance of React Flow, and we received some beautiful, detailed, well-explained PRs, and each one has made an impact on this release. We highly recommend taking a peek at some of Ivan's work:
+我們與 [Ivan Akulov](https://3perf.com/) 合作改進 React Flow 的效能，我們收到了一些精美、詳細、解釋清楚的 PR，每一個都對這個版本產生了影響。我們強烈建議看看 Ivan 的一些工作：
 
-- [Add performance tests for selecting, dragging, and remounting](https://github.com/xyflow/xyflow/pull/3685)
-- [Initial costs: Batch initial store updates together + more](https://github.com/xyflow/xyflow/pull/3677)
-- [Don’t rerender NodeRenderer and MiniMapNodes unless necessary](https://github.com/xyflow/xyflow/pull/3668)
+- [為選擇、拖曳和重新掛載添加效能測試](https://github.com/xyflow/xyflow/pull/3685)
+- [初始成本：批次處理初始儲存更新等](https://github.com/xyflow/xyflow/pull/3677)
+- [除非必要，否則不要重新渲染 NodeRenderer 和 MiniMapNodes](https://github.com/xyflow/xyflow/pull/3668)
 
-# Even more features!
+# 更多功能！
 
-Besides the new main features listed above, we added some other things that we wanted to include for a long time.
+除了上面列出的新主要功能外，我們還添加了一些我們長期以來想要包含的其他功能。
 
-- **[`useConnection` hook](/api-reference/hooks/use-connection):** With this hook you can access the ongoing connection. For example, you can use it for colorizing handles styling a custom connection line based on the current start / end handles.
-- **Controlled `viewport`:** This is an advanced feature. Possible use cases are to animate the viewport or round the transform for lower res screens for example. This features brings two new props: [`viewport`](/api-reference/react-flow#viewport) and [`onViewportChange`](/api-reference/react-flow#on-viewport-change).
-- **[`ViewportPortal`](/api-reference/components/viewport-portal) component:** This makes it possible to render elements in the viewport without the need to implement a custom node.
-- **[`onDelete`](/api-reference/react-flow#on-delete) handler**: We added a combined handler for `onDeleteNodes` and `onDeleteEdges` to make it easier to react to deletions.
-- **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) handler**: With this handler you can prevent/ manage deletions.
-- **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) prop:** This makes it possible to implement one validation function for all connections. It also gets called for programmatically added edges.
-- **[`autoPanSpeed`](/api-reference/react-flow#autoPanSpeed) prop:** For controlling the speed while auto panning.
-- **[`paneClickDistance`](/api-reference/react-flow#paneClickDistance) prop:** max distance between mousedown/up that will trigger a click.
-- **Background component**: add [`patternClassName`](/api-reference/components/background#pattern-class-name) prop to be able to style the background pattern by using a class name. This is useful if you want to style the background pattern with Tailwind for example.
-- **Node Resizer updates**: child nodes don't move when the group is resized, extent and expand is recognized correctly
-- **`onMove` callback** gets triggered for library-invoked viewport updates (like fitView or zoom-in)
-- **`deleteElements`** now returns deleted nodes and deleted edges
-- add **`origin` attribute** for nodes
-- add **`selectable` attribute** for edges
-- Correct types for `BezierEdge`, `StepEdge`, `SmoothStepEdge` and `StraightEdge` components
-- New edges created by the library only have `sourceHandle` and `targetHandle` attributes when those attributes are set. (We used to pass `sourceHandle: null` and `targetHandle: null`)
-- Edges do not mount/unmount when their z-index change
-- connection line knows about the target handle position so that the path is drawn correctly
-- `nodeDragThreshold` is 1 by default instead of 0
-- a better selection box usability (capture while dragging out of the flow)
-- add `selectable`, `deletable`, `draggable` and `parentId` to `NodeProps`
-- add a warning when styles not loaded
+- **[`useConnection` hook](/api-reference/hooks/use-connection)：** 使用此 hook，你可以存取正在進行的連接。例如，你可以使用它根據目前的起點／終點控制點為控制點著色或設計自訂連接線的樣式。
+- **受控的 `viewport`：** 這是一個進階功能。可能的使用案例包括動畫化視窗或為低解析度螢幕四捨五入轉換等。此功能帶來兩個新屬性：[`viewport`](/api-reference/react-flow#viewport) 和 [`onViewportChange`](/api-reference/react-flow#on-viewport-change)。
+- **[`ViewportPortal`](/api-reference/components/viewport-portal) 元件：** 這使得可以在視窗中渲染元素，而無需實作自訂節點。
+- **[`onDelete`](/api-reference/react-flow#on-delete) 處理器：** 我們為 `onDeleteNodes` 和 `onDeleteEdges` 添加了一個組合處理器，使對刪除的反應更容易。
+- **[`onBeforeDelete`](/api-reference/react-flow#on-before-delete) 處理器：** 使用此處理器，你可以防止／管理刪除。
+- **[`isValidConnection`](/api-reference/react-flow#is-valid-connection) 屬性：** 這使得可以為所有連接實作一個驗證函式。它也會為程式化添加的邊呼叫。
+- **[`autoPanSpeed`](/api-reference/react-flow#autoPanSpeed) 屬性：** 用於控制自動平移時的速度。
+- **[`paneClickDistance`](/api-reference/react-flow#paneClickDistance) 屬性：** 觸發點擊的滑鼠按下／釋放之間的最大距離。
+- **Background 元件：** 添加 [`patternClassName`](/api-reference/components/background#pattern-class-name) 屬性，以便能夠使用類別名稱設計背景圖案的樣式。如果你想用 Tailwind 設計背景圖案的樣式，這很有用。
+- **Node Resizer 更新：** 當群組調整大小時，子節點不會移動，正確識別範圍和擴展
+- **`onMove` 回呼** 會為函式庫呼叫的視窗更新（如 fitView 或放大）觸發
+- **`deleteElements`** 現在返回已刪除的節點和已刪除的邊
+- 為節點添加 **`origin` 屬性**
+- 為邊添加 **`selectable` 屬性**
+- 修正 `BezierEdge`、`StepEdge`、`SmoothStepEdge` 和 `StraightEdge` 元件的型別
+- 函式庫建立的新邊只在設定這些屬性時才具有 `sourceHandle` 和 `targetHandle` 屬性。（我們過去會傳遞 `sourceHandle: null` 和 `targetHandle: null`）
+- 當邊的 z-index 更改時，邊不會掛載／卸載
+- 連接線知道目標控制點的位置，因此可以正確繪製路徑
+- `nodeDragThreshold` 預設為 1 而不是 0
+- 更好的選擇框可用性（在拖出流程時捕獲）
+- 為 `NodeProps` 添加 `selectable`、`deletable`、`draggable` 和 `parentId`
+- 當樣式未載入時添加警告
 
-# And that's it!
+# 就是這樣！
 
-That's all for this release, thanks for sticking around and using React Flow 😊🌻 If you have any questions or feedback, please reach out on discord, github, or our [contact form](/contact).
+這就是此版本的全部內容，感謝你一直使用 React Flow 😊🌻 如果你有任何問題或回饋，請在 discord、github 或我們的[聯絡表單](/contact)上聯絡我們。

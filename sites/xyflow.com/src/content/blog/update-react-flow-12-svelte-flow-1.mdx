@@ -1,9 +1,9 @@
 ---
-title: 'Team Update – React Flow 12, Svelte Flow for Svelte 5, editable edges'
-intro: 'Let’s get into React Flow 12, Svelte Flow 1.0.0 in Svelte 5, a user survey, editable edges, and investigating our team’s working rhythm.'
+title: '團隊更新 – React Flow 12、Svelte 5 版 Svelte Flow、可編輯連線'
+intro: '讓我們來看看 React Flow 12、Svelte 5 中的 Svelte Flow 1.0.0、使用者調查、可編輯連線，以及探索我們團隊的工作節奏。'
 date: 29 April 2024
 authors: ['john']
-tags: ['update']
+tags: ['更新']
 image: '/img/blog/v11-reactflow-header.png'
 ---
 
@@ -11,39 +11,39 @@ import { Bleed } from 'nextra/components';
 import { Embed, Text } from 'xy-shared';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-Birds are chirping again– wait no, it’s snowing. Wait no. I don’t know anymore, but it’s certainly been a while since we told everyone about what’s going on with our team. Let’s get into React Flow 12, Svelte Flow 1.0.0 in Svelte 5, our 2023 end-of-year survey, editable edges, and investigating our team’s working rhythm.
+鳥兒又開始鳴叫了──等等不對，在下雪。等等不對。我已經搞不清楚了，但距離上次我們跟大家分享團隊近況確實已經有一段時間了。讓我們來看看 React Flow 12、Svelte 5 中的 Svelte Flow 1.0.0、2023 年終使用者調查、可編輯連線，以及探索我們團隊的工作節奏。
 
 ## React Flow 12 🪁
 
-At the beginning of the year, we asked folks to try out the staged version of React Flow 12 and to send us any bugs they found, and a huge thank you to those brave souls 🙏🏻. We’ve been taking our time to address them all before making sure we’re ready to release a stable version.
+今年初，我們邀請大家試用 React Flow 12 的測試版本並回報任何發現的錯誤，非常感謝那些勇敢的靈魂 🙏🏻。我們花時間處理了所有問題，確保準備好發布穩定版本。
 
-The big ticket items coming in this release are:
+這次發布的重點項目包括：
 
-1. **Support for SSG/ SSR**: you can now render flows on the server ([example](https://codesandbox.io/p/devbox/reactflow-v12-next-3xlx3n?workspaceId=25a0577d-5515-44d9-bab2-59b9181e01e3))
-2. **Computing flows**: new hooks and helper functions to simplify data flows ([example](https://codesandbox.io/p/sandbox/reactflow-reactive-flow-34lk98?file=/src/Flow.tsx))
-3. **Dark mode**: a new base style and easy way to switch between built in color modes ([example](https://codesandbox.io/p/sandbox/reactflow-dark-mode-256l99))
+1. **支援 SSG/ SSR**：現在可以在伺服器端渲染流程圖（[範例](https://codesandbox.io/p/devbox/reactflow-v12-next-3xlx3n?workspaceId=25a0577d-5515-44d9-bab2-59b9181e01e3)）
+2. **計算流程**：新的 hooks 和輔助函數來簡化資料流程（[範例](https://codesandbox.io/p/sandbox/reactflow-reactive-flow-34lk98?file=/src/Flow.tsx)）
+3. **深色模式**：新的基礎樣式和輕鬆切換內建顏色模式的方法（[範例](https://codesandbox.io/p/sandbox/reactflow-dark-mode-256l99)）
 
-[Here’s the full feature list](https://github.com/xyflow/xyflow/discussions/3764)
+[完整功能清單請見此處](https://github.com/xyflow/xyflow/discussions/3764)
 
-There have been lots of asks of “when?”, and our best answer is “soon!!” Getting this release out the door is our biggest priority right now, and we’re going to give it the time it will take. We're super excited to get this release out into the world.
+很多人問「什麼時候發布？」，我們最好的答案是「快了！！」讓這個版本問世是我們目前最優先的工作，我們會給它所需的時間。我們非常期待將這個版本發布到世界上。
 
-## Svelte Flow rewrite for Svelte 5 🚚
+## 為 Svelte 5 重寫 Svelte Flow 🚚
 
-Svelte 5 was announced last September, and we've been following the release closely! We like what we see, like fallback values for props which will help us as library maintainers. We have decided that our 1.0.0 release candidate will be written in Svelte 5 (Svelte Flow 0.0.x will remain available for anyone who wants to stick with Svelte 4), so stay tuned.
+Svelte 5 在去年九月發布，我們一直密切關注這個版本！我們喜歡所看到的內容，例如 props 的預設值，這對我們作為函式庫維護者很有幫助。我們決定 1.0.0 候選版本將使用 Svelte 5 編寫（Svelte Flow 0.0.x 將繼續提供給想要堅持使用 Svelte 4 的使用者），敬請期待。
 
-## 2023 End-of-year survey ✅
+## 2023 年終調查 ✅
 
-We sent out a survey to React Flow users at the end of last year, and we received 82 responses (thank you!!). We looked over the findings as a team and have been synthesizing them into a shareable report. The findings have already helped guide us in the right direction for the beginning of the year.
+我們在去年底向 React Flow 使用者發送了一份調查，收到了 82 份回覆（謝謝大家！！）。我們團隊檢視了調查結果，並將它們整合成可分享的報告。這些發現已經幫助我們在年初朝正確的方向前進。
 
-Here's a sneak-peek of the findings:
+以下是調查結果的搶先看：
 
-- The API reference is the most used section of our docs
-- Layouting, State Management, “Smart” Edges, and Performance were some of the biggest difficulties / needs from users
-- A quarter of people said they use ChatGPT to get help when they are having trouble with React Flow
+- API 參考是我們文件中最常使用的部分
+- 版面配置、狀態管理、「智慧」連線和效能是使用者遇到的一些最大困難/需求
+- 四分之一的人表示在使用 React Flow 遇到問題時會使用 ChatGPT 尋求協助
 
-## Fresh Examples 🧼
+## 全新範例 🧼
 
-**Devtools:** One response from the end-of-the-year survey was _"... i find myself constantly printing out the values of edges, nodes and how they change. Maybe a small tool that displays the details of the current element on click (only enabled in dev mode) would help a lot for new comers willing to deep dive."_ Here's an answer to that, and maybe a React Flow DevTools package in the future! [See the code here](https://reactflow.dev/learn/advanced-use/devtools-and-debugging)
+**開發工具：** 年終調查的一個回覆是「...我發現自己經常印出邊、節點的值以及它們如何變化。也許一個小工具可以在點擊時顯示當前元素的詳細資訊（僅在開發模式下啟用）會對想要深入研究的新手有很大幫助。」這是對這個需求的回應，未來可能會有 React Flow DevTools 套件！[請見此處的程式碼](https://reactflow.dev/learn/advanced-use/devtools-and-debugging)
 
 <Bleed>
   <RemoteCodeViewer
@@ -53,7 +53,7 @@ Here's a sneak-peek of the findings:
   />
 </Bleed>
 
-**Editable Edge:** We have been asked to make an editable edge for so. so. long. We finally got the time to try it out, and thanks to Hayleigh and Peter, we now have it as a fully functional [Pro example](https://reactflow.dev/examples/edges/editable-edge)!
+**可編輯連線：** 我們被要求製作可編輯連線已經很久很久了。我們終於有時間嘗試了，感謝 Hayleigh 和 Peter，我們現在有一個完整功能的 [Pro 範例](https://reactflow.dev/examples/edges/editable-edge)！
 
 <Bleed>
   <Embed
@@ -63,31 +63,31 @@ Here's a sneak-peek of the findings:
   />
 </Bleed>
 
-More examples
+更多範例
 
-- Layout in ElkJS with multiple connections: https://reactflow.dev/examples/layout/elkjs-multiple-handles
-- Drag multiple connection lines at once from different nodes: https://reactflow.dev/examples/edges/multi-connection-line
+- 使用 ElkJS 進行多連接點的版面配置：https://reactflow.dev/examples/layout/elkjs-multiple-handles
+- 同時從不同節點拖曳多條連線：https://reactflow.dev/examples/edges/multi-connection-line
 
-## Exploring working rhythms 🥁
+## 探索工作節奏 🥁
 
-We’ve talked a lot about how we do medium- and long-term planning as a team, trying to not put too many constraints on ourselves so that we can’t explore, but also not giving ourselves so much freedom that we feel lost or decision paralysis every morning.
+我們討論了很多關於如何作為團隊進行中長期規劃，試圖不給自己太多限制以便探索，但也不給自己太多自由以至於每天早上感到迷失或決策癱瘓。
 
-We all met up in Berlin in March and decided to take some pieces of [Shape Up](https://www.notion.so/Newsletter-Blogpost-Spring-2024-c3d6cdae5c9744edbb935435fed058cc?pvs=21) into our work. We’ve been trying out writing project proposals (called “pitches”) and to work in three-week cycles on the projects we choose at the beginning of that cycle. We’re learning a lot and maybe at some point we can make our work a bit more transparent by sharing this process with the community. Smells like another blog post 👀
+我們在三月於柏林碰面，決定將 [Shape Up](https://www.notion.so/Newsletter-Blogpost-Spring-2024-c3d6cdae5c9744edbb935435fed058cc?pvs=21) 的一些概念納入我們的工作中。我們一直在嘗試撰寫專案提案（稱為「pitches」），並在三週的週期內進行我們在週期開始時選擇的專案。我們學到了很多，也許在某個時候我們可以透過與社群分享這個過程，讓我們的工作更加透明。聞起來像是另一篇部落格文章 👀
 
-## Other thoughts
+## 其他想法
 
-We're hosting a Town Hall in our [discord](https://discord.gg/RJegxRHM?event=1234425553000599583)! On Tuesday, May 7th, we'll talk about what we've been working on recently, what's on our minds, and answer general questions about the library (no troubleshooting though). It's at 8:00 SF, 11:00 NY, 17:00 Germany, 20:30 India. [Add to your calendar](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NXRqcmFubnIycjJyb2JoaGZyajlnZ2V0cjIgY19kOTc3ZTY4MTY4ZmZlYjAyMmQzODVkYmEzZDhmOWY2ZDA2ZmQxZTFiNmViYTMyMWRkZTYyODMyZGE1NzRiMTJjQGc&tmsrc=c_d977e68168ffeb022d385dba3d8f9f6d06fd1e1b6eba321dde62832da574b12c%40group.calendar.google.com).
+我們在 [discord](https://discord.gg/RJegxRHM?event=1234425553000599583) 舉辦市政廳會議！5 月 7 日星期二，我們將討論最近的工作、我們的想法，並回答關於函式庫的一般問題（但不進行疑難排解）。時間是舊金山 8:00、紐約 11:00、德國 17:00、印度 20:30。[加到你的行事曆](https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NXRqcmFubnIycjJyb2JoaGZyajlnZ2V0cjIgY19kOTc3ZTY4MTY4ZmZlYjAyMmQzODVkYmEzZDhmOWY2ZDA2ZmQxZTFiNmViYTMyMWRkZTYyODMyZGE1NzRiMTJjQGc&tmsrc=c_d977e68168ffeb022d385dba3d8f9f6d06fd1e1b6eba321dde62832da574b12c%40group.calendar.google.com)。
 
-The [Open Canvas Working Group](https://www.canvasprotocol.org/) is kicking off to establish interoperability between infinite canvas tools. We’re following it! 👀
+[開放畫布工作小組](https://www.canvasprotocol.org/) 正在啟動，以建立無限畫布工具之間的互通性。我們正在關注！👀
 
-John went to FOSSBackstage in Berlin and [tooted about it](https://fosstodon.org/@johnrobbjr@mastodon.social).
+John 參加了柏林的 FOSSBackstage 並[發表了相關貼文](https://fosstodon.org/@johnrobbjr@mastodon.social)。
 
-Some numbers: We're up to 21k stars on Github, putting us in the top 1000 most-starred repos on Github. We now have 4k members in our [discord](https://discord.gg/RVmnytFmGW). We're up to 5k weekly installs of Svelte Flow (we were around 2k at the end of 2023).
+一些數據：我們在 Github 上達到了 21k 顆星，使我們進入 Github 上星數最多的前 1000 個儲存庫。我們的 [discord](https://discord.gg/RVmnytFmGW) 現在有 4k 名成員。Svelte Flow 的每週安裝量達到 5k（2023 年底約為 2k）。
 
-## We appreciate you! 🤗
+## 我們感謝你！🤗
 
-Thanks for y’all who test, use, share, subscribe, and support our libraries and ecosystems. Until next time!
+感謝所有測試、使用、分享、訂閱和支援我們函式庫及生態系統的人。下次見！
 
-The xyflow team
+xyflow 團隊
 
-Christopher, Hayleigh, John, Moritz, and Peter
+Christopher、Hayleigh、John、Moritz 和 Peter

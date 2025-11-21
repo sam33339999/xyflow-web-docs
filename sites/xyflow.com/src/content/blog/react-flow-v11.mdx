@@ -1,39 +1,39 @@
 ---
-title: React Flow 11 Release
-intro: 'A lot has happened since we published our last blog post six months ago. We got our first pro subscribers, we hired John who helps us with the docs, communication and community and we are all working full time on React Flow 🥳. Today we are releasing a new major version with lots of new features and very few breaking changes.'
+title: React Flow 11 發布
+intro: '自從我們六個月前發布上一篇部落格文章以來，發生了很多事情。我們獲得了第一批 pro 訂閱者，我們聘請了 John 協助我們處理文件、溝通和社群事務，而且我們現在都全職投入 React Flow 了 🥳。今天我們發布了一個新的主要版本，帶來許多新功能和極少的破壞性變更。'
 date: 28 September 2022
 authors: ['moritz']
-tags: ['react-flow', 'release']
+tags: ['react-flow', '發布']
 ---
 
 import { Bleed } from 'nextra/components';
 import { Emoji } from '@xyflow/xy-ui';
 import { Image } from 'xy-shared';
 
-A lot has happened since we published our last blog post six months ago. We got our first pro subscribers, we hired John who helps us with the docs, communication and community and we are all working full time on React Flow <Emoji content="🥳" />. Today we are releasing a new major version with lots of new features and very few breaking changes (unlike the last major update..).
+自從我們六個月前發布上一篇部落格文章以來，發生了很多事情。我們獲得了第一批 pro 訂閱者，我們聘請了 John 協助我們處理文件、溝通和社群事務，而且我們現在都全職投入 React Flow 了 <Emoji content="🥳" />。今天我們發布了一個新的主要版本，帶來許多新功能和極少的破壞性變更（與上次主要更新不同...）。
 
-**If you are looking for the information how to upgrade, please refer to the ["Migrate to v11" guide](https://reactflow.dev/learn/troubleshooting/migrate-to-v11/).**
+**如果你正在尋找如何升級的資訊，請參考[「遷移到 v11」指南](https://reactflow.dev/learn/troubleshooting/migrate-to-v11/)。**
 
-#### TLDR;
+#### 重點整理；
 
-- React Flow has a new package name -> `reactflow`
-- Better accessibility by default (keyboard controls, aria- defaults)
-- Cleaner edge routing for smoothstep and step edges
-- Better selectable edges with a new `interactionWidth` option
-- New hooks: `useNodesInitialized`, `useOnViewportChange` and `useOnSelectionChange`
+- React Flow 有一個新的套件名稱 -> `reactflow`
+- 預設更好的無障礙功能（鍵盤控制、aria- 預設值）
+- 更清晰的 smoothstep 和 step 連線路徑
+- 更好的可選擇連線，新的 `interactionWidth` 選項
+- 新的 hooks：`useNodesInitialized`、`useOnViewportChange` 和 `useOnSelectionChange`
 
-## <Emoji content="🎉" /> A New Package Name
+## <Emoji content="🎉" /> 新的套件名稱
 
-The biggest change, is that we got a new package name! A very nice person gave us the [`reactflow` npm package](https://www.npmjs.com/reactflow) name and we also got the [`@reactflow` organization](https://www.npmjs.com/org/reactflow). So from now on, you can install React Flow via:
+最大的變化是我們獲得了一個新的套件名稱！一位非常好的人給了我們 [`reactflow` npm 套件](https://www.npmjs.com/reactflow)名稱，我們也獲得了 [`@reactflow` 組織](https://www.npmjs.com/org/reactflow)。所以從現在開始，你可以透過以下方式安裝 React Flow：
 
 ```bash npm2yarn
 npm install reactflow
 ```
 
-and then use it as before:
+然後像以前一樣使用它：
 
 ```jsx
-import { ReactFlow,  Controls, Background } from '@xyflow/react';
+import { ReactFlow,  Controls, Background } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
 ...
@@ -44,52 +44,52 @@ import '@xyflow/react/dist/style.css';
 </ReactFlow>
 ```
 
-Looks nice, right? Under the hood we are publishing packages separately in the `@reactflow` organization. These packages are used by the main `reactflow` package and also can be [used separately](https://reactflow.dev/learn/concepts/packages/). For this we've rebuilt React Flow to a monorepo powered by [Turborepo](https://turborepo.org/), [Rollup](https://rollupjs.org/) and [Vite](https://vitejs.dev/).
+看起來不錯，對吧？在底層，我們在 `@reactflow` 組織中單獨發布套件。這些套件由主要的 `reactflow` 套件使用，也可以[單獨使用](https://reactflow.dev/learn/concepts/packages/)。為此，我們將 React Flow 重建為由 [Turborepo](https://turborepo.org/)、[Rollup](https://rollupjs.org/) 和 [Vite](https://vitejs.dev/) 提供支援的 monorepo。
 
-## <Emoji content="✨" /> New Features
+## <Emoji content="✨" /> 新功能
 
-For this release, we focused on accessibility (nothing better for a v11 release than a11y!) and edges, with some other smaller updates and stability fixes along the way.
+對於這次發布，我們專注於無障礙功能（沒有什麼比 a11y 更適合 v11 發布了！）和連線，以及一些其他較小的更新和穩定性修復。
 
-### Accessibility
+### 無障礙功能
 
-Accessibility was quite limited in the previous versions and we put a lot of work into it to make it better by default. You can now interact with a flow with your keyboard. You can focus nodes and edges with `Tab`, select an element with `Enter` and move nodes around with the arrow keys.
+在之前的版本中，無障礙功能相當有限，我們投入了大量工作使其預設更好。現在你可以使用鍵盤與流程圖互動。你可以使用 `Tab` 聚焦節點和連線，使用 `Enter` 選擇元素，並使用方向鍵移動節點。
 
-Moreover we added default aria-labels to all elements on the pane and made them configurable with new `ariaLabel` options for nodes and edges. You can refer to the new [Accessibility guide](https://reactflow.dev/learn/advanced-use/accessibility) for more information.
+此外，我們為畫布上的所有元素添加了預設的 aria-labels，並使用新的 `ariaLabel` 選項讓節點和連線可以配置。你可以參考新的[無障礙指南](https://reactflow.dev/learn/advanced-use/accessibility)了解更多資訊。
 
-### Edge Routing and Edge Selection
+### 連線路徑和連線選擇
 
-Whereas in v10, the nodes were a bit more in the spotlight, this time we've put a special focus on the edges. A lot of people complained that thin edges are hard to select. We've fixed that by introducing a new [`interactionWidth` edge option](https://reactflow.dev/api-reference/types/edge). Its default value is 20, meaning that a 20px wide invisible edge gets painted below the visible edge for an easier interaction.
+在 v10 中，節點稍微更受關注，這次我們特別關注連線。很多人抱怨細連線很難選擇。我們透過引入新的 [`interactionWidth` 連線選項](https://reactflow.dev/api-reference/types/edge)來解決這個問題。它的預設值是 20，意味著在可見連線下方繪製了一條 20px 寬的不可見連線，以便更容易互動。
 
-Another big update is a complete rewrite of the edge routing for `smoothstep` and `step` edge types.
+另一個重大更新是完全重寫了 `smoothstep` 和 `step` 連線類型的連線路徑。
 
 <Bleed>
   <Image
     src="/img/blog/v11/rf-edge-routing.png"
-    alt="Edge routing comparison v10 and v11"
+    alt="連線路徑比較 v10 和 v11"
     width={800}
     height={615}
     wide
   />
 </Bleed>
 
-That's not all. We also revised the edge [update behavior](https://twitter.com/reactflowdev/status/1564966917517021184), added [`pathOptions`](https://reactflow.dev/api-reference/types/edge) for `default` and `smoothstep` edges and a new `deletable` flag. For making it easier to develop custom edges we are exporting a [`<BaseEdge />` component](https://reactflow.dev/api-reference/components/base-edge) that can draw the invisible helper edge and the label for you.
+這還不是全部。我們還修訂了連線[更新行為](https://twitter.com/reactflowdev/status/1564966917517021184)，為 `default` 和 `smoothstep` 連線添加了 [`pathOptions`](https://reactflow.dev/api-reference/types/edge)，以及一個新的 `deletable` 標記。為了讓開發自訂連線更容易，我們導出了一個 [`<BaseEdge />` 元件](https://reactflow.dev/api-reference/components/base-edge)，它可以為你繪製不可見的輔助連線和標籤。
 
-### Node Positioning
+### 節點定位
 
-To make layouting easier, we've added a new prop called [`nodeOrigin`](https://reactflow.dev/api-reference/react-flow). The origin was always in the top left, meaning that you need to subtract half the width and height to center a node. Now you can set `nodeOrigin={[0.5, 0.5]}` to set the origin to the center or `nodeOrigin={[1, 1]}` to set it to the bottom right.
+為了讓版面配置更容易，我們添加了一個名為 [`nodeOrigin`](https://reactflow.dev/api-reference/react-flow) 的新 prop。原點始終在左上角，這意味著你需要減去一半的寬度和高度來居中節點。現在你可以設置 `nodeOrigin={[0.5, 0.5]}` 將原點設置為中心，或 `nodeOrigin={[1, 1]}` 將其設置為右下角。
 
-Furthermore we've implemented a [`useNodesInitialized` hook](https://reactflow.dev/api-reference/hooks/use-nodes-initialized). It returns a boolean that can be used to determine if all nodes are initialized and a new layout should be done, for example. Another small change is that you can pan over a node when it's not draggable which makes it easier to navigate bigger flows.
+此外，我們實現了一個 [`useNodesInitialized` hook](https://reactflow.dev/api-reference/hooks/use-nodes-initialized)。它返回一個布林值，可用於確定所有節點是否已初始化，例如是否應該進行新的版面配置。另一個小變化是，當節點不可拖曳時，你可以在節點上平移，這使得導航更大的流程圖更容易。
 
-### New Hooks
+### 新的 Hooks
 
-In the future we want to get rid of some `<ReactFlow />` component props (there are 140+ <Emoji content="😵‍💫" />). One idea is to replace some props through hooks. With this release we are adding the [`useOnViewportChange`](https://reactflow.dev/api-reference/hooks/use-on-viewport-change) and the [`useOnSelectionChange`](https://reactflow.dev/api-reference/hooks/use-on-selection-change) hook. Before this release you could only listen to a viewport change by using `onMoveStart`, `onMove` and `onMoveEnd`. With the new `useOnViewportChange` hook, you can easily listen to changes in every component.
+未來我們希望擺脫一些 `<ReactFlow />` 元件 props（有 140+ 個 <Emoji content="😵‍💫" />）。一個想法是透過 hooks 替換一些 props。在這次發布中，我們添加了 [`useOnViewportChange`](https://reactflow.dev/api-reference/hooks/use-on-viewport-change) 和 [`useOnSelectionChange`](https://reactflow.dev/api-reference/hooks/use-on-selection-change) hook。在此版本之前，你只能透過使用 `onMoveStart`、`onMove` 和 `onMoveEnd` 來監聽視口變化。使用新的 `useOnViewportChange` hook，你可以輕鬆地在每個元件中監聽變化。
 
-### Miscellaneous
+### 其他
 
-The background got a [new variant `cross`](https://reactflow.dev/api-reference/components/background/#prop-types), and you can control the gap size horizontally and vertically individually for all variants. We've added new handlers that make it easier to add mouse event handlers to the pane (the area below the nodes): [`onPaneMouseEnter`, `onPaneMouseMove` and `onPaneMouseLeave`](https://reactflow.dev/api-reference/react-flow/#pane). Last but not least the cursor is a grabbing hand while dragging the pane or a node and you pan over nodes when they are not draggable. Strange that this wasn't always the case?!
+背景獲得了[新的變體 `cross`](https://reactflow.dev/api-reference/components/background/#prop-types)，你可以為所有變體單獨控制水平和垂直的間隙大小。我們添加了新的處理程序，使向畫布（節點下方的區域）添加滑鼠事件處理程序更容易：[`onPaneMouseEnter`、`onPaneMouseMove` 和 `onPaneMouseLeave`](https://reactflow.dev/api-reference/react-flow/#pane)。最後但同樣重要的是，在拖曳畫布或節點時游標是抓取手勢，當節點不可拖曳時你可以在節點上平移。奇怪的是這不是一直都是這樣？！
 
-## What's Next?
+## 接下來是什麼？
 
-React Flow is not just the library. It's the website with the docs and the examples, the pro platform and also the community on Github and Discord! In the upcoming weeks and months we want to make the onboarding for developers and especially beginner developers easier. For that we are working on an in-depth getting started guide and easier to understand docs in general. We are also re-brushing the pro platform so that you can get more out of the pro examples.
+React Flow 不僅僅是函式庫。它是帶有文件和範例的網站、pro 平台以及 Github 和 Discord 上的社群！在接下來的幾週和幾個月裡，我們希望讓開發者，特別是初學者開發者的上手更容易。為此，我們正在製作深入的入門指南和更容易理解的文件。我們還在重新整理 pro 平台，以便你可以從 pro 範例中獲得更多。
 
-Thanks for being a part of the React Flow community, and happy coding! <Emoji content="✌🏻" />
+感謝你成為 React Flow 社群的一份子，祝編碼愉快！<Emoji content="✌🏻" />

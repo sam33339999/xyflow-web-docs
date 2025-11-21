@@ -1,9 +1,9 @@
 ---
-title: 'v11.5.0 Release'
-intro: Hello again! I am super excited to share the latest improvements of React Flow. The new auto pan features and connection radius makes it way easier to connect nodes and work with bigger flows. On top of that we improved the usability on touch devices.
+title: 'v11.5.0 發布'
+intro: 又見面了！我非常興奮能分享 React Flow 的最新改進。新的自動平移功能和連接半徑讓連接節點和處理更大的流程圖變得更容易。除此之外，我們還改進了觸控裝置的可用性。
 date: 26 January 2023
 authors: ['moritz']
-tags: ['react-flow', 'update']
+tags: ['react-flow', '更新']
 image: /img/blog/v10-header.png
 ---
 
@@ -11,58 +11,58 @@ import { Bleed } from 'nextra/components';
 import { Emoji } from '@xyflow/xy-ui';
 import { Image } from 'xy-shared';
 
-Hello again! I am super excited to share the latest improvements of React Flow. The new auto pan features and connection radius makes it way easier to connect nodes and work with bigger flows. On top of that we improved the usability on touch devices.
+又見面了！我非常興奮能分享 React Flow 的最新改進。新的自動平移功能和連接半徑讓連接節點和處理更大的流程圖變得更容易。除此之外，我們還改進了觸控裝置的可用性。
 
-## Auto pan
+## 自動平移
 
-After working a bit with Blender geometry nodes I knew that I wanted to add this feature. Whenever you drag a node, a selection box or a connection line to the border of the pane, it automatically pans into that direction. This enables the users to connect nodes without having to scroll around and organize nodes more easily. If you don't like it, you can disable this new feature with [`autoPanOnConnect={false}`](https://reactflow.dev/api-reference/react-flow#autopanonconnect-1) and [`autoPanOnNodeDrag={false}`](https://reactflow.dev/api-reference/react-flow/#autopanonnodedrag-1).
+在使用 Blender 幾何節點工作一段時間後，我知道我想添加這個功能。每當你將節點、選擇框或連線線拖到畫布邊框時，它會自動朝那個方向平移。這讓使用者可以在不需要滾動的情況下連接節點，並更輕鬆地組織節點。如果你不喜歡它，可以使用 [`autoPanOnConnect={false}`](https://reactflow.dev/api-reference/react-flow#autopanonconnect-1) 和 [`autoPanOnNodeDrag={false}`](https://reactflow.dev/api-reference/react-flow/#autopanonnodedrag-1) 停用這個新功能。
 
 <Bleed>
   <Image
     src="/img/blog/v11-5/auto-pan.gif"
-    alt="Auto pan demo."
+    alt="自動平移展示。"
     wide
     width={822}
     height={468}
   />
 </Bleed>
 
-## Connection radius
+## 連接半徑
 
-There are [several](https://reactflow.dev/examples/nodes/easy-connect/) [ways](https://reactflow.dev/examples/nodes/proximity-connect/) to connect nodes. The built-in way is to drag a connection line from one handle to another. To make this easier we added the [`connectionRadius` prop](https://reactflow.dev/api-reference/react-flow/#connectionradius-1). The connection radius specifies the radius around a handle where you can drop the connection line. There is no need to drop it directly above a handle any more <Emoji content="🙌" />.
+有[幾種](https://reactflow.dev/examples/nodes/easy-connect/)[方式](https://reactflow.dev/examples/nodes/proximity-connect/)來連接節點。內建的方式是從一個控制點拖曳連線線到另一個控制點。為了讓這更容易，我們添加了 [`connectionRadius` prop](https://reactflow.dev/api-reference/react-flow/#connectionradius-1)。連接半徑指定控制點周圍的半徑，你可以在該範圍內放下連線線。不再需要將它直接放在控制點上方 <Emoji content="🙌" />。
 
 <Bleed>
   <Image
     src="/img/blog/v11-5/connection-radius.gif"
-    alt="Connection radius demo."
+    alt="連接半徑展示。"
     wide
     width={822}
     height={468}
   />
 </Bleed>
 
-## Error handling
+## 錯誤處理
 
-We added a new [`onError`](https://reactflow.dev/api-reference/react-flow/#onerror-1) handler that you can use to get notified when an error happens. This can be useful if you want to log errors or show a notification to the user.
+我們添加了一個新的 [`onError`](https://reactflow.dev/api-reference/react-flow/#onerror-1) 處理程序，你可以使用它在發生錯誤時收到通知。如果你想記錄錯誤或向使用者顯示通知，這會很有用。
 
-## Touch support
+## 觸控支援
 
-Since v10 we support connections on touch devices via tap connect. From now on you can also drag a connection line on touch devices as you would do it with a mouse. Of course the auto pan and connection radius features work on touch devices, too!
+自 v10 以來，我們透過點擊連接支援觸控裝置上的連接。從現在開始，你也可以在觸控裝置上拖曳連線線，就像使用滑鼠一樣。當然，自動平移和連接半徑功能也適用於觸控裝置！
 
-## Node types (TS only)
+## 節點類型（僅限 TS）
 
-We extended the generic `Node` type so that you can now specify the `type` by passing a second param to `Node`.
+我們擴展了泛型 `Node` 類型，現在你可以透過向 `Node` 傳遞第二個參數來指定 `type`。
 
 ```ts
 type MyCustomNode = Node<MyCustomNodeData, 'custom-node-type'>;
 ```
 
-This allows you to create more specific node types that are aware of their `data` structure and `type`.
+這讓你可以創建更具體的節點類型，這些類型知道它們的 `data` 結構和 `type`。
 
 # <Emoji content="👉" /> Node Resizer 2.0 <Emoji content="👈" />
 
-We also released a new major version of the [`@reactflow/node-resizer` package](https://reactflow.dev/api-reference/components/node-resizer). You can now pass a `shouldResize` handler that allows you to cancel a resize event. In addition we added a `direction` attribute to the resize params for `onResize` and `shouldResize`.
+我們還發布了 [`@reactflow/node-resizer` 套件](https://reactflow.dev/api-reference/components/node-resizer)的新主要版本。現在你可以傳遞一個 `shouldResize` 處理程序來取消調整大小事件。此外，我們為 `onResize` 和 `shouldResize` 的調整大小參數添加了一個 `direction` 屬性。
 
-## That's it!
+## 就這樣了！
 
-If you have any questions or feedback, you can contact me on [Twitter](https://twitter.com/moklick) or join our [Discord](https://discord.com/invite/RVmnytFmGW). React Flow is an independent company financed by its users. If you want to support us you can [sponsor us](https://github.com/sponsors/xyflow) on Github or subscribe to one of our [Pro plans](https://pro.reactflow.dev/).
+如果你有任何問題或回饋，可以在 [Twitter](https://twitter.com/moklick) 上聯繫我或加入我們的 [Discord](https://discord.com/invite/RVmnytFmGW)。React Flow 是一家獨立公司，由其使用者資助。如果你想支援我們，可以在 Github 上[贊助我們](https://github.com/sponsors/xyflow)或訂閱我們的 [Pro 計劃](https://pro.reactflow.dev/)之一。

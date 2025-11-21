@@ -1,9 +1,9 @@
 ---
-title: 'What’s new at React Flow - Fall 2022 🍂'
-intro: 'A dispatch straight from our desks about what’s happened in the last couple of months at React Flow: updates, news, and a peek behind-the-scenes.'
+title: 'React Flow 最新消息 - 2022 秋季 🍂'
+intro: '直接從我們的辦公桌發送的訊息，關於 React Flow 在過去幾個月發生的事情：更新、新聞，以及幕後花絮。'
 date: 1 November 2022
 authors: ['john']
-tags: ['react-flow', 'update']
+tags: ['react-flow', '更新']
 image: /img/blog/v10-header.png
 ---
 
@@ -11,20 +11,20 @@ import { Bleed } from 'nextra/components';
 import { Emoji } from '@xyflow/xy-ui';
 import { Image } from 'xy-shared';
 
-Howdy! Here’s a dispatch straight from our desks about what’s happened in the last couple of months at React Flow: updates, news, and a peek behind-the-scenes. Here we go.
+您好！這是直接從我們辦公桌發送的訊息，關於 React Flow 在過去幾個月發生的事情：更新、新聞，以及幕後花絮。開始吧。
 
-## Launching v11 and post-release housekeeping
+## 推出 v11 及發布後的維護工作
 
-React Flow v11 went live in early October (wahoo! <Emoji content="🎉" />), and Moritz wrote a [whole blog post](https://reactflow.dev/blog/react-flow-v11/) all about it if you haven't seen yet.
+React Flow v11 在十月初上線了（太棒了！<Emoji content="🎉" />），如果您還沒看過，Moritz 寫了一篇[完整的部落格文章](https://reactflow.dev/blog/react-flow-v11/)介紹它。
 
-Post-launch, we took a few weeks to tend to our current structures. We made some fixes to accessibility updates from v11 (thanks to some wonderful user feedback <Emoji content="💕" />), added the new props `nodesFocusable` and `edgesFocusable` to make the keyboard handling better configurable , and took some time to refocus ourselves for the end of the year. (Shout-out to Supabase for the inspiration on [post-release weeks](https://github.com/supabase/supabase/releases/tag/0.22.09).)
+發布後，我們花了幾週時間整理目前的結構。我們修復了 v11 中無障礙功能更新的一些問題（感謝一些很棒的使用者回饋 <Emoji content="💕" />），新增了 `nodesFocusable` 和 `edgesFocusable` 屬性以使鍵盤處理更易於設定，並花了一些時間為年底重新聚焦。（向 Supabase 的[發布後週](https://github.com/supabase/supabase/releases/tag/0.22.09)致敬。）
 
-Slowly but surely, folks are starting to use our new package name. `react-flow-renderer` is dead, long live `reactflow`! (data from [npm trends](https://npmtrends.com/react-flow-renderer-vs-reactflow))
+慢慢地但確實地，大家開始使用我們的新套件名稱。`react-flow-renderer` 已經過時，`reactflow` 萬歲！（數據來自 [npm trends](https://npmtrends.com/react-flow-renderer-vs-reactflow)）
 
 <Bleed>
   <Image
     src="/img/blog/fall-2022/package-stats.png"
-    alt="graph comparing npm installs of react-flow-renderer npm installs versus reactflow"
+    alt="比較 react-flow-renderer 與 reactflow npm 安裝量的圖表"
     width={1492}
     height={1076}
     caption={
@@ -35,82 +35,82 @@ Slowly but surely, folks are starting to use our new package name. `react-flow-r
   />
 </Bleed>
 
-## Examples, examples, examples
+## 範例、範例、範例
 
-We’ve added a bunch of new examples to the docs including:
+我們在文件中新增了許多新範例，包括：
 
-- [Collision Detection](https://reactflow.dev/examples/interaction/collision-detection/)
-- [Easy Connect](https://reactflow.dev/examples/nodes/easy-connect/)
-- [Download Image](https://reactflow.dev/examples/misc/download-image/)
-- [Tailwind Implementation](https://reactflow.dev/examples/styling/tailwind/)
-- [Turborepo style](https://reactflow.dev/examples/styling/turbo-flow/)
-- [Light / Dark Mode](https://reactflow.dev/examples/styling/styled-components/)
-- [Workflow Builder](https://reactflow.dev/examples/layout/workflow-builder) (aka the “taco flow” for Pro subscribers)
+- [碰撞偵測](https://reactflow.dev/examples/interaction/collision-detection/)
+- [輕鬆連接](https://reactflow.dev/examples/nodes/easy-connect/)
+- [下載圖片](https://reactflow.dev/examples/misc/download-image/)
+- [Tailwind 實作](https://reactflow.dev/examples/styling/tailwind/)
+- [Turborepo 風格](https://reactflow.dev/examples/styling/turbo-flow/)
+- [淺色/深色模式](https://reactflow.dev/examples/styling/styled-components/)
+- [工作流程建構器](https://reactflow.dev/examples/layout/workflow-builder)（又稱 Pro 訂閱者的「taco flow」）
 
 <Bleed>
   <Image
     src="/img/blog/fall-2022/examples-fallblog.gif"
-    alt="Illustrations of the Easy Connect, Collision Detection, and Turborepo examples"
+    alt="輕鬆連接、碰撞偵測和 Turborepo 範例的插圖"
     width={1800}
     height={450}
     wide
   />
 </Bleed>
 
-## Our first round of user research
+## 我們的首次使用者研究
 
-With the indispensable help of [Eileen](https://bumble.blue/), we talked to some [React Flow Pro](https://pro.reactflow.dev/) subscribers and asked them about what they expect and need from us. It was great to talk to people using React Flow on a daily basis in ways we didn’t imagine before. We’ll be doing ongoing user research with people like yourself! If you’re up for helping us with that, keep your eyes on our [Discord](https://discord.gg/RVmnytFmGW), [Twitter](https://twitter.com/xyflowdev), or sign up for our Newsletter:
+在 [Eileen](https://bumble.blue/) 不可或缺的協助下，我們與一些 [React Flow Pro](https://pro.reactflow.dev/) 訂閱者交談，詢問他們對我們的期望和需求。與那些以我們之前未曾想像的方式每天使用 React Flow 的人交談真是太棒了。我們將持續與像您這樣的人進行使用者研究！如果您願意幫助我們，請關注我們的 [Discord](https://discord.gg/RVmnytFmGW)、[Twitter](https://twitter.com/xyflowdev)，或訂閱我們的電子報：
 
-We’ll be sharing out some of those findings from our research at our lightning talk at React Day Berlin in December - if you’re coming, let us know so we can say hi 👋🏻
+我們將在十二月的 React Day Berlin 閃電演講中分享一些研究發現——如果您要來，請告訴我們，這樣我們可以打招呼 👋🏻
 
-## Explaining ourselves better
+## 更好地解釋我們自己
 
 <Bleed>
   <Image
     src="/img/blog/fall-2022/handles-definition.png"
-    alt="a node with a dot on each side. Each dot is called a handle"
+    alt="一個節點，每邊都有一個點。每個點都稱為控制點"
     width={1456}
     height={520}
     wide
   />
 </Bleed>
 
-We also **added some basic explainers to the docs** (answering questions like [“what is a handle?”](https://reactflow.dev/learn/concepts/terms-and-definitions/#handles)) to encourage easier onboarding for folks who are new to React Flow.
+我們還**在文件中新增了一些基本說明**（回答諸如[「什麼是控制點？」](https://reactflow.dev/learn/concepts/terms-and-definitions/#handles)之類的問題），以鼓勵 React Flow 新手更容易上手。
 
-We also changed our docs to make it clear that **anyone is allowed to remove the attribution** (even without a subscription). React Flow is under an [MIT License](https://github.com/xyflow/xyflow/blob/main/LICENSE), so you can do anything you want with the code.
+我們也更改了文件，明確指出**任何人都可以移除署名**（即使沒有訂閱）。React Flow 採用 [MIT 授權](https://github.com/xyflow/xyflow/blob/main/LICENSE)，因此您可以對程式碼做任何您想做的事情。
 
-## In the office
+## 在辦公室
 
 <Bleed>
   <Image
     src="/img/blog/fall-2022/office-fall.jpeg"
-    alt="Pictures of a dog in an office, Christopher and Moritz looking at a whiteboard cardboard template, whiteboard sketches, and a hat with the React Flow logo "
+    alt="辦公室裡的狗、Christopher 和 Moritz 看著白板紙板模板、白板草圖以及帶有 React Flow 標誌的帽子的照片"
     width={1800}
     height={716}
     wide
   />
 </Bleed>
 
-Over at our office in Kreuzberg, Berlin, we put up a whiteboard, ordered some embroidered hats, had a 4-legged visitor, and continue to be entertained by the ongoing construction site across the street.
+在我們位於柏林克羅伊茨貝格的辦公室，我們掛上了白板、訂購了一些刺繡帽子、有一位四條腿的訪客，並繼續被街對面正在進行的建築工地娛樂著。
 
-## What's next?
+## 接下來是什麼？
 
-As we move into the winter, we’re thinking about how we want to wrap up this year, and what 2023 will bring. Some of the big questions we’re asking ourselves these days are:
+隨著我們進入冬季，我們正在思考如何結束今年，以及 2023 年將帶來什麼。我們最近問自己的一些大問題是：
 
-- How might we help devs to improve the UX of their flows? (maybe themes, guides about styling, or sharing more custom styles?)
-- Giving more opportunity for feedback and discussion with the React Flow community
-- Show and tell more openly about what we do and how we do it at React Flow
+- 我們如何幫助開發者改善他們流程的使用者體驗？（也許是主題、樣式指南，或分享更多自訂樣式？）
+- 為 React Flow 社群提供更多回饋和討論的機會
+- 更公開地展示和講述我們在 React Flow 做什麼以及如何做
 
-And finally, Moritz made this _handy_ custom node.
+最後，Moritz 製作了這個_方便_的自訂節點。
 
 <Image
   src="/img/blog/fall-2022/nicetomeetyou.gif"
-  alt="a gif of two nodes shaking hands. Node 1 label says 'nice to'. Node 2 label says 'meet you.'"
+  alt="兩個節點握手的 gif。節點 1 的標籤寫著「很高興」。節點 2 的標籤寫著「認識你」。"
   width={586}
   height={230}
   wide
 />
 
-Happy coding and see you around!
+祝編程愉快，再見！
 
 John

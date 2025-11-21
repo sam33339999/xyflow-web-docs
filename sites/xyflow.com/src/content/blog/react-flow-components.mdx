@@ -1,9 +1,9 @@
 ---
-title: 'Introducing React Flow UI - powered by shadcn CLI'
-description: Some words
+title: '介紹 React Flow UI - 由 shadcn CLI 驅動'
+description: 一些話
 date: 4 November 2024
 authors: ['hayleigh']
-tags: ['react-flow', 'ui', 'update']
+tags: ['react-flow', 'ui', '更新']
 image: '/img/blog/react-flow-components/header.png'
 ---
 
@@ -12,63 +12,34 @@ import { Embed, Text, Image } from 'xy-shared';
 
 <Image
   src="/img/blog/react-flow-components/header.png"
-  alt="A terminal command that reads 'npx shadcn add https://ui.reactflow.dev/database-schema-node'"
+  alt="一個終端機指令，內容為 'npx shadcn add https://ui.reactflow.dev/database-schema-node'"
 />
 
-_**Update July 2025**: "React Flow UI" was formerly known as "React Flow Components". We
-renamed it because it now includes both components and templates. Additionally, since it's
-built on shadcn/ui, the "UI" naming makes it easier for developers to recognize the
-connection and understand what we offer. The following text was updated to match the new
-naming._
+_**2025 年 7 月更新**：「React Flow UI」原名為「React Flow Components」。我們重新命名是因為它現在同時包含元件和模板。此外，由於它建構在 shadcn/ui 之上，「UI」這個名稱讓開發者更容易識別這個連結並理解我們提供的內容。以下文字已更新以符合新的命名。_
 
-At xyflow we try to pay close attention to the developer experience when using our
-libraries or our docs: we have a huge collection of examples, tutorials that walk you
-through development from scratch, and
-[starter apps on CodeSandbox](https://codesandbox.io/p/sandbox/react-flow-starter-ts-r69228).
-This great experience starts to fall away once you move to your own apps, though.
+在 xyflow，我們非常注重使用我們的程式庫或文件時的開發者體驗：我們有大量的範例集合、從零開始引導您開發的教學，以及 [CodeSandbox 上的入門應用程式](https://codesandbox.io/p/sandbox/react-flow-starter-ts-r69228)。然而，一旦您轉移到自己的應用程式，這種出色的體驗就會開始消失。
 
-Our users have always been excited to show us what they've been building, and over time we
-noticed that many React Flow projects are defining similar components in their flows. This
-got us thinking: how can we cut down on all the duplicated work folks are doing and make
-it easier for our users to hit the ground running?
+我們的使用者一直很興奮地向我們展示他們正在建構的內容，隨著時間的推移，我們注意到許多 React Flow 專案在其流程中定義了類似的元件。這讓我們開始思考：我們如何減少大家正在做的重複工作，讓我們的使用者更容易快速上手？
 
-## The initial idea: a UI library for React Flow
+## 最初的想法：為 React Flow 打造 UI 程式庫
 
-Our first instinct was to build a companion ui package that provides some pre-built nodes
-and edges. We had some experience with this in the past, our node resizer component
-started as a separate package before being brought into the core library.
+我們的第一反應是建構一個配套的 UI 套件，提供一些預建的節點和邊緣。我們在這方面有一些經驗，我們的節點調整大小元件最初是一個獨立套件，之後才被整合到核心程式庫中。
 
-On the surface this sounds like a great idea, but after a bit of thinking we realized
-there was a big downside to taking this approach. Compared to similar libraries, React
-Flow is designed to be fairly low-level and with a high amount of customizability. How
-would users customize and style components hidden away inside a library?
+表面上這聽起來是個好主意，但經過一番思考後，我們意識到採用這種方法有一個很大的缺點。與類似的程式庫相比，React Flow 被設計為相當低階並具有高度可客製化性。使用者如何客製化和設定隱藏在程式庫內部的元件樣式？
 
-After some consideration, we decided this approach wasn't going to work for us for a few
-reasons:
+經過一番考慮，我們決定這種方法不適合我們，原因如下：
 
-- Building flexible, reusable components that could be styled and used across different
-  apps would be too complex.
+- 建構靈活、可重複使用且可以設定樣式並在不同應用程式中使用的元件會太複雜。
 
-- If users needed features we didn't anticipate, they would have to fork the component
-  library and add it themselves; negating a lot of the benefits of us developing a library
-  in the first place.
+- 如果使用者需要我們未預期的功能，他們將不得不分叉元件程式庫並自己添加；這會否定我們開發程式庫的許多好處。
 
-- It's important that React Flow stays our primary focus, and maintaining a separate
-  component library would take too much time away from the core library.
+- React Flow 保持我們的主要焦點很重要，維護一個獨立的元件程式庫會佔用太多核心程式庫的時間。
 
-## Shadcn and a new approach to component libraries
+## Shadcn 與元件程式庫的新方法
 
-[Shadcn/ui](https://ui.shadcn.com) is a component "library" that has been steadily gaining
-hype and adoption for some time now. The premise is simple: instead of providing an opaque
-package of components, shadcn provides the source code for each component and expects you
-to vendor the code into your own projects. It calls back to the days before npm and
-bundlers and honestly it can feel quite nice; when we rebuilt our docs site we lent
-heavily into shadcn for many of our ui components.
+[Shadcn/ui](https://ui.shadcn.com) 是一個元件「程式庫」，一段時間以來一直在穩步獲得關注和採用。前提很簡單：shadcn 不提供不透明的元件套件，而是為每個元件提供原始碼，並期望您將程式碼嵌入到自己的專案中。這讓人想起 npm 和打包工具出現之前的日子，說實話感覺很不錯；當我們重建文件網站時，我們大量使用 shadcn 來處理許多 UI 元件。
 
-This approach felt like it solved a lot of the problems we had with publishing a
-standalone package, and so at the beginning of the year a handful of us got to work trying
-to build a collection of components and code snippets that folks could vendor into their
-own projects.
+這種方法感覺解決了我們發布獨立套件時遇到的許多問題，因此在年初，我們一些人開始著手建構一系列元件和程式碼片段，供大家嵌入到自己的專案中。
 
 <Bleed>
   <Image
@@ -76,85 +47,55 @@ own projects.
     alt=""
     caption={
       <span>
-        We built out an internal project called &quot;Multiverse&quot; that let you
-        inspect elements in a flow and copy their source code.
+        我們建構了一個名為 &quot;Multiverse&quot; 的內部專案，讓您可以檢查流程中的元素並複製其原始碼。
       </span>
     }
   />
 </Bleed>
 
-We spent a while developing this but eventually decided to shelf the project after we were
-dissatisfied with some of the compromises we ended up making along the way.
+我們花了一段時間開發這個專案，但最終決定擱置該專案，因為我們對過程中最終做出的一些妥協感到不滿意。
 
-The biggest open-ended question we kept running into was what to do about _styling_. On
-the one hand we wanted to provide components that were easy to use and looked good out of
-the box, but on the other hand we couldn't make any assumptions about what styling
-approach folks would be taking and we couldn't easily pull in external dependencies
-without making the installation process confusing.
+我們一直遇到的最大未解決問題是關於_樣式_該怎麼辦。一方面，我們想提供易於使用且開箱即用外觀良好的元件，但另一方面，我們無法對人們將採用的樣式方法做任何假設，而且我們無法輕易引入外部相依項目而不讓安裝過程變得混亂。
 
-Although we had benched the idea, it was a frequent topic of conversation in our team
-meetings. We knew the value of shipping _something_ would be high, we just couldn't work
-out _how_...
+雖然我們擱置了這個想法，但它在我們的團隊會議中是一個經常討論的話題。我們知道發布_某些東西_的價值會很高，我們只是無法弄清楚_如何_做...
 
-## A new hope: the shadcn CLI
+## 新希望：shadcn CLI
 
-Shadcn has had a simple CLI to install their components into your codebase for a while
-now, but more recently the CLI was given the ability to install _external_ components as
-long as they followed a simple JSON schema.
+Shadcn 有一個簡單的 CLI 可以將他們的元件安裝到您的程式碼庫中已經有一段時間了，但最近 CLI 被賦予了安裝_外部_元件的能力，只要它們遵循簡單的 JSON 架構。
 
-This solved a bunch of problems for us:
+這為我們解決了一堆問題：
 
-- All shadcn components use Tailwind CSS, so we can add styles to our components without
-  needing to worry about the user installing additional dependencies.
+- 所有 shadcn 元件都使用 Tailwind CSS，因此我們可以為元件添加樣式，而無需擔心使用者安裝額外的相依項目。
 
-- Shadcn components can depend on _other shadcn components_, so we can build out more
-  sophisticated components that take advantage on the great collection of shadcn
-  components that already exist.
+- Shadcn 元件可以依賴_其他 shadcn 元件_，因此我們可以建構更複雜的元件，利用已經存在的優秀 shadcn 元件集合。
 
-- These components are vendored into the user's codebase meaning we don't need to worry
-  about covering every single use case or feature request: folks can implement what they
-  need!
+- 這些元件被嵌入到使用者的程式碼庫中，這意味著我們不需要擔心涵蓋每一個使用案例或功能請求：人們可以實作他們需要的東西！
 
-## Introducing React Flow UI
+## 介紹 React Flow UI
 
-This was the kick we needed to jump into the project again. We've been working hard to
-build out a collection of initial components that we think will make it easier for folks
-to put together React Flow projects going forward. Some interesting components from the
-initial set include:
+這就是我們再次投入專案所需的動力。我們一直在努力建構一系列初始元件，我們認為這將讓大家更容易組合 React Flow 專案。初始集合中的一些有趣元件包括：
 
-- A [**database schema node**](https://reactflow.dev/ui/components/database-schema-node)
-  that makes it easy to visualize tables and relationships between columns.
+- 一個[**資料庫架構節點**](https://reactflow.dev/ui/components/database-schema-node)，可以輕鬆視覺化表格和欄位之間的關係。
 
 <Embed
   className="rounded-md border border-gray-200"
   src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/database-schema-node`}
 />
 
-- A [**zoom slider**](https://reactflow.dev/ui/components/zoom-slider) for more convenient
-  control over the viewport zoom level.
+- 一個[**縮放滑桿**](https://reactflow.dev/ui/components/zoom-slider)，可以更方便地控制視窗縮放級別。
 
 <Embed
   className="rounded-md border border-gray-200"
   src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/zoom-slider`}
 />
 
-- [**Debugging components**](https://reactflow.dev/ui/components/devtools) that make it
-  easier to inspect a node's properties and the state of your flow.
+- [**除錯元件**](https://reactflow.dev/ui/components/devtools)，可以更輕鬆地檢查節點的屬性和流程的狀態。
 
 <Embed
   className="rounded-md border border-gray-200"
   src={`${process.env.NEXT_PUBLIC_UI_COMPONENTS_URL}/components/devtools`}
 />
 
-We've also laid the foundation to build out more advanced components in the future. We're
-still not sure if this is something we're going to commit to, so please try out the
-components and let us know what you think! You can find the documentation for these
-components and a brief guide on how to install them by heading over to
-[reactflow.dev/ui](https://reactflow.dev/ui), or you can learn more about shadcn and the
-CLI [over on their docs](https://ui.shadcn.com/docs).
+我們還為未來建構更進階的元件奠定了基礎。我們還不確定這是否是我們要承諾的事情，所以請試用這些元件並告訴我們您的想法！您可以前往 [reactflow.dev/ui](https://reactflow.dev/ui) 找到這些元件的文件和如何安裝它們的簡要指南，或者您可以[前往他們的文件](https://ui.shadcn.com/docs)了解更多關於 shadcn 和 CLI 的資訊。
 
-We're excited to see what you build with these components, and we're looking forward to
-hearing your feedback! Please open issues on our
-[web repo](https://github.com/xyflow/web/issues) if you run into any problems or have any
-suggestions for new components, and definitely tweet at us at
-[@xyflowdev](https://x.com/xyflowdev) if you build something cool with them!
+我們很期待看到您使用這些元件建構的內容，我們期待聽到您的回饋！如果您遇到任何問題或對新元件有任何建議，請在我們的 [web 儲存庫](https://github.com/xyflow/web/issues)上開啟問題，如果您用它們建構了很酷的東西，一定要在 [@xyflowdev](https://x.com/xyflowdev) 上標記我們！

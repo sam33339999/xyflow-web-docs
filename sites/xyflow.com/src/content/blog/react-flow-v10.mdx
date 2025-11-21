@@ -1,19 +1,19 @@
 ---
-title: Releasing React Flow 10 and React Flow Pro
-intro: 'Almost two years ago we open sourced React Flow that was built for our flow-based data processing tool Datablocks. Since then we invested more and more time in React Flow and it got a lot of traction (25k+ website visitors per month, 9k+ stars on Github, 1k+ Discord members, 100k+ weekly downloads on npm).'
+title: 發布 React Flow 10 和 React Flow Pro
+intro: '大約兩年前，我們開源了為我們基於流程的資料處理工具 Datablocks 建立的 React Flow。從那時起，我們在 React Flow 上投入了越來越多的時間，它獲得了很大的吸引力（每月 25k+ 網站訪客、Github 上 9k+ 顆星、1k+ Discord 成員、npm 上每週 100k+ 下載量）。'
 date: 15 March 2022
 authors: ['moritz', 'christopher']
-tags: ['react-flow', 'release']
+tags: ['react-flow', '發布']
 image: /img/blog/v10-header.png
 ---
 
 import { Bleed } from 'nextra/components';
 import { RemoteCodeViewer } from 'xy-shared/server';
 
-Almost two years ago we [open sourced React Flow](https://webkid.io/blog/react-flow-node-based-graph-library/) that was built for our flow-based data processing tool [Datablocks](https://datablocks.pro). Since then we invested more and more time in React Flow and it got a lot of traction (25k+ website visitors per month, 9k+ stars on Github, 1k+ Discord members, 100k+ weekly downloads on npm).
-We are super happy about the progress and the community that has developed around React Flow. We think that the library has a lot of potential to solve problems that many developer teams face when building node-based editors.
+大約兩年前，我們[開源了 React Flow](https://webkid.io/blog/react-flow-node-based-graph-library/)，這是為我們基於流程的資料處理工具 [Datablocks](https://datablocks.pro) 建立的。從那時起，我們在 React Flow 上投入了越來越多的時間，它獲得了很大的吸引力（每月 25k+ 網站訪客、Github 上 9k+ 顆星、1k+ Discord 成員、npm 上每週 100k+ 下載量）。
+我們對 React Flow 周圍發展起來的進展和社群感到非常高興。我們認為這個函式庫在解決許多開發團隊在建立基於節點的編輯器時面臨的問題方面具有很大的潛力。
 
-After several months of hard work, today we can finally announce the release of React Flow version 10. Together with the new library version, we are also releasing a fully revised documentation that is now powered by [Docusaurus](https://docusaurus.io/). Last but not least, we are releasing [React Flow Pro](https://pro.reactflow.dev/pricing), our new subscription model for React Flow which we want to establish to secure the further development and maintenance of the library. In this post we describe all the news around React Flow version 10. If you want to migrate from v9 to v10, please refer to the [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-v10).
+經過幾個月的努力工作，今天我們終於可以宣布 React Flow 版本 10 的發布。隨著新的函式庫版本，我們還發布了一個完全修訂的文件，現在由 [Docusaurus](https://docusaurus.io/) 提供支援。最後但同樣重要的是，我們發布了 [React Flow Pro](https://pro.reactflow.dev/pricing)，這是我們為 React Flow 推出的新訂閱模式，我們希望建立它來確保函式庫的進一步開發和維護。在這篇文章中，我們描述了 React Flow 版本 10 的所有新聞。如果你想從 v9 遷移到 v10，請參考[遷移指南](https://reactflow.dev/learn/troubleshooting/migrate-to-v10)。
 
 <Bleed>
   <RemoteCodeViewer
@@ -26,38 +26,38 @@ After several months of hard work, today we can finally announce the release of 
 <div
   style={{ fontSize: 12, marginTop: -24, textAlign: 'center', color: '#777' }}
 >
-  Some of the most awaited features: Sub Flows!
+  一些最受期待的功能：子流程！
 </div>
 
-## New Features
+## 新功能
 
-Version 10 comes with many new features and improvements. Besides a complete rewrite of the internal state management, the separation of the graph elements into nodes and edges, several bug fixes and refactorings, these are the most important new features:
+版本 10 帶來了許多新功能和改進。除了完全重寫內部狀態管理、將圖形元素分離為節點和連線、幾個錯誤修復和重構之外，以下是最重要的新功能：
 
-- **Sub Flows**: Support for sub flows, nested flows and grouping of nodes
-- **Touch Device Support**: The UX for connecting nodes on touch devices has been improved
-- **Key Handling**: Multiple keys and key combinations are now supported
-- **Several new hooks**: `useReactFlow`, `useNodes`, `useEdges`, `useViewport`, `useKeypress` have been refactored to provide a better dev experience
-- **Fit View Property**: Fit all nodes and edges initially without writing custom logic
-- **Edge Marker**: More options to configure the start and end markers of the edges
+- **子流程**：支援子流程、嵌套流程和節點分組
+- **觸控裝置支援**：改進了觸控裝置上連接節點的用戶體驗
+- **按鍵處理**：現在支援多個按鍵和按鍵組合
+- **幾個新的 hooks**：`useReactFlow`、`useNodes`、`useEdges`、`useViewport`、`useKeypress` 已被重構以提供更好的開發體驗
+- **Fit View 屬性**：在不編寫自訂邏輯的情況下初始適配所有節點和連線
+- **連線標記**：更多選項來配置連線的開始和結束標記
 
-The biggest and most awaited new feature (when you look at the [Github discussions](https://github.com/xyflow/xyflow/discussions/1024)) is the support of sub flows and groups. In React Flow v10, a node can specify a `parentNode` which affects its positioning and dragging behavior. Child nodes get positioned relatively to their parents and are being moved together with their parent node. It is also possible to limit child nodes to the boundaries of their parents. This gives React Flow users the ability to visualize nested data structures and implement features like collapse/expand or zooming into a sub flow.
+最大和最受期待的新功能（當你查看 [Github 討論](https://github.com/xyflow/xyflow/discussions/1024)時）是對子流程和分組的支援。在 React Flow v10 中，節點可以指定 `parentNode`，這會影響其定位和拖曳行為。子節點相對於其父節點定位，並與父節點一起移動。還可以將子節點限制在父節點的邊界內。這使 React Flow 使用者能夠視覺化嵌套資料結構並實現展開/收合或縮放到子流程等功能。
 
-Another very important improvement is the support of touch devices. Because we designed [datablocks](https://datablocks.pro) as a desktop-only app, it was not possible to connect nodes on touch devices in the former versions. With v10 you can create connections by tapping two handles in succession.
+另一個非常重要的改進是對觸控裝置的支援。由於我們將 [datablocks](https://datablocks.pro) 設計為僅限桌面的應用程式，因此在以前的版本中無法在觸控裝置上連接節點。使用 v10，你可以透過連續點擊兩個控制點來建立連接。
 
-React Flow comes with some key handlers for removing, multi selecting and drawing a selection box. These handlers now have more options to be configured. You can not only pass a single key, but also multiple ones or key combinations.
+React Flow 帶有一些用於移除、多選和繪製選擇框的按鍵處理程序。這些處理程序現在有更多選項可以配置。你不僅可以傳遞單個按鍵，還可以傳遞多個按鍵或按鍵組合。
 
-In order to update nodes, edges and the viewport, we implemented a new hook: `useReactFlow`. It comes with useful helpers like `getNode`, `fitView` or `setCenter`. We also added new hooks like `useNodes`, `useEdges`, `useViewport` and `useKeypress`.
+為了更新節點、連線和視口，我們實現了一個新的 hook：`useReactFlow`。它帶有有用的輔助函數，如 `getNode`、`fitView` 或 `setCenter`。我們還添加了新的 hooks，如 `useNodes`、`useEdges`、`useViewport` 和 `useKeypress`。
 
-There is more! You can find a list with detailed explanations of the new features and breaking changes in the [migration guide](https://reactflow.dev/learn/troubleshooting/migrate-to-v10).
+還有更多！你可以在[遷移指南](https://reactflow.dev/learn/troubleshooting/migrate-to-v10)中找到新功能和破壞性變更的詳細解釋清單。
 
 ## React Flow Pro
 
-Together with the new library version, we are also releasing a subscription model called [React Flow Pro](https://pro.reactflow.dev/pricing). During the past two years we spent a lot of time on improving the library, adding new features, organizing issues and fixing bugs. With React Flow Pro we now want to take the next step: Securing the future of React Flow financially. Our goal is to keep the library open source, free of charge and under MIT license. At the same time, we want to give companies that use React Flow as an essential part of their business the assurance that the library will continue to be developed and updated.
+隨著新的函式庫版本，我們還發布了一個名為 [React Flow Pro](https://pro.reactflow.dev/pricing) 的訂閱模式。在過去的兩年裡，我們花了很多時間改進函式庫、添加新功能、組織問題和修復錯誤。透過 React Flow Pro，我們現在想邁出下一步：在財務上確保 React Flow 的未來。我們的目標是保持函式庫開源、免費並採用 MIT 授權。同時，我們希望給那些將 React Flow 作為業務重要部分的公司保證，函式庫將繼續開發和更新。
 
-To meet both requirements, we came up with the idea of adding a small attribution to the React Flow renderer. Subscribers to the [Starter](https://pro.reactflow.dev/pricing) or [Enterprise](https://pro.reactflow.dev/pricing) plans can remove the attribution from their applications. Everyone else can use React Flow in the same way as before as long as the attribution is displayed. In addition to removing the attribution, Pro subscribers get access to an internal Discord channel and can schedule support calls.
-We are excited about this change and we hope that it will be well received and can secure our work on React Flow. You can check out the plans and features on the [React Flow Pro site](https://pro.reactflow.dev/pricing).
+為了滿足這兩個要求，我們想出了為 React Flow 渲染器添加小歸屬的想法。[入門](https://pro.reactflow.dev/pricing)或[企業](https://pro.reactflow.dev/pricing)計劃的訂閱者可以從他們的應用程式中移除歸屬。其他人可以像以前一樣使用 React Flow，只要顯示歸屬。除了移除歸屬外，Pro 訂閱者還可以存取內部 Discord 頻道並安排支援電話。
+我們對這個改變感到興奮，我們希望它能被良好接受並能確保我們在 React Flow 上的工作。你可以在 [React Flow Pro 網站](https://pro.reactflow.dev/pricing)上查看計劃和功能。
 
 ---
 
-Hopefully we could give you a good overview about the new features and our future plans.
-If you have any feedback, you can contact us via [mail](maito:info@webkid.io) or the [contact form](https://pro.reactflow.dev/contact). Feel free to [follow us on twitter](https://twitter.com/xyflowdev) for the latest updates about React Flow.
+希望我們能讓你對新功能和我們的未來計劃有一個很好的了解。
+如果你有任何回饋，可以透過[郵件](maito:info@webkid.io)或[聯絡表單](https://pro.reactflow.dev/contact)與我們聯繫。歡迎在 [twitter 上關注我們](https://twitter.com/xyflowdev)以獲取有關 React Flow 的最新更新。

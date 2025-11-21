@@ -1,9 +1,9 @@
 ---
-title: 'React Flow Pro Platform goes open source'
-intro: 'We rebuilt the Pro Platform from the ground up and it is now open source. We hope some folks can take inspiration for their own OSS projects, and the pro subscribers enjoy the new look and features.'
+title: 'React Flow Pro 平台開源'
+intro: '我們從頭開始重建了 Pro 平台，現在它已經開源。我們希望有些人能從中為自己的開源專案獲得靈感，而專業訂閱者喜歡新的外觀和功能。'
 date: 6 December 2023
 authors: ['christopher', 'john']
-tags: ['react-flow', 'open-source']
+tags: ['react-flow', '開源']
 image: '/img/blog/v11-reactflow-header.png'
 ---
 
@@ -12,57 +12,57 @@ import { Embed, Text } from 'xy-shared';
 
 import Image from 'next/image';
 
-We’re excited to announce that we just open sourced our Pro Platform! 🚀 The Pro Platform is where React Flow Pro subscribers can access and view “[Pro Examples](https://reactflow.dev/pro/examples),” manage their subscription, and give team members access to the platform. We hope that some folks take a look, get inspired for their own projects, and that our Pro Subscribers like the new features we've built 💫
+我們很高興宣布，我們剛剛將 Pro 平台開源！🚀 Pro 平台是 React Flow Pro 訂閱者可以存取和檢視「[Pro 範例](https://reactflow.dev/pro/examples)」、管理訂閱以及讓團隊成員存取平台的地方。我們希望有些人看一看，為他們自己的專案獲得靈感，並且我們的 Pro 訂閱者喜歡我們建立的新功能 💫
 
-Check out the [Github repo](https://github.com/xyflow/pro-platform) or try it out live by [signing up on the Pro Platform](https://pro.reactflow.dev).
+查看 [Github 儲存庫](https://github.com/xyflow/pro-platform)或透過[在 Pro 平台上註冊](https://pro.reactflow.dev)來現場試用。
 
 <Image
-  alt="The dashboard of React Flow Pro, which shows options to view Pro Examples, open a prioritized github issue, invite your team, schedule an onboarding call, or contact support via email."
+  alt="React Flow Pro 的儀表板，顯示檢視 Pro 範例、開啟優先 github 問題、邀請團隊、安排新手培訓通話或透過電子郵件聯絡支援的選項。"
   src="/img/blog/2023-pro-platform-oss/pro-dashboard.png"
   width={806}
   height={524}
   className="mt-4"
 />
-<div className="text-center text-gray-500 mt-1">The Pro Platform dashboard</div>
+<div className="text-center text-gray-500 mt-1">Pro 平台儀表板</div>
 
-### Why open source it?
+### 為什麼要開源它？
 
-We believe open source is the better way to make things - freedom of information, accountability, an easy way to collect contributions and bug reports from users, allowing someone else to do it better, etc. We also love it when [OSS maintainers are paid for their work](https://www.xyflow.com/blog/asking-for-money-for-open-source), and we could imagine other folks using our Pro Platform around their own open source projects (as a code-oriented alternative to something like [Ghost](https://ghost.org/) or [Patreon](https://www.patreon.com/)). Of course we’re far away from that, but open sourcing it and letting folks peek under the hood is a way to start.
+我們相信開源是製作東西的更好方式 - 資訊自由、問責制、從使用者那裡收集貢獻和錯誤回報的簡單方式、讓其他人做得更好等等。我們也喜歡[開源維護者為他們的工作獲得報酬](https://www.xyflow.com/blog/asking-for-money-for-open-source)，我們可以想像其他人在他們自己的開源專案周圍使用我們的 Pro 平台（作為 [Ghost](https://ghost.org/) 或 [Patreon](https://www.patreon.com/) 等程式碼導向的替代方案）。當然，我們距離那還很遠，但開源它並讓人們窺探內部是一個開始的方式。
 
-# New Features
+# 新功能
 
-### Fresh look, new example viewer, better usability 🪩
+### 全新外觀、新範例檢視器、更好的可用性 🪩
 
 It looks ✨better✨ and it’s easier to get around. There’s a new example viewer which is faster because we don’t build the whole example on the client anymore.
 
 <Image
-  alt="The example viewer, where a user cycles between tabs of previewing the example, looking at the code, and reading the guide."
+  alt="範例檢視器，使用者在預覽範例、查看程式碼和閱讀指南的分頁之間切換。"
   src="/img/blog/2023-pro-platform-oss/pro-new-example-viewer-4.gif"
   width={806}
   height={524}
   className="mt-4"
 />
-<div className="text-center text-gray-500 mt-2">The new example viewer</div>
+<div className="text-center text-gray-500 mt-2">新的範例檢視器</div>
 
-### Add and manage team members ⚽️
+### 添加和管理團隊成員 ⚽️
 
 In order to add new team members, you used to have to email us (ugh) and we’d manually add your new team members to the database (ugh). Now you can automatically add and delete team members, or add additional emails to your subscription plan. You can find more about inviting team members in our [Pro FAQs](https://reactflow.dev/pro).
 
 <Image
-  alt="a screenshot of a list of team members, where someone can add and delete team members from gaining access to the Pro Platform"
+  alt="團隊成員列表的截圖，使用者可以添加和刪除團隊成員以存取 Pro 平台"
   src="/img/blog/2023-pro-platform-oss/pro-team-members.png"
   width={916}
   height={564}
   className="mt-4"
 />
 
-### Refreshed Pro Examples 💫
+### 更新的 Pro 範例 💫
 
-All of our Pro Examples are now standalone Vite apps. This makes them easier to run and also easier for us to develop.
+我們所有的 Pro 範例現在都是獨立的 Vite 應用程式。這使它們更容易運行，也更容易讓我們開發。
 
 We noticed that [Dagre](https://github.com/dagrejs/dagre) no longer has the “deprecated” tag! Our [Workflow Builder](https://reactflow.dev/examples/layout/workflow-builder-starter) and [Expand / Collapse](https://reactflow.dev/examples/layout/expand-collapse) Pro Examples have been rebuilt with dagre, so that you can switch between the d3 and dagre versions.
 
-The Shapes Pro Example has been refactored, and now includes features to drag-and-drop shape nodes, resize, a color picker, dark mode, and an updated minimap. in the next months we plan to refactor some others as well, so keep your eyes out for those updates.
+形狀 Pro 範例已重構，現在包括拖放形狀節點、調整大小、顏色選擇器、深色模式和更新的迷你地圖等功能。在接下來的幾個月裡，我們計劃重構其他一些範例，所以請留意這些更新。
 
 <Bleed>
   <Embed
@@ -71,23 +71,22 @@ The Shapes Pro Example has been refactored, and now includes features to drag-an
     className="shadow-xs"
   />
   <div className="text-center text-gray-500 -mt-6">
-    Refreshed Shapes Pro Example with minimap, dark mode toggle, and resizable
-    draggable shapes
+    更新的形狀 Pro 範例，包含迷你地圖、深色模式切換和可調整大小的可拖曳形狀
   </div>
 </Bleed>
 
-### Under the hood improvements 🏎
+### 底層改進 🏎
 
-In the new platform, we have migrated to the latest Nextjs version (using app router), replaced ChakraUI with TailwindCSS and our own UI package, and converted everything from JS to TypeScript.
+在新平台中，我們已遷移到最新的 Nextjs 版本（使用 app router），用 TailwindCSS 和我們自己的 UI 套件取代了 ChakraUI，並將所有內容從 JS 轉換為 TypeScript。
 
-When we created the Pro Platform last year, it was developed in a way that made the Pro Examples (which are not open source) inseparable from the platform that was hosting them. The Pro Example code now sits in a private repository, separate from the platform's repository.
+當我們去年建立 Pro 平台時，它的開發方式使得 Pro 範例（不是開源的）與託管它們的平台無法分離。Pro 範例程式碼現在位於一個私有儲存庫中，與平台的儲存庫分開。
 
-# Let us know what you think 💭
+# 讓我們知道你的想法 💭
 
 If you want to try using the platform for your own project, we’d love to hear from you! We’re still working on the documentation on how to easily set this up and get it integrated with Nhost, Mailjet, and Stripe, and would appreciate any feedback on how this could be helpful for you.
 
-You can learn more about our React Flow Pro subscriptions [here](https://pro.reactflow.dev/).
+你可以在[這裡](https://pro.reactflow.dev/)了解更多關於我們的 React Flow Pro 訂閱的資訊。
 
-Cheers!
+乾杯！
 
-The xyflow team ✨
+xyflow 團隊 ✨

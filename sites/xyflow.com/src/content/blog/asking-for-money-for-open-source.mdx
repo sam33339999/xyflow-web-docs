@@ -1,114 +1,112 @@
 ---
-title: 'Dear Open Source: let’s do a better job of asking for money'
-intro: 'It’s common knowledge that many open source projects are underfunded. We think one reason for this is that the open source world is doing a bad job of asking for the money that it deserves. By telling the right organizations exactly why and how we want them to financially support our work, OSS projects can be compensated for more fairly, and result in a healthier open source ecosystem.'
+title: '致開源社群：讓我們更有效地爭取資金支持'
+intro: '眾所周知，許多開源專案資金不足。我們認為其中一個原因是開源社群在爭取應得資金方面做得不夠好。透過明確告訴適當的組織我們為何以及如何希望他們在財務上支持我們的工作，開源專案可以獲得更公平的補償，並造就更健康的開源生態系統。'
 date: 27 February 2023
 authors: ['john']
-tags: ['react-flow', 'open source']
+tags: ['react-flow', '開源']
 image: '/img/blog/oss-pricing/donate-button-banner.png'
 ---
 
 import { Bleed } from 'nextra/components';
 import { Image } from 'xy-shared';
 
-It’s common knowledge that many open source projects are underfunded. We think one reason for this is that **the open source world is doing a bad job of asking for the money that it deserves.** By telling the right organizations exactly why and how we want them to financially support our work, OSS projects can be compensated for more fairly, and result in a healthier open source ecosystem.
+眾所周知，許多開源專案資金不足。我們認為其中一個原因是**開源社群在爭取應得資金方面做得不夠好**。透過明確告訴適當的組織我們為何以及如何希望他們在財務上支持我們的工作，開源專案可以獲得更公平的補償，並造就更健康的開源生態系統。
 
 <Bleed>
   <Image src="/img/blog/oss-pricing/donate-button.png" alt="" />
 </Bleed>
 
-We maintain [React Flow](https://github.com/xyflow/xyflow), an open source library for making node-based UIs. Our story developed in a similar way to some other lucky libraries:
+我們維護 [React Flow](https://github.com/xyflow/xyflow)，這是一個用於建立節點式使用者介面的開源函式庫。我們的故事發展與一些幸運的函式庫類似：
 
-1. Build a library to fill a need you have and open source it
-2. Gain users who have the same need, and they start submitting issues and requests
-3. Build trust by continuing to maintain and develop the library as it grows
-4. Open your Github sponsors page
+1. 建立一個函式庫來滿足你的需求並將其開源
+2. 獲得有相同需求的使用者，他們開始提交問題和請求
+3. 透過持續維護和開發函式庫來建立信任
+4. 開啟你的 Github 贊助頁面
 
-Unfortunately our Github sponsors page didn’t pay the bills - not even close. To avoid having to find contract work or pitch for investment, we decided to ask for money in a more direct way by adding this to our website:
+不幸的是，我們的 Github 贊助頁面無法支付開銷，甚至差得很遠。為了避免尋找接案工作或尋求投資，我們決定透過在網站上添加以下內容，以更直接的方式爭取資金：
 
 <Bleed>
   <Image
     src="/img/blog/oss-pricing/pricing-ui.png"
-    alt="A webpage with four columns, giving the user a choice between 4 payment plans: free, starter, pro, and enterprise."
+    alt="一個網頁有四個欄位，讓使用者在 4 個付費方案中選擇：免費、入門、專業和企業版。"
     wide
-    caption="Our Free plan is the open source library as-is. The Starter and Pro
-      plans have a few extras that users can pay for with a monthly subscription,
-      like prioritized bug reports and email support."
+    caption="我們的免費方案就是開源函式庫本身。入門和專業方案有一些額外功能，使用者可以透過月費訂閱取得，例如優先處理錯誤回報和電子郵件支援。"
   />
 </Bleed>
 
-We started getting paying customers at a _much_ faster rate, each paying more than any of our sponsors were, **and we became “ramen profitable” in a few months.**
+我們開始以更快的速度獲得付費客戶，每位客戶支付的金額都超過任何贊助者，**而且我們在幾個月內就達到了「泡麵獲利」（能維持基本生活）。**
 
-**What caused such a drastic change?**
+**是什麼造成了如此巨大的變化？**
 
-**How did we bypass a problem that plagues the open source world?**
+**我們如何繞過困擾開源世界的問題？**
 
-After some experimentation and user research, this is what we found as our answers to these questions:
+經過一些實驗和使用者研究，以下是我們對這些問題的答案：
 
-## Thin-Crust Open Core model
+## 薄殼開放核心模式
 
-We moved from a donation-based model to a [Thin-Crust Open Core](https://www.bcg.com/publications/2021/open-source-software-strategy-benefits) model. This is why we kept the React Flow library MIT Licensed, and added a small amount of features (Pro examples, and some technical support) to the “crust” of the library. By offering something small on top of our core library, we created a reason to click the “buy” button.
+我們從捐款模式轉變為[薄殼開放核心](https://www.bcg.com/publications/2021/open-source-software-strategy-benefits)模式。這就是為什麼我們保持 React Flow 函式庫採用 MIT 授權，並在函式庫的「外殼」上添加少量功能（專業範例和一些技術支援）。透過在核心函式庫之上提供一些小東西，我們創造了點擊「購買」按鈕的理由。
 
-At first, we were afraid that subscribers would have much higher expectations of us since they were now paying for our work. We imagined rapid response times, monthly newsletters, more frequent releases, and having to constantly prove our worth. This didn’t turn out to be true.
+起初，我們擔心訂閱者會對我們有更高的期望，因為他們現在要付費使用我們的工作。我們想像著快速回應時間、每月電子報、更頻繁的發布，以及必須不斷證明我們的價值。但事實並非如此。
 
-From talking to our subscribers we learned that after subscribing, they don’t think of themselves as paying only for the on-top offerings with their subscription, but rather that they are paying for whole library (the docs, guides, new features, and the app that they were able to more easily build by using our library). It is true: they aren’t just paying for the stuff on top, they **_are_** paying for the whole library. And for them, that's worth the money.
+從與訂閱者的交談中，我們了解到，在訂閱之後，他們不認為自己只是為訂閱中的附加功能付費，而是為整個函式庫付費（文件、指南、新功能，以及他們能夠更輕鬆地使用我們的函式庫建立的應用程式）。這是真的：他們不只是為附加功能付費，他們**確實**是在為整個函式庫付費。對他們來說，這是值得的。
 
-## Acknowledging the funnel
+## 認識轉換漏斗
 
-Every open source project that receives money has a “purchase funnel” (the steps a person takes to become a paying customer) even if it’s just a “buy me a coffee” button. Acknowledging and revising the steps of this funnel can turn targeted non-paying users (like large companies) into financial supporters.
+每個收到資金的開源專案都有一個「購買漏斗」（一個人成為付費客戶所採取的步驟），即使只是一個「請我喝咖啡」按鈕。認識並修改這個漏斗的步驟，可以將目標非付費使用者（如大型公司）轉變為財務支持者。
 
-We added a small attribution in the corner of React Flow’s viewport. It’s easy to remove, and 100% legal to do so under our MIT License. In the code where you can remove this attribution, we link to our pricing website with the request to consider paying if they are using our library commercially.
+我們在 React Flow 視窗的角落添加了一個小標記。它很容易移除，而且根據我們的 MIT 授權，這樣做完全合法。在可以移除此標記的程式碼中，我們連結到我們的定價網站，並請求如果他們在商業上使用我們的函式庫，請考慮付費。
 
-This moment establishes some friction to the user where they have to take a moment to consider if they are willing and able to support our library.
+這個時刻為使用者建立了一些摩擦，他們必須花一點時間考慮是否願意且能夠支持我們的函式庫。
 
 <Image
   src="/img/blog/oss-pricing/rf-attribution.png"
-  alt="The React Flow canvas, with a small text in the corner that says 'react flow'"
+  alt="React Flow 畫布，角落有一個小文字寫著「react flow」"
 />
 
-## Stealing from the SaaS Playbook
+## 借鑑 SaaS 的策略
 
-We decided that we wanted those who get value from React Flow and are easily able to afford it to be the ones financially supporting the library. This meant most of our funding would be coming from organizations, rather than individuals.
+我們決定希望那些從 React Flow 獲得價值且能夠輕鬆負擔的人成為財務支持函式庫的人。這意味著我們的大部分資金將來自組織，而不是個人。
 
-We wish that every open source evangelist would pay us with their company’s credit card if they liked our library, but after talking to our subscribers, we know that’s not how this works. Often times they have to make a case to their project manager or CTO to ask if the company can support the project. **Our job as OSS creators is to make it easy for our users to ask their organizations to support our project.** We can do this by stealing from the SaaS playbook.
+我們希望每個開源支持者如果喜歡我們的函式庫，都會用公司的信用卡付款給我們，但在與訂閱者交談後，我們知道事情並非如此運作。他們通常必須向專案經理或技術長說明，詢問公司是否可以支持該專案。**我們作為開源創作者的工作，就是讓使用者更容易向他們的組織請求支持我們的專案。**我們可以透過借鑑 SaaS 的策略來做到這一點。
 
-By using a three-column pricing page, the person with the credit card knows exactly what to expect when they arrive on our pricing page: cheap on the left side, expensive on the right. It says what they get, and how much it costs. We didn’t need to explain any complex donation structures, or how their money would exactly be used by us, which we believe might be a barrier for organizations who are easily able to afford the price tag. This way, we helped our users to become successful liaisons when asking for budget within their organizations.
+透過使用三欄定價頁面，持有信用卡的人在到達我們的定價頁面時，就能確切知道會看到什麼：左側便宜，右側昂貴。它說明了他們會得到什麼，以及需要花費多少。我們不需要解釋任何複雜的捐款結構，或者我們將如何確切使用他們的資金，我們認為這可能會成為那些能夠輕鬆負擔價格標籤的組織的障礙。透過這種方式，我們幫助使用者在組織內申請預算時成為成功的橋樑。
 
 <Bleed>
   <Image
     src="/img/blog/oss-pricing/threecolumns.png"
-    alt="A mockup of a typical SaaS pricing page, with three columns: cheap, less cheap, and expensive."
+    alt="一個典型的 SaaS 定價頁面模型，有三個欄位：便宜、稍貴和昂貴。"
     wide
   />
 </Bleed>
 
-## None of this is new
+## 這並非新鮮事
 
-Investors are [very aware](https://nautacapital.com/insight/open-source-weathers-the-fundingstorm/) of using open source as the center of a business model, since it’s a way to get an interested user group, expert feedback, developer goodwill, an interest from potential hires, and a foot in the door with larger companies who adopt your OSS. Along this path, the next step of a library like ours could be to seek investment, expand our service and/or proprietary offering, and eventually seek an exit.
+投資者[非常清楚](https://nautacapital.com/insight/open-source-weathers-the-fundingstorm/)將開源作為商業模式的核心，因為這是獲得感興趣的使用者群體、專家回饋、開發者好感、潛在員工興趣，以及與採用你開源專案的大型公司建立關係的方式。沿著這條路，像我們這樣的函式庫的下一步可能是尋求投資，擴大我們的服務和／或專有產品，並最終尋求退場。
 
-What we’re doing instead is staying intentionally small and growing slowly. We don’t want or need to expand our proprietary offering at a pace that will outgrow the core library. Instead, we can have the benefits of being paid for our open source work, **while having total agency over the direction of the library**.
+我們所做的則是有意保持小規模並緩慢成長。我們不想也不需要以超過核心函式庫成長速度的步伐擴大我們的專有產品。相反，我們可以獲得開源工作的報酬，**同時保有對函式庫發展方向的完全自主權**。
 
-Our suggestion here is to take the models that investors are using for our own open source projects, so that we can get paid by companies and organizations, rather than a [closed ecosystem](https://stackoverflow.blog/2021/01/07/open-source-has-a-funding-problem/) of open source developers paying other open source developers.
+我們在此的建議是將投資者使用的模式應用於我們自己的開源專案，以便我們可以從公司和組織獲得報酬，而不是開源開發者付費給其他開源開發者的[封閉生態系統](https://stackoverflow.blog/2021/01/07/open-source-has-a-funding-problem/)。
 
-## Mileage may vary
+## 效果可能因人而異
 
-Although we think many people could use these findings to get paid more fairly for their OSS, we also acknowledge that we had a head-start in a lot of ways: before putting a price tag on the website, we had a business set up and ready-to-go (from previous agency work) and we had already worked on the library for two years. We were lucky that we hit a niche that is at the center of many startups building node-based apps, and building a visual library made it possible to have a visible attribution in the corner that can direct users to our pricing page.
+雖然我們認為許多人可以利用這些發現為他們的開源專案獲得更公平的報酬，但我們也承認我們在很多方面都有先機：在為網站標價之前，我們已經有一個準備就緒的業務（來自先前的代理工作），而且我們已經在函式庫上工作了兩年。我們很幸運地找到了一個處於許多新創公司建立節點式應用程式核心的利基市場，而建立視覺化函式庫使我們能夠在角落放置一個可見的標記，可以引導使用者訪問我們的定價頁面。
 
-## Some final thoughts
+## 一些最後的想法
 
-If you don’t feel like taking money from customers because it gives you a sense of responsibility that you don’t like, that’s also fine. There is a different kind of work that has to be done when you have not only “users,” but also “customers,” and we hear that.
+如果你不想從客戶那裡收錢，因為這會給你一種你不喜歡的責任感，那也沒關係。當你不僅有「使用者」，還有「客戶」時，需要做不同類型的工作，我們理解這一點。
 
-Asking for money in this way takes confidence in our work. It can be difficult to ask for money for something you may have considered a hobby, or a less-than-serious project. Just because we do work “for fun” or in our “free time” doesn’t mean we shouldn’t be compensated for it. If we were all compensated for our open source work, it might even allow for people to contribute to open source who otherwise don’t have [the privilege of “free time.”](https://www.ashedryden.com/blog/the-ethics-of-unpaid-labor-and-the-oss-community)
+以這種方式要求資金需要對我們工作的信心。要求為你可能認為是興趣愛好或不太嚴肅的專案收費可能很困難。僅僅因為我們「為了樂趣」或在「空閒時間」工作，並不意味著我們不應該獲得補償。如果我們都能為開源工作獲得補償，它甚至可能讓那些沒有[「空閒時間」特權](https://www.ashedryden.com/blog/the-ethics-of-unpaid-labor-and-the-oss-community)的人也能貢獻開源。
 
-We hope sharing our journey can help a few people move money into the right hands.
+我們希望分享我們的旅程能夠幫助一些人將資金轉移到正確的人手中。
 
 <Image
   src="/img/blog/oss-pricing/tipjar.png"
-  alt="a cash register with a tip jar next to it. On the tip jar is a handwritten sign that says 'money is the root of all evil, cleanse yourself here.'"
+  alt="一個收銀機旁邊有一個小費罐。小費罐上有一個手寫的標誌，上面寫著「金錢是萬惡之源，在這裡淨化自己」。"
   attribution="https://www.reddit.com/r/funnysigns/comments/f151wh/local_tip_jar/?utm_source=share&utm_medium=web2x&context=3"
 />
 
-## Continued Reading
+## 延伸閱讀
 
-There’s a lot already said about this topic. For a start, check out a comprehensive exploration of [Money and Open Source](https://medium.com/open-source-life/money-and-open-source-d44a1953749c) by Isaacs (creator of npm), how relying on unpaid labor [creates an unfair OSS ecosystem](https://www.ashedryden.com/blog/the-ethics-of-unpaid-labor-and-the-oss-community) from Ashe Dryden, and another model for working as an [open source maintainer outside of a corporation](https://words.filippo.io/full-time-maintainer/#fn4) (and [how we should charge big companies for OSS](https://words.filippo.io/professional-maintainers/)) by Filippo Valsorda.
+關於這個主題已經有很多討論。首先，可以查看 Isaacs（npm 創作者）對[金錢與開源](https://medium.com/open-source-life/money-and-open-source-d44a1953749c)的全面探討，Ashe Dryden 關於依賴無償勞動如何[創造不公平的開源生態系統](https://www.ashedryden.com/blog/the-ethics-of-unpaid-labor-and-the-oss-community)的文章，以及 Filippo Valsorda 關於作為[公司外的開源維護者](https://words.filippo.io/full-time-maintainer/#fn4)工作的另一種模式（以及[我們應該如何向大公司收取開源費用](https://words.filippo.io/professional-maintainers/)）。
 
-_Thank you to [Eileen Wagner](https://bumble.blue/) for leading the research that led to this article and for helping to structure these thoughts. Also thank you to React Flow subscribers, contributors, and community for your continued support_ 😊
+_感謝 [Eileen Wagner](https://bumble.blue/) 主導了促成本文的研究並幫助組織這些想法。同時感謝 React Flow 的訂閱者、貢獻者和社群的持續支持_ 😊

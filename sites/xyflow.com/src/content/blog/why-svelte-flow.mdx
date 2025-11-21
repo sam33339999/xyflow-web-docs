@@ -1,7 +1,7 @@
 ---
-title: 'Why Svelte Flow?'
-htmlTitle: 'Why <span style="font-style: italic;">Svelte</span> Flow?'
-intro: 'We receive so many requests of people asking if React Flow will be ported to their favorite front-end framework, and we stuck with React until now.'
+title: '為什麼選擇 Svelte Flow？'
+htmlTitle: '為什麼選擇 <span style="font-style: italic;">Svelte</span> Flow？'
+intro: '我們收到很多人詢問 React Flow 是否會移植到他們喜愛的前端框架，而我們一直堅持使用 React 直到現在。'
 date: 15 November 2023
 authors: ['moritz', 'john']
 tags: ['svelte-flow']
@@ -12,62 +12,60 @@ imageHeight: 640
 
 import Image from 'next/image';
 
-A lot of people have asked us if [React Flow](https://reactflow.dev/) will be ported to their favorite front-end framework. Two people went as far as to create their own libraries ([Svelvet](https://www.svelvet.io/) and [Vue Flow](https://vueflow.dev/)), both citing React Flow as a jumping-off point. Even though there is an obvious need for this sort of tool in other framework, we've stuck with React until only recently.
+很多人問我們 [React Flow](https://reactflow.dev/) 是否會移植到他們喜愛的前端框架。有兩個人甚至創建了自己的函式庫（[Svelvet](https://www.svelvet.io/) 和 [Vue Flow](https://vueflow.dev/)），都將 React Flow 作為起點。儘管在其他框架中對這類工具有明顯的需求，但我們一直堅持使用 React，直到最近。
 
 <Image
-  alt="A collection of messages on discord where people ask us to port React Flow to other front-end frameworks like solidjs, svelte, preact, flutter, and angular."
+  alt="Discord 上的一系列訊息，人們要求我們將 React Flow 移植到其他前端框架，如 solidjs、svelte、preact、flutter 和 angular。"
   src="/img/blog/2023-why-svelte/discord-langs.png"
   width={800}
   height={600}
   className="mt-4"
 />
 
-Earlier this year, we felt we had the time and space to choose what would come next for us as a team. We ended up spending the next months developing [Svelte Flow](https://www.svelteflow.dev/) and launched it earlier this month. This naturally raises the question:
+今年初，我們覺得有時間和空間來選擇接下來要做什麼。最後我們花了接下來的幾個月開發 [Svelte Flow](https://www.svelteflow.dev/) 並在本月初推出。這自然引出了一個問題：
 
-## Why Svelte?
+## 為什麼選擇 Svelte？
 
-### 1. Newsroom roots
+### 1. 新聞編輯室的根源
 
-Before working on React Flow, we worked on lots of interactive data visualizations with newsrooms under the name of [webkid](https://webkid.io/). While we were doing that, we would see Rich Harris’ work from the New York Times ([like this](https://www.nytimes.com/interactive/2018/01/27/technology/social-media-bots.html)), and followed the development on Svelte since its beginnings.
+在開發 React Flow 之前，我們以 [webkid](https://webkid.io/) 的名義與新聞編輯室合作製作了許多互動式資料視覺化。在那段時間，我們看到了 Rich Harris 在紐約時報的作品（[像這個](https://www.nytimes.com/interactive/2018/01/27/technology/social-media-bots.html)），並從一開始就關注 Svelte 的發展。
 
-In 2020, we tried using Svelte on one of our projects to build an interactive map (below), and had a great time using it. It left a good impression on us and we were excited to return to it.
+2020 年，我們在一個專案中嘗試使用 Svelte 來建立互動式地圖（如下），使用體驗非常好。它給我們留下了很好的印象，我們很興奮能夠再次使用它。
 
 <Image
-  alt="An interactive map with the title Where do our products come from? It shows which countries this company's groceries come from, sorted by type of grocery like snacks, nuts, or dry fruits."
+  alt="一個互動式地圖，標題是我們的產品來自哪裡？它展示了這家公司的雜貨來自哪些國家，按雜貨類型（如零食、堅果或乾果）排序。"
   src="/img/blog/2023-why-svelte/svelte-project-koro.gif"
   width={933}
   height={645}
   className="mt-4"
 />
 <div className="text-center text-gray-500">
-  Our first project with Svelte in 2020. [live
-  demo](https://www.korodrogerie.de/news/blog/interaktive-karte)
+  我們在 2020 年使用 Svelte 的第一個專案。[線上展示](https://www.korodrogerie.de/news/blog/interaktive-karte)
 </div>
 
-### 2. Happy and growing community
+### 2. 快樂且不斷成長的社群
 
-Although Svelte has less than half of the usage of React, Vue, or Angular, it has a high retention rate, usage, and interest according to the [2022 State of JavaScript survey](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/). We’ve heard lots of anecdotal evidence that the developer experience is great, and we were happy to experience it for ourselves. On top of that, recent funding [from Vercel](https://vercel.com/blog/vercel-welcomes-rich-harris-creator-of-svelte) gave us a confidence-boost that the core Svelte team will be sticking around.
+儘管 Svelte 的使用量不到 React、Vue 或 Angular 的一半，但根據 [2022 年 JavaScript 現況調查](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/)，它具有很高的保留率、使用率和關注度。我們聽到很多傳聞證據說開發體驗很棒，我們很高興能親身體驗。此外，最近來自 [Vercel 的資金](https://vercel.com/blog/vercel-welcomes-rich-harris-creator-of-svelte)讓我們更有信心 Svelte 核心團隊會繼續維護下去。
 
 <Image
-  alt="A graph showing the ratio of retention over time for popular front-end technologies. Svelte and Solid have the highest retention around 90 percent. React is around 83 percent. Ember and Angular have the lowest at 19 and 42 percent, respectively."
+  alt="一個圖表顯示流行前端技術隨時間的保留率。Svelte 和 Solid 的保留率最高，約 90%。React 約 83%。Ember 和 Angular 最低，分別為 19% 和 42%。"
   src="/img/blog/2023-why-svelte/js2022-survey.png"
   width={1040}
   height={959}
   className="mt-4"
 />
 <div className="text-center text-gray-500">
-  Data from [State of JavaScript 2022
-  survey](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/)
+  資料來自 [2022 年 JavaScript 現況調查](https://2022.stateofjs.com/en-US/libraries/front-end-frameworks/)
 </div>
 
-### 3. We just like… wanted to?
+### 3. 我們就是...想要？
 
-In the spirit of experimentation, we built the first prototype of Svelte Flow in a couple of weeks. It worked, and it we had fun doing it. We like to follow those impulses when they arrive, so we kept going.
+本著實驗的精神，我們在幾週內建立了 Svelte Flow 的第一個原型。它成功了，而且我們做得很開心。當這些衝動來臨時，我們喜歡跟隨它們，所以我們繼續前進。
 
-Working with Svelte is different, because it's a compiler and has lot of great stuff built-in. We especially liked that it comes with scoped styles, built-in stores and an easy to understand reactivity system. There are also things that still feel weird like handling events or typing a component with TypeScript but that's for another blog post :)
+使用 Svelte 很不一樣，因為它是一個編譯器，並且內建了很多很棒的功能。我們特別喜歡它帶有作用域樣式、內建 stores 和易於理解的反應系統。也有一些仍然感覺奇怪的東西，例如處理事件或使用 TypeScript 對元件進行型別定義，但那是另一篇部落格文章的內容 :)
 
 <Image
-  alt="A prototype of Svelte Flow. There are 6 nodes in the viewport with a minimap, controls to zoom in and out, and nodes and edges with various colors"
+  alt="Svelte Flow 的原型。視口中有 6 個節點，帶有小地圖、縮放控制器，以及各種顏色的節點和連線"
   src="/img/blog/2023-why-svelte/svelte-zero.gif"
   width={1175}
   height={753}
@@ -75,17 +73,17 @@ Working with Svelte is different, because it's a compiler and has lot of great s
 />
 
 <div className="text-center text-gray-500">
-  Svelte Flow prototype after a few weeks of work
+  幾週工作後的 Svelte Flow 原型
 </div>
 
-## Why not just stick to React?
+## 為什麼不堅持使用 React？
 
-We’re financially stable from funded organizations paying for React Flow Pro, and that is dependent on the current ubiquity of React as the industry standard. Frameworks do [die](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/), and being able to port our library to other languages means that we’re more flexible as a company, rather than relying on the success of React (and by proxy, Meta).
+我們從支付 React Flow Pro 的資助組織獲得財務穩定，這取決於 React 作為行業標準的普及性。框架確實會[消亡](https://stackoverflow.blog/2018/01/11/brutal-lifecycle-javascript-frameworks/)，能夠將我們的函式庫移植到其他語言意味著我們作為公司更加靈活，而不是依賴 React（以及 Meta）的成功。
 
-## So how is it going?
+## 那麼進展如何？
 
-The launch went _really_ well. We got featured in lots of newsletters and front-pages. We changed our github repo name (from react-flow to [xyflow](https://xyflow.com/)) with the launch and folks seemed excited about the rebrand, without a single pitchfork in sight. And there are already [projects](https://svelteflow.dev/showcase) out in the wild using Svelte Flow. Cool beans.
+發布進行得_非常_順利。我們在很多電子報和首頁上被推薦。我們在發布時更改了 Github 儲存庫名稱（從 react-flow 改為 [xyflow](https://xyflow.com/)），人們似乎對品牌重塑感到興奮，沒有看到一根乾草叉。而且已經有[專案](https://svelteflow.dev/showcase)在實際應用中使用 Svelte Flow。太棒了。
 
-Also along the way, we refactored the core of the library, abstracting a bunch of it to vanillaJS, fixing bugs that we found along the way, benefitting both libraries. We’re really happy about that too.
+此外，在這個過程中，我們重構了函式庫的核心，將其中很大一部分抽象為 vanillaJS，修復了沿途發現的錯誤，使兩個函式庫都受益。我們對此也非常滿意。
 
-All in all, we’re excited to bring Svelte Flow to its beta release and to see what else people build with it. We’ll see you around!
+總而言之，我們很興奮將 Svelte Flow 帶入測試版發布，並期待看到人們用它建立什麼。我們下次見！

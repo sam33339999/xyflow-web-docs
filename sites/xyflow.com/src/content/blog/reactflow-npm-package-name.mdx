@@ -1,6 +1,6 @@
 ---
-title: 'How we lost our slick new npm package name (and then got it back)'
-intro: 'In 2019 we started building a library for building node based UIs, and decided to call it “React Flow.” It’s a nice name, so of course “reactflow” and “react-flow” were already taken. The best option we had for us was “react-flow-renderer,” so we took what we could get.'
+title: '我們如何失去精美的新 npm 套件名稱（然後又拿回來）'
+intro: '2019 年我們開始建立一個用於建立基於節點的 UI 的函式庫，並決定稱它為「React Flow」。這是一個好名字，所以當然「reactflow」和「react-flow」都已經被佔用了。我們能選擇的最佳選項是「react-flow-renderer」，所以我們接受了我們能得到的。'
 date: 16 November 2022
 authors: ['moritz']
 tags: ['react-flow', 'npm']
@@ -11,61 +11,61 @@ import { Bleed } from 'nextra/components';
 import { Emoji } from '@xyflow/xy-ui';
 import { Image } from 'xy-shared';
 
-In 2019 we started building [a library for building node based UIs](https://github.com/xyflow/xyflow), and decided to call it “React Flow.” It’s a nice name, so of course “reactflow” and “react-flow” were already taken. The best option we had for us was “react-flow-renderer,” so we took what we could get.
+2019 年我們開始建立[一個用於建立基於節點的 UI 的函式庫](https://github.com/xyflow/xyflow)，並決定稱它為「React Flow」。這是一個好名字，所以當然「reactflow」和「react-flow」都已經被佔用了。我們能選擇的最佳選項是「react-flow-renderer」，所以我們接受了我們能得到的。
 
-Three years and many Github stars later, we wanted a sleeker name. Both “reactflow” and “react-flow” hadn’t been used or changed for over 6 years, so I found the email address associated with “reactflow” using `npm view reactflow _npmUser`, sent a nice email asking if we could use it, and crossed fingers.
+三年和許多 Github 星星之後，我們想要一個更簡潔的名稱。「reactflow」和「react-flow」都已經超過 6 年沒有使用或更改，所以我使用 `npm view reactflow _npmUser` 找到了與「reactflow」相關聯的電子郵件地址，發送了一封友好的電子郵件詢問我們是否可以使用它，然後祈禱。
 
-Within just 2 hours, the owner replied, and said he had already handed over the rights to us (?!?!). Faster and easier than expected thanks to a quick-responding stranger, we were in business <Emoji content="🔥" />. We were about to publish a new major version, and were excited that a fresh new “reactflow” package would come with the release.
+僅僅 2 小時內，所有者就回覆了，說他已經將權利移交給我們（?!?!）。感謝一位快速回應的陌生人，比預期更快更容易，我們開始營業了 <Emoji content="🔥" />。我們即將發布一個新的主要版本，我們很興奮新的「reactflow」套件將隨著發布而來。
 
 <Bleed>
   <Image
     src="/img/blog/npm/package-handover.png"
-    alt="email from reactflow package handover"
+    alt="reactflow 套件移交的電子郵件"
     width={716}
     height={371}
   />
 </Bleed>
 
-## Mistakes were made
+## 犯了錯誤
 
-The previous owner published just one version of their package 10 years ago. I wanted to start with a fresh package called “v11.0.0-beta,” but I’d have to unpublish that old version first.
+之前的所有者在 10 年前只發布了一個版本的套件。我想從一個名為「v11.0.0-beta」的全新套件開始，但我必須先取消發布那個舊版本。
 
-It was the only version, so I would have to use the “force” argument. But that shouldn’t be a problem, because I can publish a new version, right?
+那是唯一的版本，所以我必須使用「force」參數。但這應該不是問題，因為我可以發布新版本，對吧？
 
 ```sh
 npm unpublish@0.1.0 —force
 ```
 
-Then it was time to make our new name, and look forward to a bright, sunny future.
+然後是時候製作我們的新名稱，並期待一個光明燦爛的未來。
 
 ```sh
 npm publish
 ```
 
-Then, a dreaded error message…
+然後，一個可怕的錯誤訊息...
 
 ```sh
-“Package name too similar to existing package react-flow”
+"Package name too similar to existing package react-flow"
 ```
 
-But we just had the name?! Those two names have existed together for the past 6 years?? What happened?
+但我們剛才還有這個名字？！這兩個名字在過去 6 年裡一直共存著？？發生了什麼事？
 
-With a frantic google search, it turns out npm introduced a [typosquat security feature](https://blog.npmjs.org/post/168978377570/new-package-moniker-rules) a few years ago, way after either of these package names were created, which was now blocking me from using the “reactflow” package at all. I felt terrible, and couldn’t believe that I lost a package that I just received from a kind stranger!
+經過瘋狂的 google 搜尋，我發現 npm 在幾年前引入了一個[防範套件名稱誤植的安全功能](https://blog.npmjs.org/post/168978377570/new-package-moniker-rules)，遠在這兩個套件名稱創建之後，現在阻止我使用「reactflow」套件。我感覺很糟糕，不敢相信我失去了一個剛從一位善良陌生人那裡收到的套件！
 
 <Bleed>
-  <Image src="/img/blog/npm/nooo.gif" alt="Nooo!" width={498} height={249} />
+  <Image src="/img/blog/npm/nooo.gif" alt="不！" width={498} height={249} />
 </Bleed>
 
-## Getting reactflow back
+## 拿回 reactflow
 
-Two minutes of wallowing and frantic google searching later, I realized that I really messed up and wrote npm a message explaining my situation. They answered that there is nothing they can do about it and that we should use a scoped package name instead or follow the package name dispute policy [https://www.npmjs.com/policies/disputes](https://www.npmjs.com/policies/disputes). This was bad.
+兩分鐘的哀傷和瘋狂 google 搜尋後，我意識到我真的搞砸了，並給 npm 發了一條訊息解釋我的情況。他們回答說他們對此無能為力，我們應該使用範疇套件名稱，或遵循套件名稱爭議政策 [https://www.npmjs.com/policies/disputes](https://www.npmjs.com/policies/disputes)。這很糟糕。
 
-We wrote some mails back and forth, and finally at the end of the day, they rolled back the mistake I made and restored the previous version 0.1.0 What a relief! <Emoji content="🙏" />
+我們來來回回寫了一些郵件，最後在當天結束時，他們回滾了我犯的錯誤並恢復了之前的版本 0.1.0。鬆了一口氣！<Emoji content="🙏" />
 
-Thanks to npm support, everyone who wants to use React Flow can use `npm install reactflow` instead of `npm install react-flow-renderer`, which was released along with our [v11 update](https://reactflow.dev/blog/react-flow-v11/). Feels good. <Emoji content="😌" />
+感謝 npm 支援，所有想使用 React Flow 的人現在可以使用 `npm install reactflow` 而不是 `npm install react-flow-renderer`，這隨著我們的 [v11 更新](https://reactflow.dev/blog/react-flow-v11/)一起發布。感覺很好。<Emoji content="😌" />
 
-## How to not make the same mistake
+## 如何避免犯同樣的錯誤
 
-1. Never unpublish the last version of a package if you might want to use the name again.
-2. Never do anything on npm that you are not 100% sure about.
-3. npm support is great ❤️
+1. 如果你可能想再次使用這個名稱，永遠不要取消發布套件的最後一個版本。
+2. 永遠不要在 npm 上做任何你不是 100% 確定的事情。
+3. npm 支援很棒 ❤️
