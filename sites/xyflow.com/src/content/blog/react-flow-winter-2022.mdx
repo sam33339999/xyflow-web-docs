@@ -1,9 +1,9 @@
 ---
-title: 'v11.4.0, design-tool components, an awesome list, and new examples'
-intro: 'Hey! We wanted to share an update about what we’ve been up to before we wrap ourselves up in blankets to hibernate until the new year (we’ll be shutting our laptops from today until January 2nd ⛄). Let’s get into what’s been up the past few months, what’s coming, and what we’re excited about right now.'
+title: 'v11.4.0、設計工具元件、一個精選清單和新範例'
+intro: '嘿！我們想在我們把自己裹在毯子裡冬眠到新年之前分享一個更新（我們將從今天到 1 月 2 日關閉筆電 ⛄）。讓我們來看看過去幾個月發生的事情、即將到來的內容，以及我們現在感到興奮的事情。'
 date: 19 December 2022
 authors: ['john']
-tags: ['react-flow', 'update']
+tags: ['react-flow', '更新']
 image: /img/blog/v10-header.png
 ---
 
@@ -11,75 +11,75 @@ import { Bleed } from 'nextra/components';
 import { Image } from 'xy-shared';
 import { Emoji } from '@xyflow/xy-ui';
 
-Hey! We wanted to share an update about what we’ve been up to before we wrap ourselves up in blankets to hibernate until the new year (we’ll be shutting our laptops from today until January 2nd ⛄). Let’s get into what’s been up the past few months, what’s coming, and what we’re excited about right now.
+嘿！我們想在我們把自己裹在毯子裡冬眠到新年之前分享一個更新（我們將從今天到 1 月 2 日關閉筆電 ⛄）。讓我們來看看過去幾個月發生的事情、即將到來的內容，以及我們現在感到興奮的事情。
 
-## Pan, zoom, and select like your favorite design tools with the v11.4.0 minor release 💫
+## 使用 v11.4.0 小版本發布，像你最喜歡的設計工具一樣平移、縮放和選擇 💫
 
-In the [latest minor release](https://github.com/xyflow/xyflow/releases/tag/11.4.0), you can finally configure the controls so that they behave like Figma, Miro or Sketch. This includes click-dragging to make a selection, [pan by holding the space bar, and scrolling to zoom](https://reactflow.dev/learn/concepts/the-viewport). You can also configure if a node is selected if it is fully inside/partially inside the selection area.
+在[最新的小版本發布](https://github.com/xyflow/xyflow/releases/tag/11.4.0)中，你終於可以配置控制項，使其表現得像 Figma、Miro 或 Sketch 一樣。這包括點擊拖曳來進行選擇、[按住空白鍵進行平移和滾動縮放](https://reactflow.dev/learn/concepts/the-viewport)。你還可以配置如果節點完全在選擇區域內/部分在選擇區域內是否被選中。
 
 <Image
   src="/img/blog/winter-2022/designy-behavior.gif"
-  alt="a mouse click-dragging an area over 2 nodes, then dragging those nodes as a group."
+  alt="滑鼠點擊拖曳一個區域覆蓋 2 個節點，然後將這些節點作為一組拖曳。"
   width={478}
   height={354}
 />
 
-## New helper components: beyond nodes and edges
+## 新的輔助元件：超越節點和連線
 
-As we’ve done research on apps that use React Flow, we’ve noticed a lot of folks are custom-building a lot of similar elements (or using third-party libraries) on top of React Flow. To help with this, we’ve started to build helper components including [Edge labels](https://reactflow.dev/api-reference/components/edge-label-renderer), [node resizing](https://reactflow.dev/api-reference/components/node-resizer), [toolbars and tooltips](https://reactflow.dev/api-reference/components/node-toolbar). We’re doing this work carefully, to make sure we’re not compromising the low-level simplicity of the core library, while making sure React Flow includes all components that are needed for building a node-based app.
+在我們對使用 React Flow 的應用程式進行研究時，我們注意到很多人在 React Flow 之上自訂建立許多類似的元素（或使用第三方函式庫）。為了幫助解決這個問題，我們開始建立輔助元件，包括[邊緣標籤](https://reactflow.dev/api-reference/components/edge-label-renderer)、[節點調整大小](https://reactflow.dev/api-reference/components/node-resizer)、[工具列和提示框](https://reactflow.dev/api-reference/components/node-toolbar)。我們正在小心謹慎地進行這項工作，以確保我們不會損害核心函式庫的低階簡潔性，同時確保 React Flow 包含建立基於節點的應用程式所需的所有元件。
 
 <Image
   src="/img/blog/winter-2022/3components.gif"
-  alt="a preview of the edge labels, node resizing, and toolbar helper components"
+  alt="邊緣標籤、節點調整大小和工具列輔助元件的預覽"
   width={478}
   height={354}
 />
 
-We hope to continue on this path, this will mean talking to some of you all (yay research!) about the apps you’re building with React Flow, and how we can support you in building them.
+我們希望繼續沿著這條路走下去，這意味著與你們中的一些人交談（是的，研究！）關於你正在使用 React Flow 建立的應用程式，以及我們如何支援你建立它們。
 
-## More new examples!
+## 更多新範例！
 
-**[Intersections](https://reactflow.dev/examples/nodes/intersections/)**: This example uses the new [intersection helpers](https://reactflow.dev/api-reference/types/react-flow-instance/#isnodeintersecting) to detect if a node intersects with another node.
+**[交集](https://reactflow.dev/examples/nodes/intersections/)**：此範例使用新的[交集輔助函數](https://reactflow.dev/api-reference/types/react-flow-instance/#isnodeintersecting)來檢測節點是否與另一個節點相交。
 
 <Image
   src="/img/blog/winter-2022/intersection.gif"
-  alt="a gif of one node being dropped on top of another node. When it intersects with the other node, the color of the node."
+  alt="一個節點被拖放到另一個節點上的動畫。當它與另一個節點相交時，節點的顏色會改變。"
   width={476}
   height={354}
 />
 
-**[Resize and Rotate](https://reactflow.dev/examples/nodes/resize-rotate):** This was a Pro example, but we decided to make the source code available to everyone in our public docs to avoid trouble people were having with third-party resizing libraries. We also refactored the code to use the new [resizer component](https://reactflow.dev/api-reference/components/node-resizer).
+**[調整大小和旋轉](https://reactflow.dev/examples/nodes/resize-rotate)：**這曾經是一個 Pro 範例，但我們決定將原始碼提供給我們公開文件中的所有人，以避免人們在使用第三方調整大小函式庫時遇到的問題。我們還重構了程式碼以使用新的[調整大小元件](https://reactflow.dev/api-reference/components/node-resizer)。
 
-**[Dynamic Grouping](https://reactflow.dev/examples/nodes/dynamic-grouping)** (Pro Example 💎): Grouping nodes made easy! Make new groups or add a node to an existing group by dragging a node from a drawer or using a “group nodes” button.
+**[動態分組](https://reactflow.dev/examples/nodes/dynamic-grouping)**（Pro 範例 💎）：輕鬆分組節點！透過從抽屜拖曳節點或使用「分組節點」按鈕來建立新分組或將節點新增到現有分組。
 
-## In other news: npm blunder, a growing list of UIs, a lightning talk
+## 其他新聞：npm 失誤、不斷增長的 UI 清單、閃電演講
 
-**We shared our mistakes** of [how we lost our slick new npm package name (and then got it back)](blog/reactflow-npm-package-name/).
+**我們分享了我們的錯誤**，關於[我們如何失去精美的新 npm 套件名稱（然後又拿回來）](blog/reactflow-npm-package-name/)。
 
-**A lot of people liked our list of [Awesome Node Based UIs](https://github.com/wbkd/awesome-node-based-uis)** with resources, libraries, and good-looking apps. Within a month of publishing it we already have more than 120 entries, 22 contributors and 1k Github stars!! So cool. And this [comment](https://news.ycombinator.com/item?id=33641786) on Hackernews was too good not to share <Emoji content="😊" />.
+**很多人喜歡我們的[精選節點式 UI](https://github.com/wbkd/awesome-node-based-uis) 清單**，其中包含資源、函式庫和外觀出色的應用程式。在發布後的一個月內，我們已經有超過 120 個條目、22 個貢獻者和 1k Github 星！太酷了。而且 Hackernews 上的這個[評論](https://news.ycombinator.com/item?id=33641786)太好了不能不分享 <Emoji content="😊" />。
 
 <Bleed>
   <Image
     src="/img/blog/winter-2022/hackernews.png"
-    alt="a screenshot from a comment on hacker news"
+    alt="Hacker News 上的評論截圖"
     width={1684}
     height={378}
     wide
   />
 </Bleed>
 
-**We met people IRL** at React Day Berlin and gave a lightning talk on making React Flow financially sustainable. We’re interested in giving more talks (maybe at [re:publica 23](https://re-publica.com/en)?) and finding our community as a company, and this was one step towards that for us. The talk isn’t publicly available yet, but it will be soon [here](https://portal.gitnation.org/contents/making-an-open-source-library-financially-sustainable).
+**我們在現實生活中遇到了人們**，在柏林 React Day 上並發表了一場關於讓 React Flow 財務永續的閃電演講。我們有興趣發表更多演講（也許在 [re:publica 23](https://re-publica.com/en)？）並作為一家公司尋找我們的社群，這是我們朝向這個目標邁出的一步。該演講尚未公開，但很快就會在[這裡](https://portal.gitnation.org/contents/making-an-open-source-library-financially-sustainable)提供。
 
 <Bleed>
   <Image
     src="/img/blog/winter-2022/reactday-pics.jpeg"
-    alt="John standing in front of a crowd of people giving a presentation, and a selfie of Moritz and John standing outside the React Day conference building"
+    alt="John 在一群人面前做演講，以及 Moritz 和 John 站在 React Day 會議大樓外的自拍照"
     width={3657}
     height={1533}
     wide
   />
 </Bleed>
 
-Cheers and have a cozy winter holiday! See you in 2023.
+乾杯，祝你有一個溫馨的冬季假期！2023 年見。
 
-John, Christopher and Moritz
+John、Christopher 和 Moritz

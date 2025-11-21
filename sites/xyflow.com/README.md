@@ -1,22 +1,22 @@
-## xyflow | React Flow | Svelte Flow docs
+## xyflow | React Flow | Svelte Flow 文件
 
-This folder contains the source code of the [xyflow website](https://xyflow.com). It is built with [nextra](https://nextra.site/).
+此資料夾包含 [xyflow 網站](https://xyflow.com)的原始碼。它使用 [nextra](https://nextra.site/) 建構。
 
-### Installation
+### 安裝
 
 ```
 $ pnpm install
 ```
 
-### Development
+### 開發
 
-This starts a dev server on http://localhost:3001
+這將在 http://localhost:3001 上啟動開發伺服器
 
 ```
 $ pnpm start
 ```
 
-### Build
+### 建構
 
 ```
 $ pnpm build
