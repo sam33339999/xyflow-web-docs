@@ -1,28 +1,21 @@
 ---
-title: Drag and Drop
-description: Drag and drop outside of the React Flow pane with native HTML Drag and Drop API or react-draggable.
+title: 拖放
+description: 使用原生 HTML 拖放 API 或 react-draggable 在 React Flow 畫布外進行拖放。
 ---
 
 
-In these examples, we use a custom Sidebar component to create new nodes when
-dragging from the sidebar into the React Flow pane.
+在這些範例中，我們使用自訂的 Sidebar 組件，在從側邊欄拖曳到 React Flow 畫布時建立新節點。
 
-A drag and drop user interface is very common for node-based workflow editors.
-The drag and drop behavior outside of the React Flow pane is not built in but
-can be implemented with the native [HTML Drag and Drop
-API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API), 
-[Pointer Events](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events),
-or a third party library like
-[react-draggable](https://github.com/react-grid-layout/react-draggable).
+拖放使用者介面在基於節點的工作流程編輯器中非常常見。
+React Flow 畫布外的拖放行為不是內建的，但可以透過原生 [HTML 拖放 API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)、[指標事件](https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events)或第三方函式庫如 [react-draggable](https://github.com/react-grid-layout/react-draggable) 來實作。
 
-## Drag and Drop with HTML Drag and Drop API
+## 使用 HTML 拖放 API 進行拖放
 
-The HTML Drag and Drop API is a native API that is supported by all major browsers.
-It is a simple API that allows you to drag and drop elements between different
-elements on the page.
+HTML 拖放 API 是所有主流瀏覽器都支援的原生 API。
+這是一個簡單的 API，允許你在頁面上的不同元素之間拖放元素。
 
-**Note:** HTML Drag and Drop API is not properly supported on touch devices. 
-See the example below for an alternative approach using pointer events.
+**注意：** HTML 拖放 API 在觸控裝置上無法正常支援。
+請參閱下面的範例，了解使用指標事件的替代方法。
 
 
 <RemoteCodeViewer route="examples/interaction/drag-and-drop" framework="react" />
@@ -30,22 +23,21 @@ See the example below for an alternative approach using pointer events.
 
 ---
 
-## Drag and Drop with Pointer Events
+## 使用指標事件進行拖放
 
-Another way to implement drag and drop is to use **pointer events**.
+實作拖放的另一種方法是使用**指標事件**。
 
-The Pointer Events API is a modern API that is supported by all major browsers.
-It is slightly more complex to implement than the HTML Drag and Drop API, but by
-using pointer events we can make sure that the drag and drop behavior is consistent across all devices, both mouse and touch.
+指標事件 API 是所有主流瀏覽器都支援的現代 API。
+它的實作比 HTML 拖放 API 稍微複雜一些，但透過使用指標事件，我們可以確保拖放行為在所有裝置（滑鼠和觸控）上都是一致的。
 
 
 <RemoteCodeViewer route="examples/interaction/drag-and-drop-custom" framework="react" />
 
 ---
 
-## Drag and Drop with Neodrag
+## 使用 Neodrag 進行拖放
 
-[Neodrag](https://github.com/puruvj/neodrag) is a library that provides a simple and easy to use drag and drop API.
-In a real-world application, you may want to use the Neodrag library to handle the drag and drop behavior in a cross-platform compatible way, compatible with both mouse and touch devices.
+[Neodrag](https://github.com/puruvj/neodrag) 是一個提供簡單易用的拖放 API 的函式庫。
+在實際應用中，你可能想使用 Neodrag 函式庫以跨平台相容的方式處理拖放行為，同時支援滑鼠和觸控裝置。
 
 <RemoteCodeViewer route="examples/interaction/drag-and-drop-neodrag" framework="react" />

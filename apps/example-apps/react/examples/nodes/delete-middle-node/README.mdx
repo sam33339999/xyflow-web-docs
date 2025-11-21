@@ -1,52 +1,33 @@
 ---
-title: Delete Middle Node
-description: Remove a node without breaking the flow
+title: 刪除中間節點
+description: 刪除節點而不中斷流程
 ---
 
-This example shows you how to recover deleted edges when you remove a node from the middle
-of a chain. In other words, if we have three nodes connected in sequence - `a->b->c` - and
-we deleted the middle node `b`, this example shows you how to end up with the graph
-`a->c`.
+這個範例展示當你從鏈的中間移除節點時，如何恢復已刪除的邊線。換句話說，如果我們有三個按順序連接的節點 - `a->b->c` - 然後刪除中間節點 `b`，此範例展示如何最終得到圖表 `a->c`。
 
-To achieve this, we need to make use of a few bits:
+為了實現這一點，我們需要使用以下幾個部分：
 
-- The [`onNodesDelete`](/api-reference/react-flow#event-onnodesdelete) callback lets us
-  know when a node is deleted.
-- [`getConnectedEdges`](/api-reference/utils/get-connected-edges) gives us all the edges
-  connected to a node, either as source or target.
-- [`getIncomers`](/api-reference/utils/get-incomers) and
-  [`getOutgoers`](/api-reference/utils/get-outgoers) give us the nodes connected to a node
-  as source or target.
+- [`onNodesDelete`](/api-reference/react-flow#event-onnodesdelete) 回呼讓我們知道何時刪除了節點。
+- [`getConnectedEdges`](/api-reference/utils/get-connected-edges) 給我們所有連接到節點的邊線，無論是作為來源還是目標。
+- [`getIncomers`](/api-reference/utils/get-incomers) 和 [`getOutgoers`](/api-reference/utils/get-outgoers) 給我們作為來源或目標連接到節點的節點。
 
-All together, this allows us to take all the nodes connected to the deleted node, and
-reconnect them to any nodes the deleted node was connected to.
+總之，這讓我們可以取得所有連接到已刪除節點的節點，並將它們重新連接到已刪除節點所連接的任何節點。
 
 <RemoteCodeViewer route="examples/nodes/delete-middle-node" framework="react" />
 
-Although this example is less than 20 lines of code there's quite a lot to digest. Let's
-break some of it down:
+雖然這個範例的程式碼不到 20 行，但需要理解的內容相當多。讓我們分解一下：
 
-- Our `onNodesDelete` callback is called with one argument - `deleted` - that is an array
-  of every node that was just deleted. If you select an individual node and press the
-  delete key, `deleted` will contain just that node, but if you make a selection _all_ the
-  nodes in that selection will be in `deleted`.
+- 我們的 `onNodesDelete` 回呼接收一個參數 - `deleted` - 這是一個包含所有剛被刪除節點的陣列。如果你選取單個節點並按下刪除鍵，`deleted` 將只包含該節點，但如果你選取多個，選取範圍內的_所有_節點都將在 `deleted` 中。
 
-- We create a new array of edges - `remainingEdges` - that contains all the edges in the
-  flow that have nothing to do with the node(s) we just deleted.
+- 我們建立一個新的邊線陣列 - `remainingEdges` - 包含流程圖中所有與我們剛刪除的節點無關的邊線。
 
-- We create another array of edges by _flatMapping_ over the array of `incomers`. These
-  are nodes that were connected to the deleted node as a source. For each of these nodes,
-  we create a new edge that connects to each node in the array of `outgoers`. These are
-  nodes that were connected to the deleted node as a target.
+- 我們透過對 `incomers` 陣列進行 _flatMapping_ 來建立另一個邊線陣列。這些是作為來源連接到已刪除節點的節點。對於這些節點中的每一個，我們建立一條新邊線，連接到 `outgoers` 陣列中的每個節點。這些是作為目標連接到已刪除節點的節點。
 
 <Callout type="info">
-For brevity, we're using object destructuring while at the same time renaming
-the variable bound (e.g. `({ id: source }) => ...)` destructures the `id`
-property of the object and binds it to a new variable called `source`) but you
-don't need to do this
+為了簡潔，我們使用物件解構，同時重新命名綁定的變數（例如 `({ id: source }) => ...` 解構物件的 `id` 屬性並將其綁定到名為 `source` 的新變數），但你不需要這樣做
 </Callout>
 
-## Quick Reference
+## 快速參考
 
 <Cards num={2}>
   <Cards.Card title="getConnectedEdges" href="/api-reference/utils/get-connected-edges" />

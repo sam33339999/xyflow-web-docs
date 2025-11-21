@@ -1,19 +1,19 @@
 ---
-title: Dynamic Layouting
-description: A self-organizing graph where users add nodes by clicking placeholder elements, and nodes position automatically.
+title: 動態佈局
+description: 使用者透過點擊佔位符元素加入節點，節點自動定位的自組織圖表。
 is_pro_example: true
 ---
 
-This example creates a self-organizing graph where nodes position themselves automatically in a tree-like structure. Key features include:
+這個範例建立一個自組織圖表，節點會自動在樹狀結構中定位自己。主要功能包括：
 
-- **Node creation**: Instead of manually placing or connecting nodes, users click on placeholder elements to add new nodes
-- **Multiple interaction points**: Add children by clicking on nodes, convert placeholders into nodes, or insert nodes between existing ones using the "+" button on edges
-- **Smart layout algorithm**: When the graph changes, an auto-layout hook powered by `d3-hierarchy` recalculates all positions
-- **Smooth transitions**: Nodes animate to their new positions, maintaining visual clarity even as complexity increases
+- **節點建立**：使用者不用手動放置或連接節點，而是點擊佔位符元素來加入新節點
+- **多個互動點**：透過點擊節點加入子節點、將佔位符轉換為節點，或使用邊線上的「+」按鈕在現有節點之間插入節點
+- **智慧佈局演算法**：當圖表變更時，由 `d3-hierarchy` 驅動的自動佈局鉤子會重新計算所有位置
+- **平滑過渡**：節點會動畫移動到新位置，即使複雜度增加也能保持視覺清晰度
 
 <ProExampleViewer slug="dynamic-layouting" />
 
-### About this Pro Example
+### 關於此專業版範例
 
-- Dependencies: [@xyflow/react](https://www.npmjs.com/package/@xyflow/react), [d3-hierarchy](https://www.npmjs.com/package/d3-hierarchy)
-- License: [xyflow Pro License](https://xyflow.com/pro-license)
+- 依賴套件：[@xyflow/react](https://www.npmjs.com/package/@xyflow/react)、[d3-hierarchy](https://www.npmjs.com/package/d3-hierarchy)
+- 授權條款：[xyflow Pro License](https://xyflow.com/pro-license)

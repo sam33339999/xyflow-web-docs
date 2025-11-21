@@ -1,9 +1,9 @@
 ---
-title: Elkjs Multiple Handles
-description: Use multiple handles with the elkjs layouting engine to reduce edge crossings
+title: Elkjs 多重連接點
+description: 在 elkjs 佈局引擎中使用多個連接點以減少邊線交叉
 ---
 
-This example demonstrates how to configure [elkjs](https://github.com/kieler/elkjs) to use specific handles (called 'ports' in elkjs). This is helpful to reduce edge crossings and have more control over the layout. The important things to configure are unique ids for the handles / ports, the actual ports for elkjs with a correct side property and `'org.eclipse.elk.portConstraints' : 'FIXED_ORDER'` for all nodes.
+這個範例展示如何配置 [elkjs](https://github.com/kieler/elkjs) 以使用特定的連接點（在 elkjs 中稱為「埠」）。這有助於減少邊線交叉，並更好地控制佈局。重要的配置包括為連接點/埠設定唯一 id、為 elkjs 設定具有正確側邊屬性的實際埠，以及為所有節點設定 `'org.eclipse.elk.portConstraints' : 'FIXED_ORDER'`。
 
 <RemoteCodeViewer
   route="examples/layout/elkjs-multiple-handles"
