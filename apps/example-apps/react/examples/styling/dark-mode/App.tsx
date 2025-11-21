@@ -102,9 +102,9 @@ const ColorModeFlow = () => {
           onChange={onChange}
           data-testid="colormode-select"
         >
-          <option value="dark">dark</option>
-          <option value="light">light</option>
-          <option value="system">system</option>
+          <option value="dark">深色</option>
+          <option value="light">淺色</option>
+          <option value="system">系統</option>
         </select>
       </Panel>
     </ReactFlow>

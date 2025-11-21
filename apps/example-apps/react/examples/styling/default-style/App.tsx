@@ -22,25 +22,25 @@ const initialNodes = [
   {
     id: '1',
     position: { x: 0, y: 150 },
-    data: { label: 'default style 1' },
+    data: { label: '預設樣式 1' },
     ...nodeDefaults,
   },
   {
     id: '2',
     position: { x: 250, y: 0 },
-    data: { label: 'default style 2' },
+    data: { label: '預設樣式 2' },
     ...nodeDefaults,
   },
   {
     id: '3',
     position: { x: 250, y: 150 },
-    data: { label: 'default style 3' },
+    data: { label: '預設樣式 3' },
     ...nodeDefaults,
   },
   {
     id: '4',
     position: { x: 250, y: 300 },
-    data: { label: 'default style 4' },
+    data: { label: '預設樣式 4' },
     ...nodeDefaults,
   },
 ];

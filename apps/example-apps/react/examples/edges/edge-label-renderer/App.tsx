@@ -21,12 +21,12 @@ const initialNodes: Node[] = [
   {
     id: '1',
     type: 'input',
-    data: { label: 'Node 1' },
+    data: { label: '節點 1' },
     position: { x: 0, y: 0 },
   },
-  { id: '2', data: { label: 'Node 2' }, position: { x: 0, y: 300 } },
-  { id: '3', data: { label: 'Node 3' }, position: { x: 200, y: 0 } },
-  { id: '4', data: { label: 'Node 4' }, position: { x: 200, y: 300 } },
+  { id: '2', data: { label: '節點 2' }, position: { x: 0, y: 300 } },
+  { id: '3', data: { label: '節點 3' }, position: { x: 200, y: 0 } },
+  { id: '4', data: { label: '節點 4' }, position: { x: 200, y: 300 } },
 ];
 
 const initialEdges: Edge[] = [
@@ -35,7 +35,7 @@ const initialEdges: Edge[] = [
     source: '1',
     target: '2',
     data: {
-      label: 'edge label',
+      label: '邊線標籤',
     },
     type: 'custom',
   },
@@ -44,8 +44,8 @@ const initialEdges: Edge[] = [
     source: '3',
     target: '4',
     data: {
-      startLabel: 'start edge label',
-      endLabel: 'end edge label',
+      startLabel: '起點標籤',
+      endLabel: '終點標籤',
     },
     type: 'start-end',
   },

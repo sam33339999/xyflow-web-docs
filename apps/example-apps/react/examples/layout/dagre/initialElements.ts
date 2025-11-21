@@ -5,56 +5,56 @@ export const initialNodes = [
   {
     id: '1',
     type: 'input',
-    data: { label: 'input' },
+    data: { label: '輸入' },
     position,
   },
   {
     id: '2',
-    data: { label: 'node 2' },
+    data: { label: '節點 2' },
     position,
   },
   {
     id: '2a',
-    data: { label: 'node 2a' },
+    data: { label: '節點 2a' },
     position,
   },
   {
     id: '2b',
-    data: { label: 'node 2b' },
+    data: { label: '節點 2b' },
     position,
   },
   {
     id: '2c',
-    data: { label: 'node 2c' },
+    data: { label: '節點 2c' },
     position,
   },
   {
     id: '2d',
-    data: { label: 'node 2d' },
+    data: { label: '節點 2d' },
     position,
   },
   {
     id: '3',
-    data: { label: 'node 3' },
+    data: { label: '節點 3' },
     position,
   },
   {
     id: '4',
-    data: { label: 'node 4' },
+    data: { label: '節點 4' },
     position,
   },
   {
     id: '5',
-    data: { label: 'node 5' },
+    data: { label: '節點 5' },
     position,
   },
   {
     id: '6',
     type: 'output',
-    data: { label: 'output' },
+    data: { label: '輸出' },
     position,
   },
-  { id: '7', type: 'output', data: { label: 'output' }, position },
+  { id: '7', type: 'output', data: { label: '輸出' }, position },
 ];
 
 export const initialEdges = [

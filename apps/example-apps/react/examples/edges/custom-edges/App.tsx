@@ -25,17 +25,17 @@ const initialNodes: Node[] = [
   {
     id: 'button-1',
     type: 'input',
-    data: { label: 'Button Edge 1' },
+    data: { label: '按鈕邊線 1' },
     position: { x: 125, y: 0 },
   },
   {
     id: 'button-2',
-    data: { label: 'Button Edge 2' },
+    data: { label: '按鈕邊線 2' },
     position: { x: 125, y: 200 },
   },
   {
     id: 'bi-1',
-    data: { label: 'Bi Directional 1' },
+    data: { label: '雙向連線 1' },
     position: { x: 0, y: 300 },
     type: 'bidirectional',
     sourcePosition: Position.Right,
@@ -43,7 +43,7 @@ const initialNodes: Node[] = [
   },
   {
     id: 'bi-2',
-    data: { label: 'Bi Directional 2' },
+    data: { label: '雙向連線 2' },
     position: { x: 250, y: 300 },
     type: 'bidirectional',
     sourcePosition: Position.Right,
@@ -51,7 +51,7 @@ const initialNodes: Node[] = [
   },
   {
     id: 'self-1',
-    data: { label: 'Self Connecting' },
+    data: { label: '自我連接' },
     position: { x: 125, y: 500 },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,

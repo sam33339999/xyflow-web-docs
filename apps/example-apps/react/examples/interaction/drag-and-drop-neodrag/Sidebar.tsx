@@ -66,7 +66,7 @@ export function Sidebar() {
           id: getId(),
           type: nodeType,
           position,
-          data: { label: `${nodeType} node` },
+          data: { label: `${nodeType === 'input' ? '輸入' : nodeType === 'output' ? '輸出' : '預設'}節點` },
         };
 
         setNodes((nds) => nds.concat(newNode));
@@ -78,16 +78,16 @@ export function Sidebar() {
   return (
     <aside>
       <div className="description">
-        You can drag these nodes to the pane to create new nodes.
+        拖曳這些節點到面板上建立新節點
       </div>
       <DraggableNode className="input" nodeType="input" onDrop={handleNodeDrop}>
-        Input Node
+        輸入節點
       </DraggableNode>
       <DraggableNode className="default" nodeType="default" onDrop={handleNodeDrop}>
-        Default Node
+        預設節點
       </DraggableNode>
       <DraggableNode className="output" nodeType="output" onDrop={handleNodeDrop}>
-        Output Node
+        輸出節點
       </DraggableNode>
     </aside>
   );

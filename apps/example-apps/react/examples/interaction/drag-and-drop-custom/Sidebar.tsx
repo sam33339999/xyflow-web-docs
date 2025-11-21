@@ -23,7 +23,7 @@ export function Sidebar() {
           id: getId(),
           type: nodeType,
           position,
-          data: { label: `${nodeType} node` },
+          data: { label: `${nodeType === 'input' ? '輸入' : nodeType === 'output' ? '輸出' : '預設'}節點` },
         };
 
         setNodes((nds) => nds.concat(newNode));
@@ -39,7 +39,7 @@ export function Sidebar() {
       {isDragging && <DragGhost type={type} />}
       <aside>
         <div className="description">
-          You can drag these nodes to the pane to create new nodes.
+          拖曳這些節點到面板上建立新節點
         </div>
         <div
           className="dndnode input"
@@ -48,7 +48,7 @@ export function Sidebar() {
             onDragStart(event, createAddNewNode('input'));
           }}
         >
-          Input Node
+          輸入節點
         </div>
         <div
           className="dndnode"
@@ -57,7 +57,7 @@ export function Sidebar() {
             onDragStart(event, createAddNewNode('default'));
           }}
         >
-          Default Node
+          預設節點
         </div>
         <div
           className="dndnode output"
@@ -66,7 +66,7 @@ export function Sidebar() {
             onDragStart(event, createAddNewNode('output'));
           }}
         >
-          Output Node
+          輸出節點
         </div>
       </aside>
     </>
@@ -90,7 +90,7 @@ export function DragGhost({ type }: DragGhostProps) {
         transform: `translate(${position.x}px, ${position.y}px) translate(-50%, -50%)`,
       }}
     >
-      {type && `${type.charAt(0).toUpperCase() + type.slice(1)} Node`}
+      {type && `${type === 'input' ? '輸入' : type === 'output' ? '輸出' : '預設'}節點`}
     </div>
   );
 }

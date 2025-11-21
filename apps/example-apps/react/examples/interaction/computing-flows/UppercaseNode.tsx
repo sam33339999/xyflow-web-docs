@@ -29,7 +29,7 @@ function UppercaseNode({ id }: NodeProps) {
         position={Position.Left}
         isConnectable={connections.length === 0}
       />
-      <div>uppercase transform</div>
+      <div>轉大寫</div>
       <Handle type="source" position={Position.Right} />
     </div>
   );

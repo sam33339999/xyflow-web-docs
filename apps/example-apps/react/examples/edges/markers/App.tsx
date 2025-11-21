@@ -59,7 +59,7 @@ const defaultEdges = [
     markerEnd: {
       type: MarkerType.Arrow,
     },
-    label: 'default arrow',
+    label: '預設箭頭',
   },
   {
     id: 'C->D',
@@ -68,7 +68,7 @@ const defaultEdges = [
     markerEnd: {
       type: MarkerType.ArrowClosed,
     },
-    label: 'default closed arrow',
+    label: '預設實心箭頭',
   },
   {
     id: 'D->E',
@@ -81,14 +81,14 @@ const defaultEdges = [
       type: MarkerType.ArrowClosed,
       orient: 'auto-start-reverse',
     },
-    label: 'marker start and marker end',
+    label: '起點與終點標記',
   },
   {
     id: 'E->F',
     source: 'E',
     target: 'F',
     markerEnd: 'logo',
-    label: 'custom marker',
+    label: '自訂標記',
   },
   {
     id: 'E->H',
@@ -100,7 +100,7 @@ const defaultEdges = [
       width: 20,
       height: 20,
     },
-    label: 'change color on selection',
+    label: '選取時改變顏色',
   },
   {
     id: 'B->G',
@@ -112,7 +112,7 @@ const defaultEdges = [
       height: 20,
       color: '#FF0072',
     },
-    label: 'marker size and color',
+    label: '標記大小和顏色',
     style: {
       strokeWidth: 2,
       stroke: '#FF0072',

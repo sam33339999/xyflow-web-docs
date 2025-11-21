@@ -25,14 +25,14 @@ const initialNodes: Node[] = [
     id: 'a',
     type: 'input',
     position: { x: 200, y: 0 },
-    data: { label: 'Node A' },
+    data: { label: '節點 A' },
   },
   {
     id: 'b',
     position: { x: 0, y: 200 },
-    data: { label: 'Node B' },
+    data: { label: '節點 B' },
   },
-  { id: 'c', position: { x: 0, y: 0 }, data: { label: 'Node C' } },
+  { id: 'c', position: { x: 0, y: 0 }, data: { label: '節點 C' } },
 ];
 const initialEdges: Edge[] = [{ id: 'a->b', source: 'a', target: 'b' }];
 

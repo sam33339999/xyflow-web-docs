@@ -20,9 +20,9 @@ function ResultNode() {
     <div>
       <Handle type="target" position={Position.Left} />
       <div>
-        incoming texts:{' '}
+        傳入文字：{' '}
         {textNodes.map(({ data }, i) => <div key={i}>{data.text}</div>) ||
-          'none'}
+          '無'}
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ function TextNode({ id, data }: NodeProps<Node<{ text: string }>>) {
 
   return (
     <div>
-      <div>node {id}</div>
+      <div>節點 {id}</div>
       <div>
         <input
           onChange={(evt) => updateNodeData(id, { text: evt.target.value })}

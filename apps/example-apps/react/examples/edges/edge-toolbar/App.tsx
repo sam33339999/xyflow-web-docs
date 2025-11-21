@@ -22,14 +22,14 @@ const edgeTypes: EdgeTypes = {
 const initialNodes: Node[] = [
   {
     id: '1',
-    data: { label: 'Node 1' },
+    data: { label: '節點 1' },
     position: { x: 150, y: 100 },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
   },
   {
     id: '2',
-    data: { label: 'Node 2' },
+    data: { label: '節點 2' },
     position: { x: 550, y: 0 },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
@@ -37,14 +37,14 @@ const initialNodes: Node[] = [
 
   {
     id: '3',
-    data: { label: 'Node 3' },
+    data: { label: '節點 3' },
     position: { x: 0, y: 300 },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
   },
   {
     id: '4',
-    data: { label: 'Node 4' },
+    data: { label: '節點 4' },
     position: { x: 750, y: 200 },
     sourcePosition: Position.Right,
     targetPosition: Position.Left,

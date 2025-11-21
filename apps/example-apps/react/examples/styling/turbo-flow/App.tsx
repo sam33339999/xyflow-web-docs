@@ -21,37 +21,37 @@ const initialNodes: Node<TurboNodeData>[] = [
   {
     id: '1',
     position: { x: 0, y: 0 },
-    data: { icon: <FunctionIcon />, title: 'readFile', subtitle: 'api.ts' },
+    data: { icon: <FunctionIcon />, title: '讀取檔案', subtitle: 'api.ts' },
     type: 'turbo',
   },
   {
     id: '2',
     position: { x: 250, y: 0 },
-    data: { icon: <FunctionIcon />, title: 'bundle', subtitle: 'apiContents' },
+    data: { icon: <FunctionIcon />, title: '打包', subtitle: 'apiContents' },
     type: 'turbo',
   },
   {
     id: '3',
     position: { x: 0, y: 250 },
-    data: { icon: <FunctionIcon />, title: 'readFile', subtitle: 'sdk.ts' },
+    data: { icon: <FunctionIcon />, title: '讀取檔案', subtitle: 'sdk.ts' },
     type: 'turbo',
   },
   {
     id: '4',
     position: { x: 250, y: 250 },
-    data: { icon: <FunctionIcon />, title: 'bundle', subtitle: 'sdkContents' },
+    data: { icon: <FunctionIcon />, title: '打包', subtitle: 'sdkContents' },
     type: 'turbo',
   },
   {
     id: '5',
     position: { x: 500, y: 125 },
-    data: { icon: <FunctionIcon />, title: 'concat', subtitle: 'api, sdk' },
+    data: { icon: <FunctionIcon />, title: '合併', subtitle: 'api, sdk' },
     type: 'turbo',
   },
   {
     id: '6',
     position: { x: 750, y: 125 },
-    data: { icon: <FiFile />, title: 'fullBundle' },
+    data: { icon: <FiFile />, title: '完整打包' },
     type: 'turbo',
   },
 ];

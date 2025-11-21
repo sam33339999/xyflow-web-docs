@@ -20,7 +20,7 @@ export function EdgeWithButton(props: EdgeProps) {
       <BaseEdge id={props.id} path={edgePath} />
       <EdgeToolbar edgeId={props.id} x={centerX} y={centerY} isVisible>
         <button className="xy-theme__button" onClick={deleteEdge}>
-          Centered Button
+          置中按鈕
         </button>
       </EdgeToolbar>
     </>

@@ -15,7 +15,7 @@ import '@xyflow/react/dist/style.css';
 const initialNodes: Node[] = [
   {
     id: '1',
-    data: { label: 'Node 1' },
+    data: { label: '節點 1' },
     position: { x: 0, y: 0 },
     style: {
       width: 200,
@@ -24,17 +24,17 @@ const initialNodes: Node[] = [
   },
   {
     id: '2',
-    data: { label: 'Node 2' },
+    data: { label: '節點 2' },
     position: { x: 0, y: 150 },
   },
   {
     id: '3',
-    data: { label: 'Node 3' },
+    data: { label: '節點 3' },
     position: { x: 250, y: 0 },
   },
   {
     id: '4',
-    data: { label: 'Node' },
+    data: { label: '節點' },
     position: { x: 350, y: 150 },
     style: {
       width: 50,

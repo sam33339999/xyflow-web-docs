@@ -28,7 +28,7 @@ export function EdgeWithToolbar(props: EdgeProps) {
             boxShadow: '0 1px 4px rgba(0,0,0,0.2)',
           }}
         >
-          Floating Toolbar
+          浮動工具列
         </div>
       </EdgeToolbar>
     </>
